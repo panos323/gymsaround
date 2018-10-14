@@ -1,3 +1,3 @@
-# creativeProject
+Authors: Theodora Galata, George Georgakas
 
-theodora
+This is the documentation for our website.
