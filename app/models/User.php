@@ -49,4 +49,40 @@ class User{
             return false;
         }
     }
+
+    /**
+     * Find user by username
+     * @param string $username
+     * @return bool
+     */
+    public function findUserByUsername(string $username){
+        $this->db->query('SELECT * FROM users WHERE user_username = :username');
+        $this->db->bind(':username', $username);
+        $row = $this->db->single();
+        // Check row
+        if($this->db->rowCount() > 0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    /**
+     * Verify password by user with email or username
+     * @param string $key
+     * @param string $password
+     * @return bool
+     */
+    public function login(string $key,string $password){
+        $this->db->query('SELECT * FROM users WHERE user_username = :key or user_email = :key');
+        $this->db->bind(':key', $key);
+        $row = $this->db->single();
+        $pass = $row->user_password;
+        if($this->db->rowCount() > 0){
+            if(password_verify($password, $pass)){
+                return $row;
+            }
+        }
+        return false;
+    }
 }
