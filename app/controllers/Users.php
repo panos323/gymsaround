@@ -120,4 +120,93 @@ class Users extends Controller {
 
         }
     }
+
+
+    /*----------------TEST LOGIN------------------------*/
+    public function login() {
+        // Check for POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'username' => trim($_POST['username']),
+                'email' => trim($_POST['username']),
+                'password' => trim($_POST['password']),
+                'empty_error' => '',
+                'pass_error' => '',
+                'wrong_cred' => '',
+                'wrong_cred2' => '',
+            ];
+
+            // Validate email/username
+            if(empty($data['username'])){
+                $data['empty_error'] = 'Please enter email or username';
+            }
+
+             // Validate password
+             if(empty($data['password'])){
+                $data['pass_error'] = 'Please enter password';
+            }
+            
+            //wrong  username
+            if( (strlen($data['username']) > 0) && (!$this->userModel->findUserByUsername($data['username']))) {
+                $data['wrong_cred'] = 'Username/Email doesnt exists';
+            } elseif ($this->userModel->findUserByUsername($data['username'])) {
+                $data['wrong_cred'] = '';
+                $data['wrong_cred2'] = '';
+            }
+
+             //wrong  email
+            if( (strpos($data['email'], '@') !== false) && (strlen($data['email']) > 0) && (!$this->userModel->findUserByEmail($data['email']))) {
+                $data['wrong_cred2'] = 'Username/Email doesnt exists';
+            } elseif ($this->userModel->findUserByEmail($data['email'])) {
+                $data['wrong_cred'] = '';
+                $data['wrong_cred2'] = '';
+            }
+            
+           
+            // Check if errors are empty
+            if (empty($data['empty_error']) &&
+                empty($data['pass_error']) && 
+                empty($data['wrong_cred']) &&
+                empty($data['wrong_cred2'])) {
+                // Login User        
+                 
+            try{
+                $this->userModel->login($data['username'], $data['password']);                
+                //redirect('pages/index');
+                echo "working";
+            } catch (Exception $e){
+                //redirect('pages/about');
+                echo "not working";
+            }
+        
+             } else {
+                // Load view with errors
+                $this->view('users/login', $data);
+            }
+
+        } else {
+            // Init data
+            $data = [
+                'username' => '',
+                'email' => '',
+                'password' => '',
+                'empty_error' => '',
+                'pass_error' => '',
+                'wrong_cred' => '',
+                'wrong_cred2' => '',
+            ];
+
+            // Load view
+            $this->view('users/login', $data);
+
+        }
+    }//function login
+    /*----------------TEST LOGIN------------------------*/
+
+
 }
