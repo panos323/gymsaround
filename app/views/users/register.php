@@ -57,6 +57,7 @@
                             <input type="submit" value="Register" class="btn btn-success btn-block">
                         </div>
                     </div>
+                    <span class="invalid-feedback"><?php echo $data['register_error']; ?></span>
                 </form>
             </div>
         </div>
