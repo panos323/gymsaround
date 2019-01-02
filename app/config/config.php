@@ -13,7 +13,7 @@
     define('APPROOT', dirname(dirname(__FILE__)));
 
     // URL Root
-    define('URLROOT', 'http://localhost/creativeproject');
+    define('URLROOT', 'http://localhost/gymaround');
 
     // Site name
-    define('SITENAME', 'Creative Project');
+    define('SITENAME', 'GymAround');
