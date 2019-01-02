@@ -15,12 +15,21 @@
             <li class="nav-item <?php echo (isset($view) && $view==='pages/about') ? 'active' : '';?>">
                 <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">Εταιρεία</a>
             </li>
-            <li class="nav-item <?php echo (isset($view) && $view==='users/register') ? 'active' : '';?>">
-                <a class="nav-link" href="<?php echo URLROOT; ?>/users/register">Εγγραφή</a>
-            </li>
-            <li class="nav-item <?php echo (isset($view) && $view==='users/login') ? 'active' : '';?>">
-                <a class="nav-link" href="<?php echo URLROOT; ?>/users/login">Είσοδος</a>
-            </li>
+            <?php if(isset($_SESSION['user_id'])) : ?>
+                <li class="nav-item <?php echo (isset($view) && $view==='users/profile') ? 'active' : '';?>">
+                    <a class="nav-link" href="<?php echo URLROOT; ?>/users/profile/<?php echo $_SESSION['username'];?>">Προφίλ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Αποσύνδεση</a>
+                </li>
+            <?php else : ?>
+                <li class="nav-item <?php echo (isset($view) && $view==='users/register') ? 'active' : '';?>">
+                    <a class="nav-link" href="<?php echo URLROOT; ?>/users/register">Εγγραφή</a>
+                </li>
+                <li class="nav-item <?php echo (isset($view) && $view==='users/login') ? 'active' : '';?>">
+                    <a class="nav-link" href="<?php echo URLROOT; ?>/users/login">Είσοδος</a>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>
