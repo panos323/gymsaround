@@ -1,0 +1,28 @@
+
+/*-------------LOGIN,REGISTER FORM----------------------*/
+#cardBodyForm, #cardBodyReg{
+    border:none;
+}
+
+#cardBodyForm #loginForm input:not([type='checkbox']), #cardBodyReg #registerForm input:not([type='checkbox']){
+    border:none;
+    border-bottom:3px solid black;
+}
+
+#cardBodyForm #loginForm input:not([type='checkbox']), #cardBodyReg #registerForm input:not([type='checkbox']){
+    outline:none !important;
+    -webkit-appearance:none !important;
+    box-shadow:none !important;
+}
+
+#passwordDiv, #passwordDivReg{
+    position: relative;
+}
+
+.glyphicon{
+    position: absolute;
+    right:5px;
+    bottom:25%;
+    transform: translateY(-25%);
+}
+/*-------------LOGIN,REGISTER FORM----------------------*/
