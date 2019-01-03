@@ -1,3 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+/**
+    error page css
+ */
+.error_img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.error_img p{
+    text-align: center;
+    margin-top: 20px;
+}
 
 /*-------------LOGIN,REGISTER FORM----------------------*/
 #cardBodyForm, #cardBodyReg{
@@ -25,4 +49,37 @@
     bottom:25%;
     transform: translateY(-25%);
 }
+
+.gym-title{
+    background-color: #00c2db;
+    color: white;
+    width: 100%;
+}
+
+.gym-title h1{
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.login {
+    height: 55vh;
+}
+
 /*-------------LOGIN,REGISTER FORM----------------------*/
+
+/**
+    Footer Css
+ */
+
+footer{
+    background-color: rgba(26, 25, 24, 0.88);
+    color: #ffffff;
+}
+
+footer p a {
+    color: #ffffff;
+}
