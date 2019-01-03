@@ -35,8 +35,7 @@
                     // Unset 1 index
                     unset($url[1]);
                 }else {
-                    // TODO: Redirect to 404 if method does not exist
-                    die('404');
+                    redirect('pages/error');
                 }
             }
 
