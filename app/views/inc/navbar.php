@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="<?php echo URLROOT; ?>"><?php echo SITENAME; ?></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,8 +9,8 @@
             <li class="nav-item <?php echo (isset($view) && $view==='pages/index') ? 'active' : '';?>">
                 <a class="nav-link" href="<?php echo URLROOT; ?>">Αρχική</a>
             </li>
-            <li class="nav-item <?php echo (isset($view) && $view==='pages/index') ? 'active' : '';?>">
-                <a class="nav-link" href="<?php echo URLROOT; ?>">Γυμναστήρια</a>
+            <li class="nav-item <?php echo (isset($view) && $view==='gyms/search') ? 'active' : '';?>">
+                <a class="nav-link" href="<?php echo URLROOT; ?>/gyms/search">Γυμναστήρια</a>
             </li>
             <li class="nav-item <?php echo (isset($view) && $view==='pages/about') ? 'active' : '';?>">
                 <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">Εταιρεία</a>
