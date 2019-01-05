@@ -11,4 +11,10 @@
     <title><?php echo SITENAME; ?></title>
 </head>
 <body>
-<?php require APPROOT . '/views/inc/navbar.php'?>
+    <div class="error_img">
+        <img src="<?php echo URLROOT ?>/public/images/404-error.png">
+        <p><a class="btn btn-lg btn-success" href="<?php echo URLROOT; ?>">Go to Home page</a></p>
+    </div>
+
+</body>
+</html>
