@@ -5,7 +5,7 @@ class Users extends Controller {
         $this->userModel = $this->model('User');
     }
 
-    public function register(){
+    public function register(string $register_type = ''){
 
         // Check for POST
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -22,13 +22,17 @@ class Users extends Controller {
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
                 'confirm_password' => trim($_POST['confirm_password']),
+                'address' => isset($_POST['address']) ? trim($_POST['address']) : '',
+                'phone' => isset($_POST['phone']) ? trim($_POST['phone']) : '',
                 'fname_error' => '',
                 'lname_error' => '',
                 'username_error' => '',
                 'email_error' => '',
                 'pass_error' => '',
                 'confirm_pass_error' => '',
-                'register_error' => ''
+                'register_error' => '',
+                'address_error' => '',
+                'phone_error' => ''
             ];
 
             // Validate email
@@ -105,13 +109,17 @@ class Users extends Controller {
                 'email' => '',
                 'password' => '',
                 'confirm_password' => '',
+                'address' => '',
+                'phone' => '',
                 'fname_error' => '',
                 'lname_error' => '',
                 'username_error' => '',
                 'email_error' => '',
                 'pass_error' => '',
                 'confirm_pass_error' => '',
-                'register_error' => ''
+                'register_error' => '',
+                'address_error' => '',
+                'phone_error' => ''
             ];
 
             // Load view
@@ -178,6 +186,10 @@ class Users extends Controller {
             // Load view
             $this->view('users/login', $data);
         }
+    }
+
+    public function facebook(){
+        $this->view('users/facebook');
     }
 
     public function profile(string $username){

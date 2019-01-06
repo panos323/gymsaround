@@ -11,7 +11,6 @@
                 <form id="registerForm" action="<?php echo URLROOT; ?>/users/register" method="post">
 
                     <div class="form-row">
-                        <!--<label for="first_name">First Name: <sup>*</sup></label>-->
                         <div class="form-group col-sm-6">
                         <input type="text"
                                name="first_name"
@@ -21,7 +20,6 @@
                         <span class="invalid-feedback"><?php echo $data['fname_error']; ?></span>
                         </div>
                         <div class="form-group col-sm-6">
-                            <!--<label for="last_name">Last Name: <sup>*</sup></label>-->
                             <input type="text"
                                 name="last_name"
                                 class="form-control form-control-lg <?php echo (!empty($data['lname_error'])) ? 'is-invalid' : ''; ?>"
@@ -32,7 +30,6 @@
                     </div><!--form-row-->
 
                     <div class="form-group">
-                         <!--<label for="username">Username: <sup>*</sup></label>-->
                         <input type="text"
                                name="username"
                                class="form-control form-control-lg <?php echo (!empty($data['username_error'])) ? 'is-invalid' : ''; ?>"
@@ -41,7 +38,6 @@
                         <span class="invalid-feedback"><?php echo $data['username_error']; ?></span>
                     </div>
                     <div class="form-group">
-                         <!--<label for="email">Email <sup>*</sup></label>-->
                         <input type="email"
                                name="email"
                                class="form-control form-control-lg <?php echo (!empty($data['email_error'])) ? 'is-invalid' : ''; ?>"
@@ -52,7 +48,6 @@
 
                     <div class="form-row">
                         <div class="form-group col-sm-6" id="passwordDivReg">
-                            <!--<label for="last_name">Password: <sup>*</sup></label>-->
                             <input type="password"
                                 name="password"
                                 class="form-control form-control-lg <?php echo (!empty($data['pass_error'])) ? 'is-invalid' : ''; ?>"
@@ -62,7 +57,6 @@
                             <i class="fa fa-eye glyphicon" aria-hidden="true"></i>
                         </div>
                         <div class="form-group col-sm-6">
-                            <!--<label for="confirm_password">Confirm Password: <sup>*</sup></label>-->
                             <input type="password"
                                 name="confirm_password"
                                 class="form-control form-control-lg <?php echo (!empty($data['confirm_pass_error'])) ? 'is-invalid' : ''; ?>"
@@ -70,14 +64,16 @@
                                 value="<?php echo $data['confirm_password']; ?>">
                             <span class="invalid-feedback"><?php echo $data['confirm_pass_error']; ?></span>
                         </div>
+                        <div class="form-group col-sm-12">
+                            <input type="text"
+                                   name="address"
+                                   class="form-control form-control-lg <?php echo (!empty($data['address_error'])) ? 'is-invalid' : ''; ?>"
+                                   placeholder="Address"
+                                   value="<?php echo $data['address']; ?>">
+                            <span class="invalid-feedback"><?php echo $data['address_error']; ?></span>
+                        </div>
                     </div><!--form-row-->
 
-                    <div class="form-group">
-                        <input type="text"
-                               name="address"
-                               class="form-control form-control-lg" 
-                               placeholder="Address">
-                    </div>
                     <div class="form-check mb-2">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                         <label class="form-check-label" for="defaultCheck1">
@@ -91,17 +87,14 @@
                         </label>
                     </div>
                     <div class="row mt-4">
-                        <!-- <div class="col text-center">
-                            <input type="submit" value="Register" class="btn btn-success mt-4 mb-4" style="width:150px;"">
-                        </div> -->
                         <div class="btn-group mr-4 mb-3" role="group" aria-label="Second group">
                             <button type="submit"  value="Register" class="btn btn-success">Register</button>
                         </div>
                         <span class="mr-4 mb-3" style="line-height:50px;">OR</span>
                         <div class="btn-group mb-3" role="group" aria-label="Third group">
-                        <button type="submit"  value="fb" class="btn btn-outline-primary">
+                        <a href="<?php echo URLROOT; ?>/users/facebook"  value="fb" class="btn btn-outline-primary">
                             <i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i>
-                            &nbsp; Register with Facebook</button>
+                            &nbsp; Register with Facebook</a>
                         </div>
                     </div>
                     <span class="invalid-feedback"><?php echo $data['register_error']; ?></span>

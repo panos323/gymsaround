@@ -7,5 +7,9 @@
 
     // Autoload Core Libraries
     spl_autoload_register(function ($classname){
-        require_once 'libraries/' . $classname . '.php';
+        if(substr($classname, 0, 8) === 'Facebook'){
+            require_once '../vendor/facebook/graph-sdk/src/Facebook/autoload.php';
+        }else{
+            require_once 'libraries/' . $classname . '.php';
+        }
     });
