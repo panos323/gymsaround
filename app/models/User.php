@@ -10,36 +10,20 @@ class User{
     /**
      * Register User
      * @param array $data
-     * @param string $type
      * @return bool
      */
-    public function register(array $data, string $type = ''){
+    public function register(array $data){
 
-        // Register the owner
-        if($type === 'owner'){
-            $this->db->query('INSERT INTO users (user_first_name, user_last_name , user_password, user_email, user_username, user_address) 
-                              VALUES (:fname, :lname, :password, :email, :username, :phone )');
-
-            // Bind Values
-            $this->db->bind(':fname',$data['first_name']);
-            $this->db->bind(':lname',$data['last_name']);
-            $this->db->bind(':password',$data['password']);
-            $this->db->bind(':email',$data['email']);
-            $this->db->bind(':username',$data['username']);
-            $this->db->bind(':phone',$data['phone']);
-        } else {
-         // Register the user
-            $this->db->query('INSERT INTO users (user_first_name, user_last_name , user_password, user_email, user_username, user_address) 
-                              VALUES (:fname, :lname, :password, :email, :username, :address )');
-
-            // Bind Values
-            $this->db->bind(':fname',$data['first_name']);
-            $this->db->bind(':lname',$data['last_name']);
-            $this->db->bind(':password',$data['password']);
-            $this->db->bind(':email',$data['email']);
-            $this->db->bind(':username',$data['username']);
-            $this->db->bind(':address',$data['address']);
-        }
+        // Register the user
+        $this->db->query('INSERT INTO users (user_first_name, user_last_name , user_password, user_email, user_username, user_address) 
+                            VALUES (:fname, :lname, :password, :email, :username, :address )');
+        // Bind Values
+        $this->db->bind(':fname',$data['first_name']);
+        $this->db->bind(':lname',$data['last_name']);
+        $this->db->bind(':password',$data['password']);
+        $this->db->bind(':email',$data['email']);
+        $this->db->bind(':username',$data['username']);
+        $this->db->bind(':address',$data['address']);
 
         // Execute
         try{

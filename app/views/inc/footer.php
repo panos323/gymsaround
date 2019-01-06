@@ -23,9 +23,9 @@
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
                 <h3 class="mb-4">Συνεργάτες</h3>
-                <button class="btn btn-outline-success">
+                <a href="<?php echo URLROOT; ?>/owners/register" class="btn btn-outline-success">
                     Γίνε συνεργάτης
-                </button>
+                </a>
             </div>
         </div>
     </div>

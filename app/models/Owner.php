@@ -10,24 +10,22 @@ class Owner{
     /**
      * Register User
      * @param array $data
-     * @param string $type
      * @return bool
      */
-    public function register(array $data, string $type = ''){
+    public function register(array $data){
 
         // Register the owner
-      //  if($type === 'owner'){
-            $this->db->query('INSERT INTO owners (owner_first_name, owner_last_name , owner_password, owner_email, owner_username, owner_phone) 
-                              VALUES (:fname, :lname, :password, :email, :username, :phone )');
+        $this->db->query('INSERT INTO owners (owner_first_name, owner_last_name , owner_password, owner_email, owner_username, owner_phone, owner_is_activated) 
+                            VALUES (:fname, :lname, :password, :email, :username, :phone, :activated )');
 
-            // Bind Values
-            $this->db->bind(':fname',$data['first_name']);
-            $this->db->bind(':lname',$data['last_name']);
-            $this->db->bind(':password',$data['password']);
-            $this->db->bind(':email',$data['email']);
-            $this->db->bind(':username',$data['username']);
-            $this->db->bind(':phone',$data['phone']);
-       // } 
+        // Bind Values
+        $this->db->bind(':fname',$data['first_name']);
+        $this->db->bind(':lname',$data['last_name']);
+        $this->db->bind(':password',$data['password']);
+        $this->db->bind(':email',$data['email']);
+        $this->db->bind(':username',$data['username']);
+        $this->db->bind(':phone',$data['phone']);
+        $this->db->bind(':activated',0);
 
         // Execute
         try{

@@ -65,14 +65,6 @@
                             <span class="invalid-feedback"><?php echo $data['confirm_pass_error']; ?></span>
                         </div>
                         <div class="form-group col-sm-12">
-                            <input type="text"
-                                   name="address"
-                                   class="form-control form-control-lg <?php echo (!empty($data['address_error'])) ? 'is-invalid' : ''; ?>"
-                                   placeholder="Address"
-                                   value="<?php echo $data['address']; ?>">
-                            <span class="invalid-feedback"><?php echo $data['address_error']; ?></span>
-                        </div>
-                        <div class="form-group col-sm-12">
                             <input type="number"
                                    name="phone"
                                    class="form-control form-control-lg <?php echo (!empty($data['phone_error'])) ? 'is-invalid' : ''; ?>"
@@ -82,12 +74,6 @@
                         </div>
                     </div><!--form-row-->
 
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                            Newsletter
-                        </label>
-                    </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
                         <label class="form-check-label" for="defaultCheck2">
@@ -98,16 +84,10 @@
                         <div class="btn-group mr-4 mb-3" role="group" aria-label="Second group">
                             <button type="submit"  value="Register" class="btn btn-success">Register</button>
                         </div>
-                        <span class="mr-4 mb-3" style="line-height:50px;">OR</span>
-                        <div class="btn-group mb-3" role="group" aria-label="Third group">
-                        <a href="<?php echo URLROOT; ?>/owners/facebook"  value="fb" class="btn btn-outline-primary">
-                            <i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i>
-                            &nbsp; Register with Facebook</a>
-                        </div>
                     </div>
                     <span class="invalid-feedback"><?php echo $data['register_error']; ?></span>
                     <div class="col mt-3">
-                        <a href="">Login
+                        <a href="<?php echo URLROOT; ?>/owners/login">Login
                             <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>

@@ -64,14 +64,25 @@
                                 value="<?php echo $data['confirm_password']; ?>">
                             <span class="invalid-feedback"><?php echo $data['confirm_pass_error']; ?></span>
                         </div>
-                        <div class="form-group col-sm-12">
-                            <input type="text"
-                                   name="address"
-                                   class="form-control form-control-lg <?php echo (!empty($data['address_error'])) ? 'is-invalid' : ''; ?>"
-                                   placeholder="Address"
-                                   value="<?php echo $data['address']; ?>">
-                            <span class="invalid-feedback"><?php echo $data['address_error']; ?></span>
-                        </div>
+                        <?php if(isset($data['register_type']) && $data['register_type'] === 'owner') : ?>
+                            <div class="form-group col-sm-12">
+                                <input type="text"
+                                       name="phone"
+                                       class="form-control form-control-lg <?php echo (!empty($data['phone_error'])) ? 'is-invalid' : ''; ?>"
+                                       placeholder="Phone"
+                                       value="<?php echo $data['phone']; ?>">
+                                <span class="invalid-feedback"><?php echo $data['phone_error']; ?></span>
+                            </div>
+                        <?php else : ?>
+                            <div class="form-group col-sm-12">
+                                <input type="text"
+                                       name="address"
+                                       class="form-control form-control-lg <?php echo (!empty($data['address_error'])) ? 'is-invalid' : ''; ?>"
+                                       placeholder="Address"
+                                       value="<?php echo $data['address']; ?>">
+                                <span class="invalid-feedback"><?php echo $data['address_error']; ?></span>
+                            </div>
+                        <?php endif; ?>
                     </div><!--form-row-->
 
                     <div class="form-check mb-2">

@@ -5,7 +5,7 @@ class Owners extends Controller {
         $this->ownerModel = $this->model('Owner');
     }
 
-    public function register(string $register_type = ''){
+    public function register(){
 
         // Check for POST
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -22,7 +22,6 @@ class Owners extends Controller {
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
                 'confirm_password' => trim($_POST['confirm_password']),
-                'address' => isset($_POST['address']) ? trim($_POST['address']) : '',
                 'phone' => isset($_POST['phone']) ? trim($_POST['phone']) : '',
                 'fname_error' => '',
                 'lname_error' => '',
@@ -31,7 +30,6 @@ class Owners extends Controller {
                 'pass_error' => '',
                 'confirm_pass_error' => '',
                 'register_error' => '',
-                'address_error' => '',
                 'phone_error' => ''
             ];
 
@@ -105,7 +103,7 @@ class Owners extends Controller {
 
                 // Register User
                 if($this->ownerModel->register($data)){
-                    flash('register_success', 'You are now registered and you can log in');
+                    flash('register_success', 'Thank you for joining us. One of our people will get in contact with you soon.');
                     redirect('owners/login');
                 } else{
                     $data['register_error'] = 'Something went wrong. Please try again.';
@@ -124,7 +122,6 @@ class Owners extends Controller {
                 'email' => '',
                 'password' => '',
                 'confirm_password' => '',
-                'address' => '',
                 'phone' => '',
                 'fname_error' => '',
                 'lname_error' => '',
@@ -133,7 +130,6 @@ class Owners extends Controller {
                 'pass_error' => '',
                 'confirm_pass_error' => '',
                 'register_error' => '',
-                'address_error' => '',
                 'phone_error' => ''
             ];
 
@@ -221,19 +217,26 @@ class Owners extends Controller {
         }
     }
 */
-    public function createOwnerSession($user){
-        $_SESSION['ownername'] = $user->owner_username;
-        $_SESSION['owner_id'] = $user->owner_id;
-        $_SESSION['first_name'] = $user->owner_first_name;
-        $_SESSION['last_name'] = $user->owner_last_name;
-        redirect('owners/profile/'.$_SESSION['ownername']);
+    public function createOwnerSession($owner){
+        $_SESSION['username'] = $owner->owner_username;
+        $_SESSION['id'] = $owner->owner_id;
+        $_SESSION['first_name'] = $owner->owner_first_name;
+        $_SESSION['last_name'] = $owner->owner_last_name;
+        $_SESSION['type'] = 'owners';
+        redirect('owners/profile/'.$_SESSION['username']);
+    }
+
+    public function profile(string $ownername) {
+        $data['name'] = $ownername;
+        $this->view('owners/profile', $data);
     }
 
     public function logout(){
-        unset($_SESSION['ownername']);
-        unset($_SESSION['owner_id']);
+        unset($_SESSION['username']);
+        unset($_SESSION['id']);
         unset($_SESSION['first_name']);
         unset($_SESSION['last_name']);
+        unset($_SESSION['type']);
         session_destroy();
         redirect('owners/login');
     }
