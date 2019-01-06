@@ -4,23 +4,22 @@
         <div class="row">
             <div class="col-md-2 mx-auto col-sm-6 mb-4">
                 <div class="pl-5">
-                    <img class="img-fluid mb-5" src="<?php echo URLROOT ?>/images/placeholder.jpg" alt="placeholder" style="width:100px; height:100px;">
+                    <a href="<?php echo URLROOT; ?>"><img class="footer_logo" src="<?php echo URLROOT ?>/images/logo.png" alt="logo_footer"></a>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
-                <h3 class="mb-3">MENU</h3>
+                <h3 class="mb-3">Μενού</h3>
                 <p><a href="">Αρχική</a></p>
                 <p><a href="">Γυμναστήρια</a></p>
                 <p><a href="">Εταιρεία</a></p>
                 <p><a href="">Επικοινωνία</a></p>
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
-                <h3 class="mb-3">Extras</h3>
+                <h3 class="mb-3">Εξτρας</h3>
                 <p><a href="">Οροι Χρήσης</a></p>
                 <p><a href="">Πολιτική Απορρήτου</a></p>
                 <p><a href="">Πολιτική Cookies</a></p>
                 <p><a href="">FAQ</a></p>
-                <p><a href="">Αλλαγή γλώσσας</a></p>
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
                 <h3 class="mb-4">Συνεργάτες</h3>

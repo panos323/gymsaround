@@ -8,19 +8,42 @@ body{
 }
 
 /**
+ Navigation Bar Css
+ */
+
+.navbar_logo {
+    height: 70px;
+    width: auto;
+    padding-left: 20px;
+}
+
+
+/**
     error page css
  */
 .error_img{
-    position: absolute;
+    height: 80vh;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.error_img img {
+    height: 100%;
+    width: auto;
+}
+
+.error_page_button {
+    height: 20vh;
+    width: 100%;
+}
+
+.error_page_button a{
+    position: relative;
     top: 50%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
-}
-
-.error_img p{
-    text-align: center;
-    margin-top: 20px;
 }
 
 /*-------------LOGIN,REGISTER FORM----------------------*/
@@ -69,7 +92,6 @@ body{
     height: 55vh;
 }
 
-/*-------------LOGIN,REGISTER FORM----------------------*/
 
 /**
     Footer Css
@@ -82,4 +104,9 @@ footer{
 
 footer p a {
     color: #ffffff;
+}
+
+.footer_logo{
+    height: 100px;
+    width: auto;
 }
