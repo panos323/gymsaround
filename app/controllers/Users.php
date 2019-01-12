@@ -233,4 +233,247 @@ class Users extends Controller {
         }
         return false;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    /*---------------testing updates-----------------------*/
+    public function updateUser() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'first_name' => trim($_POST['first_name']),
+                'last_name' => trim($_POST['last_name']),
+                'address' => isset($_POST['address']) ? trim($_POST['address']) : '',
+                'fname_error' => '',
+                'lname_error' => '',
+                'address_error' => '',
+                'update_error' => '',
+            ];
+        
+
+        // Validate first name
+        if(empty($data['first_name'])){
+            $data['fname_error'] = 'Please enter first name';
+        }
+
+        // Validate last name
+        if(empty($data['last_name'])){
+            $data['lname_error'] = 'Please enter last name';
+        }
+
+        // Check if errors are empty
+        if (empty($data['fname_error']) &&
+                empty($data['lname_error'])) {
+                // Update User
+                $updateUser = $this->userModel->updateUser($data, $id);
+                if (!$updateUser){
+                    $data['update_error'] = 'Something went wrong. Please try again.';
+                    $this->view('users/profile', $data);
+                }else{
+                    $this->createUserSession($isLoggedIn);
+                }
+            } else {
+                // Load view with errors
+                $this->view('users/profile', $data);
+            }
+
+        } else {
+            // Init data
+            $data = [
+                'first_name' => '',
+                'last_name' => '',
+                'address' =>  '',
+                'fname_error' => '',
+                'lname_error' => '',
+                'address_error' => '',
+                'update_error' => '',
+            ];
+
+            // Load view
+            $this->view('users/profile', $data);
+        }            
+    }
+
+
+    public function UpdateUserEmail() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+             // Init data
+             $data = [
+                'email' => trim($_POST['email']),
+                'email_error' => '',
+            ];
+
+
+             // Validate email
+            if(empty($data['email'])){
+                $data['email_error'] = 'Please enter email';
+            } else {
+                // Check if email already exists
+                if($this->userModel->findUserByEmail($data['email'])){
+                    $data['email_error'] = 'Email already exists';
+                }
+            }
+
+            // Check if errors are empty
+            if (empty($data['email_error'])) {
+                // Update User
+                $updateEmail = $this->userModel->UpdateUserByEmail($data, $id);
+                if (!$updateEmail){
+                    $data['email_error'] = 'Something went wrong. Please try again.';
+                    $this->view('users/profile', $data);
+                }else{
+                    $this->createUserSession($isLoggedIn);
+                }
+            } else {
+                // Load view with errors
+                $this->view('users/profile', $data);
+            }
+
+        } else {
+            // Init data
+            $data = [
+                'email' => '',
+                'email_error' => '',
+            ];
+
+            // Load view
+            $this->view('users/profile', $data);
+        }
+
+    }
+
+    public function UpdateUserUseName() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+                // Init data
+                $data = [
+                'username' => trim($_POST['username']),
+                'username_error' => '',
+            ];
+
+
+                // Validate email
+            if(empty($data['username'])){
+                $data['username_error'] = 'Please enter username';
+            } else {
+                // Check if email already exists
+                if($this->userModel->findUserByUsername($data['username'])){
+                    $data['username_error'] = 'Username already exists';
+                }
+            }
+
+            // Check if errors are empty
+            if (empty($data['username_error'])) {
+                // Update User
+                $updateUsername = $this->userModel->UpdateUserByUsername($data, $id);
+                if (!$updateUsername){
+                    $data['username_error'] = 'Something went wrong. Please try again.';
+                    $this->view('users/profile', $data);
+                }else{
+                    $this->createUserSession($isLoggedIn);
+                }
+            } else {
+                // Load view with errors
+                $this->view('users/profile', $data);
+            }
+
+        } else {
+            // Init data
+            $data = [
+                'email' => '',
+                'email_error' => '',
+            ];
+
+            // Load view
+            $this->view('users/profile', $data);
+        }
+
+    }
+
+
+    public function UpdateUserPassword() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+             // Init data
+             $data = [
+                'password' => trim($_POST['password']),
+                'password_error' => '',
+            ];
+
+
+             // Validate email
+            if(empty($data['password'])){
+                $data['password_error'] = 'Please enter password';
+            } 
+
+            // Check if errors are empty
+            if (empty($data['password_error'])) {
+                // Update User
+                $updateUserpass = $this->userModel->UpdateUserByPassword($data, $id);
+                if (!$updateUserpass){
+                    $data['password_error'] = 'Something went wrong. Please try again.';
+                    $this->view('users/profile', $data);
+                }else{
+                    $this->createUserSession($isLoggedIn);
+                }
+            } else {
+                // Load view with errors
+                $this->view('users/profile', $data);
+            }
+
+        } else {
+            // Init data
+            $data = [
+                'password' => '',
+                'password_error' => '',
+            ];
+
+            // Load view
+            $this->view('users/profile', $data);
+        }
+
+    }
+
+    /*---------------testing updates-----------------------*/
+
+
+
 }
