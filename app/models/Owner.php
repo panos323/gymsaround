@@ -105,4 +105,23 @@ class Owner{
         }
         return false;
     }
+
+    /**
+     * Update username
+     * @param string newUsername
+     * @param string id
+     *
+     * @return bool
+     */
+    public function updateUsername(string $newUsername, string $id){
+        $this->db->query('UPDATE owners SET owner_username=:newUsername WHERE owner_id=:id');
+        $this->db->bind(':newUsername', $newUsername);
+        $this->db->bind(':id', $id);
+        try {
+            $this->db->execute();
+            return true;
+        }catch (Exception $e){
+            return false;
+        }
+    }
 }

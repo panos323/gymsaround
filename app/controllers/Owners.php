@@ -209,13 +209,13 @@ class Owners extends Controller {
         redirect('owners/profile/account');
     }
 
-    public function profile(string $tab) {
+    public function profile(string $tab = 'account') {
         if(!$this->isLoggedIn()){
             redirect('pages/index');
         }
         if($tab === 'account' || $tab === 'my_gym' || $tab === 'my_trainers'){
             $data = [
-                'type' => $tab
+                'tab' => $tab
             ];
             $this->view('owners/profile', $data);
         }else {
@@ -238,5 +238,55 @@ class Owners extends Controller {
             return true;
         }
         return false;
+    }
+
+    public function updateUsername(){
+
+        // Check for POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'username' => trim($_POST['username']),
+                'new_username' => trim($_POST['new_username']),
+                'username_error' => '',
+                'new_username_error' => '',
+                'update_error' => '',
+                'tab' => 'account'
+            ];
+
+            // Check current username field
+            if(empty($data['username'])){
+                $data['username_error'] = 'Please provide your current username';
+            }elseif ($data['username'] !== $_SESSION['username']){
+                $data['username_error'] = 'Please enter correct your current username';
+            }
+
+            // Check new username field
+            if(empty($data['new_username'])){
+                $data['new_username_error'] = 'Please provide your new username';
+            }elseif($data['new_username'] === $data['username']){
+                $data['new_username_error'] = 'Username is the same as before';
+            }elseif($this->ownerModel->findOwnerByUsername($data['new_username'])){
+                $data['new_username_error'] = 'Username already exists.';
+            }
+
+            if(empty($data['username_error']) && empty($data['new_username_error'])){
+                if($this->ownerModel->updateUsername($data['new_username'], $_SESSION['id'])){
+                    $_SESSION['username'] = $data['new_username'];
+                    redirect('owners/profile/account');
+                }else{
+                    $data['update_error'] = 'Something went wrong. Please try again';
+                    $this->view('owners/profile',$data);
+                }
+            }else{
+                $this->view('owners/profile', $data);
+            }
+
+        } else {
+            redirect('owners/profile/account');
+        }
     }
 }
