@@ -12,8 +12,8 @@
 
             <!-- This is the display for Owners info -->
             <?php if($data['tab'] === 'account')  : ?>
-            <div class="col-md-6 profile_boxes">
-                <h4>Τα στοιχεία μου</h4>
+            <div class="col-md-5 profile_boxes">
+                <h4>Αλλαγή Username</h4>
                 <form id="updateUsernameForm" action="<?php echo URLROOT; ?>/owners/updateUsername" method="post">
                     <div class="form-group">
                         <input type="text"
@@ -36,6 +36,30 @@
                     <span class="invalid-feedback"><?php echo isset($data['update_error']) ? $data['update_error'] : ''; ?></span>
                 </form>
             </div>
+                <div class="col-md-5 offset-1 profile_boxes">
+                    <h4>Αλλαγή E-mail</h4>
+                    <form id="updateUsernameForm" action="<?php echo URLROOT; ?>/owners/updateEmail" method="post">
+                        <div class="form-group">
+                            <input type="text"
+                                   name="email"
+                                   class="form-control form-control-lg <?php echo (isset($data['email_error']) && !empty($data['email_error'])) ? 'is-invalid' : ''; ?>"
+                                   value="<?php echo $_SESSION['email']; ?>">
+                            <span class="invalid-feedback"><?php echo isset($data['email_error']) ? $data['email_error'] : ''; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text"
+                                   name="new_email"
+                                   class="form-control form-control-lg <?php echo (isset($data['new_email_error']) && !empty($data['new_email_error'])) ? 'is-invalid' : ''; ?>"
+                                   placeholder="Enter New E-mail"
+                                   value="<?php echo isset($data['new_email']) ? $data['new_email'] : ''; ?>">
+                            <span class="invalid-feedback"><?php echo isset($data['new_email_error']) ? $data['new_email_error'] : ''; ?></span>
+                        </div>
+                        <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
+                            <button type="submit"  value="Register" class="btn btn-success">Update E-mail</button>
+                        </div>
+                        <span class="invalid-feedback"><?php echo isset($data['update_error']) ? $data['update_error'] : ''; ?></span>
+                    </form>
+                </div>
 
             <!-- This is the display for gym details upload -->
             <?php elseif ($data['tab'] === 'my_gym') : ?>

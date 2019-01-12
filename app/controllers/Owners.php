@@ -239,6 +239,55 @@ class Owners extends Controller {
         }
         return false;
     }
+    public function updateEmail(){
+
+        // Check for POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'email' => trim($_POST['email']),
+                'new_email' => trim($_POST['new_email']),
+                'email_error' => '',
+                'new_email_error' => '',
+                'update_error' => '',
+                'tab' => 'account'
+            ];
+
+            // Check current username field
+            if(empty($data['email'])){
+                $data['email_error'] = 'Please provide your current email';
+            }elseif ($data['email'] !== $_SESSION['email']){
+                $data['email_error'] = 'Please enter correct your current email';
+            }
+
+            // Check new username field
+            if(empty($data['new_email'])){
+                $data['new_email_error'] = 'Please provide your new email';
+            }elseif($data['new_email'] === $data['email']){
+                $data['new_email_error'] = 'email is the same as before';
+            }elseif($this->ownerModel->findOwnerByEmail($data['new_email'])){
+                $data['new_email_error'] = 'email already exists.';
+            }
+
+            if(empty($data['email_error']) && empty($data['new_email_error'])){
+                if($this->ownerModel->updateEmail($data['new_email'], $_SESSION['id'])){
+                    $_SESSION['email'] = $data['new_email'];
+                    redirect('owners/profile/account');
+                }else{
+                    $data['update_error'] = 'Something went wrong. Please try again';
+                    $this->view('owners/profile',$data);
+                }
+            }else{
+                $this->view('owners/profile', $data);
+            }
+
+        } else {
+            redirect('owners/profile/account');
+        }
+    }
 
     public function updateUsername(){
 

@@ -124,4 +124,23 @@ class Owner{
             return false;
         }
     }
+
+    /**
+     * Update email
+     * @param string $newEmail
+     * @param string id
+     *
+     * @return bool
+     */
+    public function updateEmail(string $newEmail, string $id){
+        $this->db->query('UPDATE owners SET owner_email=:newEmail WHERE owner_id=:id');
+        $this->db->bind(':newEmail', $newEmail);
+        $this->db->bind(':id', $id);
+        try {
+            $this->db->execute();
+            return true;
+        }catch (Exception $e){
+            return false;
+        }
+    }
 }
