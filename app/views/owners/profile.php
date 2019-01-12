@@ -12,38 +12,66 @@
 
             <!-- This is the display for Owners info -->
             <?php if($data['tab'] === 'account')  : ?>
-            <div class="col-md-5 profile_boxes">
-                <h4>Αλλαγή Username</h4>
-                <form id="updateUsernameForm" action="<?php echo URLROOT; ?>/owners/updateUsername" method="post">
-                    <div class="form-group">
-                        <input type="text"
-                               name="username"
-                               class="form-control form-control-lg <?php echo (isset($data['username_error']) && !empty($data['username_error'])) ? 'is-invalid' : ''; ?>"
-                               value="<?php echo $_SESSION['username']; ?>">
-                        <span class="invalid-feedback"><?php echo isset($data['username_error']) ? $data['username_error'] : ''; ?></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="text"
-                               name="new_username"
-                               class="form-control form-control-lg <?php echo (isset($data['new_username_error']) && !empty($data['new_username_error'])) ? 'is-invalid' : ''; ?>"
-                               placeholder="Enter New Username"
-                               value="<?php echo isset($data['new_username']) ? $data['new_username'] : ''; ?>">
-                        <span class="invalid-feedback"><?php echo isset($data['new_username_error']) ? $data['new_username_error'] : ''; ?></span>
-                    </div>
-                    <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
-                        <button type="submit"  value="Register" class="btn btn-success">Update Username</button>
-                    </div>
-                    <span class="invalid-feedback"><?php echo isset($data['update_error']) ? $data['update_error'] : ''; ?></span>
-                </form>
-            </div>
-                <div class="col-md-5 offset-1 profile_boxes">
+                <div class="col-md-11 profile_boxes">
+                    <h4>Tα στοιχεία μου</h4>
+                    <form id="updateUsernameForm" action="<?php echo URLROOT; ?>/owners/updateDetails" method="post">
+                        <div class="form-group">
+                            <input type="text"
+                                   name=""
+                                   class="form-control form-control-lg <?php echo (isset($data['']) && !empty($data[''])) ? 'is-invalid' : ''; ?>"
+                                   value="<?php echo isset($data['']) ? $data[''] : ''; ?>">
+                            <span class="invalid-feedback"><?php echo isset($data['']) ? $data[''] : ''; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text"
+                                   name=""
+                                   class="form-control form-control-lg <?php echo (isset($data['']) && !empty($data[''])) ? 'is-invalid' : ''; ?>"
+                                   placeholder="Enter New Password"
+                                   value="<?php echo isset($data['']) ? $data[''] : ''; ?>">
+                            <span class="invalid-feedback"><?php echo isset($data['']) ? $data[''] : ''; ?></span>
+                        </div>
+                        <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
+                            <button type="submit"  value="Register" class="btn btn-success">Update Username</button>
+                        </div>
+                        <span class="invalid-feedback"><?php echo isset($data['']) ? $data[''] : ''; ?></span>
+                    </form>
+                </div>
+                <div class="col-md-5 profile_boxes mt-4">
+                    <h4>Αλλαγή Username</h4>
+                    <?php flash('update_username_success'); ?>
+                    <form id="updateUsernameForm" action="<?php echo URLROOT; ?>/owners/updateUsername" method="post">
+                        <div class="form-group">
+                            <input type="text"
+                                   name="disable_username"
+                                   class="form-control form-control-lg <?php echo (isset($data['username_error']) && !empty($data['username_error'])) ? 'is-invalid' : ''; ?>"
+                                   value="<?php echo $_SESSION['username']; ?>" disabled>
+                            <input type="hidden" name="username" value="<?php echo $_SESSION['username']; ?>">
+                            <span class="invalid-feedback"><?php echo isset($data['username_error']) ? $data['username_error'] : ''; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text"
+                                   name="new_username"
+                                   class="form-control form-control-lg <?php echo (isset($data['new_username_error']) && !empty($data['new_username_error'])) ? 'is-invalid' : ''; ?>"
+                                   placeholder="Enter New Username"
+                                   value="<?php echo isset($data['new_username']) ? $data['new_username'] : ''; ?>">
+                            <span class="invalid-feedback"><?php echo isset($data['new_username_error']) ? $data['new_username_error'] : ''; ?></span>
+                        </div>
+                        <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
+                            <button type="submit"  value="Register" class="btn btn-success">Update Username</button>
+                        </div>
+                        <span class="invalid-feedback"><?php echo isset($data['update_error']) ? $data['update_error'] : ''; ?></span>
+                    </form>
+                </div>
+                <div class="col-md-5 offset-1 profile_boxes mt-4">
                     <h4>Αλλαγή E-mail</h4>
+                    <?php flash('update_mail_success'); ?>
                     <form id="updateUsernameForm" action="<?php echo URLROOT; ?>/owners/updateEmail" method="post">
                         <div class="form-group">
                             <input type="text"
-                                   name="email"
+                                   name="disabled_mail"
                                    class="form-control form-control-lg <?php echo (isset($data['email_error']) && !empty($data['email_error'])) ? 'is-invalid' : ''; ?>"
-                                   value="<?php echo $_SESSION['email']; ?>">
+                                   value="<?php echo $_SESSION['email']; ?> " disabled>
+                            <input type="hidden" name="email" value="<?php echo $_SESSION['email']; ?>">
                             <span class="invalid-feedback"><?php echo isset($data['email_error']) ? $data['email_error'] : ''; ?></span>
                         </div>
                         <div class="form-group">
@@ -56,6 +84,40 @@
                         </div>
                         <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
                             <button type="submit"  value="Register" class="btn btn-success">Update E-mail</button>
+                        </div>
+                        <span class="invalid-feedback"><?php echo isset($data['update_error']) ? $data['update_error'] : ''; ?></span>
+                    </form>
+                </div>
+                <div class="col-md-5 profile_boxes mt-4">
+                    <h4>Αλλαγή Password</h4>
+                    <?php flash('update_password_success'); ?>
+                    <form id="updateUsernameForm" action="<?php echo URLROOT; ?>/owners/updatePassword" method="post">
+                        <div class="form-group">
+                            <input type="password"
+                                   name="password"
+                                   class="form-control form-control-lg <?php echo (isset($data['password_error']) && !empty($data['password_error'])) ? 'is-invalid' : ''; ?>"
+                                   placeholder="Enter current password"
+                                   value="<?php echo isset($data['password']) ? $data['password'] : ''; ?>">
+                            <span class="invalid-feedback"><?php echo isset($data['password_error']) ? $data['password_error'] : ''; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password"
+                                   name="new_password"
+                                   class="form-control form-control-lg <?php echo (isset($data['new_password_error']) && !empty($data['new_password_error'])) ? 'is-invalid' : ''; ?>"
+                                   placeholder="Enter New Password"
+                                   value="<?php echo isset($data['new_password']) ? $data['new_password'] : ''; ?>">
+                            <span class="invalid-feedback"><?php echo isset($data['new_password_error']) ? $data['new_password_error'] : ''; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password"
+                                   name="confirm_password"
+                                   class="form-control form-control-lg <?php echo (isset($data['confirm_password_error']) && !empty($data['confirm_password_error'])) ? 'is-invalid' : ''; ?>"
+                                   placeholder="Confirm New Password"
+                                   value="<?php echo isset($data['confirm_password']) ? $data['confirm_password'] : ''; ?>">
+                            <span class="invalid-feedback"><?php echo isset($data['confirm_password_error']) ? $data['confirm_password_error'] : ''; ?></span>
+                        </div>
+                        <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
+                            <button type="submit"  value="Register" class="btn btn-success">Update Password</button>
                         </div>
                         <span class="invalid-feedback"><?php echo isset($data['update_error']) ? $data['update_error'] : ''; ?></span>
                     </form>

@@ -239,6 +239,88 @@ class Owners extends Controller {
         }
         return false;
     }
+
+    public function updateDetails(){
+
+        // Check for POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'login_credential' => trim($_POST['login_credential']),
+                'password' => trim($_POST['password']),
+                'login_credential_error' => '',
+                'pass_error' => '',
+            ];
+        } else {
+            redirect('owners/profile/account');
+        }
+    }
+    public function updatePassword(){
+
+        // Check for POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'password' => trim($_POST['password']),
+                'new_password' => trim($_POST['new_password']),
+                'confirm_password' => trim($_POST['confirm_password']),
+                'password_error' => '',
+                'new_password_error' => '',
+                'confirm_password_error' => '',
+                'update_error' => '',
+                'tab' => 'account'
+            ];
+
+            // Check current password field
+            if(empty($data['password'])){
+                $data['password_error'] = 'Please provide your current password';
+            }elseif (!$this->ownerModel->checkPasswordByUserId($data['password'], $_SESSION['id'])){
+                $data['password_error'] = 'Your password is wrong. Please try again.';
+            }
+
+            // Check new password field
+            if(empty($data['new_password'])){
+                $data['new_password_error'] = 'Please provide your new password';
+            }elseif($data['new_password'] === $data['password']){
+                $data['new_password_error'] = 'Password is the same as before';
+            }elseif ($this->ownerModel->checkPasswordByUserId($data['new_password'], $_SESSION['id'])){
+                $data['new_password_error'] = 'Your new password is the same with the current.';
+            }
+
+            // Check confirm password
+            if(empty($data['confirm_password'])){
+                $data['confirm_password_error'] = 'Please confirm your new password';
+            }elseif($data['confirm_password'] !== $data['new_password']){
+                $data['confirm_password_error'] = 'Passwords do not match';
+            }
+
+
+            if(empty($data['password_error']) && empty($data['new_password_error']) && empty($data['confirm_password_error'])){
+                // Hash Password
+                $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
+
+                if($this->ownerModel->updatePassword($data['new_password'], $_SESSION['id'])){
+                    flash('update_password_success', 'Your password has been updated!');
+                    redirect('owners/profile/account');
+                }else{
+                    $data['update_error'] = 'Password is the same as before. Please try again';
+                    $this->view('owners/profile',$data);
+                }
+            }else{
+                $this->view('owners/profile', $data);
+            }
+
+        } else {
+            redirect('owners/profile/account');
+        }
+    }
+
     public function updateEmail(){
 
         // Check for POST
@@ -256,28 +338,29 @@ class Owners extends Controller {
                 'tab' => 'account'
             ];
 
-            // Check current username field
+            // Check current email field
             if(empty($data['email'])){
                 $data['email_error'] = 'Please provide your current email';
             }elseif ($data['email'] !== $_SESSION['email']){
                 $data['email_error'] = 'Please enter correct your current email';
             }
 
-            // Check new username field
+            // Check new email field
             if(empty($data['new_email'])){
                 $data['new_email_error'] = 'Please provide your new email';
             }elseif($data['new_email'] === $data['email']){
-                $data['new_email_error'] = 'email is the same as before';
+                $data['new_email_error'] = 'Email is the same as before';
             }elseif($this->ownerModel->findOwnerByEmail($data['new_email'])){
-                $data['new_email_error'] = 'email already exists.';
+                $data['new_email_error'] = 'Email already exists.';
             }
 
             if(empty($data['email_error']) && empty($data['new_email_error'])){
                 if($this->ownerModel->updateEmail($data['new_email'], $_SESSION['id'])){
                     $_SESSION['email'] = $data['new_email'];
+                    flash('update_mail_success', 'Your e-mail has been updated!');
                     redirect('owners/profile/account');
                 }else{
-                    $data['update_error'] = 'Something went wrong. Please try again';
+                    $data['update_error'] = 'Your email is wrong. Please try again.';
                     $this->view('owners/profile',$data);
                 }
             }else{
@@ -324,6 +407,7 @@ class Owners extends Controller {
 
             if(empty($data['username_error']) && empty($data['new_username_error'])){
                 if($this->ownerModel->updateUsername($data['new_username'], $_SESSION['id'])){
+                    flash('update_username_success', 'Your username has been updated!');
                     $_SESSION['username'] = $data['new_username'];
                     redirect('owners/profile/account');
                 }else{
