@@ -17,7 +17,7 @@
             </li>
             <?php if(isset($_SESSION['id'])) : ?>
                 <li class="nav-item <?php echo (isset($view) && $view=== $_SESSION['type'] . '/profile') ? 'active' : '';?>">
-                    <a class="nav-link" href="<?php echo URLROOT; ?>/<?php echo $_SESSION['type']; ?>/profile/<?php echo $_SESSION['username'];?>">Προφίλ</a>
+                    <a class="nav-link" href="<?php echo URLROOT; ?>/<?php echo $_SESSION['type']; ?>/profile/account">Προφίλ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo URLROOT; ?>/<?php echo $_SESSION['type']; ?>/logout">Αποσύνδεση</a>
