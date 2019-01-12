@@ -199,36 +199,28 @@ class Owners extends Controller {
         }
     }
 
-/*
-    public function facebook(){
-        $this->view('owners/facebook');
-    }
-
-    public function profile(string $username){
-        if($this->isLoggedIn() && $_SESSION['username'] === $username){
-            $data = [
-                'username' => $username
-            ];
-            // Load view
-            $this->view('owners/profile', $data);
-        }else{
-            //TODO: Unauthenticated page create.
-            die('You are not authenticated to access this page');
-        }
-    }
-*/
     public function createOwnerSession($owner){
         $_SESSION['username'] = $owner->owner_username;
         $_SESSION['id'] = $owner->owner_id;
         $_SESSION['first_name'] = $owner->owner_first_name;
         $_SESSION['last_name'] = $owner->owner_last_name;
+        $_SESSION['email'] = $owner->owner_email;
         $_SESSION['type'] = 'owners';
-        redirect('owners/profile/'.$_SESSION['username']);
+        redirect('owners/profile/account');
     }
 
-    public function profile(string $ownername) {
-        $data['name'] = $ownername;
-        $this->view('owners/profile', $data);
+    public function profile(string $tab) {
+        if(!$this->isLoggedIn()){
+            redirect('pages/index');
+        }
+        if($tab === 'account' || $tab === 'my_gym' || $tab === 'my_trainers'){
+            $data = [
+                'type' => $tab
+            ];
+            $this->view('owners/profile', $data);
+        }else {
+            redirect('owners/profile/account');
+        }
     }
 
     public function logout(){
@@ -242,7 +234,7 @@ class Owners extends Controller {
     }
 
     public function isLoggedIn(){
-        if(isset($_SESSION['owner_id'])){
+        if(isset($_SESSION['id'])){
             return true;
         }
         return false;
