@@ -88,6 +88,25 @@ class Owner{
     }
 
     /**
+     * Check if the password on db is the same as our input
+     * @param string $password
+     * @param string $id
+     * @return bool
+     */
+    public function checkPasswordByUserId(string $password, string $id){
+        $this->db->query('SELECT owner_password FROM owners WHERE owner_id = :id');
+        $this->db->bind(':id', $id);
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0){
+            $pass = $row->owner_password;
+            if(password_verify($password, $pass)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Verify password by user with email or username
      * @param string $key
      * @param string $password
@@ -97,8 +116,8 @@ class Owner{
         $this->db->query('SELECT * FROM owners WHERE owner_username = :key or owner_email = :key');
         $this->db->bind(':key', $key);
         $row = $this->db->single();
-        $pass = $row->owner_password;
         if($this->db->rowCount() > 0){
+            $pass = $row->owner_password;
             if(password_verify($password, $pass)){
                 return $row;
             }
@@ -135,6 +154,25 @@ class Owner{
     public function updateEmail(string $newEmail, string $id){
         $this->db->query('UPDATE owners SET owner_email=:newEmail WHERE owner_id=:id');
         $this->db->bind(':newEmail', $newEmail);
+        $this->db->bind(':id', $id);
+        try {
+            $this->db->execute();
+            return true;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    /**
+     * Update password
+     * @param string newPassword
+     * @param string id
+     *
+     * @return bool
+     */
+    public function updatePassword(string $newPassword, string $id){
+        $this->db->query('UPDATE owners SET owner_password=:newPassword WHERE owner_id=:id');
+        $this->db->bind(':newPassword', $newPassword);
         $this->db->bind(':id', $id);
         try {
             $this->db->execute();
