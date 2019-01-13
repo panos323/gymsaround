@@ -89,12 +89,24 @@ class User{
 
 
 
-
-
-
-
-
-
+    /**
+     * Check if the password on db is the same as our input
+     * @param string $password
+     * @param string $id
+     * @return bool
+     */
+    public function checkPasswordByUsersId(string $password, string $id){
+        $this->db->query('SELECT user_password FROM users WHERE user_id = :id');
+        $this->db->bind(':id', $id);
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0){
+            $pass = $row->user_password;
+            if(password_verify($password, $pass)){
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 
@@ -131,12 +143,12 @@ class User{
      * 
      * @return bool
      */
-    public function UpdateUserByEmail(string $email, int $id){
+    public function UpdateUserByEmail(string $newEmail, int $id){
         $this->db->query('UPDATE users 
-                          SET user_email = :email
+                          SET user_email = :newEmail
                           WHERE user_id = :id
                         ');
-        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':newEmail', $newEmail);
         $this->db->bind(':id', $id);
         
           // Execute
@@ -188,8 +200,8 @@ class User{
                         ');
 
         // Bind Values
-        $this->db->bind(':fname',$data['first_name']);
-        $this->db->bind(':lname',$data['last_name']);
+        $this->db->bind(':first_name',$data['first_name']);
+        $this->db->bind(':last_name',$data['last_name']);
         $this->db->bind(':address',$data['address']);
         $this->db->bind(':id', $id);
 

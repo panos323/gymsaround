@@ -18,11 +18,11 @@
                 <div class="col-md-11 profile_boxes">
                     <h4>Tα στοιχεία μου</h4>
                     <?php flash('update_details_success'); ?>
-                    <form id="updateDetailsForm" action="<?php echo URLROOT; ?>/users/updateDetails" method="post">
+                    <form id="updateDetailsForm" action="<?php echo URLROOT; ?>/users/updateUser" method="post">
                         <div class="form-row">
                             <div class="form-group col-sm-6">
                                 <input type="text"
-                                       name="name"
+                                       name="first_name"
                                        class="form-control form-control-lg <?php echo (isset($data['name_error']) && !empty($data['name_error'])) ? 'is-invalid' : ''; ?>"
                                        value="<?php echo $_SESSION['first_name']; ?>">
                                 <span class="invalid-feedback"><?php echo isset($data['name_error']) ? $data['name_error'] : ''; ?></span>
@@ -37,12 +37,12 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="tel"
-                                   name="phone"
-                                   class="form-control form-control-lg <?php echo (isset($data['phone_error']) && !empty($data['phone_error'])) ? 'is-invalid' : ''; ?>"
-                                   placeholder="<?php echo isset($_SESSION['phone']) ? '' : 'Enter your Phone number'; ?>"
-                                   value="<?php echo isset($_SESSION['phone']) ? $_SESSION['phone'] : ''; ?>">
-                            <span class="invalid-feedback"><?php echo isset($data['phone_error']) ? $data['phone_error'] : ''; ?></span>
+                            <input type="text"
+                                   name="address"
+                                   class="form-control form-control-lg"
+                                   placeholder="<?php echo isset($_SESSION['address']) ? '' : 'Enter your Address number'; ?>"
+                                   value="<?php echo isset($_SESSION['phone']) ? $_SESSION['address'] : ''; ?>">
+                            <span class="invalid-feedback"><?php echo isset($data['address_error']) ? $data['address_error'] : ''; ?></span>
                         </div>
                         <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
                             <button type="submit"  value="Register" class="btn btn-success">Update Details</button>
@@ -53,7 +53,7 @@
                 <div class="col-md-5 profile_boxes mt-4">
                     <h4>Αλλαγή Username</h4>
                     <?php flash('update_username_success'); ?>
-                    <form id="updateUsernameForm" action="<?php echo URLROOT; ?>/users/updateUsername" method="post">
+                    <form id="updateUsernameForm" action="<?php echo URLROOT; ?>/users/UpdateUserUsername" method="post">
                         <div class="form-group">
                             <input type="text"
                                    name="disable_username"
@@ -79,7 +79,7 @@
                 <div class="col-md-5 offset-1 profile_boxes mt-4">
                     <h4>Αλλαγή E-mail</h4>
                     <?php flash('update_mail_success'); ?>
-                    <form id="updateEmailForm" action="<?php echo URLROOT; ?>/users/updateEmail" method="post">
+                    <form id="updateEmailForm" action="<?php echo URLROOT; ?>/users/UpdateUserEmail" method="post">
                         <div class="form-group">
                             <input type="text"
                                    name="disabled_mail"
@@ -105,7 +105,7 @@
                 <div class="col-md-5 profile_boxes mt-4">
                     <h4>Αλλαγή Password</h4>
                     <?php flash('update_password_success'); ?>
-                    <form id="updatePasswordForm" action="<?php echo URLROOT; ?>/users/updatePassword" method="post">
+                    <form id="updatePasswordForm" action="<?php echo URLROOT; ?>/users/UpdateUserPassword" method="post">
                         <div class="form-group">
                             <input type="password"
                                    name="password"
