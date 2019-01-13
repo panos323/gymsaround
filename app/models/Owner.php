@@ -187,4 +187,36 @@ class Owner{
             return false;
         }
     }
+
+    /**
+     * Find if Owner has currently a Gym
+     * @param int $id
+     *
+     * @return array
+     */
+    public function getGymByUserId(int $id){
+        $this->db->query('SELECT * FROM gyms WHERE owners_owner_id = :id');
+        $this->db->bind(':id', $id);
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+        return [];
+    }
+
+    /**
+     * Find Trainers for current Gym
+     * @param int $id
+     *
+     * @return array
+     */
+    public function getTrainersByGymId(int $id){
+        $this->db->query('SELECT * FROM trainers WHERE gym_id = :id');
+        $this->db->bind(':id', $id);
+        $row = $this->db->resultSet();
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+        return [];
+    }
 }
