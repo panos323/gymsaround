@@ -191,19 +191,20 @@ class Users extends Controller {
         $this->view('users/facebook');
     }
 
-    // Method for user's profile
-    public function profile(string $username){
-        if($this->isLoggedIn() && $_SESSION['username'] === $username){
+    public function profile(string $tab = 'account') {
+        if(!$this->isLoggedIn()){
+            redirect('pages/index');
+        }
+        if($tab === 'account' || $tab === 'my_gym'){
             $data = [
-                'username' => $username
+                'tab' => $tab
             ];
-            // Load view
             $this->view('users/profile', $data);
-        }else{
-            //TODO: Unauthenticated page create.
-            die('You are not authenticated to access this page');
+        }else {
+            redirect('users/profile/account');
         }
     }
+
 
     // Create session for users
     public function createUserSession($user){
@@ -212,7 +213,7 @@ class Users extends Controller {
         $_SESSION['first_name'] = $user->user_first_name;
         $_SESSION['last_name'] = $user->user_last_name;
         $_SESSION['type'] = 'users';
-        redirect('users/profile/'.$_SESSION['username']);
+        redirect('users/profile/account');
     }
 
     // Logout method for users
@@ -228,28 +229,11 @@ class Users extends Controller {
 
     // Method to check if user is logged in.
     public function isLoggedIn(){
-        if(isset($_SESSION['user_id'])){
+        if(isset($_SESSION['id'])){
             return true;
         }
         return false;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     
     /*---------------testing updates-----------------------*/
@@ -286,141 +270,23 @@ class Users extends Controller {
         // Check if errors are empty
         if (empty($data['fname_error']) &&
                 empty($data['lname_error'])) {
-                // Update User
-                $updateUser = $this->userModel->updateUser($data, $id);
-                if (!$updateUser){
-                    $data['update_error'] = 'Something went wrong. Please try again.';
-                    $this->view('users/profile', $data);
+                // Update User              
+                if($this->userModel->updateUser($data, $_SESSION['id'])){
+                    $_SESSION['first_name'] = $data['first_name'];
+                    $_SESSION['last_name'] = $data['last_name'];
+                    flash('update_details_success', 'Your details have been updated!');
+                    redirect('users/profile/account');
                 }else{
-                    $this->createUserSession($isLoggedIn);
+                    $data['update_error'] = 'Something went wrong. Please try again';
+                    $this->view('users/profile',$data);
                 }
-            } else {
-                // Load view with errors
-                $this->view('users/profile', $data);
-            }
-
-        } else {
-            // Init data
-            $data = [
-                'first_name' => '',
-                'last_name' => '',
-                'address' =>  '',
-                'fname_error' => '',
-                'lname_error' => '',
-                'address_error' => '',
-                'update_error' => '',
-            ];
-
-            // Load view
-            $this->view('users/profile', $data);
-        }            
-    }
-
-
-    public function UpdateUserEmail() {
-        //Check for POST
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            //Process form
-
-            //Sanitize POST data
-            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
-
-             // Init data
-             $data = [
-                'email' => trim($_POST['email']),
-                'email_error' => '',
-            ];
-
-
-             // Validate email
-            if(empty($data['email'])){
-                $data['email_error'] = 'Please enter email';
-            } else {
-                // Check if email already exists
-                if($this->userModel->findUserByEmail($data['email'])){
-                    $data['email_error'] = 'Email already exists';
-                }
-            }
-
-            // Check if errors are empty
-            if (empty($data['email_error'])) {
-                // Update User
-                $updateEmail = $this->userModel->UpdateUserByEmail($data, $id);
-                if (!$updateEmail){
-                    $data['email_error'] = 'Something went wrong. Please try again.';
-                    $this->view('users/profile', $data);
                 }else{
-                    $this->createUserSession($isLoggedIn);
-                }
-            } else {
-                // Load view with errors
                 $this->view('users/profile', $data);
-            }
-
-        } else {
-            // Init data
-            $data = [
-                'email' => '',
-                'email_error' => '',
-            ];
-
-            // Load view
-            $this->view('users/profile', $data);
-        }
-
-    }
-
-    public function UpdateUserUseName() {
-        //Check for POST
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            //Process form
-
-            //Sanitize POST data
-            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
-
-                // Init data
-                $data = [
-                'username' => trim($_POST['username']),
-                'username_error' => '',
-            ];
-
-
-                // Validate email
-            if(empty($data['username'])){
-                $data['username_error'] = 'Please enter username';
-            } else {
-                // Check if email already exists
-                if($this->userModel->findUserByUsername($data['username'])){
-                    $data['username_error'] = 'Username already exists';
                 }
-            }
 
-            // Check if errors are empty
-            if (empty($data['username_error'])) {
-                // Update User
-                $updateUsername = $this->userModel->UpdateUserByUsername($data, $id);
-                if (!$updateUsername){
-                    $data['username_error'] = 'Something went wrong. Please try again.';
-                    $this->view('users/profile', $data);
-                }else{
-                    $this->createUserSession($isLoggedIn);
-                }
-            } else {
-                // Load view with errors
-                $this->view('users/profile', $data);
-            }
-
-        } else {
-            // Init data
-            $data = [
-                'email' => '',
-                'email_error' => '',
-            ];
-
-            // Load view
-            $this->view('users/profile', $data);
-        }
-
+                } else {
+                redirect('users/profile/account');
+        }         
     }
 
 
@@ -435,42 +301,165 @@ class Users extends Controller {
              // Init data
              $data = [
                 'password' => trim($_POST['password']),
+                'new_password' => trim($_POST['new_password']),
+                'confirm_password' => trim($_POST['confirm_password']),
                 'password_error' => '',
+                'new_password_error' => '',
+                'confirm_password_error' => '',
+                'update_error' => '',
+                'tab' => 'account'
             ];
 
 
-             // Validate email
+             // Check password
             if(empty($data['password'])){
                 $data['password_error'] = 'Please enter password';
-            } 
+            } elseif (!$this->userModel->checkPasswordByUserId($data['password'], $_SESSION['id'])){
+                $data['password_error'] = 'Your password is wrong. Please try again.';
+            }
 
-            // Check if errors are empty
-            if (empty($data['password_error'])) {
-                // Update User
-                $updateUserpass = $this->userModel->UpdateUserByPassword($data, $id);
-                if (!$updateUserpass){
-                    $data['password_error'] = 'Something went wrong. Please try again.';
-                    $this->view('users/profile', $data);
+            // Check new password field
+            if(empty($data['new_password'])){
+                $data['new_password_error'] = 'Please provide your new password';
+            }elseif($data['new_password'] === $data['password']){
+                $data['new_password_error'] = 'Password is the same as before';
+            }elseif ($this->userModel->checkPasswordByUserId($data['new_password'], $_SESSION['id'])){
+                $data['new_password_error'] = 'Your new password is the same with the current.';
+            }
+
+            // Check confirm password
+            if(empty($data['confirm_password'])){
+                $data['confirm_password_error'] = 'Please confirm your new password';
+            }elseif($data['confirm_password'] !== $data['new_password']){
+                $data['confirm_password_error'] = 'Passwords do not match';
+            }
+
+
+            if(empty($data['password_error']) && empty($data['new_password_error']) && empty($data['confirm_password_error'])){
+                // Hash Password
+                $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
+
+                if($this->userModel->UpdateUserByPassword($data['new_password'], $_SESSION['id'])){
+                    flash('update_password_success', 'Your password has been updated!');
+                    redirect('users/profile/account');
                 }else{
-                    $this->createUserSession($isLoggedIn);
+                    $data['update_error'] = 'Password is the same as before. Please try again';
+                    $this->view('users/profile',$data);
                 }
-            } else {
-                // Load view with errors
+            }else{
                 $this->view('users/profile', $data);
             }
 
         } else {
-            // Init data
-            $data = [
-                'password' => '',
-                'password_error' => '',
+            redirect('users/profile/account');
+        }
+    }
+
+    public function UpdateUserEmail() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+             // Init data
+             $data = [
+                'new_email' => trim($_POST['new_email']),
+                'email_error' => '',
+                'new_email_error' => '',
+                'update_error' => '',
+                'tab' => 'account'
             ];
 
-            // Load view
-            $this->view('users/profile', $data);
-        }
 
+             // Validate email
+            if(empty($data['email'])){
+                $data['email_error'] = 'Please enter email';
+            } elseif ($data['email'] !== $_SESSION['email']){
+                $data['email_error'] = 'Please enter correct your current email';
+            }
+
+             // Check new email field
+             if(empty($data['new_email'])){
+                $data['new_email_error'] = 'Please provide your new email';
+            }elseif($data['new_email'] === $data['email']){
+                $data['new_email_error'] = 'Email is the same as before';
+            }elseif($this->userModel->findUserByEmail($data['new_email'])){
+                $data['new_email_error'] = 'Email already exists.';
+            }
+
+            if(empty($data['email_error']) && empty($data['new_email_error'])){
+                if($this->userModel->UpdateUserByEmail($data['new_email'], $_SESSION['id'])){
+                    $_SESSION['email'] = $data['new_email'];
+                    flash('update_mail_success', 'Your e-mail has been updated!');
+                    redirect('users/profile/account');
+                }else{
+                    $data['update_error'] = 'Your email is wrong. Please try again.';
+                    $this->view('users/profile',$data);
+                }
+            }else{
+                $this->view('users/profile', $data);
+            }
+
+        } else {
+            redirect('users/profile/account');
+        }
     }
+
+    public function UpdateUserUsername() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+                // Init data
+                $data = [
+                'username' => trim($_POST['username']),
+                'new_username' => trim($_POST['new_username']),
+                'username_error' => '',
+                'new_username_error' => '',
+                'update_error' => '',
+                'tab' => 'account'
+            ];
+
+
+            // Check current username field
+            if(empty($data['username'])){
+                $data['username_error'] = 'Please provide your current username';
+            }elseif ($data['username'] !== $_SESSION['username']){
+                $data['username_error'] = 'Please enter correct your current username';
+            }
+
+            // Check new username field
+            if(empty($data['new_username'])){
+                $data['new_username_error'] = 'Please provide your new username';
+            }elseif($data['new_username'] === $data['username']){
+                $data['new_username_error'] = 'Username is the same as before';
+            }elseif($this->userModel->findUserByUsername($data['new_username'])){
+                $data['new_username_error'] = 'Username already exists.';
+            }
+
+            if(empty($data['username_error']) && empty($data['new_username_error'])){
+                if($this->userModel->UpdateUserByUsername($data['new_username'], $_SESSION['id'])){
+                    flash('update_username_success', 'Your username has been updated!');
+                    $_SESSION['username'] = $data['new_username'];
+                    redirect('users/profile/account');
+                }else{
+                    $data['update_error'] = 'Something went wrong. Please try again';
+                    $this->view('users/profile',$data);
+                }
+            }else{
+                $this->view('users/profile', $data);
+            }
+
+        } else {
+            redirect('users/profile/account');
+        }
+    }
+
 
     /*---------------testing updates-----------------------*/
 
