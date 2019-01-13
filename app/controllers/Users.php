@@ -185,6 +185,17 @@ class Users extends Controller {
         }
     }
 
+       // Create session for users
+    public function createUserSession($user){
+        $_SESSION['username'] = $user->user_username;
+        $_SESSION['id'] = $user->user_id;
+        $_SESSION['first_name'] = $user->user_first_name;
+        $_SESSION['last_name'] = $user->user_last_name;
+        $_SESSION['email'] = $user->user_email;
+        $_SESSION['type'] = 'users';
+        redirect('users/profile/account');
+    }
+
     // Load view for facebook login
     // TODO: Fix this to implement profile after login
     public function facebook(){
@@ -206,22 +217,13 @@ class Users extends Controller {
     }
 
 
-    // Create session for users
-    public function createUserSession($user){
-        $_SESSION['username'] = $user->user_username;
-        $_SESSION['id'] = $user->user_id;
-        $_SESSION['first_name'] = $user->user_first_name;
-        $_SESSION['last_name'] = $user->user_last_name;
-        $_SESSION['type'] = 'users';
-        redirect('users/profile/account');
-    }
-
     // Logout method for users
     public function logout(){
         unset($_SESSION['username']);
         unset($_SESSION['id']);
         unset($_SESSION['first_name']);
         unset($_SESSION['last_name']);
+        unset($_SESSION['email']);
         unset($_SESSION['type']);
         session_destroy();
         redirect('users/login');
@@ -235,7 +237,6 @@ class Users extends Controller {
         return false;
     }
 
-    
     /*---------------testing updates-----------------------*/
     public function updateUser() {
         //Check for POST
@@ -250,26 +251,27 @@ class Users extends Controller {
                 'first_name' => trim($_POST['first_name']),
                 'last_name' => trim($_POST['last_name']),
                 'address' => isset($_POST['address']) ? trim($_POST['address']) : '',
-                'fname_error' => '',
-                'lname_error' => '',
+                'name_error' => '',
+                'last_name_error' => '',
                 'address_error' => '',
                 'update_error' => '',
+                'tab' => 'account'
             ];
         
 
         // Validate first name
         if(empty($data['first_name'])){
-            $data['fname_error'] = 'Please enter first name';
+            $data['name_error'] = 'Please enter first name';
         }
 
         // Validate last name
         if(empty($data['last_name'])){
-            $data['lname_error'] = 'Please enter last name';
+            $data['last_name_error'] = 'Please enter last name';
         }
 
         // Check if errors are empty
-        if (empty($data['fname_error']) &&
-                empty($data['lname_error'])) {
+        if (empty($data['name_error']) &&
+                empty($data['last_name_error'])) {
                 // Update User              
                 if($this->userModel->updateUser($data, $_SESSION['id'])){
                     $_SESSION['first_name'] = $data['first_name'];
@@ -314,7 +316,7 @@ class Users extends Controller {
              // Check password
             if(empty($data['password'])){
                 $data['password_error'] = 'Please enter password';
-            } elseif (!$this->userModel->checkPasswordByUserId($data['password'], $_SESSION['id'])){
+            } elseif (!$this->userModel->checkPasswordByUsersId($data['password'], $_SESSION['id'])){
                 $data['password_error'] = 'Your password is wrong. Please try again.';
             }
 
@@ -323,7 +325,7 @@ class Users extends Controller {
                 $data['new_password_error'] = 'Please provide your new password';
             }elseif($data['new_password'] === $data['password']){
                 $data['new_password_error'] = 'Password is the same as before';
-            }elseif ($this->userModel->checkPasswordByUserId($data['new_password'], $_SESSION['id'])){
+            }elseif ($this->userModel->checkPasswordByUsersId($data['new_password'], $_SESSION['id'])){
                 $data['new_password_error'] = 'Your new password is the same with the current.';
             }
 
@@ -365,12 +367,13 @@ class Users extends Controller {
 
              // Init data
              $data = [
+                'email' => trim($_POST['email']),
                 'new_email' => trim($_POST['new_email']),
                 'email_error' => '',
                 'new_email_error' => '',
                 'update_error' => '',
                 'tab' => 'account'
-            ];
+             ];
 
 
              // Validate email
