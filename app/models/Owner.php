@@ -70,23 +70,6 @@ class Owner{
         }
     }
 
-     /**
-     * Find owner by phone
-     * @param string $ownerphone
-     * @return bool
-     */
-    public function findOwnerByPhone(string $ownerphone){
-        $this->db->query('SELECT * FROM owners WHERE owner_phone = :phone');
-        $this->db->bind(':phone', $ownerphone);
-        $row = $this->db->single();
-        // Check row
-        if($this->db->rowCount() > 0){
-            return true;
-        }else {
-            return false;
-        }
-    }
-
     /**
      * Check if the password on db is the same as our input
      * @param string $password
@@ -128,11 +111,11 @@ class Owner{
     /**
      * Update username
      * @param string newUsername
-     * @param string id
+     * @param int id
      *
      * @return bool
      */
-    public function updateUsername(string $newUsername, string $id){
+    public function updateUsername(string $newUsername, int $id){
         $this->db->query('UPDATE owners SET owner_username=:newUsername WHERE owner_id=:id');
         $this->db->bind(':newUsername', $newUsername);
         $this->db->bind(':id', $id);
@@ -147,11 +130,11 @@ class Owner{
     /**
      * Update email
      * @param string $newEmail
-     * @param string id
+     * @param int id
      *
      * @return bool
      */
-    public function updateEmail(string $newEmail, string $id){
+    public function updateEmail(string $newEmail, int $id){
         $this->db->query('UPDATE owners SET owner_email=:newEmail WHERE owner_id=:id');
         $this->db->bind(':newEmail', $newEmail);
         $this->db->bind(':id', $id);
@@ -166,15 +149,38 @@ class Owner{
     /**
      * Update password
      * @param string newPassword
-     * @param string id
+     * @param int id
      *
      * @return bool
      */
-    public function updatePassword(string $newPassword, string $id){
+    public function updatePassword(string $newPassword, int $id){
         $this->db->query('UPDATE owners SET owner_password=:newPassword WHERE owner_id=:id');
         $this->db->bind(':newPassword', $newPassword);
         $this->db->bind(':id', $id);
         try {
+            $this->db->execute();
+            return true;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    /**
+     * Update Owner Personal details
+     * @param array $data
+     * @param int id
+     *
+     * @return bool
+     */
+    public function updateDetails(array $data, int $id){
+        $this->db->query('UPDATE owners 
+                              SET owner_first_name = :name, owner_last_name = :last_name, owner_phone = :phone
+                              WHERE owner_id = :id');
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':last_name', $data['last_name']);
+        $this->db->bind(':phone', $data['phone']);
+        $this->db->bind(':id', $id);
+        try{
             $this->db->execute();
             return true;
         }catch (Exception $e){

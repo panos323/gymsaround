@@ -14,24 +14,35 @@
             <?php if($data['tab'] === 'account')  : ?>
                 <div class="col-md-11 profile_boxes">
                     <h4>Tα στοιχεία μου</h4>
-                    <form id="updateUsernameForm" action="<?php echo URLROOT; ?>/owners/updateDetails" method="post">
-                        <div class="form-group">
-                            <input type="text"
-                                   name=""
-                                   class="form-control form-control-lg <?php echo (isset($data['']) && !empty($data[''])) ? 'is-invalid' : ''; ?>"
-                                   value="<?php echo isset($data['']) ? $data[''] : ''; ?>">
-                            <span class="invalid-feedback"><?php echo isset($data['']) ? $data[''] : ''; ?></span>
+                    <?php flash('update_details_success'); ?>
+                    <form id="updateDetailsForm" action="<?php echo URLROOT; ?>/owners/updateDetails" method="post">
+                        <div class="form-row">
+                            <div class="form-group col-sm-6">
+                                <input type="text"
+                                       name="name"
+                                       class="form-control form-control-lg <?php echo (isset($data['name_error']) && !empty($data['name_error'])) ? 'is-invalid' : ''; ?>"
+                                       value="<?php echo $_SESSION['first_name']; ?>">
+                                <span class="invalid-feedback"><?php echo isset($data['name_error']) ? $data['name_error'] : ''; ?></span>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <input type="text"
+                                       name="last_name"
+                                       class="form-control form-control-lg <?php echo (isset($data['last_name_error']) && !empty($data['last_name_error'])) ? 'is-invalid' : ''; ?>"
+                                       placeholder="<?php echo isset($data['last_name']) ? $data['last_name'] : ''; ?>"
+                                       value="<?php echo $_SESSION['last_name'] ?>">
+                                <span class="invalid-feedback"><?php echo isset($data['last_name_error']) ? $data['last_name_error'] : ''; ?></span>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <input type="text"
-                                   name=""
-                                   class="form-control form-control-lg <?php echo (isset($data['']) && !empty($data[''])) ? 'is-invalid' : ''; ?>"
-                                   placeholder="Enter New Password"
-                                   value="<?php echo isset($data['']) ? $data[''] : ''; ?>">
-                            <span class="invalid-feedback"><?php echo isset($data['']) ? $data[''] : ''; ?></span>
+                            <input type="tel"
+                                   name="phone"
+                                   class="form-control form-control-lg <?php echo (isset($data['phone_error']) && !empty($data['phone_error'])) ? 'is-invalid' : ''; ?>"
+                                   placeholder="<?php echo isset($_SESSION['phone']) ? '' : 'Enter your Phone number'; ?>"
+                                   value="<?php echo isset($_SESSION['phone']) ? $_SESSION['phone'] : ''; ?>">
+                            <span class="invalid-feedback"><?php echo isset($data['phone_error']) ? $data['phone_error'] : ''; ?></span>
                         </div>
                         <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
-                            <button type="submit"  value="Register" class="btn btn-success">Update Username</button>
+                            <button type="submit"  value="Register" class="btn btn-success">Update Details</button>
                         </div>
                         <span class="invalid-feedback"><?php echo isset($data['']) ? $data[''] : ''; ?></span>
                     </form>
@@ -65,7 +76,7 @@
                 <div class="col-md-5 offset-1 profile_boxes mt-4">
                     <h4>Αλλαγή E-mail</h4>
                     <?php flash('update_mail_success'); ?>
-                    <form id="updateUsernameForm" action="<?php echo URLROOT; ?>/owners/updateEmail" method="post">
+                    <form id="updateEmailForm" action="<?php echo URLROOT; ?>/owners/updateEmail" method="post">
                         <div class="form-group">
                             <input type="text"
                                    name="disabled_mail"
@@ -91,7 +102,7 @@
                 <div class="col-md-5 profile_boxes mt-4">
                     <h4>Αλλαγή Password</h4>
                     <?php flash('update_password_success'); ?>
-                    <form id="updateUsernameForm" action="<?php echo URLROOT; ?>/owners/updatePassword" method="post">
+                    <form id="updatePasswordForm" action="<?php echo URLROOT; ?>/owners/updatePassword" method="post">
                         <div class="form-group">
                             <input type="password"
                                    name="password"

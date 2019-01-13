@@ -75,17 +75,13 @@ class Owners extends Controller {
             }
 
             //Validate phone number
+
             if(empty($data['phone'])){
                 $data['phone'] = 'Please enter your phone number';
             } elseif (strlen($data['phone']) !== 10){
                 $data['phone_error'] = 'Phone should have 10 numbers';
             } elseif (!preg_match('/^[0-9]{10}$/', $data['phone'])) {
                 $data['phone_error'] = 'Phone should have only numbers';
-            } else {
-                // Check if phone number already exists
-                if($this->ownerModel->findOwnerByPhone($data['phone'])){
-                    $data['phone_error'] = 'Phone number already exists';
-                }
             }
 
             // Check if errors are empty
@@ -100,6 +96,9 @@ class Owners extends Controller {
 
                 // Hash Password
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                // Make phone int
+                $data['phone'] = $data['phone'] +0;
 
                 // Register User
                 if($this->ownerModel->register($data)){
@@ -205,6 +204,7 @@ class Owners extends Controller {
         $_SESSION['first_name'] = $owner->owner_first_name;
         $_SESSION['last_name'] = $owner->owner_last_name;
         $_SESSION['email'] = $owner->owner_email;
+        $_SESSION['phone'] = isset($owner->owner_phone) ? $owner->owner_phone : '';
         $_SESSION['type'] = 'owners';
         redirect('owners/profile/account');
     }
@@ -229,6 +229,7 @@ class Owners extends Controller {
         unset($_SESSION['first_name']);
         unset($_SESSION['last_name']);
         unset($_SESSION['type']);
+        unset($_SESSION['phone']);
         session_destroy();
         redirect('owners/login');
     }
@@ -249,15 +250,60 @@ class Owners extends Controller {
 
             // Init data
             $data = [
-                'login_credential' => trim($_POST['login_credential']),
-                'password' => trim($_POST['password']),
-                'login_credential_error' => '',
-                'pass_error' => '',
+                'name' => trim($_POST['name']),
+                'last_name' => trim($_POST['last_name']),
+                'phone' => trim($_POST['phone']),
+                'name_error' => '',
+                'last_name_error' => '',
+                'phone_error' => '',
+                'update_error' => '',
+                'tab' => 'account'
             ];
+
+            // Check name field
+            if(empty($data['name'])){
+                $data['name_error'] = 'Name field cannot be empty.';
+            }
+
+            // Check last name field
+            if(empty($data['last_name'])){
+                $data['last_name_error'] = 'Last name cannot be empty';
+            }
+
+            // Check phone number
+            if(empty($data['phone'])){
+                $data['phone_error'] = 'Please enter your phone number';
+            } elseif (strlen($data['phone']) !== 10){
+                $data['phone_error'] = 'Phone should have 10 numbers';
+            } elseif (!preg_match('/^[0-9]{10}$/', $data['phone'])) {
+                $data['phone_error'] = 'Phone should have only numbers';
+            }
+
+            if( empty($data['name_error']) &&
+                empty($data['last_name_error']) &&
+                empty($data['phone_error'])){
+
+                // Make phone int
+                $data['phone'] = $data['phone'] +0;
+                if($this->ownerModel->updateDetails($data, $_SESSION['id'])){
+                    $_SESSION['name'] = $data['name'];
+                    $_SESSION['last_name'] = $data['last_name'];
+                    $_SESSION['phone'] = $data['phone'];
+                    flash('update_details_success', 'Your details have been updated!');
+                    redirect('owners/profile/account');
+                }else{
+                    $data['update_error'] = 'Something went wrong. Please try again';
+                    $this->view('owners/profile',$data);
+                }
+            }else{
+                $this->view('owners/profile', $data);
+            }
+
         } else {
             redirect('owners/profile/account');
         }
     }
+
     public function updatePassword(){
 
         // Check for POST
