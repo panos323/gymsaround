@@ -100,35 +100,20 @@ class User{
 
 
     /*--------TESTING UPDATES-----------------*/
-    public function UpdateUserByEmail(array $data, string $id){
-        $this->db->query('UPDATE users 
-                          SET user_email = :email
-                          WHERE user_id = :id
-                        ');
-        $this->db->bind(':email', $data['email']);
-        $this->db->bind(':id',$_SESSION['id']);
-        
-          // Execute
-          try{
-            $this->db->execute();
-            return true;
-        } catch (Exception $e){
-            return false;
-        }
-    }
-
-    /**
+     /**
      * Update user by username
      * @param string $username
+     * @param int id
+     * 
      * @return bool
      */
-    public function UpdateUserByUsername(array $data, string $id){
+    public function UpdateUserByUsername(string $username, int $id){
         $this->db->query('UPDATE users 
                           SET user_username = :username
                           WHERE user_id = :id
                           ');
         $this->db->bind(':username', $username);
-        $this->db->bind(':id',$_SESSION['id']);
+        $this->db->bind(':id', $id);
 
          // Execute
          try{
@@ -140,17 +125,43 @@ class User{
     }
 
     /**
-     * Update user by password
-     * @param string $password
+     * Update user by username
+     * @param string $username
+     * @param int id
+     * 
      * @return bool
      */
-    public function UpdateUserByPassword(array $data, string $id){
+    public function UpdateUserByEmail(string $email, int $id){
+        $this->db->query('UPDATE users 
+                          SET user_email = :email
+                          WHERE user_id = :id
+                        ');
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':id', $id);
+        
+          // Execute
+          try{
+            $this->db->execute();
+            return true;
+        } catch (Exception $e){
+            return false;
+        }
+    }
+
+
+    /**
+     * Update user by password
+     * @param string $password
+     * @param int id
+     * @return bool
+     */
+    public function UpdateUserByPassword(string $password, int $id){
         $this->db->query('UPDATE users 
                           SET user_password = :password
                           WHERE user_id = :id
                           ');
         $this->db->bind(':password', $password);
-        $this->db->bind(':id',$_SESSION['id']);
+        $this->db->bind(':id', $id);
 
          // Execute
          try{
@@ -180,7 +191,7 @@ class User{
         $this->db->bind(':fname',$data['first_name']);
         $this->db->bind(':lname',$data['last_name']);
         $this->db->bind(':address',$data['address']);
-        $this->db->bind(':id',$_SESSION['id']);
+        $this->db->bind(':id', $id);
 
         // Execute
         try{
