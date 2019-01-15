@@ -66,6 +66,7 @@
             <div class="row">
                <div class="col-4">
                    <p class="rowtitle" id="gymtitle">ΔΗΜΟΦΙΛΗ</p>
+                   
                </div>
             </div>
             <div class="row">
