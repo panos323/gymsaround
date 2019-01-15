@@ -12,9 +12,10 @@
 </head>
 <body>
     <div class="error_img">
-        <img src="<?php echo URLROOT ?>/public/images/404-error.png">
-        <p><a class="btn btn-lg btn-success" href="<?php echo URLROOT; ?>">Go to Home page</a></p>
+        <img src="<?php echo URLROOT ?>/public/images/404.jpg">
     </div>
-
+    <div class="error_page_button">
+        <a class="btn btn-lg btn-success" href="<?php echo URLROOT; ?>">Back to Home page</a>
+    </div>
 </body>
 </html>

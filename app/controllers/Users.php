@@ -5,6 +5,7 @@ class Users extends Controller {
         $this->userModel = $this->model('User');
     }
 
+    // Registration method for user
     public function register(){
 
         // Check for POST
@@ -22,13 +23,15 @@ class Users extends Controller {
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
                 'confirm_password' => trim($_POST['confirm_password']),
+                'address' => isset($_POST['address']) ? trim($_POST['address']) : '',
                 'fname_error' => '',
                 'lname_error' => '',
                 'username_error' => '',
                 'email_error' => '',
                 'pass_error' => '',
                 'confirm_pass_error' => '',
-                'register_error' => ''
+                'register_error' => '',
+                'address_error' => '',
             ];
 
             // Validate email
@@ -105,21 +108,23 @@ class Users extends Controller {
                 'email' => '',
                 'password' => '',
                 'confirm_password' => '',
+                'address' => '',
                 'fname_error' => '',
                 'lname_error' => '',
                 'username_error' => '',
                 'email_error' => '',
                 'pass_error' => '',
                 'confirm_pass_error' => '',
-                'register_error' => ''
+                'register_error' => '',
+                'address_error' => '',
             ];
 
             // Load view
             $this->view('users/register', $data);
-
         }
     }
 
+    // Login method
     public function login() {
         // Check for POST
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -180,6 +185,13 @@ class Users extends Controller {
         }
     }
 
+    // Load view for facebook login
+    // TODO: Fix this to implement profile after login
+    public function facebook(){
+        $this->view('users/facebook');
+    }
+
+    // Method for user's profile
     public function profile(string $username){
         if($this->isLoggedIn() && $_SESSION['username'] === $username){
             $data = [
@@ -193,23 +205,28 @@ class Users extends Controller {
         }
     }
 
+    // Create session for users
     public function createUserSession($user){
         $_SESSION['username'] = $user->user_username;
-        $_SESSION['user_id'] = $user->user_id;
+        $_SESSION['id'] = $user->user_id;
         $_SESSION['first_name'] = $user->user_first_name;
         $_SESSION['last_name'] = $user->user_last_name;
+        $_SESSION['type'] = 'users';
         redirect('users/profile/'.$_SESSION['username']);
     }
 
+    // Logout method for users
     public function logout(){
         unset($_SESSION['username']);
-        unset($_SESSION['user_id']);
+        unset($_SESSION['id']);
         unset($_SESSION['first_name']);
         unset($_SESSION['last_name']);
+        unset($_SESSION['type']);
         session_destroy();
         redirect('users/login');
     }
 
+    // Method to check if user is logged in.
     public function isLoggedIn(){
         if(isset($_SESSION['user_id'])){
             return true;
