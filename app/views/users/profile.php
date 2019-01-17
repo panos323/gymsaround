@@ -1,5 +1,4 @@
 <?php require  APPROOT . '/views/inc/header.php'?>
-<?php echo "test"; ?>
 
 <!-- Should fix functions,form values -->
 
@@ -82,7 +81,7 @@
                     <form id="updateEmailForm" action="<?php echo URLROOT; ?>/users/UpdateUserEmail" method="post">
                         <div class="form-group">
                             <input type="text"
-                                   name="disabled_mail"
+                                   name="email"
                                    class="form-control form-control-lg <?php echo (isset($data['email_error']) && !empty($data['email_error'])) ? 'is-invalid' : ''; ?>"
                                    value="<?php echo $_SESSION['email']; ?> " disabled>
                             <input type="hidden" name="email" value="<?php echo $_SESSION['email']; ?>">
@@ -141,6 +140,11 @@
             <?php elseif ($data['tab'] === 'my_gym') : ?>
             <div class="col-md-12 profile_boxes">
                 <h4>Το γυμναστήριό μου</h4>
+                <form action="<?php echo URLROOT; ?>/users/UserGym" method="post">
+                <input type="text" name="gym_id"
+                value="<?php echo isset($data['gym_id']) ?? ''; ?>"
+                >
+                </form>
             </div>
 
             <!-- This is the display for trainers details upload   -->

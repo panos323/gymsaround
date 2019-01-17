@@ -112,6 +112,26 @@ class User{
 
 
     /*--------TESTING UPDATES-----------------*/
+
+
+    /**
+     * Find user's gym
+     * @param int $gym_id
+     * @return bool
+     */
+    public function findUserGym(int $gym_id) {
+        $this->db->query('SELECT * FROM users WHERE gym_id = :gym_id');
+        $this->db->bind(':gym_id', $gym_id);
+        $row = $this->db->single();
+        // Check row
+        if($this->db->rowCount() > 0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
      /**
      * Update user by username
      * @param string $username
@@ -195,7 +215,7 @@ class User{
         $this->db->query('UPDATE users 
                           SET user_first_name = :first_name,
                               user_last_name = :last_name,
-                              user_adress = :address
+                              user_address = :address
                           WHERE user_id = :id
                         ');
 
