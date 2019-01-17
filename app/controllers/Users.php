@@ -426,7 +426,7 @@ class Users extends Controller {
                 'new_username_error' => '',
                 'update_error' => '',
                 'tab' => 'account'
-            ];
+                ];
 
 
             // Check current username field
@@ -464,8 +464,27 @@ class Users extends Controller {
     }
 
 
+
+
+    public function UserGym() {
+
+        // Init data
+        $data = [
+            'gym_id' => trim($_POST['gym_id']),
+            'gym_error' => '',
+            'tab' => 'my_gym'
+        ];
+
+
+        // Show Gym
+        if($this->userModel->findUserGym($data['gym_id'])){
+            flash('register_success', 'Your gym');
+        } else{
+            $data['gym_error'] = 'Something went wrong. Please try again.';
+            $this->view('users/profile', $data);
+        }
+    }
+
     /*---------------testing updates-----------------------*/
-
-
 
 }
