@@ -89,7 +89,50 @@ body{
 }
 
 .login {
-    height: 55vh;
+    padding: 40px;
+}
+
+/**
+    Owner Profile Css
+ */
+.profile{
+    height: 100%;
+    width: 100%;
+}
+
+.profile .sidemenu{
+    text-align: center;
+    padding-right: 0;
+    background: darkcyan;
+}
+
+.profile a{
+    background: cadetblue;
+    border-radius: 0 !important;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.profile .active_profile_tab,
+.profile a:hover{
+    background: #ffb243;
+    color: cadetblue;
+}
+
+.main_profile{
+    padding: 30px;
+}
+
+.profile_boxes{
+    border: 1px solid cadetblue;
+    width: 100%;
+    padding: 0 !important;
+}
+
+.profile_boxes h4 {
+    background: cadetblue;
+    padding: 10px 20px;
+    color: #ffffff;
 }
 
 

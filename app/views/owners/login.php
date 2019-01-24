@@ -7,8 +7,8 @@
         <!--start login form-->
         <div class="col-lg-5 col-md-6 mx-auto mt-5 login">
             <div class="card card-body" id="cardBodyForm">
-                <?php flash('register_success'); ?>
                 <h2 class="mb-4">Login</h2>
+                <?php flash('register_success'); ?>
                 <form id="loginForm" action="<?php echo URLROOT; ?>/owners/login" method="post">
                     <div class="form-group">
                         <!--<label for="login_credential">Username/Email: <sup>*</sup></label>-->

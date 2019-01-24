@@ -70,21 +70,23 @@ class Owner{
         }
     }
 
-     /**
-     * Find owner by phone
-     * @param string $ownerphone
+    /**
+     * Check if the password on db is the same as our input
+     * @param string $password
+     * @param string $id
      * @return bool
      */
-    public function findOwnerByPhone(string $ownerphone){
-        $this->db->query('SELECT * FROM owners WHERE owner_phone = :phone');
-        $this->db->bind(':phone', $ownerphone);
+    public function checkPasswordByUserId(string $password, string $id){
+        $this->db->query('SELECT owner_password FROM owners WHERE owner_id = :id');
+        $this->db->bind(':id', $id);
         $row = $this->db->single();
-        // Check row
         if($this->db->rowCount() > 0){
-            return true;
-        }else {
-            return false;
+            $pass = $row->owner_password;
+            if(password_verify($password, $pass)){
+                return true;
+            }
         }
+        return false;
     }
 
     /**
@@ -97,12 +99,150 @@ class Owner{
         $this->db->query('SELECT * FROM owners WHERE owner_username = :key or owner_email = :key');
         $this->db->bind(':key', $key);
         $row = $this->db->single();
-        $pass = $row->owner_password;
         if($this->db->rowCount() > 0){
+            $pass = $row->owner_password;
             if(password_verify($password, $pass)){
                 return $row;
             }
         }
         return false;
+    }
+
+    /**
+     * Update username
+     * @param string newUsername
+     * @param int id
+     *
+     * @return bool
+     */
+    public function updateUsername(string $newUsername, int $id){
+        $this->db->query('UPDATE owners SET owner_username=:newUsername WHERE owner_id=:id');
+        $this->db->bind(':newUsername', $newUsername);
+        $this->db->bind(':id', $id);
+        try {
+            $this->db->execute();
+            return true;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    /**
+     * Update email
+     * @param string $newEmail
+     * @param int id
+     *
+     * @return bool
+     */
+    public function updateEmail(string $newEmail, int $id){
+        $this->db->query('UPDATE owners SET owner_email=:newEmail WHERE owner_id=:id');
+        $this->db->bind(':newEmail', $newEmail);
+        $this->db->bind(':id', $id);
+        try {
+            $this->db->execute();
+            return true;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    /**
+     * Update password
+     * @param string newPassword
+     * @param int id
+     *
+     * @return bool
+     */
+    public function updatePassword(string $newPassword, int $id){
+        $this->db->query('UPDATE owners SET owner_password=:newPassword WHERE owner_id=:id');
+        $this->db->bind(':newPassword', $newPassword);
+        $this->db->bind(':id', $id);
+        try {
+            $this->db->execute();
+            return true;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    /**
+     * Update Owner Personal details
+     * @param array $data
+     * @param int id
+     *
+     * @return bool
+     */
+    public function updateDetails(array $data, int $id){
+        $this->db->query('UPDATE owners 
+                              SET owner_first_name = :name, owner_last_name = :last_name, owner_phone = :phone
+                              WHERE owner_id = :id');
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':last_name', $data['last_name']);
+        $this->db->bind(':phone', $data['phone']);
+        $this->db->bind(':id', $id);
+        try{
+            $this->db->execute();
+            return true;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    /**
+     * Find if Owner has currently a Gym
+     * @param int $id
+     *
+     * @return array
+     */
+    public function getGymByUserId(int $id){
+        $this->db->query('SELECT * FROM gyms WHERE owners_owner_id = :id');
+        $this->db->bind(':id', $id);
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+        return [];
+    }
+
+    /**
+     * Find Trainers for current Gym
+     * @param int $id
+     *
+     * @return array
+     */
+    public function getTrainersByGymId(int $id){
+        $this->db->query('SELECT * FROM trainers WHERE gym_id = :id');
+        $this->db->bind(':id', $id);
+        $row = $this->db->resultSet();
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+        return [];
+    }
+
+    /**
+     * Register Gym on Database
+     * @param array $data
+     * @param $db_dir
+     * @return bool
+     */
+    public function register_gym(array $data){
+        //Query
+        $this->db->query('INSERT INTO gyms (gym_name, gym_description, gym_location, gym_type)
+                              VALUES (:name, :description, :location, :type)');
+
+        // Bind values
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':description', $data['description']);
+        $this->db->bind(':location', $data['location']);
+        $this->db->bind(':type', $data['type']);
+
+        // Execute
+        try {
+            $this->db->execute();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }
