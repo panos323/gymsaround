@@ -1,6 +1,7 @@
 <footer class="footer pt-4">
     <div class="container-fluid text-center text-md-left">
         <!-- Grid row -->
+     <div class="footerrow"></div>   
         <div class="row">
             <div class="col-md-2 mx-auto col-sm-6 mb-4">
                 <div class="pl-5">
@@ -23,10 +24,12 @@
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
                 <h3 class="mb-4">Συνεργάτες</h3>
-                <a href="<?php echo URLROOT; ?>/owners/register" class="btn btn-outline-success">
+                <div class="btnorange" id="btnfooter"><a href="<?php echo URLROOT; ?>/owners/register" >
                     Γίνε συνεργάτης
                 </a>
+                </div>
             </div>
+       </div>
         </div>
     </div>
     <div class="footer-copyright text-center py-3">© 2018 Copyright:
