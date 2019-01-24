@@ -75,6 +75,8 @@ class Users extends Controller {
                 }
             }
 
+           
+
             // Check if errors are empty
             if( empty($data['email_error']) &&
                 empty($data['fname_error']) &&
@@ -185,35 +187,49 @@ class Users extends Controller {
         }
     }
 
+       // Create session for users
+    public function createUserSession($user){
+        $_SESSION['username'] = $user->user_username;
+        $_SESSION['id'] = $user->user_id;
+        $_SESSION['first_name'] = $user->user_first_name;
+        $_SESSION['last_name'] = $user->user_last_name;
+        $_SESSION['email'] = $user->user_email;
+        $_SESSION['gym_id'] = isset($user->gym_id) ? $user->gym_id : '';
+        $_SESSION['type'] = 'users';
+        redirect('users/profile/account');
+    }
+
     // Load view for facebook login
     // TODO: Fix this to implement profile after login
     public function facebook(){
         $this->view('users/facebook');
     }
 
-    // Method for user's profile
-    public function profile(string $username){
-        if($this->isLoggedIn() && $_SESSION['username'] === $username){
+    public function profile(string $tab = 'account') {
+        if(!$this->isLoggedIn()){
+            redirect('pages/index');
+        }
+        if($tab === 'account' || $tab === 'my_gym'){
             $data = [
-                'username' => $username
+                'tab' => $tab,
+                'name'=> ''
             ];
-            // Load view
+            if (!isset($_SESSION['gym_id'])) {
+                $data['msg'] = 'Παρακαλώ διαλέχτε γυμναστήριο';
+            } else {
+                $gym = $this->userModel->findUserGym($_SESSION['gym_id']);
+                if($gym) {
+                    $data['name'] = $gym->gym_name;
+                }else {
+                    $data['gym_error'] = 'You are FUCKED. You do not have active GYM';
+                }
+            }
             $this->view('users/profile', $data);
-        }else{
-            //TODO: Unauthenticated page create.
-            die('You are not authenticated to access this page');
+        }else {
+            redirect('users/profile/account');
         }
     }
 
-    // Create session for users
-    public function createUserSession($user){
-        $_SESSION['username'] = $user->user_username;
-        $_SESSION['id'] = $user->user_id;
-        $_SESSION['first_name'] = $user->user_first_name;
-        $_SESSION['last_name'] = $user->user_last_name;
-        $_SESSION['type'] = 'users';
-        redirect('users/profile/'.$_SESSION['username']);
-    }
 
     // Logout method for users
     public function logout(){
@@ -221,6 +237,7 @@ class Users extends Controller {
         unset($_SESSION['id']);
         unset($_SESSION['first_name']);
         unset($_SESSION['last_name']);
+        unset($_SESSION['email']);
         unset($_SESSION['type']);
         session_destroy();
         redirect('users/login');
@@ -228,9 +245,260 @@ class Users extends Controller {
 
     // Method to check if user is logged in.
     public function isLoggedIn(){
-        if(isset($_SESSION['user_id'])){
+        if(isset($_SESSION['id'])){
             return true;
         }
         return false;
     }
+
+    /*---------------testing updates-----------------------*/
+    public function updateUser() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'first_name' => trim($_POST['first_name']),
+                'last_name' => trim($_POST['last_name']),
+                'address' => isset($_POST['address']) ? trim($_POST['address']) : '',
+                'name_error' => '',
+                'last_name_error' => '',
+                'address_error' => '',
+                'update_error' => '',
+                'tab' => 'account'
+            ];
+        
+
+        // Validate first name
+        if(empty($data['first_name'])){
+            $data['name_error'] = 'Please enter first name';
+        }
+
+        // Validate last name
+        if(empty($data['last_name'])){
+            $data['last_name_error'] = 'Please enter last name';
+        }
+
+        // Check if errors are empty
+        if (empty($data['name_error']) &&
+                empty($data['last_name_error'])) {
+                // Update User              
+                if($this->userModel->updateUser($data, $_SESSION['id'])){
+                    $_SESSION['first_name'] = $data['first_name'];
+                    $_SESSION['last_name'] = $data['last_name'];
+                    flash('update_details_success', 'Your details have been updated!');
+                    redirect('users/profile/account');
+                }else{
+                    $data['update_error'] = 'Something went wrong. Please try again';
+                    $this->view('users/profile',$data);
+                }
+                }else{
+                $this->view('users/profile', $data);
+                }
+
+                } else {
+                redirect('users/profile/account');
+        }         
+    }
+
+
+    public function UpdateUserPassword() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+             // Init data
+             $data = [
+                'password' => trim($_POST['password']),
+                'new_password' => trim($_POST['new_password']),
+                'confirm_password' => trim($_POST['confirm_password']),
+                'password_error' => '',
+                'new_password_error' => '',
+                'confirm_password_error' => '',
+                'update_error' => '',
+                'tab' => 'account'
+            ];
+
+
+             // Check password
+            if(empty($data['password'])){
+                $data['password_error'] = 'Please enter password';
+            } elseif (!$this->userModel->checkPasswordByUsersId($data['password'], $_SESSION['id'])){
+                $data['password_error'] = 'Your password is wrong. Please try again.';
+            }
+
+            // Check new password field
+            if(empty($data['new_password'])){
+                $data['new_password_error'] = 'Please provide your new password';
+            }elseif($data['new_password'] === $data['password']){
+                $data['new_password_error'] = 'Password is the same as before';
+            }elseif ($this->userModel->checkPasswordByUsersId($data['new_password'], $_SESSION['id'])){
+                $data['new_password_error'] = 'Your new password is the same with the current.';
+            }
+
+            // Check confirm password
+            if(empty($data['confirm_password'])){
+                $data['confirm_password_error'] = 'Please confirm your new password';
+            }elseif($data['confirm_password'] !== $data['new_password']){
+                $data['confirm_password_error'] = 'Passwords do not match';
+            }
+
+
+            if(empty($data['password_error']) && empty($data['new_password_error']) && empty($data['confirm_password_error'])){
+                // Hash Password
+                $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
+
+                if($this->userModel->UpdateUserByPassword($data['new_password'], $_SESSION['id'])){
+                    flash('update_password_success', 'Your password has been updated!');
+                    redirect('users/profile/account');
+                }else{
+                    $data['update_error'] = 'Password is the same as before. Please try again';
+                    $this->view('users/profile',$data);
+                }
+            }else{
+                $this->view('users/profile', $data);
+            }
+
+        } else {
+            redirect('users/profile/account');
+        }
+    }
+
+    public function UpdateUserEmail() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+             // Init data
+             $data = [
+                'email' => trim($_POST['email']),
+                'new_email' => trim($_POST['new_email']),
+                'email_error' => '',
+                'new_email_error' => '',
+                'update_error' => '',
+                'tab' => 'account'
+             ];
+
+
+             // Validate email
+            if(empty($data['email'])){
+                $data['email_error'] = 'Please enter email';
+            } elseif ($data['email'] !== $_SESSION['email']){
+                $data['email_error'] = 'Please enter correct your current email';
+            }
+
+             // Check new email field
+             if(empty($data['new_email'])){
+                $data['new_email_error'] = 'Please provide your new email';
+            }elseif($data['new_email'] === $data['email']){
+                $data['new_email_error'] = 'Email is the same as before';
+            }elseif($this->userModel->findUserByEmail($data['new_email'])){
+                $data['new_email_error'] = 'Email already exists.';
+            }
+
+            if(empty($data['email_error']) && empty($data['new_email_error'])){
+                if($this->userModel->UpdateUserByEmail($data['new_email'], $_SESSION['id'])){
+                    $_SESSION['email'] = $data['new_email'];
+                    flash('update_mail_success', 'Your e-mail has been updated!');
+                    redirect('users/profile/account');
+                }else{
+                    $data['update_error'] = 'Your email is wrong. Please try again.';
+                    $this->view('users/profile',$data);
+                }
+            }else{
+                $this->view('users/profile', $data);
+            }
+
+        } else {
+            redirect('users/profile/account');
+        }
+    }
+
+    public function UpdateUserUsername() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+                // Init data
+                $data = [
+                'username' => trim($_POST['username']),
+                'new_username' => trim($_POST['new_username']),
+                'username_error' => '',
+                'new_username_error' => '',
+                'update_error' => '',
+                'tab' => 'account'
+                ];
+
+
+            // Check current username field
+            if(empty($data['username'])){
+                $data['username_error'] = 'Please provide your current username';
+            }elseif ($data['username'] !== $_SESSION['username']){
+                $data['username_error'] = 'Please enter correct your current username';
+            }
+
+            // Check new username field
+            if(empty($data['new_username'])){
+                $data['new_username_error'] = 'Please provide your new username';
+            }elseif($data['new_username'] === $data['username']){
+                $data['new_username_error'] = 'Username is the same as before';
+            }elseif($this->userModel->findUserByUsername($data['new_username'])){
+                $data['new_username_error'] = 'Username already exists.';
+            }
+
+            if(empty($data['username_error']) && empty($data['new_username_error'])){
+                if($this->userModel->UpdateUserByUsername($data['new_username'], $_SESSION['id'])){
+                    flash('update_username_success', 'Your username has been updated!');
+                    $_SESSION['username'] = $data['new_username'];
+                    redirect('users/profile/account');
+                }else{
+                    $data['update_error'] = 'Something went wrong. Please try again';
+                    $this->view('users/profile',$data);
+                }
+            }else{
+                $this->view('users/profile', $data);
+            }
+
+        } else {
+            redirect('users/profile/account');
+        }
+    }
+
+
+
+
+    public function UserGym() {
+
+        // Init data
+        $data = [
+            'gym_id' => trim($_POST['gym_id']),
+            'gym_error' => '',
+            'tab' => 'my_gym'
+        ];
+
+
+        // Show Gym
+        if($this->userModel->findUserGym($data['gym_id'])){
+            flash('register_success', 'Your gym');
+        } else{
+            $data['gym_error'] = 'Something went wrong. Please try again.';
+            $this->view('users/profile', $data);
+        }
+    }
+
+    /*---------------testing updates-----------------------*/
+
 }
