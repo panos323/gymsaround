@@ -10,7 +10,7 @@
                             <p id="bigtitle">ΒΡΕΣ ΤΟ ΓΥΜΝΑΣΤΗΡΙΟΥ ΠΟΥ ΣΟΥ ΤΑΙΡΙΑΖΕΙ</p>
                                 <div class="row">
                                     <div class="col-4 offset-2">
-                                    <button class="btnmember"><a href="#">Γίνε Μέλος</a></button>
+                                    <button class="btnblue" id="btnmember"><a href="#">Γίνε Μέλος</a></button>
                                     </div>
                                 </div> 
                                     
@@ -46,7 +46,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-7 offset-3">
-                                    <button class="bsearch"><a href="#">Αναζήτηση</a></button>
+                                    <button class="btnorange" id="btnsearch"><a href="#">Αναζήτηση</a></button>
                                 </div>
                             </div>
             
@@ -71,14 +71,15 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-3 offset-1">
-                                        <p id="gymname">Workout Hall Crossfit</p>
+                                        <p id="gymname"><a href="#">Workout Hall Crossfit</a></p>
                                         <img src="../images/stars.png" alt="stars">
                                         <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
                                         <p>Crosfii, Boxing, KingBoxing,Climbing</p>
                                     </div>
-                                    <div class="col-6 offset-2" >
-                                            <img src="../images/bestgym1.jpg" alt="stars" width="550" height="330">
-                                            <button class="btnprobolh"><a href="#">Αναζήτηση</a></button>
+                                    <div class="col-6 offset-2">
+                                    
+                                    <div id="imgbestgym"><a href="#"><img src="../images/bestgym1.jpg" alt="stars" width="550" height="330"></a></div>
+                                
                                     </div>
                                 </div>
 
@@ -87,7 +88,7 @@
                                         <img src="../images/back.png" alt="stars" width="25" height="30">
                                     </div>
                                     <div class="col-1 ">
-                                        <p>1/3</p>
+                                        <p id="onetothree">1 / 3</p>
                                     </div>
                                     <div class="col-1 ">
                                         <img src="../images/front.png" alt="stars" width="25" height="30">
@@ -117,7 +118,7 @@
                     it to make a type specimen book.  </p>
                     <div class="row">
                         <div class="col-4 offset-3">
-                        <button class="btnblog"><a href="#">Αναζήτηση</a></button>
+                        <button class="btnblue" id="btnblog"><a href="#">Αναζήτηση</a></button>
                         </div>
                     </div>
                     
