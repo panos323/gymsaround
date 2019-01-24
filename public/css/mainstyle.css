@@ -1,0 +1,349 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+/**
+ Navigation Bar Css
+ */
+
+.navbar_logo {
+    height: 70px;
+    width: auto;
+    padding-left: 20px;
+}
+
+
+/**
+    error page css
+ */
+.error_img{
+    height: 80vh;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.error_img img {
+    height: 100%;
+    width: auto;
+}
+
+.error_page_button {
+    height: 20vh;
+    width: 100%;
+}
+
+.error_page_button a{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+/*-------------LOGIN,REGISTER FORM----------------------*/
+#cardBodyForm, #cardBodyReg{
+    border:none;
+}
+
+#cardBodyForm #loginForm input:not([type='checkbox']), #cardBodyReg #registerForm input:not([type='checkbox']){
+    border:none;
+    border-bottom:3px solid black;
+}
+
+#cardBodyForm #loginForm input:not([type='checkbox']), #cardBodyReg #registerForm input:not([type='checkbox']){
+    outline:none !important;
+    -webkit-appearance:none !important;
+    box-shadow:none !important;
+}
+
+#passwordDiv, #passwordDivReg{
+    position: relative;
+}
+
+.glyphicon{
+    position: absolute;
+    right:5px;
+    bottom:25%;
+    transform: translateY(-25%);
+}
+
+.gym-title{
+    background-color: #00c2db;
+    color: white;
+    width: 100%;
+}
+
+.gym-title h1{
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.login {
+    height: 55vh;
+}
+
+
+/**
+    Footer Css
+ */
+
+footer{
+    background-color: rgba(26, 25, 24, 0.88);
+    color: #ffffff;
+}
+
+footer p a {
+    color: #ffffff;
+}
+.footer_logo{
+    height: 100px;
+    width: auto;
+}
+
+/*-------------INDEX ----------------------*/
+.fimage{
+
+    background-repeat: no-repeat;
+    width:100%;
+    background-image:url(../images/fimage.jpg);
+    background-size:cover;
+    height:100vh;
+}
+
+#bigtitle{
+    color:#fbba0b;/*orange*/
+    font-weight: 500;
+    font-size:60px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top:330px;
+}
+
+#boxgrey{
+    background-color:#1d1d1d;/*grey*/
+    width:35vw;
+    height:100vh;
+    opacity: 0.8;
+}
+
+#title{
+    color: #169b99;/*BLUE*/
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 35px;
+    margin-top: 250px;
+}
+
+select{
+  
+    background-color: #b5b5b6;
+    opacity: 0.8;
+    border-radius: 0;
+    font-weight: 500;
+    color: #1d1d1d;
+    width: 100%;
+    padding: 11px 15px;
+    line-height: normal;
+
+
+}
+
+#slc1{margin-top: 50px;}
+#slc2{margin-top: 30px;}
+
+
+.bsearch{
+    background-color: #fbba0b;
+    border: none;
+    width: 70%;
+    height: 45px;
+    border-radius: 22px;
+    margin-top: 50px; 
+    margin-right: 180px;
+    
+}
+
+.bsearch a{
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    color: #1d1d1d;
+    font-size: 20px;
+}
+
+.bsearch:hover{background-color: #169b99;
+}
+
+.bsearch a:hover{
+    text-align: center;
+    text-decoration: none;
+
+
+
+
+
+    display: inline-block;
+    color: #fbba0b;
+    font-size: 22px;
+    font-weight: 800px;
+
+}
+
+.btnmember{background-color: #169b99;
+    border: none;
+    width: 100%;
+    height: 50px;
+    border-radius: 22px;
+    margin-top: 10px; 
+   }
+
+
+.btnmember a{
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        color: white;
+        font-size: 20px;
+    }    
+
+.bestgym{
+    height: 700px;
+}
+
+.rowtitle{
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:#169b99;
+}
+
+#gymtitle{
+    margin-top: 100px;
+}
+
+#gymname{
+    font-size:35px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 40px;
+}
+
+.btnprobolh{
+    background-color: #169b99;
+    border: none;
+    width:40%;
+    height: 50px;
+    border-radius: 22px;
+    position: absolute;
+    z-index: -1;
+    
+  
+}
+
+
+.box1{
+    height: 60vh;
+    width: 100%;
+    background-size: cover;
+    display: table;
+    background-attachment: fixed;}
+
+.box2{
+   
+    height: 46.4vh;
+    width:110%;
+    background-image:url(../images/indexblogphoto.jpeg);
+    background-size: cover;
+    display: table;
+    background-attachment: fixed;
+}
+
+.box3 {
+    height:400px;
+    width: 100%;
+    background-size: cover;
+    display: table;
+    background-attachment: fixed; 
+}
+
+.blogarticle{
+    height: 46.4vh;
+    width: 100%;
+    background-color: #f6f6f4;
+}
+
+#blogtitle{
+    margin-left: 20px;
+    padding-top:20px;
+   
+}
+
+#articletitle{
+   padding-top: 10px;
+    font-size:24px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-left: 20px;
+}
+#article{
+    font-size: 15px;
+    margin-left:20px;
+    width: 80%;
+}
+
+.btnblog{
+    background-color: #169b99;
+    border: none;
+    width:100%;
+    height: 40px;
+    border-radius: 22px;
+    margin-left:20px;
+ 
+
+}
+.btnblog:hover{
+    background-color:#f6f6f4;
+    border: 2px solid#169b99;
+}
+
+
+.btnblog a{ 
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+}
+
+.btnblog a:hover{ 
+    text-decoration: none;
+    display: inline-block;
+    color: #169b99;
+}
+
+
+
+#sponsors{margin-top: 120px;}
+
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+   
+  }
+
+  .flex-container > div {
+   
+    filter: grayscale(100%);
+    margin-left:55px;
+    text-align: center;
+    margin-top: 88px;
+ 
+  }
+
+  .flex-container > div:hover{
+         
+    filter: grayscale(100%)
+  }
