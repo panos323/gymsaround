@@ -128,7 +128,7 @@
                             <span class="invalid-feedback"><?php echo isset($data['confirm_password_error']) ? $data['confirm_password_error'] : ''; ?></span>
                         </div>
                         <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
-                            <button type="submit"  value="Register" class="btn btn-success">Update Password</button>
+                            <button type="submit" class="btn btn-success">Update Password</button>
                         </div>
                         <span class="invalid-feedback"><?php echo isset($data['update_error']) ? $data['update_error'] : ''; ?></span>
                     </form>
@@ -136,10 +136,53 @@
 
             <!-- This is the display for gym details upload -->
             <?php elseif ($data['tab'] === 'my_gym') : ?>
-            <div class="col-md-12 profile_boxes">
-                <h4>Το γυμναστήριό μου</h4>
-            </div>
-
+                <?php if(isset($data['no_gym'])) : ?>
+                <div class="col-md-8 offset-2 mt-4">
+                    <?php flash('gym_update'); ?>
+                    <form id="registerGymForm" action="<?php echo URLROOT; ?>/owners/register_gym" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="name">Όνομα</label>
+                                <input
+                                        name="name"
+                                        type="text"
+                                        id="name"
+                                        class="form-control"
+                                        placeholder="name@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Τοποθεσία</label>
+                                <input
+                                        name="location"
+                                        type="text"
+                                        id="location"
+                                        class="form-control"
+                                        placeholder="name@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="type">Τύπος Γυμναστηρίου</label>
+                                <input
+                                        name="type"
+                                        type="text"
+                                        id="type"
+                                        class="form-control"
+                                        placeholder="name@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Περιγραφή</label>
+                                <textarea id="description" class="form-control" rows="3" name="description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="logo">Το logo σας</label>
+                                <input name="logo" type="file" class="form-control-file" id="logo">
+                            </div>
+                            <button type="submit" class="btn btn-success">Προσθέστε το γυμναστήριό σας</button>
+                        </form>
+                </div>
+                <?php else : ?>
+                <div class="col-md-12 profile_boxes">
+                    <h4>Το γυμναστήριό μου</h4>
+                </div>
+                <?php endif; ?>
             <!-- This is the display for trainers details upload   -->
             <?php elseif ($data['tab'] === 'my_trainers') : ?>
             <div class="col-md-12 profile_boxes">

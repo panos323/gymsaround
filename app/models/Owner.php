@@ -219,4 +219,30 @@ class Owner{
         }
         return [];
     }
+
+    /**
+     * Register Gym on Database
+     * @param array $data
+     * @param $db_dir
+     * @return bool
+     */
+    public function register_gym(array $data){
+        //Query
+        $this->db->query('INSERT INTO gyms (gym_name, gym_description, gym_location, gym_type)
+                              VALUES (:name, :description, :location, :type)');
+
+        // Bind values
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':description', $data['description']);
+        $this->db->bind(':location', $data['location']);
+        $this->db->bind(':type', $data['type']);
+
+        // Execute
+        try {
+            $this->db->execute();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }
