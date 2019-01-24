@@ -214,12 +214,67 @@ class Owners extends Controller {
             redirect('pages/index');
         }
         if($tab === 'account' || $tab === 'my_gym' || $tab === 'my_trainers'){
+            $gym = $this->ownerModel->getGymByUserId($_SESSION['id']);
+            //$trainers = $this->ownerModel->getTrainersByGymId($gym->gym_id);
             $data = [
+                'no_gym' => empty($gym) ? 'Δεν έχετε δημιουργήσει το γυμναστήριο σας.' : '',
                 'tab' => $tab
             ];
             $this->view('owners/profile', $data);
         }else {
             redirect('owners/profile/account');
+        }
+    }
+
+    public function register_gym(){
+        // Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Process form
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'name' => trim($_POST['name']),
+                'description' => trim($_POST['description']),
+                'location' => trim($_POST['location']),
+                'type' => trim($_POST['type']),
+                'name_error' => '',
+                'description_error' => '',
+                'location_error' => '',
+                'type_error' => '',
+            ];
+
+            // Validate gym name
+            if(empty($data['name'])){
+                $data['name_error'] = 'Please enter a name for the gym';
+            }
+
+            // Validate gym name
+            if(empty($data['location'])){
+                $data['location_error'] = 'Please enter location for the gym';
+            }
+
+            // Validate gym name
+            if(empty($data['type'])){
+                $data['type_error'] = 'Please enter a type for the gym';
+            }
+
+            if( empty($data['type_error']) &&
+                empty($data['location_error']) &&
+                empty($data['name_error'])){
+                $data['tab'] = 'my_gym';
+                if($this->ownerModel->register_gym($data)){
+                    flash('gym_update', 'You have updated your Gym');
+                    $this->view('owners/profile',$data);
+                }else{
+                    flash('gym_update', 'An error has occurred. Please try again.', 'alert');
+                    redirect('owners/profile/my_gym');
+                }
+            }
+        }else {
+            redirect('pages/index');
         }
     }
 
@@ -419,6 +474,57 @@ class Owners extends Controller {
     }
 
     public function updateUsername(){
+
+        // Check for POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'username' => trim($_POST['username']),
+                'new_username' => trim($_POST['new_username']),
+                'username_error' => '',
+                'new_username_error' => '',
+                'update_error' => '',
+                'tab' => 'account'
+            ];
+
+            // Check current username field
+            if(empty($data['username'])){
+                $data['username_error'] = 'Please provide your current username';
+            }elseif ($data['username'] !== $_SESSION['username']){
+                $data['username_error'] = 'Please enter correct your current username';
+            }
+
+            // Check new username field
+            if(empty($data['new_username'])){
+                $data['new_username_error'] = 'Please provide your new username';
+            }elseif($data['new_username'] === $data['username']){
+                $data['new_username_error'] = 'Username is the same as before';
+            }elseif($this->ownerModel->findOwnerByUsername($data['new_username'])){
+                $data['new_username_error'] = 'Username already exists.';
+            }
+
+            if(empty($data['username_error']) && empty($data['new_username_error'])){
+                if($this->ownerModel->updateUsername($data['new_username'], $_SESSION['id'])){
+                    flash('update_username_success', 'Your username has been updated!');
+                    $_SESSION['username'] = $data['new_username'];
+                    redirect('owners/profile/account');
+                }else{
+                    $data['update_error'] = 'Something went wrong. Please try again';
+                    $this->view('owners/profile',$data);
+                }
+            }else{
+                $this->view('owners/profile', $data);
+            }
+
+        } else {
+            redirect('owners/profile/account');
+        }
+    }
+
+    public function updateGym(){
 
         // Check for POST
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
