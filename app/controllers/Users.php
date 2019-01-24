@@ -75,6 +75,8 @@ class Users extends Controller {
                 }
             }
 
+           
+
             // Check if errors are empty
             if( empty($data['email_error']) &&
                 empty($data['fname_error']) &&
@@ -192,6 +194,7 @@ class Users extends Controller {
         $_SESSION['first_name'] = $user->user_first_name;
         $_SESSION['last_name'] = $user->user_last_name;
         $_SESSION['email'] = $user->user_email;
+        $_SESSION['gym_id'] = isset($user->gym_id) ? $user->gym_id : '';
         $_SESSION['type'] = 'users';
         redirect('users/profile/account');
     }
@@ -208,8 +211,19 @@ class Users extends Controller {
         }
         if($tab === 'account' || $tab === 'my_gym'){
             $data = [
-                'tab' => $tab
+                'tab' => $tab,
+                'name'=> ''
             ];
+            if (!isset($_SESSION['gym_id'])) {
+                $data['msg'] = 'Παρακαλώ διαλέχτε γυμναστήριο';
+            } else {
+                $gym = $this->userModel->findUserGym($_SESSION['gym_id']);
+                if($gym) {
+                    $data['name'] = $gym->gym_name;
+                }else {
+                    $data['gym_error'] = 'You are FUCKED. You do not have active GYM';
+                }
+            }
             $this->view('users/profile', $data);
         }else {
             redirect('users/profile/account');
