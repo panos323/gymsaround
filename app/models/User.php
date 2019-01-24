@@ -119,13 +119,13 @@ class User{
      * @param int $gym_id
      * @return bool
      */
-    public function findUserGym(int $gym_id) {
-        $this->db->query('SELECT * FROM users WHERE gym_id = :gym_id');
+    public function findUserGym(string $gym_id) {
+        $this->db->query('SELECT * FROM gyms WHERE gym_id = :gym_id');
         $this->db->bind(':gym_id', $gym_id);
         $row = $this->db->single();
         // Check row
         if($this->db->rowCount() > 0){
-            return true;
+            return $row;
         }else {
             return false;
         }

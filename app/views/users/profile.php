@@ -136,22 +136,14 @@
                     </form>
                 </div>
 
-            <!-- This is the display for gym details upload -->
-            <?php elseif ($data['tab'] === 'my_gym') : ?>
-            <div class="col-md-12 profile_boxes">
-                <h4>Το γυμναστήριό μου</h4>
-                <form action="<?php echo URLROOT; ?>/users/UserGym" method="post">
-                <input type="text" name="gym_id"
-                value="<?php echo isset($data['gym_id']) ?? ''; ?>"
-                >
-                </form>
-            </div>
-
-            <!-- This is the display for trainers details upload   -->
-            <?php elseif ($data['tab'] === 'my_trainers') : ?>
-            <div class="col-md-12 profile_boxes">
-                <h4>Οι γυμναστές μου</h4>
-            </div>
+                <!-- This is the display for gym details upload -->
+                <div class="col-md-5 profile_boxes mt-4">
+                    <h4>Το γυμναστήριό μου</h4>
+                        <div class="form-group">
+                            <?php echo $data['name'];?>
+                        </div>
+                </div>
+                <!-- This is the display for gym details upload -->
 
             <!-- It should should never reach this display but just in case -->
             <?php else: ?>

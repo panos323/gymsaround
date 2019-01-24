@@ -64,7 +64,7 @@
                                 value="<?php echo $data['confirm_password']; ?>">
                             <span class="invalid-feedback"><?php echo $data['confirm_pass_error']; ?></span>
                         </div>
-                        <?php if(isset($data['register_type']) && $data['register_type'] === 'owner') : ?>
+                        <?php if(isset($data['register_type']) && $data['register_type'] === 'user') : ?>
                             <div class="form-group col-sm-12">
                                 <input type="text"
                                        name="phone"
