@@ -12,6 +12,9 @@
     <div class="col-md-10">
         <div class="row main_profile">
 
+            <?php if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) : ?>
+                <h1>Welcome Admin</h1>
+            <?php endif; ?>
             <!-- This is the display for Users info -->
             <?php if($data['tab'] === 'account')  : ?>
                 <div class="col-md-11 profile_boxes">
@@ -40,7 +43,7 @@
                                    name="address"
                                    class="form-control form-control-lg"
                                    placeholder="<?php echo isset($_SESSION['address']) ? '' : 'Enter your Address number'; ?>"
-                                   value="<?php echo isset($_SESSION['phone']) ? $_SESSION['address'] : ''; ?>">
+                                   value="<?php echo isset($_SESSION['address']) ? $_SESSION['address'] : ''; ?>">
                             <span class="invalid-feedback"><?php echo isset($data['address_error']) ? $data['address_error'] : ''; ?></span>
                         </div>
                         <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
@@ -136,14 +139,27 @@
                     </form>
                 </div>
 
-                <!-- This is the display for gym details upload -->
-                <div class="col-md-5 profile_boxes mt-4">
-                    <h4>Το γυμναστήριό μου</h4>
-                        <div class="form-group">
-                            <?php echo $data['name'];?>
-                        </div>
-                </div>
-                <!-- This is the display for gym details upload -->
+                <?php if(!$_SESSION['isAdmin']) : ?>
+                    <!-- This is the display for gym details upload -->
+                    <div class="col-md-5 offset-1 profile_boxes mt-4">
+                        <h4>Το γυμναστήριό μου</h4>
+                        <?php if(!empty($data['msg'])) : ?>
+                            <div class="no-gym mt-3">
+                                <?php echo $data['msg'];?>
+                                <a href="<?php echo URLROOT; ?>/gyms/search">Βρείτε το γυμναστήριο που σας ταιριάζει</a>
+                            </div>
+                        <?php else : ?>
+                            <div>
+                                <?php echo $data['name'];?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                <?php else : ?>
+                    <!-- TODO: Check to remove if not needed -->
+                    <div class="col-md-5 offset-1 profile_boxes mt-4">
+                        <h4>Αν χρειαζεται καποιο notification για τον admin</h4>
+                    </div>
+                <?php endif; ?>
 
             <!-- It should should never reach this display but just in case -->
             <?php else: ?>
