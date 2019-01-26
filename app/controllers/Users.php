@@ -75,8 +75,6 @@ class Users extends Controller {
                 }
             }
 
-           
-
             // Check if errors are empty
             if( empty($data['email_error']) &&
                 empty($data['fname_error']) &&
@@ -195,6 +193,7 @@ class Users extends Controller {
         $_SESSION['last_name'] = $user->user_last_name;
         $_SESSION['email'] = $user->user_email;
         $_SESSION['gym_id'] = isset($user->gym_id) ? $user->gym_id : '';
+        $_SESSION['isAdmin'] = $user->user_is_admin;
         $_SESSION['type'] = 'users';
         redirect('users/profile/account');
     }
@@ -214,7 +213,7 @@ class Users extends Controller {
                 'tab' => $tab,
                 'name'=> ''
             ];
-            if (!isset($_SESSION['gym_id'])) {
+            if (empty($_SESSION['gym_id'])) {
                 $data['msg'] = 'Παρακαλώ διαλέχτε γυμναστήριο';
             } else {
                 $gym = $this->userModel->findUserGym($_SESSION['gym_id']);
@@ -239,6 +238,8 @@ class Users extends Controller {
         unset($_SESSION['last_name']);
         unset($_SESSION['email']);
         unset($_SESSION['type']);
+        unset($_SESSION['gym_id']);
+        unset($_SESSION['isAdmin']);
         session_destroy();
         redirect('users/login');
     }
