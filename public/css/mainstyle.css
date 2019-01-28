@@ -523,3 +523,28 @@ select{
       height: 600px;
       background-color: #e3e3e3; /*grey light*/
   }
+  .gymelement img{
+      margin-bottom: 10px;
+  }
+  .gymelement p{
+   font-size:20px;
+  }
+  #gymsnames{
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 30px;
+      padding-top: 110px;
+  }
+  .maintext{
+      height: 550px;;
+  }
+  .basictitle
+  {padding-top:60px;
+    padding-bottom:30px;
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:#169b99;
+}
+#images{
+    background-color: #e3e3e3;
+    height: 950px;;
+}
