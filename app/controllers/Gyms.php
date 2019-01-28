@@ -8,6 +8,12 @@ class Gyms extends Controller
         $this->gymModel = $this->model('Gym');
     }
 
+    public function index(){
+        $data = [];
+
+        $this->view('gyms/index', $data);
+    }
+
     public function search(){
         $data = [];
 

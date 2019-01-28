@@ -3,32 +3,53 @@
         <!-- Grid row -->
      <div class="footerrow"></div>   
         <div class="row">
-            <div class="col-md-2 mx-auto col-sm-6 mb-4">
+            <div class="col-md-2 offset-md-1 col-sm-5 offset-sm-3 mb-4">
                 <div class="pl-5">
                     <a href="<?php echo URLROOT; ?>"><img class="footer_logo" src="<?php echo URLROOT ?>/images/logo.png" alt="logo_footer"></a>
+                    <p id="gymaound">Gymaround</p>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6 mb-4">
+            <div class="col-md-2 col-sm-6 mb-4" id="footermenu">
                 <h3 class="mb-3">Μενού</h3>
                 <p><a href="">Αρχική</a></p>
                 <p><a href="">Γυμναστήρια</a></p>
                 <p><a href="">Εταιρεία</a></p>
                 <p><a href="">Επικοινωνία</a></p>
             </div>
-            <div class="col-md-3 col-sm-6 mb-4">
+            <div class="col-md-2 col-sm-6 mb-4" id="footerextra">
                 <h3 class="mb-3">Εξτρας</h3>
                 <p><a href="">Οροι Χρήσης</a></p>
                 <p><a href="">Πολιτική Απορρήτου</a></p>
                 <p><a href="">Πολιτική Cookies</a></p>
                 <p><a href="">FAQ</a></p>
             </div>
-            <div class="col-md-3 col-sm-6 mb-4">
-                <h3 class="mb-4">Συνεργάτες</h3>
-                <div class="btnorange" id="btnfooter"><a href="<?php echo URLROOT; ?>/owners/register" >
-                    Γίνε συνεργάτης
-                </a>
-                </div>
+            <div class="col-md-2 col-sm-12 mb-4">
+                <h3 class="mb-4" id="footertitle">Συνεργάτες</h3>
+                <div class="row">
+                    <div class="col-md-12 offset-md-0 col-sm-6 offset-sm-3">
+                  <div class="btnorange" id="btnfooter"><a href="<?php echo URLROOT; ?>/owners/register"> Γίνε συνεργάτης   >
+                   </a>
+                   </div>
+                   </div>
+
+                  </div>
             </div>
+            <div class="col-md-2 col-sm-12 mb-4">
+                <h3 class="mb-4" id="footertitle">Βρείτε μας</h3>
+                <div class="row">
+                    <div class="col-md-2 offset-md-0 col-sm-1 offset-sm-3" id="sicon">
+                        <a href="<?php echo URLROOT; ?>"><img class="fblogo" width="18" height="35" src="<?php echo URLROOT ?>/images/fbicon.png" alt="logo_footer"></a>
+                    </div>
+                    <div class="col-md-3 col-sm-1 offset-sm-1"  id="sicon">
+                        <a href="<?php echo URLROOT; ?>"><img class="fblogo"  src="<?php echo URLROOT ?>/images/instaicon.png" alt="logo_footer"></a>
+                    </div>  
+                    <div class="col-md-1 col-sm-1 offset-sm-1" id="sicon">
+                        <a href="<?php echo URLROOT; ?>"><img class="fblogo" src="<?php echo URLROOT ?>/images/twiticon.png" alt="logo_footer"></a>
+                    </div>
+                  </div> 
+            </div>
+
+
        </div>
         </div>
     </div>

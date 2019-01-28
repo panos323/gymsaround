@@ -6,28 +6,28 @@
             <div class="col-12 fimage">
                 
                     <div class="row">
-                        <div class="col-lg-5 offset-lg-1 col-md-7 offset-md-1">
+                        <div class="col-lg-5 offset-lg-1 col-md-5 offset-md-0">
                             <p id="bigtitle">ΒΡΕΣ ΤΟ ΓΥΜΝΑΣΤΗΡΙΟΥ ΠΟΥ ΣΟΥ ΤΑΙΡΙΑΖΕΙ</p>
                                 <div class="row">
-                                    <div class="col-4 offset-2">
-                                    <button class="btnmember"><a href="#">Γίνε Μέλος</a></button>
+                                    <div class="col-lg-5 offset-lg-1 col-md-6 offset-md-0">
+                                    <button class="btnblue" id="btnmember"><a href="#">Γίνε Μέλος</a></button>
                                     </div>
                                 </div> 
                                     
                             </div>
                     
 
-                    <div class="col-4 offset-2">
+                    <div class="col-lg-4 offset-lg-2 col-md-6 offset-md-1">
                         <div id="boxgrey">
 
                             <div class="row">
-                                <div class="col-4 offset-4">
+                                <div class="col-lg-4 offset-lg-4 col-md-5 offset-md-3 col-sm-3 offset-sm-5">
                                     <p id="title">Επέλεξε</p>
                                 </div>
                             </div>
                     
                             <div class="row">
-                                <div class="col-7 offset-2" id="slc">
+                                <div class="col-lg-7 offset-lg-2 col-md-9 offset-md-1 col-sm-8 offset-sm-2" id="slc">
                                     <select id="slc1">
                                         <option value="hidden">Περιοχή</option>
                                         <option value="athens">Αθήνα</option>
@@ -45,8 +45,8 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-7 offset-3">
-                                    <button class="bsearch"><a href="#">Αναζήτηση</a></button>
+                                <div class="col-md-7 offset-md-3 col-sm-8 offset-sm-2">
+                                    <button class="btnorange" id="btnsearch"><a href="#">Αναζήτηση</a></button>
                                 </div>
                             </div>
             
@@ -102,27 +102,25 @@
 
  <!--- START ROW 3 - BLOG---->
 
-        <div class="row">
+        <div class="row blogrow">
             <div class="col-7">
-                <div class="box2">
-                </div>
+                <div class="box2"></div>
             </div>
             <div class="col-5">
                 <div class="blogarticle">
-                <p class="rowtitle" id="blogtitle">BLOG</p>
-                <p  id="articletitle">5 Συμβουλές Διατροφής!</p>
-                <p  id="article">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an 
-                    unknown printer took a galley of type and scrambled 
-                    it to make a type specimen book.  </p>
-                    <div class="row">
-                        <div class="col-4 offset-3">
-                        <button class="btnblog"><a href="#">Αναζήτηση</a></button>
+                    <p class="rowtitle" id="blogtitle">BLOG</p>
+                    <p  id="articletitle">5 Συμβουλές Διατροφής!</p>
+                    <p  id="article">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an 
+                        unknown printer took a galley of type and scrambled 
+                        it to make a type specimen book.  </p>
+                        <div class="row">
+                            <div class="col-lg-4 offset-lg-6">
+                            <button class="btnblue" id="btnblog"><a href="#">Περισσότερα</a></button>
+                            </div>
                         </div>
-                    </div>
-                    
+                </div>
             </div>
-</div>
         </div>
 
  <!--- START ROW 4- BLOG---->

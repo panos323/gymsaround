@@ -113,6 +113,13 @@ footer p a {
 }
 .footerrow{margin-top: 50px;}
 
+#gymaound{
+    display: none;
+}
+#sicon img:hover{
+    opacity: 0.6;
+}
+
 /*-------------INDEX ----------------------*/
 .fimage{
 
@@ -188,9 +195,6 @@ select{
 }
 
 .btnorange a:hover{
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
     color: #fbba0b;
     font-size: 21px;
     font-weight: 600px;
@@ -201,11 +205,12 @@ select{
 
 #btnfooter{
     background-color: #1d1d1d;
-    width: 55%;
+    width: 90%;
     border: 2px solid #fbba0b;
 }
 #btnfooter a{
-margin-left: 6px;
+   
+  margin-left: 14px;
   color: #fbba0b;
 }
 
@@ -325,7 +330,7 @@ margin-left: 6px;
 
 #blogtitle{
     margin-left: 20px;
-    padding-top:20px;
+    padding-top:50px;
    
 }
 
@@ -370,4 +375,151 @@ margin-left: 6px;
   .flex-container > div:hover{
          
     filter: grayscale(0%)
+  }
+
+  @media (min-width: 1790px) {
+    
+    #blogtitle{
+        margin-left: 20px;
+        padding-top:50px;
+       
+    }  
+    #btnblog{width:100%;}
+    #article{
+        padding-top:30px;
+        padding-bottom:40px;
+    }
+    #btnmember{width:80%;}
+
+    #bigtitle{margin-top: 370px;}
+
+    #slc1, #slc2 {
+      
+        height: 60px;
+    }
+    #slc2{margin-bottom: 20px;}
+
+    #articletitle, #article{margin-left: 50px}
+      }
+
+
+
+ 
+
+
+  @media (min-width: 992px) and (max-width: 1199.98px){ 
+    #blogtitle{   
+        padding-top:5px;
+    } 
+
+    .btnblue{
+        width:140%;
+    }
+    #articletitle {
+        margin-top: 0;
+    }
+  
+    #boxgrey{
+        opacity:0.9;
+    }
+    #slc1{
+        margin-top: 30px;
+    }
+    #bigtitle{
+        margin-top: 250px;
+    }
+
+  }
+
+
+
+ @media (min-width: 768px) and (max-width: 991.98px){ 
+   #footermenu{
+    display:none;
+   }
+   #footerextra{
+    display:none;
+   }
+   #boxgrey{width:110%;
+   }
+  }
+
+
+  @media (min-width: 575.98px) and (max-width: 767.98px) {
+    .fimage{height: 500px;}
+    .blogrow{display:none;}
+    #boxgrey{width:110%;
+    height: 500px;}
+
+    #btnsearch{width: 100%;}
+
+    #btnmember, #bigtitle{display:none;}
+
+    #footermenu{
+        display:none;
+       }
+       #title{
+        color: #169b99;/*BLUE*/
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 35px;
+        margin-top: 100px;
+    }
+     
+       #footerextra{
+        display:none;
+       }
+       #btnfooter{
+           width:100%;
+       }
+       footer{
+        height: 430px;
+    }
+    .footer_logo{
+        height: 100px;
+        width: auto;
+    }
+    #footertitle{
+        display: none;
+    }
+    #gymaound{display:block;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+    color: #b5b5b6;}
+  }
+
+
+ 
+
+  @media (max-width: 575.98px) { 
+    #footermenu{
+        display:none;
+       }
+       #footerextra{
+        display:none;
+       }
+       #btnfooter{
+           width:70%;
+       }
+       footer{
+        height: 430px;
+    }
+    .footer_logo{
+        height: 100px;
+        width: auto;
+    }
+    #footertitle{
+        display: none;
+    }
+    #gymaound{display:block;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+    color: #b5b5b6;}
+   }
+  /****************************************************************************************************
+  ******************************************************************************************************
+  *****************************----GYM PAGE----*********************************************************/
+
+  .gymelement{
+      height: 600px;
+      background-color: #e3e3e3; /*grey light*/
   }
