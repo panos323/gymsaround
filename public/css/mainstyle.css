@@ -184,7 +184,6 @@ select{
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    color:#1d1d1d;
     font-size: 20px;
     
 
@@ -192,6 +191,7 @@ select{
 
 .btnorange:hover{background-color: #1d1d1d;
     border: 2px solid #fbba0b;
+    color:#1d1d1d;
 }
 
 .btnorange a:hover{
@@ -518,7 +518,7 @@ select{
   /****************************************************************************************************
   ******************************************************************************************************
   *****************************----GYM PAGE----*********************************************************/
-
+ 
   .gymelement{
       height: 600px;
       background-color: #e3e3e3; /*grey light*/
@@ -529,10 +529,26 @@ select{
   .gymelement p{
    font-size:20px;
   }
+  
+  #gymaddress a{
+      color: black;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  #gymaddress a:hover{
+    color: #169b99;
+    text-decoration: none;
+    display: inline-block;
+}
+
+  #gymlogo{margin-top: 110px;}
+
   #gymsnames{
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       font-size: 30px;
       padding-top: 110px;
+
   }
   .maintext{
       height: 550px;;
@@ -546,5 +562,78 @@ select{
 }
 #images{
     background-color: #e3e3e3;
-    height: 950px;;
+    height: 800px;;
 }
+#imagerow2{
+    margin-top: 5px;
+}
+
+
+/****TRAINERS****/
+.trainersrow{
+    height: 650px;
+}
+.trainerdescr{
+    width: 365px;
+    height: 50px;
+    background-color: #fbba0b;}
+
+.trainerdescr p{
+    text-align: center;
+    padding-top:11px;
+    font-size: 20px;
+}
+#trainerphoto{
+    margin-right:  20px;
+    margin-top: 50px;
+}
+#arrow{
+    margin-top: 160px;
+}
+
+/****SUNDROMES******/
+
+.sundromesrow{
+    height: 700px;
+    background-color: #1d1d1d;}
+
+.orangebox{
+    width: 265px;
+    height: 420px;
+    background-color: none;
+    border: 5px solid #ffc731;
+}
+
+.orangebox p{
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+
+#month{
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+}
+
+#price{
+    text-shadow: 1px 1px 1px #b5b5b6;
+    font-size: 62px;
+    color: #fbba0b;
+    margin-top: 40px;
+}
+
+.flex-container-sundromes {
+        display: flex;
+        flex-wrap: nowrap;
+       
+      }
+    
+.flex-container-sundromes > div {
+       
+        text-align: center;
+        margin-top: 30px;
+        margin-left: 10px;
+     
+      }
+    
