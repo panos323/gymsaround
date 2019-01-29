@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="col-md-6 ">
-            <img src= " <?php echo URLROOT ?> /images/gym/bigimggym.jpg" alt="stars">
+            <img src= " <?php echo URLROOT ?> /images/gym/bigimggym.jpg" width="100%" height="600" alt="biggym">
         </div>
     </div>
 <!-----------------------------------------------------------------------------------------------------------------
