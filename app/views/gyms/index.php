@@ -78,28 +78,33 @@
     <div class="trainersrow">
         <div class="container">
             <p class="basictitle" id="gymstitle">ΠΡΟΣΩΠΙΚΟ</p>
-        </div>   
+     
             <div class="row">
-                <div class="col-md-1 offset-md-2 " id="arrow">
+            <div class="col-md-12">
+            <div class="flex-container-sundromes">
+                <div  id="arrow">
                  <img  src= " <?php echo URLROOT ?> /images/back.png" width="40" alt="arrow">
                 </div>
-                <div class="col-md-2" id="trainerphoto">
+                <div id="trainerphoto">
                     <img src= " <?php echo URLROOT ?> /images/gym/trainer1.jpg" width="365" alt="gymimg">
                     <div class="trainerdescr"><p>Γιάννης Κ. - Crossfit trainer</p></div> 
                 </div>
-                <div class="col-md-2 " id="trainerphoto">
+                <div  id="trainerphoto">
                     <img  src= " <?php echo URLROOT ?> /images/gym/trainer2.jpg" width="365" height="244" alt="gymimg">
                     <div class="trainerdescr"><p>Μαρία Κ. - Crossfit trainer</p></div> 
                 </div>
-                <div class="col-md-2 "  id="trainerphoto">
+                <div  id="trainerphoto">
                     <img src= " <?php echo URLROOT ?> /images/gym/trainer3.jpg" width="365" alt="gymimg">
                     <div class="trainerdescr"><p>Κώστας Κ. - Crossfit trainer</p></div> 
                 </div>
-                <div class="col-md-1  offset-md-1" id="arrow">
+                <div  id="arrow">
                  <img src= " <?php echo URLROOT ?> /images/front.png" width="40" alt="arrow">
                 </div>
+    </div>
+                </div>
+          
             </div> 
-       
+            </div>   
     </div>
 
  <!-----------------------------------------------------------------------------------------------------------------

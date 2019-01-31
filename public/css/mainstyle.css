@@ -636,4 +636,96 @@ select{
         margin-left: 10px;
      
       }
+
+  /****************************************************************************************************
+  ******************************************************************************************************
+  *****************************----SEARCH PAGE----*********************************************************/
+
+
+
+.btnsearchpage{ 
+        background-color: white; 
+        border: none;
+        font-size: 18px;
+        height: 45px;
+        border-radius: 22px; 
+        border: 2px solid #169b99;
+        width: 85%;
+        color:#169b99;
+      }
+
+.btnsearchpage:hover{
     
+         background-color: #169b99;
+         color: white;
+      }
+
+#btngymssearch{
+    background-color: white; 
+    border: none;
+    font-size: 18px;
+    height: 45px;
+    border-radius: 22px; 
+    border: 2px solid #169b99;
+        border: 2px solid #b5b5b6;
+        width: 90%;
+        color:#8e8a8a;
+        margin-bottom: 50px;
+        
+     }
+
+#btngymsfilter{
+    width:115%;
+
+}
+.searchpage{
+    margin-top: 30px;
+
+}
+.gymsresult{
+    height: 250px;
+    width:95%;
+    background-color: #e3e3e3;
+    margin-bottom: 5px;
+}
+
+#gymstitles a{
+    font-size: 22px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-decoration: none;
+    display: inline-block;
+    color: black;
+}
+
+.pinkbox{
+    height: 500px;
+    background-color: #169b99;
+    width: 100%;
+}
+
+  /****************************************************************************************************
+  ******************************************************************************************************
+  *****************************----ABOUT----*********************************************************/
+
+#imgabout{
+
+    background-repeat: no-repeat;
+    width:100%;
+    background-image:url(../images/aboutus/about.jpg);
+    background-size:cover;
+    height:50vh;
+}
+
+.team{
+    margin-top: 80px;
+    background-color:#e3e3e3;
+    height: 500px;
+}
+
+#teamimg img{
+    border-radius: 50%;
+}
+
+#teamimg p{
+    text-align: center;
+}
