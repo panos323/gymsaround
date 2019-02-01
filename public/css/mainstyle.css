@@ -641,6 +641,9 @@ select{
   ******************************************************************************************************
   *****************************----SEARCH PAGE----*********************************************************/
 
+.customBtnG{
+    border-radius:22px !important;
+}
 
 
 .btnsearchpage{ 
@@ -683,10 +686,14 @@ select{
 
 }
 .gymsresult{
-    height: 250px;
+    /* height: 250px; */
     width:95%;
     background-color: #e3e3e3;
     margin-bottom: 5px;
+}
+
+.gymsresult.card {
+    background-color: #e3e3e3 !important;
 }
 
 #gymstitles a{
