@@ -138,77 +138,6 @@ class Owners extends Controller {
         }
     }
 
-    public function login() {
-        // Check for POST
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-
-            // Sanitize POST data
-            $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
-
-            // Init data
-            $data = [
-                'login_credential' => trim($_POST['login_credential']),
-                'password' => trim($_POST['password']),
-                'login_credential_error' => '',
-                'pass_error' => '',
-            ];
-
-            // Validate email/username
-            if(empty($data['login_credential'])){
-                $data['login_credential_error'] = 'Please enter email or username';
-            }
-
-            // Validate password
-            if(empty($data['password'])){
-                $data['pass_error'] = 'Please enter password';
-            }
-
-            //wrong  email
-            if((!$this->ownerModel->findOwnerByUsername($data['login_credential'])) && (!$this->ownerModel->findOwnerByEmail($data['login_credential']))) {
-                $data['login_credential_error'] = 'Username/Email does not exist';
-            }
-
-            // Check if errors are empty
-            if (empty($data['login_credential_error']) &&
-                empty($data['pass_error'])) {
-                // Login User
-                $isLoggedIn = $this->ownerModel->login($data['login_credential'], $data['password']);
-                if (!$isLoggedIn){
-                    $data['pass_error'] = 'Password is wrong. Please try again.';
-                    $this->view('owners/login', $data);
-                }else{
-                    $this->createOwnerSession($isLoggedIn);
-                }
-            } else {
-                // Load view with errors
-                $this->view('owners/login', $data);
-            }
-
-        } else {
-            // Init data
-            $data = [
-                'login_credential' => '',
-                'password' => '',
-                'login_credential_error' => '',
-                'pass_error' => ''
-            ];
-
-            // Load view
-            $this->view('owners/login', $data);
-        }
-    }
-
-    public function createOwnerSession($owner){
-        $_SESSION['username'] = $owner->owner_username;
-        $_SESSION['id'] = $owner->owner_id;
-        $_SESSION['first_name'] = $owner->owner_first_name;
-        $_SESSION['last_name'] = $owner->owner_last_name;
-        $_SESSION['email'] = $owner->owner_email;
-        $_SESSION['phone'] = isset($owner->owner_phone) ? $owner->owner_phone : '';
-        $_SESSION['type'] = 'owners';
-        redirect('owners/profile/account');
-    }
-
     public function profile(string $tab = 'account') {
         if(!$this->isLoggedIn()){
             redirect('pages/index');
@@ -218,6 +147,7 @@ class Owners extends Controller {
             //$trainers = $this->ownerModel->getTrainersByGymId($gym->gym_id);
             $data = [
                 'no_gym' => empty($gym) ? 'Δεν έχετε δημιουργήσει το γυμναστήριο σας.' : '',
+                'my_gym_details' => empty($gym) ? '' : (array) $gym,
                 'tab' => $tab
             ];
             $this->view('owners/profile', $data);
@@ -240,6 +170,8 @@ class Owners extends Controller {
                 'description' => trim($_POST['description']),
                 'location' => trim($_POST['location']),
                 'type' => trim($_POST['type']),
+                'year_price' => trim($_POST['year_price']),
+                'month_price' => trim($_POST['month_price']),
                 'name_error' => '',
                 'description_error' => '',
                 'location_error' => '',
@@ -261,17 +193,95 @@ class Owners extends Controller {
                 $data['type_error'] = 'Please enter a type for the gym';
             }
 
+            $data['tab'] = 'my_gym';
             if( empty($data['type_error']) &&
                 empty($data['location_error']) &&
                 empty($data['name_error'])){
-                $data['tab'] = 'my_gym';
                 if($this->ownerModel->register_gym($data)){
                     flash('gym_update', 'You have updated your Gym');
-                    $this->view('owners/profile',$data);
+                    redirect('owners/profile/my_gym');
                 }else{
-                    flash('gym_update', 'An error has occurred. Please try again.', 'alert');
+                    $data['no_gym'] = 'Δεν έχετε δημιουργήσει το γυμναστήριο σας.';
+                    flash('gym_update', 'An error has occurred. Please try again.', 'alert alert-danger');
                     redirect('owners/profile/my_gym');
                 }
+            }else {
+                $data['no_gym'] = 'Δεν έχετε δημιουργήσει το γυμναστήριο σας.';
+                $this->view('owners/profile', $data);
+            }
+        }else {
+            redirect('pages/index');
+        }
+    }
+
+    public function update_gym(){
+        // Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Process form
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'name' => trim($_POST['name']),
+                'description' => trim($_POST['description']),
+                'location' => trim($_POST['location']),
+                'type' => trim($_POST['type']),
+                'year_price' => trim($_POST['year_price']),
+                'month_price' => trim($_POST['month_price']),
+                'name_error' => '',
+                'description_error' => '',
+                'location_error' => '',
+                'type_error' => '',
+            ];
+
+            // Validate gym name
+            if(empty($data['name'])){
+                $data['name_error'] = 'Please enter a name for the gym';
+            }
+
+            // Validate gym name
+            if(empty($data['location'])){
+                $data['location_error'] = 'Please enter location for the gym';
+            }
+
+            // Validate gym name
+            if(empty($data['type'])){
+                $data['type_error'] = 'Please enter a type for the gym';
+            }
+
+            $data['tab'] = 'my_gym';
+            if( empty($data['type_error']) &&
+                empty($data['location_error']) &&
+                empty($data['name_error'])){
+                if($this->ownerModel->update_gym($data)){
+                    flash('gym_update', 'You have updated your Gym');
+                    redirect('owners/profile/my_gym');
+                }else{
+                    $data['no_gym'] = '';
+                    flash('gym_update', 'An error has occurred. Please try again.', 'alert alert-danger');
+                    redirect('owners/profile/my_gym');
+                }
+            }else {
+                $data['no_gym'] = '';
+                $this->view('owners/profile', $data);
+            }
+        }else {
+            redirect('pages/index');
+        }
+    }
+
+    public function delete_gym(){
+        if(isset($_SESSION['id']) && $_SESSION['type'] === 'owners'){
+            if($this->ownerModel->delete_gym()){
+                $data['no_gym'] = 'Δεν έχετε δημιουργήσει το γυμναστήριο σας.';
+                flash('gym_update', 'Tο γυμναστήριο σβήστηκε με επιτυχία.', 'alert alert-danger');
+                redirect('owners/profile/my_gym');
+            }else{
+                $data['no_gym'] = 'Δεν έχετε δημιουργήσει το γυμναστήριο σας.';
+                flash('gym_update', 'Κάτι δεν πήγε καλά. Παρακαλώ προσπαθήστε ξανά.', 'alert alert-danger');
+                redirect('owners/profile/my_gym');
             }
         }else {
             redirect('pages/index');
@@ -286,7 +296,7 @@ class Owners extends Controller {
         unset($_SESSION['type']);
         unset($_SESSION['phone']);
         session_destroy();
-        redirect('owners/login');
+        redirect('users/login');
     }
 
     public function isLoggedIn(){
