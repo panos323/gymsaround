@@ -79,8 +79,8 @@ class User{
         $this->db->query('SELECT * FROM users WHERE user_username = :key or user_email = :key');
         $this->db->bind(':key', $key);
         $row = $this->db->single();
-        $pass = $row->user_password;
         if($this->db->rowCount() > 0){
+            $pass = $row->user_password;
             if(password_verify($password, $pass)){
                 return $row;
             }
