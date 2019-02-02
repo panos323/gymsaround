@@ -9,8 +9,8 @@
                         <div class="col-lg-5 offset-lg-1 col-md-5 offset-md-0">
                             <p id="bigtitle">ΒΡΕΣ ΤΟ ΓΥΜΝΑΣΤΗΡΙΟΥ ΠΟΥ ΣΟΥ ΤΑΙΡΙΑΖΕΙ</p>
                                 <div class="row">
-                                    <div class="col-lg-5 offset-lg-1 col-md-6 offset-md-0">
-                                    <button class="btnblue" id="btnmember"><a href="#">Γίνε Μέλος</a></button>
+                                    <div class="col-lg-5 col-md-6 offset-md-0">
+                                   <button class="btnblue" id="btnmember">Γίνε Μέλος</button></a>
                                     </div>
                                 </div> 
                                     
@@ -46,7 +46,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-7 offset-md-3 col-sm-8 offset-sm-2">
-                                    <button class="btnorange" id="btnsearch"><a href="#">Αναζήτηση</a></button>
+                                <a href="https://www.facebook.com/"> <button class="btnorange" id="btnsearch">Αναζήτηση</button></a>
                                 </div>
                             </div>
             
@@ -67,6 +67,7 @@
                                 <div class="row">
                                     <div class="col-4">
                                         <p class="rowtitle" id="gymtitle">ΔΗΜΟΦΙΛΗ</p> 
+                                        <div class="orangeline"></div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -77,20 +78,20 @@
                                         <p>Crosfii, Boxing, KingBoxing,Climbing</p>
                                     </div>
                                     <div class="col-6 offset-2" >
-                                            <img src="../images/bestgym1.jpg" alt="stars" width="550" height="330">
-                                            <button class="btnprobolh"><a href="#">Αναζήτηση</a></button>
+                                             <img src= " <?php echo URLROOT ?> /images/bestgym1.jpg" width="550" height="330">
+                                          <!--  <button class="btnprobolh"><a href="#">Αναζήτηση</a></button>-->
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-1 offset-8">
-                                        <img src="../images/back.png" alt="stars" width="25" height="30">
+                                        <img  src= " <?php echo URLROOT ?> /images/back.png" alt="stars" width="25" height="30">
                                     </div>
                                     <div class="col-1 ">
                                         <p>1/3</p>
                                     </div>
                                     <div class="col-1 ">
-                                        <img src="../images/front.png" alt="stars" width="25" height="30">
+                                        <img  src= " <?php echo URLROOT ?> /images/front.png" alt="stars" width="25" height="30">
                                     </div>
                                 </div>
                         
@@ -132,21 +133,21 @@
                          <p class="rowtitle" id="blogtitle">ΥΠΟΣΤΗΡΙΚΤΕΣ</p>
                          <div class="row">
                              <div class="col-1" id="sponsors">
-                             <img src="../images/back.png" alt="stars" width="25" height="30">
+                             <img  src= " <?php echo URLROOT ?> /images/back.png" alt="stars" width="25" height="30">
                              </div>
                              <div class="col-10">
                                 <div class="flex-container">
-                                        <div> <img src="../images/testlogo.png" alt="stars" width="90" height="80"></div>
-                                        <div><img src="../images/testlogo.png" alt="stars" width="90" height="80"></div>
-                                        <div><img src="../images/testlogo.png" alt="stars" width="80" height="70"></div>  
-                                        <div><img src="../images/testlogo.png" alt="stars" width="80" height="70"></div>
-                                        <div><img src="../images/testlogo.png" alt="stars" width="80" height="70"></div>
-                                        <div><img src="../images/testlogo.png" alt="stars" width="80" height="70"></div>  
+                                        <div> <img  src= " <?php echo URLROOT ?> /images/testlogo.png" alt="stars" width="90" height="80"></div>
+                                        <div><img src= " <?php echo URLROOT ?> /images/testlogo.png" alt="stars" width="90" height="80"></div>
+                                        <div><img src= " <?php echo URLROOT ?> /images/testlogo.png" alt="stars" width="90" height="80"></div>
+                                        <div><img src= " <?php echo URLROOT ?> /images/testlogo.png" alt="stars" width="90" height="80"></div>
+                                        <div><img src= " <?php echo URLROOT ?> /images/testlogo.png" alt="stars" width="90" height="80"></div>
+                                        <div><img src= " <?php echo URLROOT ?> /images/testlogo.png" alt="stars" width="90" height="80"></div> 
                                        
                                 </div>
                              </div>
                              <div class="col-1" id="sponsors">
-                             <img src="../images/front.png" alt="stars" width="25" height="30">
+                             <img  src= " <?php echo URLROOT ?> /images/front.png" alt="stars" width="25" height="30">
                              </div>
                          </div>
                     </div>

@@ -11,7 +11,7 @@
              <a href="#"><button class="btnsearchpage">Tαξινόμηση v</button></a>
          </div>
          <div class="col-md-2 offset-md-2">
-             <a href="#"><button id="btngymssearch">Αναζήτηση</button></a>
+            <input type="text" name="LastName" id="btngymssearch" value=" Αναζήτηση">
          </div>
          <div class="col-md-1  offset-md-1">
              <a href="#"><button  class="btnsearchpage" id="btngymsfilter">Περιοχή  +</button></a>

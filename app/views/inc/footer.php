@@ -27,7 +27,7 @@
                 <h3 class="mb-4" id="footertitle">Συνεργάτες</h3>
                 <div class="row">
                     <div class="col-md-12 offset-md-0 col-sm-6 offset-sm-3">
-                  <div class="btnorange" id="btnfooter"><a href="<?php echo URLROOT; ?>/owners/register"> Γίνε συνεργάτης   >
+                  <div class="btnorange btn btn-outline-warning" id="btnfooter"><a href="<?php echo URLROOT; ?>/owners/register"> Γίνε συνεργάτης   >
                    </a>
                    </div>
                    </div>
