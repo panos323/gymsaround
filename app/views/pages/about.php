@@ -1,10 +1,12 @@
 <?php require  APPROOT . '/views/inc/header.php'?>
-   
+  
+
     <div class="row">
         <div class="col-md-12" id="imgabout">
 
         </div>
     </div>
+</div>
 
 <div class="container">
     <div class="row">

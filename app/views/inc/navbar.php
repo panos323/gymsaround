@@ -6,7 +6,7 @@
     </button>
 
     <div class="collapse navbar-collapse">
-        <ul class="navbar-nav offset-6">
+        <ul class="navbar-nav offset-7">
             <li class="nav-item <?php echo (isset($view) && $view==='pages/index') ? 'active' : '';?>">
                 <a class="nav-link" href="<?php echo URLROOT; ?>">Αρχική</a>
             </li>
