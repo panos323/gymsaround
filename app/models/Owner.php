@@ -223,25 +223,71 @@ class Owner{
     /**
      * Register Gym on Database
      * @param array $data
-     * @param $db_dir
      * @return bool
      */
     public function register_gym(array $data){
         //Query
-        $this->db->query('INSERT INTO gyms (gym_name, gym_description, gym_location, gym_type)
-                              VALUES (:name, :description, :location, :type)');
+        $this->db->query('INSERT INTO gyms (gym_name, gym_description, gym_location, gym_type, gym_monthly_price, gym_yearly_price, owners_owner_id)
+                              VALUES (:name, :description, :location, :type, :month_price, :year_price, :owners)');
 
         // Bind values
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':location', $data['location']);
         $this->db->bind(':type', $data['type']);
+        $this->db->bind(':month_price', $data['month_price']);
+        $this->db->bind(':year_price', $data['year_price']);
+        $this->db->bind(':owners', $_SESSION['id']);
 
         // Execute
         try {
             $this->db->execute();
             return true;
         } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Update Gym Details
+     * @param array $data
+     * @return bool
+     */
+    public function update_gym(array $data){
+        $this->db->query('UPDATE gyms 
+                              SET gym_name = :name,
+                                  gym_location = :location,
+                                  gym_type = :type,
+                                  gym_yearly_price = :year,
+                                  gym_monthly_price = :month,
+                                  gym_description = :description
+                              WHERE owners_owner_id = :id');
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':location', $data['location']);
+        $this->db->bind(':type', $data['type']);
+        $this->db->bind(':year', $data['year_price']);
+        $this->db->bind(':month', $data['month_price']);
+        $this->db->bind(':description', $data['description']);
+        $this->db->bind(':id', $_SESSION['id']);
+        try{
+            $this->db->execute();
+            return true;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    /**
+     * Delete specific Gym
+     * @return bool
+     */
+    public function delete_gym(){
+        $this->db->query('DELETE FROM gyms WHERE owners_owner_id = :id');
+        $this->db->bind(':id', $_SESSION['id']);
+        try{
+            $this->db->execute();
+            return true;
+        }catch (Exception $e){
             return false;
         }
     }

@@ -136,7 +136,7 @@
 
             <!-- This is the display for gym details upload -->
             <?php elseif ($data['tab'] === 'my_gym') : ?>
-                <?php if(isset($data['no_gym'])) : ?>
+                <?php if(isset($data['no_gym']) && !empty($data['no_gym'])) : ?>
                 <div class="col-md-8 offset-2 mt-4">
                     <?php flash('gym_update'); ?>
                     <form id="registerGymForm" action="<?php echo URLROOT; ?>/owners/register_gym" method="post" enctype="multipart/form-data">
@@ -168,6 +168,26 @@
                                         placeholder="name@example.com">
                             </div>
                             <div class="form-group">
+                                <label for="year_price">Ετήσια Συνδρομή</label>
+                                <input
+                                        name="year_price"
+                                        type="number"
+                                        id="year_price"
+                                        class="form-control"
+                                        min="0"
+                                        placeholder="100">
+                            </div>
+                            <div class="form-group">
+                                <label for="month_price">Μηνιαία Συνδρομή</label>
+                                <input
+                                        name="month_price"
+                                        type="number"
+                                        id="month_price"
+                                        class="form-control"
+                                        min="0"
+                                        placeholder="30">
+                            </div>
+                            <div class="form-group">
                                 <label for="description">Περιγραφή</label>
                                 <textarea id="description" class="form-control" rows="3" name="description"></textarea>
                             </div>
@@ -181,6 +201,69 @@
                 <?php else : ?>
                 <div class="col-md-12 profile_boxes">
                     <h4>Το γυμναστήριό μου</h4>
+                    <?php flash('gym_update'); ?>
+                    <form id="updateGymForm" action="<?php echo URLROOT; ?>/owners/update_gym" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name">Όνομα</label>
+                            <input
+                                    name="name"
+                                    type="text"
+                                    id="name"
+                                    class="form-control"
+                                    value="<?php echo $data['my_gym_details']['gym_name']; ?>"
+                                    placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Τοποθεσία</label>
+                            <input
+                                    name="location"
+                                    type="text"
+                                    id="location"
+                                    class="form-control"
+                                    value="<?php echo $data['my_gym_details']['gym_location']; ?>"
+                                    placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Τύπος Γυμναστηρίου</label>
+                            <input
+                                    name="type"
+                                    type="text"
+                                    id="type"
+                                    class="form-control"
+                                    value="<?php echo $data['my_gym_details']['gym_type']; ?>"
+                                    placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="year_price">Ετήσια Συνδρομή</label>
+                            <input
+                                    name="year_price"
+                                    type="number"
+                                    id="year_price"
+                                    class="form-control"
+                                    value="<?php echo $data['my_gym_details']['gym_yearly_price']; ?>"
+                                    min="0"
+                                    placeholder="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="month_price">Μηνιαία Συνδρομή</label>
+                            <input
+                                    name="month_price"
+                                    type="number"
+                                    id="month_price"
+                                    class="form-control"
+                                    value="<?php echo $data['my_gym_details']['gym_monthly_price']; ?>"
+                                    min="0"
+                                    placeholder="30">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Περιγραφή</label>
+                            <textarea id="description" class="form-control" rows="3" name="description"><?php echo $data['my_gym_details']['gym_name']; ?></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Ανανεώστε το γυμναστήριό σας</button>
+                    </form>
+                    <form id="deleteGymForm" action="<?php echo URLROOT; ?>/owners/delete_gym" method="post">
+                        <button type="submit" class="btn btn-danger">Διαγραφή Γυμναστηρίου</button>
+                    </form>
                 </div>
                 <?php endif; ?>
             <!-- This is the display for trainers details upload   -->

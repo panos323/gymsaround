@@ -3,6 +3,7 @@
 class Users extends Controller {
     public function __construct(){
         $this->userModel = $this->model('User');
+        $this->ownerModel = $this->model('Owner');
     }
 
     // Registration method for user
@@ -151,7 +152,10 @@ class Users extends Controller {
             }
 
             //wrong  email
-            if((!$this->userModel->findUserByUsername($data['login_credential'])) && (!$this->userModel->findUserByEmail($data['login_credential']))) {
+            if( (!$this->userModel->findUserByUsername($data['login_credential'])) &&
+                (!$this->userModel->findUserByEmail($data['login_credential'])) &&
+                (!$this->ownerModel->findOwnerByUsername($data['login_credential'])) &&
+                (!$this->ownerModel->findOwnerByEmail($data['login_credential']))) {
                 $data['login_credential_error'] = 'Username/Email does not exist';
             }
 
@@ -159,12 +163,17 @@ class Users extends Controller {
             if (empty($data['login_credential_error']) &&
                 empty($data['pass_error'])) {
                 // Login User
-                $isLoggedIn = $this->userModel->login($data['login_credential'], $data['password']);
-                if (!$isLoggedIn){
-                    $data['pass_error'] = 'Password is wrong. Please try again.';
-                    $this->view('users/login', $data);
+                $isUserLoggedIn = $this->userModel->login($data['login_credential'], $data['password']);
+                if (!$isUserLoggedIn){
+                    $isOwnerLoggedIn = $this->ownerModel->login($data['login_credential'], $data['password']);
+                    if(!$isOwnerLoggedIn){
+                        $data['pass_error'] = 'Password is wrong. Please try again.';
+                        $this->view('users/login', $data);
+                    }else {
+                        $this->createOwnerSession($isOwnerLoggedIn);
+                    }
                 }else{
-                    $this->createUserSession($isLoggedIn);
+                    $this->createUserSession($isUserLoggedIn);
                 }
             } else {
                 // Load view with errors
@@ -185,7 +194,7 @@ class Users extends Controller {
         }
     }
 
-       // Create session for users
+    // Create session for users
     public function createUserSession($user){
         $_SESSION['username'] = $user->user_username;
         $_SESSION['id'] = $user->user_id;
@@ -196,6 +205,18 @@ class Users extends Controller {
         $_SESSION['isAdmin'] = $user->user_is_admin;
         $_SESSION['type'] = 'users';
         redirect('users/profile/account');
+    }
+
+    // Create session for owners
+    public function createOwnerSession($owner){
+        $_SESSION['username'] = $owner->owner_username;
+        $_SESSION['id'] = $owner->owner_id;
+        $_SESSION['first_name'] = $owner->owner_first_name;
+        $_SESSION['last_name'] = $owner->owner_last_name;
+        $_SESSION['email'] = $owner->owner_email;
+        $_SESSION['phone'] = isset($owner->owner_phone) ? $owner->owner_phone : '';
+        $_SESSION['type'] = 'owners';
+        redirect('owners/profile/account');
     }
 
     // Load view for facebook login
