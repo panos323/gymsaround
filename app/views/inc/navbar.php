@@ -28,7 +28,7 @@
                 <button type="button"  id="btnregister" data-toggle="modal" data-target="#registermodal">Εγγραφή</button>
                 </li>
                 <li class="nav-item col-md-3 <?php echo (isset($view) && $view==='users/login') ? 'active' : '';?>">
-                     <button type="button"  id="btnlogin" data-toggle="modal" data-target="#loginmodal">Είσοδος</button>
+                     <button type="button" id="btnlogin" data-toggle="modal" data-target="#loginmodal">Είσοδος</button>
                 </li>
             <?php endif; ?>
         </ul>

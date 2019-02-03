@@ -7,13 +7,13 @@
         <div class="col-md-8 offset-2" id="ourservices">
             <p class="titlepartner">Γινε Συνεργάτης!</p>
             <div class="row">
-                <div class="col-md-2 offset-md-1 " >
+                <div class="col-md-2 offset-md-1 " id="stepsicons" >
                     <img src= " <?php echo URLROOT ?> /images/owners/edit.png" width="110" alt="teamimg">
                 </div>    
-                <div class="col-md-2 offset-md-2" >
-                     <img src= " <?php echo URLROOT ?> /images/owners/edit.png" width="110" alt="teamimg">
+                <div class="col-md-2 offset-md-2" id="stepsicons" >
+                     <img src= " <?php echo URLROOT ?> /images/owners/edit1.png" width="110" alt="teamimg">
                 </div>    
-                <div class="col-md-2 offset-md-2">
+                <div class="col-md-2 offset-md-2" id="stepsicons">
                      <img src= " <?php echo URLROOT ?> /images/owners/edit.png" width="110" alt="teamimg">
                 </div>
             </div>
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label >Όνομα Χρήστη2</label>
+                        <label >Όνομα Χρήστη</label>
                         <input type="text" class="form-control" id="inputAddress2" >
                     </div>
 
