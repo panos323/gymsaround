@@ -5,6 +5,11 @@ class Owners extends Controller {
         $this->ownerModel = $this->model('Owner');
     }
 
+    public function index(){
+        $data = [];
+        $this->view('owners/index', $data);
+    }
+
     public function register(){
 
         // Check for POST
