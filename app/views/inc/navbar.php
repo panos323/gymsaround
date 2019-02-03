@@ -94,24 +94,32 @@
   </div>
 
 
-<!------- *****************MODAL LOGIN*****************------->
+  <!------- *****************MODAL LOGIN*****************------->
   <div class="modal fade" id="loginmodal" role="dialog">
     <div class="modal-dialog ">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Φόρμα Εισόδου</h4>
+          <h4 class="modal-title">Είσοδος</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">     
             <form id="loginForm" action="<?php echo URLROOT; ?>/users/login" method="post">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address or Username</label>
-                    <input type="text"name="login_credential" class="form-control" id="exampleInputEmail1">
+                    <input type="text"
+                           name="login_credential"
+                           class="form-control"
+                           id="exampleInputEmail1"
+                           placeholder="Enter email or Username">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control"id="exampleInputPassword1"name="password">
+                    <input type="password"
+                           class="form-control"
+                           id="exampleInputPassword1"
+                           name="password"
+                           placeholder="Password">
                 </div>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">

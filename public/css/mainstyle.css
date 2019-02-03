@@ -824,12 +824,12 @@ select{
     display: inline-block;
     color: black;
 }
-
+/*
 .pinkbox{
     height: 500px;
     background-color: #169b99;
     width: 100%;
-}
+}*/
 
   /****************************************************************************************************
   ******************************************************************************************************
@@ -863,4 +863,69 @@ select{
 
 #teamimg p{
     text-align: center;
+}
+
+/****************************************************************************************************
+  ******************************************************************************************************
+  *****************************----OWNER INDEX PAGE----*********************************************************/
+
+  #imgpartner{
+
+    background-image:url(../images/owners/bigimgowners.jpeg);
+    height: 500px; 
+   
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #ourservices{
+      margin-top:350px;
+      height:400px;
+      background-color:white;
+      filter: grayscale(0%);
+      box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);  
+  }
+  
+  .partnerform{
+      background-color: white;
+      height:650px;
+      width: 100%;
+      margin-top:350px;
+      background-image: linear-gradient(to right,#169b99 , #1ecfcc);
+  }
+
+  .titlepartner {
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 40px;
+    padding-bottom: 45px;
+    padding-top: 45px;
+    color: #169b99;
+}
+  #stepsdescription p{
+      font-size: 18px;
+      text-align: center;
+  }
+  .titlepartnerform{
+      padding: 40px;
+      font-size: 35px;
+      color: white;
+      text-align: center;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+  #btnformpartner{
+    background-color: #ffc731;
+    color: white;
+    font-size: 18px;
+    border-radius: 22px;
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 20px;
+    padding: 10px;
+}
+#btnformpartner:hover{
+    background-color: #fbba0b;
 }
