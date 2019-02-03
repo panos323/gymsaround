@@ -133,7 +133,7 @@
                          <p class="rowtitle" id="blogtitle">ΥΠΟΣΤΗΡΙΚΤΕΣ</p>
                          <div class="row">
                              <div class="col-1" id="sponsors">
-                             <img  src= " <?php echo URLROOT ?> /images/back.png" alt="stars" width="25" height="30">
+                             <img  src= " <?php echo URLROOT; ?>/images/back.png" alt="stars" width="25" height="30">
                              </div>
                              <div class="col-10">
                                 <div class="flex-container">
@@ -147,7 +147,7 @@
                                 </div>
                              </div>
                              <div class="col-1" id="sponsors">
-                             <img  src= " <?php echo URLROOT ?> /images/front.png" alt="stars" width="25" height="30">
+                             <img  src= " <?php echo URLROOT; ?>/images/front.png" alt="stars" width="25" height="30">
                              </div>
                          </div>
                     </div>
