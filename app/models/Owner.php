@@ -210,9 +210,9 @@ class Owner{
      *
      * @return array
      */
-    public function getTrainersByGymId(int $id){
+    public function getTrainersByGymId(){
         $this->db->query('SELECT * FROM trainers WHERE gym_id = :id');
-        $this->db->bind(':id', $id);
+        $this->db->bind(':id', $_SESSION['gym_id']);
         $row = $this->db->resultSet();
         if($this->db->rowCount() > 0){
             return $row;
@@ -284,6 +284,65 @@ class Owner{
     public function delete_gym(){
         $this->db->query('DELETE FROM gyms WHERE owners_owner_id = :id');
         $this->db->bind(':id', $_SESSION['id']);
+        try{
+            $this->db->execute();
+            return true;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    /**
+     * Add Trainer for a specific gym
+     * @param array $data
+     * @return bool
+     */
+    public function add_trainer(array $data){
+        $this->db->query('INSERT INTO trainers (trainer_name, trainer_description, trainer_title, gym_id) 
+                              VALUES (:name, :description, :title, :id)');
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':description', $data['description']);
+        $this->db->bind(':title', $data['title']);
+        $this->db->bind(':id', $_SESSION['gym_id']);
+        try{
+            $this->db->execute();
+            return true;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    /**
+     * Update Trainer Details
+     * @param array $data
+     * @return bool
+     */
+    public function update_trainer(array $data){
+        $this->db->query('UPDATE trainers 
+                              SET trainer_name = :name,
+                                  trainer_title = :title,
+                                  trainer_description = :description
+                              WHERE trainer_id = :id');
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':title', $data['title']);
+        $this->db->bind(':description', $data['description']);
+        $this->db->bind(':id', $data['id']);
+        try{
+            $this->db->execute();
+            return true;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    /**
+     * Delete specific Trainer by ID
+     * @param $id
+     * @return bool
+     */
+    public function delete_trainer($id){
+        $this->db->query('DELETE FROM trainers WHERE trainer_id = :id');
+        $this->db->bind(':id', $id);
         try{
             $this->db->execute();
             return true;
