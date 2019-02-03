@@ -68,9 +68,13 @@ margin-right: 50px;
 /**
     modal
 */
+#modalregistertitle{
+margin-left:36%;
+}
+
 .modal-title{
     color: white;
-   margin-left: 40%;
+    margin-left:29%;
 }
 
 .modal-header{
@@ -103,10 +107,24 @@ margin-right: 50px;
     margin-bottom: 20px;
 }
 
+#btnmodalregister{margin-left: 8%;}
+
+#btnmodalfb{
+    float: right;
+    background-color: #4267b2;
+    margin-left: 0;
+    margin-right: 8%;}
+
+#btnmodalfb:hover{
+    background-color: #507acf;
+}
 .btnmodalform:hover{
     background-color: #1ab5b7;
 }
-
+#logintext{
+    color:#169b99;
+    margin-left: 24%;
+}
 #forgotpass{
     color:#169b99;
    margin-left: 34%;

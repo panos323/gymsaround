@@ -42,12 +42,48 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-        <h4 class="modal-title">Εγγραφή</h4>
+        <h4 class="modal-title" id="modalregistertitle">Φόρμα Εγγραφής</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
          
         </div>
         <div class="modal-body">
-          <p>Some text in the modal.</p>
+        <form>
+                 <div class="form-group">
+                    <label for="exampleInputEmail1">Όνομα</label>
+                    <input type="first-name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Επώνυμο</label>
+                    <input type="last-name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Όνομα Χρήστη</label>
+                    <input type="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Κωδικός</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Επιβεβαίωση κωδικού</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" >
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Εγγραφή στο Newslettert</label></br>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Αποδέχομαι τους όρους</label></br>
+                </div>
+                <button type="submit" class="btnmodalform" id="btnmodalregister">Εγγραφή</button>
+                <button type="submit" class="btnmodalform" id="btnmodalfb">Εγγραφή με facebook</button></br>
+                <a href="#" id="logintext">Είσοδος  ></a>
+            </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -64,18 +100,18 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Είσοδος</h4>
+          <h4 class="modal-title">Φόρμα Εισόδου</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">     
             <form>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <label for="exampleInputEmail1">Email ή Όνομα Χρήστη</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" class="form-control" id="exampleInputPassword1" >
                 </div>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
