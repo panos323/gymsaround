@@ -268,9 +268,85 @@
                 <?php endif; ?>
             <!-- This is the display for trainers details upload   -->
             <?php elseif ($data['tab'] === 'my_trainers') : ?>
-            <div class="col-md-12 profile_boxes">
-                <h4>Οι γυμναστές μου</h4>
-            </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Προσθήκη Γυμναστή
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Γυμναστές</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="addTrainerForm" action="<?php echo URLROOT; ?>/owners/add_trainer" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="name" class="col-form-label">Όνομα Γυμναστή:</label>
+                                        <input type="text" class="form-control" id="name" name="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="trainer_title" class="col-form-label">Τίτλος Γυμναστή:</label>
+                                        <input type="text" class="form-control" id="trainer_title" name="title">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description" class="col-form-label">Περιγραφή:</label>
+                                        <textarea class="form-control" id="description" name="description"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Προσθήκη</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php if(isset($data['trainers']) && !empty($data['trainers'])) : ?>
+                <div class="col-md-12 profile_boxes mt-3">
+                    <h4>Οι γυμναστές μου</h4>
+                    <?php flash('trainer_update'); ?>
+                    <?php foreach ($data['trainers'] as $key=>$trainer) { ?>
+                        <form class="mt-4" id="updateTrainerForm<?php echo $key; ?>" action="<?php echo URLROOT; ?>/owners/update_trainer" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="name<?php echo $key; ?>">Όνομα</label>
+                                <input
+                                        name="name"
+                                        type="text"
+                                        id="name<?php echo $key; ?>"
+                                        class="form-control"
+                                        value="<?php echo $trainer->trainer_name; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="title<?php echo $key; ?>">Τίτλος</label>
+                                <input
+                                        name="title"
+                                        type="text"
+                                        id="title<?php echo $key; ?>"
+                                        class="form-control"
+                                        value="<?php echo $trainer->trainer_title; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="description<?php echo $key; ?>">Περιγραφή</label>
+                                <textarea id="description<?php echo $key; ?>" class="form-control" rows="3" name="description"><?php echo $trainer->trainer_description; ?></textarea>
+                            </div>
+                            <input type="hidden" name="id" value="<?php echo $trainer->trainer_id; ?>">
+                            <button class="btn btn-success mb-2" type="submit">Αλλαγή Στοιχείων</button>
+                        </form>
+                        <form id="deleteTrainerForm<?php echo $key; ?>" action="<?php echo URLROOT; ?>/owners/delete_trainer" method="post">
+                            <input type="hidden" name="id" value="<?php echo $trainer->trainer_id; ?>">
+                            <button type="submit" class="btn btn-danger">Διαγραφή Γυμναστή</button>
+                        </form>
+                        <hr>
+                    <?php } ?>
+                </div>
+                <?php else : ?>
+                    <p>Δεν έχετε προσθέσει γυμναστές.</p>
+                <?php endif; ?>
 
             <!-- It should should never reach this display but just in case -->
             <?php else: ?>

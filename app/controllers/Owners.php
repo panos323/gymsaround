@@ -144,10 +144,12 @@ class Owners extends Controller {
         }
         if($tab === 'account' || $tab === 'my_gym' || $tab === 'my_trainers'){
             $gym = $this->ownerModel->getGymByUserId($_SESSION['id']);
-            //$trainers = $this->ownerModel->getTrainersByGymId($gym->gym_id);
+            $_SESSION['gym_id'] = isset($gym->gym_id) ? $gym->gym_id : '';
+            $trainers = $this->ownerModel->getTrainersByGymId();
             $data = [
                 'no_gym' => empty($gym) ? 'Δεν έχετε δημιουργήσει το γυμναστήριο σας.' : '',
                 'my_gym_details' => empty($gym) ? '' : (array) $gym,
+                'trainers' => empty($trainers) ? '' : (array) $trainers,
                 'tab' => $tab
             ];
             $this->view('owners/profile', $data);
@@ -282,6 +284,131 @@ class Owners extends Controller {
                 $data['no_gym'] = 'Δεν έχετε δημιουργήσει το γυμναστήριο σας.';
                 flash('gym_update', 'Κάτι δεν πήγε καλά. Παρακαλώ προσπαθήστε ξανά.', 'alert alert-danger');
                 redirect('owners/profile/my_gym');
+            }
+        }else {
+            redirect('pages/index');
+        }
+    }
+
+    public function add_trainer(){
+        // Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Process form
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'name' => trim($_POST['name']),
+                'description' => trim($_POST['description']),
+                'title' => trim($_POST['title']),
+                'name_error' => '',
+                'description_error' => '',
+                'title_error' => '',
+            ];
+
+            // Validate gym name
+            if(empty($data['name'])){
+                $data['name_error'] = 'Please enter a name for the trainer';
+            }
+
+            // Validate gym name
+            if(empty($data['description'])){
+                $data['description_error'] = 'Please enter description for the trainer';
+            }
+
+            // Validate gym name
+            if(empty($data['title'])){
+                $data['title_error'] = 'Please enter a title for the trainer';
+            }
+
+            $data['tab'] = 'my_trainers';
+            if( empty($data['name_error']) &&
+                empty($data['title_error']) &&
+                empty($data['description_error'])){
+                if($this->ownerModel->add_trainer($data)){
+                    flash('trainer_add', 'Ο γυμναστής καταχωρήθηκε.');
+                    redirect('owners/profile/my_trainers');
+                }else{
+                    flash('trainer_add', 'Παρουσιάστηκε σφάλμα. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+                    redirect('owners/profile/my_trainers');
+                }
+            }else {
+                $this->view('owners/profile', $data);
+            }
+        }else {
+            redirect('pages/index');
+        }
+    }
+
+    public function update_trainer(){
+        // Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Process form
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'name' => trim($_POST['name']),
+                'description' => trim($_POST['description']),
+                'title' => trim($_POST['title']),
+                'id' => trim($_POST['id']),
+                'name_error' => '',
+                'description_error' => '',
+                'title_error' => '',
+            ];
+
+            // Validate gym name
+            if(empty($data['name'])){
+                $data['name_error'] = 'Please enter a name for the trainer';
+            }
+
+            // Validate gym name
+            if(empty($data['description'])){
+                $data['description_error'] = 'Please enter description for the trainer';
+            }
+
+            // Validate gym name
+            if(empty($data['title'])){
+                $data['title_error'] = 'Please enter a title for the trainer';
+            }
+
+            $data['tab'] = 'my_trainers';
+            if( empty($data['name_error']) &&
+                empty($data['title_error']) &&
+                empty($data['description_error'])){
+                if($this->ownerModel->update_trainer($data)){
+                    flash('trainer_update', 'Τα στοιχεία του γυμναστή ανανεώθηκαν με επιτυχία.');
+                    redirect('owners/profile/my_trainers');
+                }else{
+                    flash('trainer_update', 'Παρουσιάστηκε σφάλμα. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+                    redirect('owners/profile/my_trainers');
+                }
+            }else {
+                $this->view('owners/profile', $data);
+            }
+        }else {
+            redirect('pages/index');
+        }
+    }
+
+    public function delete_trainer(){
+        if(isset($_SESSION['id']) && $_SESSION['type'] === 'owners'){
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $id = trim($_POST['id']);
+
+            if($this->ownerModel->delete_trainer($id)){
+                flash('trainer_update', 'O γυμναστής σβήστηκε με επιτυχία.', 'alert alert-danger');
+                redirect('owners/profile/my_trainers');
+            }else{
+                flash('trainer_update', 'Κάτι δεν πήγε καλά. Παρακαλώ προσπαθήστε ξανά.', 'alert alert-danger');
+                redirect('owners/profile/my_trainers');
             }
         }else {
             redirect('pages/index');
