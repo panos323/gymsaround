@@ -295,13 +295,15 @@ class Owner{
     /**
      * Add Trainer for a specific gym
      * @param array $data
+     * @param $image_file
      * @return bool
      */
-    public function add_trainer(array $data){
-        $this->db->query('INSERT INTO trainers (trainer_name, trainer_description, trainer_title, gym_id) 
-                              VALUES (:name, :description, :title, :id)');
+    public function add_trainer(array $data, $image_file){
+        $this->db->query('INSERT INTO trainers (trainer_name, trainer_description, trainer_title,trainer_image, gym_id) 
+                              VALUES (:name, :description, :title, :image, :id)');
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':description', $data['description']);
+        $this->db->bind(':image', $image_file);
         $this->db->bind(':title', $data['title']);
         $this->db->bind(':id', $_SESSION['gym_id']);
         try{

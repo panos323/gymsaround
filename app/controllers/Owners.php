@@ -313,6 +313,18 @@ class Owners extends Controller {
                 'title_error' => '',
             ];
 
+            // Get Image Details
+            $image_file = $_FILES["image"]["name"];
+            $temp  = $_FILES["image"]["tmp_name"];
+
+            $gym = $this->ownerModel->getGymByUserId($_SESSION['id']);
+            $gym_path = '../public/images/'.$gym->gym_name;
+            if (!file_exists($gym_path)) {
+                mkdir($gym_path, 0777, true);
+            }
+
+            move_uploaded_file($temp, $gym_path.'/'.$image_file); //move upload file temporary directory to your upload folder
+
             // Validate gym name
             if(empty($data['name'])){
                 $data['name_error'] = 'Please enter a name for the trainer';
@@ -332,7 +344,7 @@ class Owners extends Controller {
             if( empty($data['name_error']) &&
                 empty($data['title_error']) &&
                 empty($data['description_error'])){
-                if($this->ownerModel->add_trainer($data)){
+                if($this->ownerModel->add_trainer($data, $image_file)){
                     flash('trainer_add', 'Ο γυμναστής καταχωρήθηκε.');
                     redirect('owners/profile/my_trainers');
                 }else{
