@@ -58,11 +58,11 @@
          <div class="gymsresult">
                 <div class="row">
                     <div class="col-md-3  offset-md-1 p-4">
-                        <a href="#"><img  src= " <?php echo URLROOT ?> /images/search/gym_small_image.jpg" id="gymsmallimg" alt="gymimg"></a>
+                        <a href="#"><img  src= " <?php echo URLROOT?> /images/search/gym_small_image.jpg" id="gymsmallimg" alt="gymimg"></a>
                     </div>
                     <div class="col=-md-7 offset-md-1 p-4 ">
                         <p id="gymstitles"> <a href="#">Workout Hall Crossfit</a></p>
-                        <img src= " <?php echo URLROOT ?> /images/stars.png" alt="stars"/>
+                        <img src= " <?php echo URLROOT;?> /images/stars.png" alt="stars"/>
                         <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος </p>
                         <p>Συνδρομή απο 50€ </p>
                     </div>
@@ -72,7 +72,7 @@
                         <p><b>Crosfii - Boxing  - KingBoxing -  Climbing</b></p>
                     </div>
                     <div class="col-md-1 ">
-                        <img src= " <?php echo URLROOT ?> /images/search/heart.png" alt="stars"/>
+                        <img src= " <?php echo URLROOT;?> /images/search/heart.png" alt="stars"/>
                     </div>
                 </div>
              </div>
@@ -80,11 +80,11 @@
              <div class="gymsresult">
                 <div class="row">
                     <div class="col-md-3  offset-md-1 p-4 ">
-                        <a href="#"><img  src= " <?php echo URLROOT ?> /images/search/gym_small_image.jpg" id="gymsmallimg" alt="gymimg"></a>
+                        <a href="#"><img  src= " <?php echo URLROOT;?> /images/search/gym_small_image.jpg" id="gymsmallimg" alt="gymimg"></a>
                     </div>
                     <div class="col=-md-7 offset-md-1 p-4 ">
                         <p id="gymstitles"> <a href="#">Workout Hall Crossfit</a></p>
-                        <img src= " <?php echo URLROOT ?> /images/stars.png" alt="stars"/>
+                        <img src= " <?php echo URLROOT;?> /images/stars.png" alt="stars"/>
                         <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος </p>
                         <p>Συνδρομή απο 50€ </p>
                     </div>
@@ -94,7 +94,7 @@
                         <p><b>Crosfii - Boxing  - KingBoxing -  Climbing</b></p>
                     </div>
                     <div class="col-md-1 ">
-                        <img src= " <?php echo URLROOT ?> /images/search/heart.png" alt="stars"/>
+                        <img src= " <?php echo URLROOT;?> /images/search/heart.png" alt="stars"/>
                     </div>
                 </div>
              </div>
@@ -102,17 +102,17 @@
              <div class="gymsresult">
                 <div class="row text-center">
                   <div class="card text-center mx-auto">
-                  <img class="card-img-top" src= " <?php echo URLROOT ?> /images/search/gym_small_image.jpg" id="gymsmallimg" alt="gymimg">
+                  <img class="card-img-top" src= " <?php echo URLROOT;?> /images/search/gym_small_image.jpg" id="gymsmallimg" alt="gymimg">
                     <div class="card-body">
                         <h2 class="card-title">Workout Hall Crossfit</h2>
-                        <img src= " <?php echo URLROOT ?> /images/stars.png" alt="stars"/>
+                        <img src= " <?php echo URLROOT;?> /images/stars.png" alt="stars"/>
                         <br><br>
                         <p class="card-text lead">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
                         <p class="card-text lead">Συνδρομή απο 50€ </p>
                         <hr>
                         <p class="card-text"><b>Crosfii - Boxing  - KingBoxing -  Climbing</b></p>
                         <hr>
-                        <img src= " <?php echo URLROOT ?> /images/search/heart.png" alt="stars"/>
+                        <img src= " <?php echo URLROOT;?> /images/search/heart.png" alt="stars"/>
                     </div>
                   </div>
                 </div>

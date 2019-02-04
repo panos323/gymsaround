@@ -8,13 +8,13 @@
             <p class="titlepartner">Γινε Συνεργάτης!</p>
             <div class="row">
                 <div class="col-md-2 offset-md-1 " id="stepsicons" >
-                    <img src= " <?php echo URLROOT ?> /images/owners/edit.png" width="110" alt="teamimg">
+                    <img src= " <?php echo URLROOT; ?> /images/owners/edit.png" width="110" alt="teamimg">
                 </div>    
                 <div class="col-md-2 offset-md-2" id="stepsicons" >
-                     <img src= " <?php echo URLROOT ?> /images/owners/edit1.png" width="110" alt="teamimg">
+                     <img src= " <?php echo URLROOT; ?> /images/owners/edit1.png" width="110" alt="teamimg">
                 </div>    
                 <div class="col-md-2 offset-md-2" id="stepsicons">
-                     <img src= " <?php echo URLROOT ?> /images/owners/edit.png" width="110" alt="teamimg">
+                     <img src= " <?php echo URLROOT; ?> /images/owners/edit.png" width="110" alt="teamimg">
                 </div>
             </div>
 
