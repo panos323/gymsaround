@@ -77,24 +77,24 @@
                                         <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
                                         <p>Crosfii, Boxing, KingBoxing,Climbing</p>
                                     </div>
-                                    <div class="col-6 offset-2" >
+                                    <div class="col-6 offset-2" id="bestgymimg" >
                                              <img src= " <?php echo URLROOT; ?>/images/bestgym1.jpg" width="550" height="330">
                                           <!--  <button class="btnprobolh"><a href="#">Αναζήτηση</a></button>-->
                                     </div>
                                 </div>
-
+                            
                                 <div class="row">
                                     <div class="col-1 offset-8">
                                         <img  src= " <?php echo URLROOT; ?>/images/back.png" alt="stars" width="25" height="30">
                                     </div>
                                     <div class="col-1 ">
-                                        <p>1/3</p>
+                                        <p id="number"><span id="numbercolor">1 </span>/ 3</p>
                                     </div>
                                     <div class="col-1 ">
                                         <img  src= " <?php echo URLROOT; ?>/images/front.png" alt="stars" width="25" height="30">
                                     </div>
                                 </div>
-                        
+                            
                         </div><!-- end conatiner--->
                 </div><!-- end bestgym--->
                 </div>   
@@ -117,7 +117,7 @@
                         it to make a type specimen book.  </p>
                         <div class="row">
                             <div class="col-lg-4 offset-lg-6">
-                            <button class="btnblue" id="btnblog"><a href="#">Περισσότερα</a></button>
+                              <a class="btnblue" id="btnblog" href="#">Περισσότερα</a>
                             </div>
                         </div>
                 </div>

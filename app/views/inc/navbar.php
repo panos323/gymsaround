@@ -1,12 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-dark " id="navbarstyle">
-  
-    <a class="navbar-brand offset-md-1" href="<?php echo URLROOT; ?>"><img class="navbar_logo" src="<?php echo URLROOT; ?>/images/logo.png" alt="logo"></a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark " id="navbarstyle">
+    <div class="container-fluid">
+    <a class="navbar-brand " href="<?php echo URLROOT; ?>"><img class="navbar_logo" src="<?php echo URLROOT; ?>/images/logo.png" alt="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse">
-        <ul class="navbar-nav offset-7">
+        <ul class="navbar-nav justify-content-end">
             <li class="nav-item <?php echo (isset($view) && $view==='pages/index') ? 'active' : '';?>">
                 <a class="nav-link" href="<?php echo URLROOT; ?>">Αρχική</a>
             </li>
@@ -24,16 +25,17 @@
                     <a class="nav-link" href="<?php echo URLROOT; ?>/<?php echo $_SESSION['type']; ?>/logout">Αποσύνδεση</a>
                 </li>
             <?php else : ?>
-                <li class="nav-item col-md-3 offset-md-1 id="styleregisterbtn" <?php echo (isset($view) && $view=== 'users/register') ? 'active' : '';?>" >
+                <li class="nav-item  id="styleregisterbtn" <?php echo (isset($view) && $view=== 'users/register') ? 'active' : '';?>" >
                 <button type="button"  id="btnregister" data-toggle="modal" data-target="#registermodal">Εγγραφή</button>
                 </li>
-                <li class="nav-item col-md-3 <?php echo (isset($view) && $view==='users/login') ? 'active' : '';?>">
+                <li class="nav-item <?php echo (isset($view) && $view==='users/login') ? 'active' : '';?>">
                      <button type="button" id="btnlogin" data-toggle="modal" data-target="#loginmodal">Είσοδος</button>
                 </li>
             <?php endif; ?>
         </ul>
+        
     </div>
-
+</div>
     
 <!------- *****************MODAL REGISTER*****************------->
     <div class="modal fade bd-example-modal-lg" id="registermodal" role="dialog">

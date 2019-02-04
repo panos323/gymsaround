@@ -22,7 +22,7 @@
                             </a>
                         </div>
                         <p><b>Crosfii, Boxing, KingBoxing,Climbing</b></p>
-                        <button class="btnorange" id="btnsearch"><a href="#">Πακέτα Συνδρομών</a></button>
+                       <a class="btnorange" id="btnsundromes" href="#">Πακέτα Συνδρομών</a>
                     </div>
                 </div>
 

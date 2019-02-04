@@ -41,7 +41,7 @@
             </div>
         </div>  
         <div class="row">
-            <div class="col-md-3 " id="teamimg">
+            <div class="col-md-3" id="teamimg">
                 <img src= " <?php echo URLROOT; ?> /images/aboutus/tg.jpg" width="250" alt="teamimg">
                 <p>Theodora G.</p>
             </div>    

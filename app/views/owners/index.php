@@ -5,29 +5,19 @@
 <div class="row">
     <div class="col-md-12" id="imgpartner">
         <div class="col-md-8 offset-2" id="ourservices">
-            <p class="titlepartner">Γινε Συνεργάτης!</p>
+            <p class="titlepartner">Γίνε Συνεργάτης!</p>
             <div class="row">
-                <div class="col-md-2 offset-md-1 " id="stepsicons" >
-                    <img src= " <?php echo URLROOT; ?> /images/owners/edit.png" width="110" alt="teamimg">
-                </div>    
-                <div class="col-md-2 offset-md-2" id="stepsicons" >
-                     <img src= " <?php echo URLROOT; ?> /images/owners/edit1.png" width="110" alt="teamimg">
-                </div>    
-                <div class="col-md-2 offset-md-2" id="stepsicons">
-                     <img src= " <?php echo URLROOT; ?> /images/owners/edit.png" width="110" alt="teamimg">
-                </div>
-            </div>
-
-
-            <div class="row" id="stepsdescription">
-                <div class="col-md-4">
+                <div class="col-md-4 " id="stepsicons" >
+                    <img src= " <?php echo URLROOT; ?> /images/owners/form.png" width="110" alt="teamimg">
                     <p>Κάνε εγγραφή συμπληρώνοντας την φόρμα!</p>
                 </div>    
-                <div class="col-md-4" >
-                    <p>Ετοίμασε την προβολή σου</p>
+                <div class="col-md-4" id="stepsicons" >
+                     <img src= " <?php echo URLROOT; ?> /images/owners/edit1.png" width="110" alt="teamimg">
+                     <p>Ετοίμασε την προβολή σου</p>
                 </div>    
-                <div class="col-md-4">
-                    <p>Απόκτησε νεες συνδρομες</p>
+                <div class="col-md-4" id="stepsicons">
+                     <img src= " <?php echo URLROOT; ?> /images/owners/newcustomers.png" width="110" alt="teamimg">
+                     <p>Απόκτησε νεες συνδρομες</p>
                 </div>
             </div>
         </div>

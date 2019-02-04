@@ -240,7 +240,7 @@ footer p a {
 
     background-repeat: no-repeat;
     width:100%;
-    background-image:url(../images/fimage.jpg);
+    background-image:url(../images/fimagen.jpg);
     background-size:cover;
     height:100vh;
 }
@@ -293,6 +293,15 @@ select{
     margin-bottom: 20px;
 }
 
+#number{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;}
+
+#numbercolor{color: #169b99;}
+
+#bestgymimg img{margin-bottom: 20px;}
+
+
 /*******************************************
 -------------BUTTON ORANGE----------------------
 ********************************************/
@@ -324,15 +333,25 @@ select{
 
 #btnfooter{
     background-color: #1d1d1d;
-    width: 90%;
+    width: 80%;
     border: 2px solid #fbba0b;
+    border-radius: 22px;
+    padding: 8px;
+    font-size: 18px;
 }
+#btnfooter:hover{
+    background-color: #fbba0b;
+}
+
 #btnfooter a{
-   
   margin-left: 14px;
   color: #fbba0b;
 }
 
+#btnfooter a:hover{
+    color: #1d1d1d;
+    text-decoration: none;
+}
 /*******************************************
 -------------BUTTON BLUE----------------------
 ********************************************/
@@ -381,8 +400,13 @@ select{
 
 #btnmember{
     margin-top: 10px; 
+    cursor: pointer;
    }
-
+#btnmember:hover{
+    color: #1ab5b7;
+    background-color: #303741;
+    font-weight: 600;
+}
 
 
 .bestgym{
@@ -467,10 +491,13 @@ select{
     width: 80%;
 }
 
+#btnblog{padding: 5px;}
 
 #btnblog:hover{
+    text-decoration: none;
     background-color:#f6f6f4;
     border: 2px solid#169b99;
+    padding: 5px;
 }
 
 
@@ -674,8 +701,7 @@ select{
   .maintext{
       height: 550px;;
   }
-  .basictitle
-  {padding-top:60px;
+  .basictitle{padding-top:60px;
     padding-bottom:30px;
     font-size: 40px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -688,7 +714,19 @@ select{
 #imagerow2{
     margin-top: 5px;
 }
-
+#btnsundromes{
+    margin-top: 10px;
+    color: #1d1d1d;
+    width: 70%;
+    text-align: center;
+    padding: 1%;
+}
+#btnsundromes:hover{
+ text-decoration: none;
+ color: #fba30b;
+ background-color: #e3e3e3;
+ font-weight: 500;
+}
 
 /****TRAINERS****/
 .trainersrow{
@@ -891,7 +929,7 @@ select{
   
   .partnerform{
       background-color: white;
-      height:650px;
+      height:700px;
       width: 100%;
       margin-top:350px;
       background-image: linear-gradient(to right,#169b99 , #1ecfcc);
@@ -905,12 +943,9 @@ select{
     padding-top: 45px;
     color: #169b99;
 }
-  #stepsdescription p{
-      font-size: 18px;
-      text-align: center;
-  }
+
   .titlepartnerform{
-      padding: 40px;
+      padding: 60px;
       font-size: 35px;
       color: white;
       text-align: center;
@@ -918,14 +953,24 @@ select{
   }
   #btnformpartner{
     background-color: #ffc731;
-    color: white;
-    font-size: 18px;
+    color: #2c2b2b;
+    font-size:20px;
     border-radius: 22px;
     width: 40%;
     margin-left: 30%;
     margin-top: 20px;
-    padding: 10px;
+    padding: 8px;
+    font-weight: 600;
 }
 #btnformpartner:hover{
     background-color: #fbba0b;
 }
+
+#stepsicons img{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+    margin-bottom: 15px;
+
+}
+#stepsicons p{text-align: center;}
