@@ -867,6 +867,27 @@ select{
     display: inline-block;
     color: black;
 }
+
+/*-------start syle div boxes for gyms-------------*/
+.gymsTitle, .gymsTitle a{
+    color:black;
+    text-decoration: none;
+    transition:  font-weight 0.1s ease-in-out;
+}
+
+.gymsTitle a:hover{
+    text-decoration: none;
+    color:black;
+    font-weight:900;
+
+}
+
+#btnGymPrice{
+    border-radius:25px;
+    font-weight:600;
+}
+
+/*-------end syle div boxes for gyms-------------*/
 /*
 .pinkbox{
     height: 500px;

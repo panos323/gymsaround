@@ -17,10 +17,10 @@
 .map {
   position: absolute;
   right:15px;
-  width: 70%;
+  width: 68%;
   top: 0;
   bottom: 0;
-    padding-left: 15px;
+  padding-left: 15px;
 }
 
 .heading {
@@ -32,8 +32,9 @@
   color: #fff;
 }
 
+
 .listings {
-  height: 100%;
+  height: 100vh;
   overflow: auto;
   padding-left: 20px;
   padding-bottom: 60px;
@@ -67,7 +68,7 @@
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
     border-left: 0;
     background: rgba(0, 0, 0, 0.1);
 }
@@ -202,9 +203,9 @@
         <!-- MAP -->
         <div class='sidebar'>
               <div class='heading'>
-                <h2>Γυμναστήρια</h2>
+                <h2 class="text-center">Γυμναστήρια</h2>
               </div>
-            <div id='listings' class='listings'></div>
+              <div id='listings' class='listings'></div>
         </div>
         <div id='map' class='map'> </div>
 
@@ -223,8 +224,9 @@
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v9',
-    center: [-77.034084142948, 38.909671288923],
-    zoom: 13,
+    center: [23.727539, 37.983810], //long - lat
+    //center: [-74.50, 40],
+    zoom: 9,
     scrollZoom: false
   });
 
@@ -236,19 +238,22 @@
         geometry: {
           type: 'Point',
           coordinates: [
-            -77.034084142948,
-            38.909671288923
+            23.72361,
+            37.91033
           ]
         },
         properties: {
+          name : 'Benefit',
           phoneFormatted: '(202) 234-7336',
           phone: '2022347336',
-          address: '1471 P St NW',
-          city: 'Washington DC',
-          country: 'United States',
-          crossStreet: 'at 15th St NW',
+          address: 'Ρόδων 8, Άλιμος',
+          city: 'Αθήνα',
           postalCode: '20005',
-          state: 'D.C.'
+          gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
+          rating : '\'../public/images/stars.png\'',
+          program: 'Crosfii - Boxing  - KingBoxing -  Climbing',
+          gymCost : 'Από 50€',
+          gumLike : '\'../public/images/search/heart.png\''
         }
       },
       {
@@ -256,19 +261,22 @@
         geometry: {
           type: 'Point',
           coordinates: [
-            -77.049766,
-            38.900772
+            23.7986,
+            38.0213
           ]
         },
         properties: {
+          name : 'Iron Gym',
           phoneFormatted: '(202) 507-8357',
           phone: '2025078357',
-          address: '2221 I St NW',
-          city: 'Washington DC',
-          country: 'United States',
-          crossStreet: 'at 22nd St NW',
+          address: 'Παπανδρέου Ανδρέα 25, Χαλάνδρι',
+          city: 'Αθήνα',
           postalCode: '20037',
-          state: 'D.C.'
+          gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
+          rating : '\'../public/images/stars.png\'',
+          program: 'Crosfii - Boxing  - KingBoxing -  Climbing',
+          gymCost : 'Από 70€',
+          gumLike : '\'../public/images/search/heart.png\''
         }
       },
       {
@@ -276,212 +284,74 @@
         geometry: {
           type: 'Point',
           coordinates: [
-            -77.043929,
-            38.910525
+            23.9333,
+            37.8834
           ]
         },
         properties: {
+          name : 'Gym Planet',
+          phoneFormatted: '(210) 8552198',
+          phone: '2025078357',
+          address: 'Ζηνωδίας 25, Μαρκόπουλο',
+          city: 'Αθήνα',
+          postalCode: '20037',
+          gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
+          rating : '\'../public/images/stars.png\'',
+          program: 'Zoomba - Boxing  - KingBoxing -  Climbing',
+          gymCost : 'Από 70€',
+          gumLike : '\'../public/images/search/heart.png\''
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [
+            23.9438,
+            37.7338
+          ]
+        },
+        properties: {
+          name : 'Anavisos Gym',
+          phoneFormatted: '(210) 8552198',
+          phone: '2025078357',
+          address: 'Αναβύσσου 85, Ανάβυσσος',
+          city: 'Αθήνα',
+          postalCode: '20037',
+          gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
+          rating : '\'../public/images/stars.png\'',
+          program: 'Zoomba - Boxing  - KingBoxing -  Climbing',
+          gymCost : 'Από 70€',
+          gumLike : '\'../public/images/search/heart.png\''
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [
+            23.8147,
+            38.0768
+          ]
+        },
+        properties: {
+          name : 'Hercules',
           phoneFormatted: '(202) 387-9338',
           phone: '2023879338',
-          address: '1512 Connecticut Ave NW',
-          city: 'Washington DC',
-          country: 'United States',
-          crossStreet: 'at Dupont Circle',
+          address: 'Αγίου Δημητρίου 25, Κηφισιά',
+          city: 'Αθήνα',
           postalCode: '20036',
-          state: 'D.C.'
-        }
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [
-            -77.0672,
-            38.90516896
-          ]
-        },
-        properties: {
-          phoneFormatted: '(202) 337-9338',
-          phone: '2023379338',
-          address: '3333 M St NW',
-          city: 'Washington DC',
-          country: 'United States',
-          crossStreet: 'at 34th St NW',
-          postalCode: '20007',
-          state: 'D.C.'
-        }
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [
-            -77.002583742142,
-            38.887041080933
-          ]
-        },
-        properties: {
-          phoneFormatted: '(202) 547-9338',
-          phone: '2025479338',
-          address: '221 Pennsylvania Ave SE',
-          city: 'Washington DC',
-          country: 'United States',
-          crossStreet: 'btwn 2nd & 3rd Sts. SE',
-          postalCode: '20003',
-          state: 'D.C.'
-        }
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [
-            -76.933492720127,
-            38.99225245786
-          ]
-        },
-        properties: {
-          address: '8204 Baltimore Ave',
-          city: 'College Park',
-          country: 'United States',
-          postalCode: '20740',
-          state: 'MD'
-        }
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [
-            -77.097083330154,
-            38.980979
-          ]
-        },
-        properties: {
-          phoneFormatted: '(301) 654-7336',
-          phone: '3016547336',
-          address: '4831 Bethesda Ave',
-          city: 'Bethesda',
-          country: 'United States',
-          postalCode: '20814',
-          state: 'MD'
-        }
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [
-            -77.359425054188,
-            38.958058116661
-          ]
-        },
-        properties: {
-          phoneFormatted: '(571) 203-0082',
-          phone: '5712030082',
-          address: '11935 Democracy Dr',
-          city: 'Reston',
-          country: 'United States',
-          crossStreet: 'btw Explorer & Library',
-          postalCode: '20190',
-          state: 'VA'
-        }
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [
-            -77.10853099823,
-            38.880100922392
-          ]
-        },
-        properties: {
-          phoneFormatted: '(703) 522-2016',
-          phone: '7035222016',
-          address: '4075 Wilson Blvd',
-          city: 'Arlington',
-          country: 'United States',
-          crossStreet: 'at N Randolph St.',
-          postalCode: '22203',
-          state: 'VA'
-        }
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [
-            -75.28784,
-            40.008008
-          ]
-        },
-        properties: {
-          phoneFormatted: '(610) 642-9400',
-          phone: '6106429400',
-          address: '68 Coulter Ave',
-          city: 'Ardmore',
-          country: 'United States',
-          postalCode: '19003',
-          state: 'PA'
-        }
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [
-            -75.20121216774,
-            39.954030175164
-          ]
-        },
-        properties: {
-          phoneFormatted: '(215) 386-1365',
-          phone: '2153861365',
-          address: '3925 Walnut St',
-          city: 'Philadelphia',
-          country: 'United States',
-          postalCode: '19104',
-          state: 'PA'
-        }
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [
-            -77.043959498405,
-            38.903883387232
-          ]
-        },
-        properties: {
-          phoneFormatted: '(202) 331-3355',
-          phone: '2023313355',
-          address: '1901 L St. NW',
-          city: 'Washington DC',
-          country: 'United States',
-          crossStreet: 'at 19th St',
-          postalCode: '20036',
-          state: 'D.C.'
+          gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
+          rating : '\'../public/images/stars.png\'',
+          program: 'Crosfii - Boxing  - KingBoxing -  Climbing',
+          gymCost : 'Από 88€',
+          gumLike : '\'../public/images/search/heart.png\''
         }
       }]
   };
   // This adds the stores to the map
   map.on('load', function(e) {
-  // Add the data to your map as a layer
-//   map.addLayer({
-//     id: 'locations',
-//     type: 'symbol',
-//     // Add a GeoJSON source containing place coordinates and information.
-//     source: {
-//       type: 'geojson',
-//       data: stores
-//     },
-//     layout: {
-//       'icon-image': 'restaurant-15',
-//       'icon-allow-overlap': true,
-//     }
-//   });
+
 map.addSource('places', {
   type: 'geojson',
   data: stores
@@ -506,35 +376,10 @@ function createPopUp(currentFeature) {
 
   var popup = new mapboxgl.Popup({ closeOnClick: false })
     .setLngLat(currentFeature.geometry.coordinates)
-    .setHTML('<h3>Sweetgreen</h3>' +
+    .setHTML('<h3>Διεύθυνση</h3>' +
       '<h4>' + currentFeature.properties.address + '</h4>')
     .addTo(map);
 }
-
-
-//   stores.features.forEach(function(marker, i) {
-//     var el = document.createElement('div'); // Create an img element for the marker
-//     el.id = 'marker-' + i;
-//     el.className = 'marker';
-//     // Add markers to the map at all points
-//     new mapboxgl.Marker(el, { offset: [-28, -46] })
-//       .setLngLat(marker.geometry.coordinates)
-//       .addTo(map);
-
-//     el.addEventListener('click', function(e) {
-//       flyToStore(marker); // Fly to the point
-//       createPopUp(marker); // Close all other popups and display popup for clicked store
-//       var activeItem = document.getElementsByClassName('active'); // Highlight listing in sidebar (and remove highlight for all other listings)
-
-//       e.stopPropagation();
-//       if (activeItem[0]) {
-//         activeItem[0].classList.remove('active');
-//       }
-
-//       var listing = document.getElementById('listing-' + i);
-//       listing.classList.add('active');
-//     });
-//   });
 
 stores.features.forEach(function(marker) {
   // Create a div element for the marker
@@ -580,8 +425,27 @@ function buildLocationList(data) {
     listing.className = 'item';
     listing.id = 'listing-' + i;
 
+
+     // Create a new div with the class 'details' for each store
+    // and fill it with the city and phone number
+
+    /***********************************************************************************************************************STYLE DIV *****************************************************************************************************************************************************/
+
+    var details = listing.appendChild(document.createElement('div'));
+    details.innerHTML = '<img class="float-left img-fluid mr-4"  src= ' + prop.gymPhoto + ' />';
+    details.innerHTML += '<img class="float-right img-fluid" src= ' + prop.gumLike + ' />';
+    details.innerHTML += '<h2 class="gymsTitle"><a href="#">' + prop.name + '</h2></a>';
+    if (prop.phone) {
+      details.innerHTML += '<p class="lead">' + prop.phoneFormatted + '</p>';
+    }
+    details.innerHTML += '<img class="clearfix" src= ' + prop.rating + ' />';
+    details.innerHTML += '<p class="lead float-left mt-3"><b>' + prop.program + '</b></p>';
+    details.innerHTML += '<button class="btn btn-warning float-right mt-3" id="btnGymPrice">' + prop.gymCost + '</button>'
+
+    details.innerHTML += '<span class="clearfix"></span>';
     // Create a new link with the class 'title' for each store
     // and fill it with the store address
+
     var link = listing.appendChild(document.createElement('a'));
     link.href = '#';
     link.className = 'title';
@@ -604,13 +468,6 @@ function buildLocationList(data) {
   this.parentNode.classList.add('active');
 });
 
-    // Create a new div with the class 'details' for each store
-    // and fill it with the city and phone number
-    var details = listing.appendChild(document.createElement('div'));
-    details.innerHTML = prop.city;
-    if (prop.phone) {
-      details.innerHTML += ' · ' + prop.phoneFormatted;
-    }
   }
 }
 
