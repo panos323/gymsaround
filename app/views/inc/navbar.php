@@ -1,12 +1,14 @@
 
+
     <nav class="navbar navbar-expand-lg navbar-dark " id="navbarstyle">
     <div class="container-fluid">
-    <a class="navbar-brand " href="<?php echo URLROOT; ?>"><img class="navbar_logo" src="<?php echo URLROOT; ?>/images/logo.png" alt="logo"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse">
+        <div class="navbar-header">   
+        <a class="navbar-brand " href="<?php echo URLROOT; ?>"><img class="navbar_logo" src="<?php echo URLROOT; ?>/images/logo.png" alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        </div>
+  <!--  <div class="collapse navbar-collapse">-->
         <ul class="navbar-nav justify-content-end">
             <li class="nav-item <?php echo (isset($view) && $view==='pages/index') ? 'active' : '';?>">
                 <a class="nav-link" href="<?php echo URLROOT; ?>">Αρχική</a>
@@ -25,16 +27,16 @@
                     <a class="nav-link" href="<?php echo URLROOT; ?>/<?php echo $_SESSION['type']; ?>/logout">Αποσύνδεση</a>
                 </li>
             <?php else : ?>
-                <li class="nav-item  id="styleregisterbtn" <?php echo (isset($view) && $view=== 'users/register') ? 'active' : '';?>" >
-                <button type="button"  id="btnregister" data-toggle="modal" data-target="#registermodal">Εγγραφή</button>
+                <li id="btnregister" class="nav-item" <?php echo (isset($view) && $view=== 'users/register') ? 'active' : '';?>" >
+                <button type="button"  data-toggle="modal" data-target="#registermodal">Εγγραφή</button>
                 </li>
-                <li class="nav-item <?php echo (isset($view) && $view==='users/login') ? 'active' : '';?>">
+                <li  id="btnlogin" class="nav-item <?php echo (isset($view) && $view==='users/login') ? 'active' : '';?>">
                      <button type="button" id="btnlogin" data-toggle="modal" data-target="#loginmodal">Είσοδος</button>
                 </li>
             <?php endif; ?>
         </ul>
-        
-    </div>
+<!--</div>-->
+  
 </div>
     
 <!------- *****************MODAL REGISTER*****************------->
@@ -108,20 +110,20 @@
         <div class="modal-body">     
             <form id="loginForm" action="<?php echo URLROOT; ?>/users/login" method="post">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address or Username</label>
+                    <label for="exampleInputEmail1">Email ή Όνομα Χρήστη</label>
                     <input type="text"
                            name="login_credential"
                            class="form-control"
                            id="exampleInputEmail1"
-                           placeholder="Enter email or Username">
+                          >
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                    <label for="exampleInputPassword1">Κωδικός</label>
                     <input type="password"
                            class="form-control"
                            id="exampleInputPassword1"
                            name="password"
-                           placeholder="Password">
+                         >
                 </div>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
