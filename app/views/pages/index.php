@@ -73,25 +73,25 @@
                                 <div class="row">
                                     <div class="col-3 offset-1">
                                         <p id="gymname">Workout Hall Crossfit</p>
-                                        <img src= " <?php echo URLROOT ?> /images/stars.png" alt="stars">
+                                        <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars">
                                         <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
                                         <p>Crosfii, Boxing, KingBoxing,Climbing</p>
                                     </div>
                                     <div class="col-6 offset-2" >
-                                             <img src= " <?php echo URLROOT ?> /images/bestgym1.jpg" width="550" height="330">
+                                             <img src= " <?php echo URLROOT; ?>/images/bestgym1.jpg" width="550" height="330">
                                           <!--  <button class="btnprobolh"><a href="#">Αναζήτηση</a></button>-->
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-1 offset-8">
-                                        <img  src= " <?php echo URLROOT ?> /images/back.png" alt="stars" width="25" height="30">
+                                        <img  src= " <?php echo URLROOT; ?>/images/back.png" alt="stars" width="25" height="30">
                                     </div>
                                     <div class="col-1 ">
                                         <p>1/3</p>
                                     </div>
                                     <div class="col-1 ">
-                                        <img  src= " <?php echo URLROOT ?> /images/front.png" alt="stars" width="25" height="30">
+                                        <img  src= " <?php echo URLROOT; ?>/images/front.png" alt="stars" width="25" height="30">
                                     </div>
                                 </div>
                         
@@ -133,21 +133,21 @@
                          <p class="rowtitle" id="blogtitle">ΥΠΟΣΤΗΡΙΚΤΕΣ</p>
                          <div class="row">
                              <div class="col-1" id="sponsors">
-                             <img  src= " <?php echo URLROOT ?> /images/back.png" alt="stars" width="25" height="30">
+                             <img  src= " <?php echo URLROOT; ?>/images/back.png" alt="stars" width="25" height="30">
                              </div>
                              <div class="col-10">
                                 <div class="flex-container">
-                                        <div> <img  src= " <?php echo URLROOT ?> /images/testlogo.png" alt="stars" width="90" height="80"></div>
-                                        <div><img src= " <?php echo URLROOT ?> /images/testlogo.png" alt="stars" width="90" height="80"></div>
-                                        <div><img src= " <?php echo URLROOT ?> /images/testlogo.png" alt="stars" width="90" height="80"></div>
-                                        <div><img src= " <?php echo URLROOT ?> /images/testlogo.png" alt="stars" width="90" height="80"></div>
-                                        <div><img src= " <?php echo URLROOT ?> /images/testlogo.png" alt="stars" width="90" height="80"></div>
-                                        <div><img src= " <?php echo URLROOT ?> /images/testlogo.png" alt="stars" width="90" height="80"></div> 
+                                        <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="90" height="80"></div>
+                                        <div><img src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="90" height="80"></div>
+                                        <div><img src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="90" height="80"></div>
+                                        <div><img src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="90" height="80"></div>
+                                        <div><img src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="90" height="80"></div>
+                                        <div><img src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="90" height="80"></div>
                                        
                                 </div>
                              </div>
                              <div class="col-1" id="sponsors">
-                             <img  src= " <?php echo URLROOT ?> /images/front.png" alt="stars" width="25" height="30">
+                             <img  src= " <?php echo URLROOT; ?>/images/front.png" alt="stars" width="25" height="30">
                              </div>
                          </div>
                     </div>

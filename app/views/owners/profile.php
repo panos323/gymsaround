@@ -294,6 +294,10 @@
                                         <input type="text" class="form-control" id="trainer_title" name="title">
                                     </div>
                                     <div class="form-group">
+                                        <label for="image" class="col-form-label">Φωτογραφία Γυμναστή:</label>
+                                        <input type="file" class="form-control" id="image" name="image">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="description" class="col-form-label">Περιγραφή:</label>
                                         <textarea class="form-control" id="description" name="description"></textarea>
                                     </div>
@@ -329,6 +333,11 @@
                                         id="title<?php echo $key; ?>"
                                         class="form-control"
                                         value="<?php echo $trainer->trainer_title; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Φωτογραφία Γυμναστή</label>
+                                    <input type="file" name="txt_file" class="form-control" value="<?php echo $trainer->trainer_image; ?>"/>
+                                    <p><img src="../../public/images/<?php echo $data['my_gym_details']['gym_name']; ?>/<?php echo $trainer->trainer_image; ?>" height="auto" width="300" /></p>
                             </div>
                             <div class="form-group">
                                 <label for="description<?php echo $key; ?>">Περιγραφή</label>
