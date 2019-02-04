@@ -302,7 +302,6 @@ select{
     border: none;
     height: 45px;
     border-radius: 22px;  
-  
     display: inline-block;
     font-size: 20px;
 }
@@ -311,7 +310,7 @@ select{
 
 .btnorange:hover{background-color: #1d1d1d;
     border: 2px solid #fbba0b;
-    color:#1d1d1d;
+    color:#fbba0b;
 }
 
 .btnorange a:hover{
@@ -376,6 +375,7 @@ select{
     margin-top: 50px; 
     margin-right: 180px;
     width: 70%;
+    cursor: pointer;
 }
 
 
