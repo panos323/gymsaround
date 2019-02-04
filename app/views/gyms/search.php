@@ -4,11 +4,8 @@
 <style>
 
 .sidebar {
-  position: absolute;
-  width: 33.3333%;
+  width: 30%;
   height: 100%;
-  top: 0;
-  left: 0;
   overflow: hidden;
   border-right: 1px solid rgba(0, 0, 0, 0.25);
 }
@@ -19,25 +16,26 @@
 
 .map {
   position: absolute;
-  left: 33.3333%;
-  width: 66.6666%;
+  right:15px;
+  width: 70%;
   top: 0;
   bottom: 0;
+    padding-left: 15px;
 }
 
 .heading {
-  background: #fff;
   border-bottom: 1px solid #eee;
   min-height: 60px;
   line-height: 60px;
-  padding: 0 10px;
-  background-color: #00853e;
+  padding: 10px 10px;
+  background-color: #169b99;
   color: #fff;
 }
 
 .listings {
   height: 100%;
   overflow: auto;
+  padding-left: 20px;
   padding-bottom: 60px;
 }
 
@@ -52,7 +50,7 @@
 
 .listings .item .title {
   display: block;
-  color: #00853e;
+  color: #169b99;
   font-weight: 700;
 }
 
@@ -61,7 +59,7 @@
 }
 
 .listings .item.active .title .listings .item .title:hover {
-  color: #8cc63f;
+  color: #169b99;
 }
 
 .listings .item.active {
@@ -84,7 +82,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00853e;
+  background: #169b98;
   border-radius: 0;
 }
 
@@ -128,7 +126,7 @@
 }
 
 .mapboxgl-popup-content h3 {
-  background: #91c949;
+  background: #169b99;
   color: #fff;
   margin: 0;
   display: block;
@@ -158,7 +156,7 @@
 }
 
 .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
-  border-bottom-color: #91c949;
+  border-bottom-color: #169b99;
 }
 
 /*add styles for mapboxgl-ctrl-geocoder here*/
@@ -178,32 +176,15 @@
 
 </style>
 <!-- style for map -->
-
-
-
-
-
-    <div class="row">
-        <div class="col-md-5 offset-md-1">
-            <p class="basictitle" id="gymstitle" >ΒΡΕΘΗΚΑΝ 5 ΓΥΜΝΑΣΤΗΡΙΑ</p>
-        </div>
-    </div>
-
     <!--start search buttons -->
-    <div class="row col-lg-12 mb-5">
-
-        <div class="col-lg-2 offset-lg-1 col-md-4 mb-3">
-            <button type="button" class="btn btn-outline-info  btn-lg customBtnG">Tαξινόμηση +</button>
+    <div class="row col-lg-12">
+        <div class="col-md-4 mt-4 mb-3">
+            <button type="button" class="btn btn-outline-info mr-4   btn-md customBtnG">Tαξινόμηση +</button>
+            <button type="button" class="btn btn-outline-info mr-4  btn-md  customBtnG">Περιοχή  +</button>
+            <button type="button" class="btn btn-outline-info mr-4  btn-md  customBtnG">Είδος +</button>
+            <button type="button" class="btn btn-outline-info  btn-md customBtnG">Tιμή +</button>
         </div>
-
-
-        <div class="btn-group col-lg-4  col-md-7 mb-3" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-outline-info mr-4  btn-lg  customBtnG">Περιοχή  +</button>
-            <button type="button" class="btn btn-outline-info mr-4  btn-lg  customBtnG">Είδος +</button>
-            <button type="button" class="btn btn-outline-info  btn-lg customBtnG">Tιμή +</button>
-        </div>
-
-        <div class="col-lg-4 offset-lg-1 col-md-6 offset-md-6 mb-3">
+        <div class="col-md-6 offset-1  mt-3 mb-3">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <button class="btn btn-outline-secondary  btn-lg" type="button"><i class="fa fa-search"></i></button>
@@ -215,107 +196,17 @@
     <!--end search buttons -->
 
 
-    <!-- <div class="row">
-        <div class="col-md-2 offset-md-1">
-             <a href="#"><button class="btnsearchpage">Tαξινόμηση v</button></a>
-         </div>
-         <div class="col-md-2 offset-md-2">
-            <input type="text" name="LastName" id="btngymssearch" value=" Αναζήτηση">
-         </div>
-         <div class="col-md-1  offset-md-1">
-             <a href="#"><button  class="btnsearchpage" id="btngymsfilter">Περιοχή  +</button></a>
-         </div>
-         <div class="col-md-1">
-             <a href="#"><button  class="btnsearchpage" id="btngymsfilter">Είδος +</button></a>
-         </div>
-         <div class="col-md-1">
-             <a href="#"><button  class="btnsearchpage" id="btngymsfilter">Tιμή +</button></a>
-         </div>
-    </div> -->
-
-
 
 <div class="row">
-        <div class="col-md-4 mb-5" style="height:100vh; overflow: auto;">
-
-         <div class="gymsresult">
-                <div class="row">
-                    <div class="col-md-3  offset-md-1 p-4">
-                        <a href="#"><img  src= " <?php echo URLROOT?> /images/search/gym_small_image.jpg" id="gymsmallimg" alt="gymimg"></a>
-                    </div>
-                    <div class="col=-md-7 offset-md-1 p-4 ">
-                        <p id="gymstitles"> <a href="#">Workout Hall Crossfit</a></p>
-                        <img src= " <?php echo URLROOT;?> /images/stars.png" alt="stars"/>
-                        <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος </p>
-                        <p>Συνδρομή απο 50€ </p>
-                    </div>
-                 </div>
-                 <div class="row">
-                    <div class="col-md-9 offset-md-1">
-                        <p><b>Crosfii - Boxing  - KingBoxing -  Climbing</b></p>
-                    </div>
-                    <div class="col-md-1 ">
-                        <img src= " <?php echo URLROOT;?> /images/search/heart.png" alt="stars"/>
-                    </div>
-                </div>
-             </div>
-
-             <div class="gymsresult">
-                <div class="row">
-                    <div class="col-md-3  offset-md-1 p-4 ">
-                        <a href="#"><img  src= " <?php echo URLROOT;?> /images/search/gym_small_image.jpg" id="gymsmallimg" alt="gymimg"></a>
-                    </div>
-                    <div class="col=-md-7 offset-md-1 p-4 ">
-                        <p id="gymstitles"> <a href="#">Workout Hall Crossfit</a></p>
-                        <img src= " <?php echo URLROOT;?> /images/stars.png" alt="stars"/>
-                        <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος </p>
-                        <p>Συνδρομή απο 50€ </p>
-                    </div>
-                 </div>
-                 <div class="row">
-                    <div class="col-md-9 offset-md-1">
-                        <p><b>Crosfii - Boxing  - KingBoxing -  Climbing</b></p>
-                    </div>
-                    <div class="col-md-1 ">
-                        <img src= " <?php echo URLROOT;?> /images/search/heart.png" alt="stars"/>
-                    </div>
-                </div>
-             </div>
-
-             <div class="gymsresult">
-                <div class="row text-center">
-                  <div class="card text-center mx-auto">
-                  <img class="card-img-top" src= " <?php echo URLROOT;?> /images/search/gym_small_image.jpg" id="gymsmallimg" alt="gymimg">
-                    <div class="card-body">
-                        <h2 class="card-title">Workout Hall Crossfit</h2>
-                        <img src= " <?php echo URLROOT;?> /images/stars.png" alt="stars"/>
-                        <br><br>
-                        <p class="card-text lead">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
-                        <p class="card-text lead">Συνδρομή απο 50€ </p>
-                        <hr>
-                        <p class="card-text"><b>Crosfii - Boxing  - KingBoxing -  Climbing</b></p>
-                        <hr>
-                        <img src= " <?php echo URLROOT;?> /images/search/heart.png" alt="stars"/>
-                    </div>
-                  </div>
-                </div>
-             </div>
-
-
-
+    <div class="col-md-12" style="height:100vh;">
+        <!-- MAP -->
+        <div class='sidebar'>
+              <div class='heading'>
+                <h2>Γυμναστήρια</h2>
+              </div>
+            <div id='listings' class='listings'></div>
         </div>
-
-
-<div class="col-md-8 mb-5">
-
-<!-- MAP -->
-<div class='sidebar'>
-      <div class='heading'>
-        <h2>Γυμναστήρια</h2>
-      </div>
-    <div id='listings' class='listings'></div>
-</div>
-<div id='map' class='map'> </div>
+        <div id='map' class='map'> </div>
 
   <script>
   // This will let you use the .remove() function later on
@@ -723,8 +614,6 @@ function buildLocationList(data) {
   }
 }
 
-
-
 // Add an event listener for when a user clicks on the map
 map.on('click', function(e) {
     alert
@@ -758,10 +647,5 @@ map.on('click', function(e) {
 <!-- MAP -->
      
     </div>
-
 </div>
-       
-
-
-
 <?php require  APPROOT . '/views/inc/footer.php'?>
