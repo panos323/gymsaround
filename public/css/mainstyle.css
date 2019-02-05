@@ -264,6 +264,7 @@ footer p a {
     height:100vh;
     opacity: 0.8;
 }
+#mobiletitle{display: none;}
 
 #title{
     color: #169b99;/*BLUE*/
@@ -529,7 +530,7 @@ select{
          
     filter: grayscale(0%)
   }
-
+/****************************INDEX RESPONSIVE*********************************************/
   @media (min-width: 1790px) {
     
     #blogtitle{
@@ -555,9 +556,6 @@ select{
     #articletitle, #article{margin-left: 50px}
       }
 
-
-
- 
 
 
   @media (min-width: 992px) and (max-width: 1199.98px){ 
@@ -611,20 +609,20 @@ select{
     #footermenu{
         display:none;
        }
-       #title{
+    #title{
         color: #169b99;/*BLUE*/
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 35px;
         margin-top: 100px;
     }
      
-       #footerextra{
+    #footerextra{
         display:none;
        }
-       #btnfooter{
+    #btnfooter{
            width:100%;
        }
-       footer{
+    footer{
         height: 430px;
     }
     .footer_logo{
@@ -643,7 +641,31 @@ select{
 
  
 
-  @media (max-width: 575.98px) { 
+@media (max-width: 575.98px) { 
+   
+    #mobiletitle{
+        margin-top: 50px;
+        display: inline;
+        color: #169b99;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 27px;
+        text-align: center;}
+
+
+    .fimage{background-color: #1d1d1d;
+    background-image: none;
+height: 450px;}
+
+    #btnmember, #bigtitle,  #title, .blogrow{display:none;}
+    
+    #boxgrey{
+        background-color: none;
+        width:100%;
+        height: 300px;}
+    
+        #btnsearch{width: 100%;}
+
+  
     #footermenu{
         display:none;
        }
@@ -668,6 +690,9 @@ select{
     font-size: 30px;
     color: #b5b5b6;}
    }
+
+
+
   /****************************************************************************************************
   ******************************************************************************************************
   *****************************----GYM PAGE----*********************************************************/
@@ -897,15 +922,17 @@ select{
 .team{
     margin-top: 80px;
     background-color:#e3e3e3;
-    height: 500px;
+    height: 550px;
 }
 
 #teamimg img{
     border-radius: 50%;
+    margin-bottom: 20px;
 }
 
 #teamimg p{
     text-align: center;
+    font-size: 18px;
 }
 
 /****************************************************************************************************

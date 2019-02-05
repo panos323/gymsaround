@@ -17,11 +17,12 @@
                             </div>
                     
 
-                    <div class="col-lg-4 offset-lg-2 col-md-6 offset-md-1">
+                    <div class="col-lg-4 offset-lg-2 col-md-6 offset-md-1 col-sm-12">
                         <div id="boxgrey">
 
                             <div class="row">
                                 <div class="col-lg-4 offset-lg-4 col-md-5 offset-md-3 col-sm-3 offset-sm-5">
+                                    <p id="mobiletitle">Βρες το γυμναστήριο που σου ταιριάζει</p>
                                     <p id="title">Επέλεξε</p>
                                 </div>
                             </div>
@@ -102,8 +103,8 @@
      </div>         
 
  <!--- START ROW 3 - BLOG---->
-
-        <div class="row blogrow">
+<div class="blogrow">
+        <div class="row">
             <div class="col-7">
                 <div class="box2"></div>
             </div>
@@ -123,7 +124,7 @@
                 </div>
             </div>
         </div>
-
+</div>
  <!--- START ROW 4- BLOG---->
 
         <div class="row">

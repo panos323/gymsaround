@@ -43,15 +43,15 @@
         <div class="row">
             <div class="col-md-3 offset-md-1" id="teamimg">
                 <img src= " <?php echo URLROOT; ?> /images/aboutus/tg.jpg" width="250" alt="teamimg">
-                <p>Theodora G.</p>
+                <p><b>Theodora G.</b></p>
             </div>    
             <div class="col-md-3 offset-md-1" id="teamimg">
                 <img src= " <?php echo URLROOT; ?> /images/aboutus/gg.jpg" width="250" alt="teamimg">
-                <p>Georgos G.</p>
+                <p><b>Georgos G.</p></b>
             </div>    
             <div class="col-md-3 offset-md-1" id="teamimg">
                 <img src= " <?php echo URLROOT; ?> /images/aboutus/pp.jpg" width="250" alt="teamimg">
-                <p>Panagiotis P.</p>
+                <p><b>Panagiotis P.</p></b>
             </div>
         </div>
     </div>
