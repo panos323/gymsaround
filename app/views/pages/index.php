@@ -17,11 +17,12 @@
                             </div>
                     
 
-                    <div class="col-lg-4 offset-lg-2 col-md-6 offset-md-1">
+                    <div class="col-lg-4 offset-lg-2 col-md-6 offset-md-1 col-sm-12">
                         <div id="boxgrey">
 
                             <div class="row">
                                 <div class="col-lg-4 offset-lg-4 col-md-5 offset-md-3 col-sm-3 offset-sm-5">
+                                    <p id="mobiletitle">Βρες το γυμναστήριο που σου ταιριάζει</p>
                                     <p id="title">Επέλεξε</p>
                                 </div>
                             </div>
@@ -44,9 +45,9 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-7 offset-md-3 col-sm-8 offset-sm-2">
-                                <a href="https://www.facebook.com/"> <button class="btnorange" id="btnsearch">Αναζήτηση</button></a>
+                            <div class="row"> 
+                                <div class="col-lg-7 offset-lg-3 col-md-9 offset-md-1 col-sm-8 offset-sm-2">
+                                <button class="btnorange" id="btnsearch">Αναζήτηση</button></a>
                                 </div>
                             </div>
             
@@ -58,10 +59,10 @@
         <!--- END ROW 1---->
 
         <!--- START ROW 2 - GYM ---->
+<div class="bestgym">
      <div class="row">
         <div class="col-12">
             <div class="box1">
-                <div class="bestgym">
                         <div class="container">
                     
                                 <div class="row">
@@ -71,43 +72,43 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-3 offset-1">
+                                    <div class="col-md-3 offset-md-1">
                                         <p id="gymname">Workout Hall Crossfit</p>
                                         <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars">
                                         <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
                                         <p>Crosfii, Boxing, KingBoxing,Climbing</p>
                                     </div>
-                                    <div class="col-6 offset-2" >
-                                             <img src= " <?php echo URLROOT; ?>/images/bestgym1.jpg" width="550" height="330">
+                                    <div class="col-6 offset-2" id="bestgymimg" >
+                                             <img src= " <?php echo URLROOT; ?>/images/bestgym1.jpg" width="100%" height="330">
                                           <!--  <button class="btnprobolh"><a href="#">Αναζήτηση</a></button>-->
                                     </div>
                                 </div>
-
+                            
                                 <div class="row">
-                                    <div class="col-1 offset-8">
-                                        <img  src= " <?php echo URLROOT; ?>/images/back.png" alt="stars" width="25" height="30">
+                                    <div class="col-md-1 offset-md-7 col-sm-1 offset-sm-6">
+                                        <img  src= " <?php echo URLROOT; ?>/images/back.png" alt="stars" width="25" height="30" style="float:right;">
+                                    </div>
+                                    <div class="col-lg-2 col-sm-2  ">
+                                        <p id="number"  style="text-align:center;"><span id="numbercolor">1 </span>/ 3 </p>
                                     </div>
                                     <div class="col-1 ">
-                                        <p>1/3</p>
-                                    </div>
-                                    <div class="col-1 ">
-                                        <img  src= " <?php echo URLROOT; ?>/images/front.png" alt="stars" width="25" height="30">
+                                        <img  src= " <?php echo URLROOT; ?>/images/front.png" alt="stars" width="25" height="30" style="float:left;">
                                     </div>
                                 </div>
-                        
+                            
                         </div><!-- end conatiner--->
-                </div><!-- end bestgym--->
+                <!-- end bestgym--->
                 </div>   
                 </div>   
      </div>         
-
+     </div>
  <!--- START ROW 3 - BLOG---->
-
-        <div class="row blogrow">
-            <div class="col-7">
+<div class="blogrow">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 ">
                 <div class="box2"></div>
             </div>
-            <div class="col-5">
+            <div class="col-lg-5 col-md-6">
                 <div class="blogarticle">
                     <p class="rowtitle" id="blogtitle">BLOG</p>
                     <p  id="articletitle">5 Συμβουλές Διατροφής!</p>
@@ -116,14 +117,14 @@
                         unknown printer took a galley of type and scrambled 
                         it to make a type specimen book.  </p>
                         <div class="row">
-                            <div class="col-lg-4 offset-lg-6">
-                            <button class="btnblue" id="btnblog"><a href="#">Περισσότερα</a></button>
+                            <div class="col-lg-4 offset-lg-6 col-sm-5 offset-sm-5">
+                              <a class="btnblue" id="btnblog" href="#">Περισσότερα</a>
                             </div>
                         </div>
                 </div>
             </div>
         </div>
-
+</div>
  <!--- START ROW 4- BLOG---->
 
         <div class="row">
