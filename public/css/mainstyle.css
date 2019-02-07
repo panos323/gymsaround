@@ -308,7 +308,7 @@ select{
 
 #bestgymimg img{margin-bottom: 20px;}
 
-
+.rowbestgymmobile{display: none;}
 /*******************************************
 -------------BUTTON ORANGE----------------------
 ********************************************/
@@ -606,6 +606,12 @@ select{
   }
 
   @media (min-width: 768px) and (max-width: 991.98px) { 
+      
+  
+    #teamimg img{
+        width:150px;
+       
+    }
     
     .fimage{height: 500px;}
  
@@ -658,6 +664,7 @@ select{
 
 
   @media (min-width: 575.98px) and (max-width: 767.98px) {
+
     
     .fimage{height: 500px;}
     
@@ -697,60 +704,154 @@ select{
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 30px;
         color: #b5b5b6;}
+
+
+        .rowbestgymmobile {
+            display: block;   
+        }
+        .rowbestgym{display: none;}
+
+
+        #gymtitle{
+            margin-top: 50px;
+        }
+    
+        #gymname{
+            margin: 0;
+            font-size: 21px;
+        }
+    
+        #bgelementmobile {
+                font-size: 13px;
+                margin-top:3px;
+                margin-bottom: 0;
+            }
+    
+    
+        #bgborder{
+            height:100%;
+            padding-top:5%;
+            padding-bottom: 5%;
+            border: 1px #e3e3e3  solid;
+            margin-bottom: 2%;
+        }
+
+/************ABOUTUS****************/
+        #teamimg p{
+            margin-top: 15px;}
+    
+        #teamimg img{
+            width:100px;
+            float: left;
+        }
+        
+/***********OWNER REGISTER****************/
+
+#ourservices{
+  padding-bottom: 650px;
+
+}
+.titlepartnerform{
+    margin-top: 530px;
+}
+.partnerform{
+    padding-bottom: 900px;
+}
   }
 
 
  
 
 @media (max-width: 575.98px) { 
-   
+    .rowtitle{
+            margin-top: 0;
+            font-size: 30px;}
+        
+    #gymtitle{
+        margin-top: 50px;
+    }
+
+    #gymname{
+        margin: 0;
+        font-size: 21px;
+    }
+
+    #bgelementmobile {
+            font-size: 13px;
+            margin-top:3px;
+            margin-bottom: 0;
+        }
+
+
+    #bgborder{
+        height:100%;
+        padding-top:5%;
+        padding-bottom: 5%;
+        border: 1px #e3e3e3  solid;
+        margin-bottom: 2%;
+    }
+
+    .rowbestgymmobile {
+            display: block;   
+        }
     #mobiletitle{
-        padding-top: 10px;
-        display: inline;
-        color: #169b99;
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        font-size: 27px;
-        text-align: center;}
+            margin-top: 250px;
+            display: inline;
+            color: #169b99;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 27px;
+            text-align: center;}
+    #boxgrey{background-color: #dddee0;}
 
+    .fimage{
+        background-color: #dddee0;
+        background-image: none;
+        height: 400px;}
 
-    .fimage{background-color: #1d1d1d;
-    background-image: none;
-height: 450px;}
-
-    #btnmember, #bigtitle,  #title, .blogrow{display:none;}
-    
+    #btnmember, #bigtitle,  #title, .blogrow, .rowbestgym,  #footermenu, #footerextra{display:none;}
+        
     #boxgrey{
-        background-color: none;
-        width:100%;
-        height: 300px;}
-    
-        #btnsearch{width: 100%;}
+            background-color: none;
+            width:100%;
+            height: 300px;}
+    #btnsearch{width: 100%;}
 
-  
-    #footermenu{
-        display:none;
-       }
-       #footerextra{
-        display:none;
-       }
-       #btnfooter{
-           width:70%;
-       }
-       footer{
-        height: 430px;
-    }
+    #btnfooter{ width:70%; }
+    footer{ height: 430px; }
     .footer_logo{
-        height: 100px;
-        width: auto;
-    }
+            height: 100px;
+            width: auto;
+        }
     #footertitle{
-        display: none;
+            display: none;
+        }
+    #gymaound{
+        display:block;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 30px;
+        color: #b5b5b6;}
+
+        #teamimg p{
+        margin-top: 15px;}
+
+    #teamimg img{
+        width:100px;
+        float: left;
     }
-    #gymaound{display:block;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 30px;
-    color: #b5b5b6;}
-   }
+/***********OWNER REGISTER****************/
+
+#ourservices{
+    padding-bottom: 750px;
+    margin-top: 100px;
+  }
+  .titlepartnerform{
+      margin-top: 580px;
+  }
+  .partnerform{
+      padding-bottom: 900px;
+  }
+
+    }
 
 
 

@@ -21,7 +21,7 @@
                         <div id="boxgrey">
 
                             <div class="row">
-                                <div class="col-lg-4 offset-lg-4 col-md-5 offset-md-3 col-sm-3 offset-sm-5">
+                                <div class="col-lg-4 offset-lg-4 col-md-5 offset-md-3 col-sm-3 offset-sm-5 col-11 offset-1">
                                     <p id="mobiletitle">Βρες το γυμναστήριο που σου ταιριάζει</p>
                                     <p id="title">Επέλεξε</p>
                                 </div>
@@ -71,6 +71,8 @@
                                         <div class="orangeline"></div>
                                     </div>
                                 </div>
+                                <!--------BEST GYM DESKTOP--------->
+                                <div class="rowbestgym">
                                 <div class="row">
                                     <div class="col-md-3 offset-md-1">
                                         <p id="gymname">Workout Hall Crossfit</p>
@@ -95,7 +97,51 @@
                                         <img  src= " <?php echo URLROOT; ?>/images/front.png" alt="stars" width="25" height="30" style="float:left;">
                                     </div>
                                 </div>
-                            
+                                </div>
+
+
+                                 <!--------BEST GYM MOBILE--------->
+                                 <div class="rowbestgymmobile">
+                                  
+                                    
+                                     <div class="row" id="bgborder">
+                                         <div class="col-5">
+                                         <img src= " <?php echo URLROOT; ?>/images/bestgym1.jpg" width="100%" height="auto">
+                                         </div>
+                                         <div class="col-7">
+                                                <p id="gymname">Workout Hall Crossfit</p>
+                                                <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars" width="30%">
+                                                <p id="bgelementmobile">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
+                                                <p id="bgelementmobile">Crosfii, Boxing, KingBoxing,Climbing</p>
+                                         </div>
+                                       </div> 
+                                     <div class="row" id="bgborder">
+                                         <div class="col-5">
+                                         <img src= " <?php echo URLROOT; ?>/images/bestgym1.jpg" width="100%" height="auto">
+                                         </div>
+                                         <div class="col-7">
+                                                <p id="gymname">Workout Hall Crossfit</p>
+                                                <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars" width="30%">
+                                                <p id="bgelementmobile">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
+                                                <p id="bgelementmobile">Crosfii, Boxing, KingBoxing,Climbing</p>
+                                         </div>
+                                     </div>
+                                     <div class="row" id="bgborder">
+                                         <div class="col-5">
+                                         <img src= " <?php echo URLROOT; ?>/images/bestgym1.jpg" width="100%" height="auto">
+                                         </div>
+                                         <div class="col-7">
+                                                <p id="gymname">Workout Hall Crossfit</p>
+                                                <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars" width="30%">
+                                                <p id="bgelementmobile">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
+                                                <p id="bgelementmobile">Crosfii, Boxing, KingBoxing,Climbing</p>
+                                         </div>
+                                     </div>
+                                  
+
+                                 </div>
+
+
                         </div><!-- end conatiner--->
                 <!-- end bestgym--->
                 </div>   

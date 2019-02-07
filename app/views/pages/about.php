@@ -41,17 +41,20 @@
             </div>
         </div>  
         <div class="row">
-            <div class="col-md-3 offset-md-1" id="teamimg">
+            <div class="col-md-3 offset-md-1 col-10 offset-1" id="teamimg">
                 <img src= " <?php echo URLROOT; ?> /images/aboutus/tg.jpg" width="250" alt="teamimg">
                 <p><b>Theodora G.</b></p>
+                <p>Web Designer</p>
             </div>    
-            <div class="col-md-3 offset-md-1" id="teamimg">
+            <div class="col-md-3 offset-md-1 col-10 offset-1" id="teamimg">
                 <img src= " <?php echo URLROOT; ?> /images/aboutus/gg.jpg" width="250" alt="teamimg">
                 <p><b>Georgos G.</p></b>
+                <p>Web Designer</p>
             </div>    
-            <div class="col-md-3 offset-md-1" id="teamimg">
+            <div class="col-md-3 offset-md-1 col-10 offset-1" id="teamimg">
                 <img src= " <?php echo URLROOT; ?> /images/aboutus/pp.jpg" width="250" alt="teamimg">
                 <p><b>Panagiotis P.</p></b>
+                <p>Web Designer</p>
             </div>
         </div>
     </div>

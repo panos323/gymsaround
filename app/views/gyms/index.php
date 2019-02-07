@@ -1,6 +1,6 @@
 <?php require  APPROOT . '/views/inc/header.php'?>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-7">
             <div class="gymelement">
                 <div class="row">
                  <!--   <div class="col-md-6 offset-md-2">
@@ -10,8 +10,8 @@
                         <p><b>Crosfii, Boxing, KingBoxing,Climbing</b></p>
                         <button class="btnorange" id="btnsearch"><a href="#">Πακέτα Συνδρομών</a></button>
                     </div>-->
-                    <div class="col-md-2 offset-md-2">
-                         <img id="gymlogo" width="200" src= " <?php echo URLROOT;?> /images/gym/gymlogo.png" alt="logo"/>
+                    <div class="col-md-3 offset-md-2">
+                         <img id="gymlogo" width="100%" src= " <?php echo URLROOT;?> /images/gym/gymlogo.png" alt="logo"/>
                     </div>
                     <div class="col-md-6 offset-md-1">
                         <p id="gymsnames">Workout Hall Crossfit</p>
@@ -28,7 +28,7 @@
 
             </div>
         </div>
-        <div class="col-md-6 ">
+        <div class="col-lg-6 col-md-5">
             <img src= " <?php echo URLROOT;?> /images/gym/bigimggym.jpg" width="100%" height="600" alt="biggym">
         </div>
     </div>
