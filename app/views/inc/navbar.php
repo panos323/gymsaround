@@ -1,20 +1,24 @@
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark " id="navbarstyle">
-    <div class="container-fluid">
+    <nav class="navbar navbar-expand-md  navbar-dark " id="navbarstyle">
+    
         <div class="navbar-header">   
         <a class="navbar-brand " href="<?php echo URLROOT; ?>"><img class="navbar_logo" src="<?php echo URLROOT; ?>/images/logo.png" alt="logo"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#mydropdown" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         </div>
-  <!--  <div class="collapse navbar-collapse">-->
-        <ul class="navbar-nav justify-content-end">
+  <div class="collapse navbar-collapse" id="mydropdown">
+
+        <ul class="navbar-nav offset-8 justify-content-end">
             <li class="nav-item <?php echo (isset($view) && $view==='pages/index') ? 'active' : '';?>">
                 <a class="nav-link" href="<?php echo URLROOT; ?>">Αρχική</a>
             </li>
             <li class="nav-item <?php echo (isset($view) && $view==='gyms/search') ? 'active' : '';?>">
                 <a class="nav-link" href="<?php echo URLROOT; ?>/gyms/search">Γυμναστήρια</a>
+            </li>
+            <li class="nav-item  <?php echo (isset($view) && $view==='pages/blog') ? 'active' : '';?>">
+                <a class="nav-link" href="<?php echo URLROOT; ?>/pages/blog">Blog</a>
             </li>
             <li class="nav-item  <?php echo (isset($view) && $view==='pages/about') ? 'active' : '';?>">
                 <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">Εταιρεία</a>
@@ -27,17 +31,18 @@
                     <a class="nav-link" href="<?php echo URLROOT; ?>/<?php echo $_SESSION['type']; ?>/logout">Αποσύνδεση</a>
                 </li>
             <?php else : ?>
-                <li id="btnregister" class="nav-item" <?php echo (isset($view) && $view=== 'users/register') ? 'active' : '';?>" >
+                <li id="btnregister" class="nav-item navbar-right" <?php echo (isset($view) && $view=== 'users/register') ? 'active' : '';?>" >
                 <button type="button"  data-toggle="modal" data-target="#registermodal">Εγγραφή</button>
                 </li>
                 <li  id="btnlogin" class="nav-item <?php echo (isset($view) && $view==='users/login') ? 'active' : '';?>">
-                     <button type="button" id="btnlogin" data-toggle="modal" data-target="#loginmodal">Είσοδος</button>
+                     <button type="button" class="navbar-right" id="btnlogin" data-toggle="modal" data-target="#loginmodal">Είσοδος</button>
                 </li>
             <?php endif; ?>
         </ul>
-<!--</div>-->
-  
+
 </div>
+  
+</nav>
     
 <!------- *****************MODAL REGISTER*****************------->
     <div class="modal fade bd-example-modal-lg" id="registermodal" role="dialog">
@@ -141,5 +146,3 @@
     </div>
   </div>
 
-
-</nav>
