@@ -189,7 +189,7 @@
     <!--start search buttons -->
     <div class="row col-lg-12">
         <div class="col-md-4 mt-4 mb-3">
-            <button type="button" class="btn btn-outline-info mr-4   btn-md customBtnG">Tαξινόμηση +</button>
+            <button type="button" class="btn btn-outline-info mr-4   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
             <button type="button" class="btn btn-outline-info mr-4  btn-md  customBtnG">Περιοχή  +</button>
             <button type="button" class="btn btn-outline-info mr-4  btn-md  customBtnG">Είδος +</button>
             <button type="button" class="btn btn-outline-info  btn-md customBtnG">Tιμή +</button>
@@ -231,7 +231,7 @@
 
   var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/light-v9',
+    style: 'mapbox://styles/mapbox/streets-v11',
     center: [23.727539, 37.983810], //long - lat
     zoom: 9
   });
@@ -363,6 +363,45 @@ map.on('load', function(e) {
   });
 
   buildLocationList(stores); //Initialize the list
+
+
+  //Start sort Elements By Name
+  var orderAscDescName = false; //toggle for asc desc order
+  function SortByName() {
+    orderAscDescName = !orderAscDescName;
+
+    var list = document.getElementById("listings");
+    var myList = list.getElementsByClassName("item");
+
+    var aNames = [];
+
+    for (var i = 0; i < myList.length; i++) {
+        aNames[i] = myList[i].innerHTML;
+    }//for loop
+    
+    if (orderAscDescName) {
+      aNames.sort();
+      document.getElementById("AscDescArrows").classList.add("fa-arrow-down");
+    } else {
+      aNames.reverse();
+      document.getElementById("AscDescArrows").classList.remove("fa-arrow-down")
+      document.getElementById("AscDescArrows").classList.add("fa-arrow-up")
+    }
+    
+    for (var i = 0; i < myList.length; i++) {
+        myList[i].innerHTML = aNames[i];
+    }//for loop
+    
+  }//end function
+
+
+  //on button click call function to sort elements by name
+  document.getElementById("sortByNameBtn").addEventListener("click", function() {
+    this.innerHTML = this.innerHTML.replace('+', '');
+    SortByName();
+  });
+  //End sort Elements By Name
+
 
   // Add `new mapboxgl.Geocoder` code here
   //start add geocoder for search in Greece
