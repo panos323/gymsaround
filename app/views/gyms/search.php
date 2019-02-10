@@ -161,7 +161,16 @@
 }
 
 /*add styles for mapboxgl-ctrl-geocoder here*/
-.mapboxgl-ctrl-geocoder {
+.geocoder {
+  position:absolute;
+  z-index:1;
+  width:50%;
+  left:50%;
+  margin-left:-25%;
+  top:0px;
+}
+
+ .mapboxgl-ctrl-geocoder {
   border: 0;
   border-radius: 0;
   position: relative;
@@ -173,7 +182,7 @@
 .mapboxgl-ctrl-geocoder > div {
   min-width: 100%;
   margin-left: 0;
-}
+} 
 
 </style>
 <!-- style for map -->
@@ -187,10 +196,8 @@
         </div>
         <div class="col-md-6 offset-1  mt-3 mb-3">
             <div class="input-group">
-                <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary  btn-lg" type="button"><i class="fa fa-search"></i></button>
-                </div>
-                <input type="text" class="form-control form-control-lg" placeholder="Αναζήτηση" aria-label="" aria-describedby="basic-addon1">
+                <div id='geocoder' class='geocoder'>
+              </div>
             </div>
         </div>
     </div> <!--row-->
@@ -208,7 +215,8 @@
               <div id='listings' class='listings'></div>
         </div>
         <div id='map' class='map'> </div>
-
+        
+        
   <script>
   // This will let you use the .remove() function later on
   if (!('remove' in Element.prototype)) {
@@ -225,9 +233,7 @@
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v9',
     center: [23.727539, 37.983810], //long - lat
-    //center: [-74.50, 40],
-    zoom: 9,
-    scrollZoom: false
+    zoom: 9
   });
 
   var stores = {
@@ -350,16 +356,150 @@
       }]
   };
   // This adds the stores to the map
-  map.on('load', function(e) {
+map.on('load', function(e) {
+  map.addSource('places', {
+    type: 'geojson',
+    data: stores
+  });
 
-map.addSource('places', {
-  type: 'geojson',
-  data: stores
-});
+  buildLocationList(stores); //Initialize the list
 
-  buildLocationList(stores);
+  // Add `new mapboxgl.Geocoder` code here
+  //start add geocoder for search in Greece
+  var geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    bbox: [19.858037278278772,35.9369788149224,26.47077930220928,41.490542182273316],
+  });
 
-});
+  document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+  //end add geocoder for search
+
+  // Add the `map.addSource` and `map.addLayer` here
+  map.addSource('single-point', {
+    type: 'geojson',
+    data: {
+      type: 'FeatureCollection',
+      features: [] // Notice that initially there are no features
+    }
+  });
+
+  map.addLayer({
+    id: 'point',
+    source: 'single-point',
+    type: 'circle',
+    paint: {
+      'circle-radius': 10,
+      'circle-color': '#007cbf',
+      'circle-stroke-width': 3,
+      'circle-stroke-color': '#fff'
+    }
+  });
+
+  // Add the `geocode` event listener here
+  geocoder.on('result', function(ev) {
+
+      var searchResult = ev.result.geometry;
+      map.getSource('single-point').setData(searchResult);
+
+      // Add `forEach` function 
+      var options = { units: 'miles' };
+
+      stores.features.forEach(function(store) {
+          Object.defineProperty(store.properties, 'distance', {
+            value: turf.distance(searchResult, store.geometry, options),
+            writable: true,
+            enumerable: true,
+            configurable: true
+          });
+          
+      });//end forEach
+
+      // Add `sort` function 
+      stores.features.sort(function(a, b) {
+        if (a.properties.distance > b.properties.distance) {
+          return 1;
+        }
+        if (a.properties.distance < b.properties.distance) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });//end `sort` function 
+
+      //Add function that fits bounds to search and closest store here
+      function sortLonLat(storeIdentifier) {
+
+        var lats = [stores.features[storeIdentifier].geometry.coordinates[1], searchResult.coordinates[1]];
+        var lons = [stores.features[storeIdentifier].geometry.coordinates[0], searchResult.coordinates[0]];
+
+        var sortedLons = lons.sort(function(a, b) {
+          if (a > b) {
+            return 1;
+          }
+          if (a.distance < b.distance) {
+            return -1;
+          }
+          return 0;
+        });
+
+        var sortedLats = lats.sort(function(a, b) {
+          if (a > b) {
+            return 1;
+          }
+          if (a.distance < b.distance) {
+            return -1;
+          }
+          return 0;
+        });
+
+        map.fitBounds([
+          [sortedLons[0], sortedLats[0]],
+          [sortedLons[1], sortedLats[1]]
+        ], {
+          padding: 100
+        });
+        }//end function sortLonLat
+
+        sortLonLat(0);
+        createPopUp(stores.features[0]);
+        
+        
+        var listings = document.getElementById('listings');
+        while (listings.firstChild) {
+          listings.removeChild(listings.firstChild);
+        }
+
+        buildLocationList(stores);
+  }); //on result
+
+  
+});//map.on('load')
+
+
+
+stores.features.forEach(function(marker, i) {
+    var el = document.createElement('div'); // Create an img element for the marker
+    el.id = 'marker-' + i;
+    el.className = 'marker';
+    // Add markers to the map at all points
+    new mapboxgl.Marker(el, { offset: [-28, -46] })
+      .setLngLat(marker.geometry.coordinates)
+      .addTo(map);
+
+    el.addEventListener('click', function(e) {
+      flyToStore(marker); // Fly to the point
+      createPopUp(marker); // Close all other popups and display popup for clicked store
+      var activeItem = document.getElementsByClassName('active'); // Highlight listing in sidebar (and remove highlight for all other listings)
+
+      e.stopPropagation();
+      if (activeItem[0]) {
+        activeItem[0].classList.remove('active');
+      }
+
+      var listing = document.getElementById('listing-' + i);
+      listing.classList.add('active');
+    });
+}); //stores.features.forEach
 
 
 function flyToStore(currentFeature) {
@@ -381,35 +521,6 @@ function createPopUp(currentFeature) {
     .addTo(map);
 }
 
-stores.features.forEach(function(marker) {
-  // Create a div element for the marker
-  var el = document.createElement('div');
-  // Add a class called 'marker' to each div
-  el.className = 'marker';
-  // By default the image for your custom marker will be anchored
-  // by its center. Adjust the position accordingly
-  // Create the custom markers, set their position, and add to map
-  new mapboxgl.Marker(el, { offset: [0, -23] })
-    .setLngLat(marker.geometry.coordinates)
-    .addTo(map);
-
-    el.addEventListener('click', function(e) {
-        var activeItem = document.getElementsByClassName('active');
-        // 1. Fly to the point
-        flyToStore(marker);
-        // 2. Close all other popups and display popup for clicked store
-        createPopUp(marker);
-        // 3. Highlight listing in sidebar (and remove highlight for all other listings)
-        e.stopPropagation();
-        if (activeItem[0]) {
-            activeItem[0].classList.remove('active');
-        }
-        var listing = document.getElementById('listing-' + i);
-        console.log(listing);
-        listing.classList.add('active');
-    });
-});
-
 
 function buildLocationList(data) {
   // Iterate through the list of stores
@@ -421,6 +532,7 @@ function buildLocationList(data) {
     // Select the listing container in the HTML and append a div
     // with the class 'item' for each store
     var listings = document.getElementById('listings');
+
     var listing = listings.appendChild(document.createElement('div'));
     listing.className = 'item';
     listing.id = 'listing-' + i;
@@ -443,9 +555,16 @@ function buildLocationList(data) {
     details.innerHTML += '<button class="btn btn-warning float-right mt-3" id="btnGymPrice">' + prop.gymCost + '</button>'
 
     details.innerHTML += '<span class="clearfix"></span>';
+
+    //distance appears on search
+    if (prop.distance) {
+      var roundedDistance = Math.round(prop.distance * 100) / 100;
+      //console.log('distance EXISTS')
+      details.innerHTML += '<p class="lead mt-3 mb-4"><mark>' + roundedDistance + ' miles away<mark></p>';
+    }
+
     // Create a new link with the class 'title' for each store
     // and fill it with the store address
-
     var link = listing.appendChild(document.createElement('a'));
     link.href = '#';
     link.className = 'title';
@@ -454,26 +573,26 @@ function buildLocationList(data) {
 
    // Add an event listener for the links in the sidebar listing
    link.addEventListener('click', function(e) {
-  // Update the currentFeature to the store associated with the clicked link
-  var clickedListing = data.features[this.dataPosition];
-  // 1. Fly to the point associated with the clicked link
-  flyToStore(clickedListing);
-  // 2. Close all other popups and display popup for clicked store
-  createPopUp(clickedListing);
-  // 3. Highlight listing in sidebar (and remove highlight for all other listings)
-  var activeItem = document.getElementsByClassName('active');
-  if (activeItem[0]) {
-    activeItem[0].classList.remove('active');
-  }
-  this.parentNode.classList.add('active');
-});
+    // Update the currentFeature to the store associated with the clicked link
+    var clickedListing = data.features[this.dataPosition];
+    // 1. Fly to the point associated with the clicked link
+    flyToStore(clickedListing);
+    // 2. Close all other popups and display popup for clicked store
+    createPopUp(clickedListing);
+    // 3. Highlight listing in sidebar (and remove highlight for all other listings)
+    var activeItem = document.getElementsByClassName('active');
+    if (activeItem[0]) {
+      activeItem[0].classList.remove('active');
+    }
+    this.parentNode.classList.add('active');
+  });
 
   }
-}
+}//buildLocationList(data)
 
 // Add an event listener for when a user clicks on the map
 map.on('click', function(e) {
-    alert
+    
   // Query all the rendered points in the view
   var features = map.queryRenderedFeatures(e.point, { layers: ['locations'] });
   if (features.length) {
@@ -500,6 +619,9 @@ map.on('click', function(e) {
     listing.classList.add('active');
   }
 });
+
+// Add zoom and rotation controls to the map.
+map.addControl(new mapboxgl.NavigationControl());
 </script>
 <!-- MAP -->
      
