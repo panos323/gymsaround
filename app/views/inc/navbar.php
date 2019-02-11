@@ -107,7 +107,7 @@
   <div class="modal fade" id="loginmodal" role="dialog">
     <div class="modal-dialog ">
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content" id="modalcontentlogin">
         <div class="modal-header">
           <h4 class="modal-title">Είσοδος</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>

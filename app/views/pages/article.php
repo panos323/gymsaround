@@ -14,7 +14,16 @@
     <div class="row">
         <div class="col-md-12">
             <img src= " <?php echo URLROOT;?> /images/blog/imgblog1.jpg" style="margin-bottom:15px;" width="100%" alt="stars"/>
-            <div class="article">
+            <div class="row">
+                <div class="col-md-1 offset-md-9">
+                <img style="border-radius:50%;"class="mr-3"  src= " <?php echo URLROOT; ?> /images/blog/user.jpg" width="60" alt="Generic placeholder image">
+                </div>
+                <div class="col-md-2">
+                    <p style="font-size:15px;color:#2c2b2b;margin-top:5px;margin-bottom:5px;">Μαρία</p>
+                    <p style="font-size:13px;color:#2c2b2b;">21 Ιαν. 2018, 11:54 πμ</p>
+                </div>
+            </div>
+            <div class="articlerow">
                 <p style="color:#169b99;font-size:20px;"><b>Κάθε φορά που τελειώνετε τη προπόνησή σας να κάνετε τις απαραίτητες διατάσεις</b><p>
                 <p>Πιθανώς, έχεις ακούσει αρκετές φορές ότι χρειάζονται οι διατάσεις όταν γυμνάζεστε. Τους λόγους όμως σου τους έχουν εξηγήσει ποτέ; Πολλοί τις θεωρούν βαρετές και χάσιμο χρόνου. 
                 Μέγα Λάθος! Οι διατάσεις είναι ενστικτωδώς μέρος της καθημερινότητάς μας. Πόσοι από εσάς τεντώνεστε όταν ξυπνάτε ή όταν κάθεστε πολλές ώρες στο γραφείο; 
@@ -41,20 +50,20 @@
     </div>
 
     <div class="media mediacomments">
-     <img class="mr-3"  src= " <?php echo URLROOT; ?> /images/aboutus/tg.jpg" width="80" alt="Generic placeholder image">
+     <img style="border-radius:50%;" class="mr-3"  src= " <?php echo URLROOT; ?> /images/blog/user1.jpg" width="80" alt="Generic placeholder image">
         <div class="media-body">
-            <h5 class="mt-0">Μαρία</h5></h5>
+            <h5 class="mt-0" style="padding-top:10px;">Μαρία</h5></h5>
             <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. te fringilla. Donec laciniafaucibus.</p>
-            <p id="commentday">5.12.2018</p>
+            <p id="commentday">24 Ιαν. 2018, 09:10 πμ</p>
         </div>
     </div>
 
     <div class="media mediacomments">
-     <img class="mr-3"  src= " <?php echo URLROOT; ?> /images/aboutus/gg.jpg" width="80" alt="Generic placeholder image">
+     <img  style="border-radius:50%;" class="mr-3"  src= " <?php echo URLROOT; ?> /images/blog/user2.jpg" width="80" alt="Generic placeholder image">
          <div class="media-body">
-            <h5 class="mt-0">Νίκος</h5></h5>
+            <h5 class="mt-0" style="padding-top:10px;">Νίκος</h5></h5>
             <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. te fringilla. Donec laciniafaucibus.</p>
-            <p id="commentday">6.12.2018</p>
+            <p id="commentday">22 Ιαν. 2018, 11:00 πμ</p>
         </div>
     </div>
 

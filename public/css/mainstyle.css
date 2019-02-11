@@ -30,9 +30,11 @@ color: #b5b5b6;
 }
 #btnregister{
     margin-right: 2%;
+    
 }
 #btnlogin{
     margin-right: 4%;
+   
 }
 #btnregister button, #btnlogin button{
     background-color: #2c2b2b;
@@ -44,11 +46,13 @@ color: #b5b5b6;
     cursor: pointer;
     color:#1ab5b7;
     margin-left: 15px;
+    outline: none;
    
 }
 #btnregister button:hover, #btnlogin button:hover{
     background-color: #1ab5b7;
     color:#1d1d1d; 
+  
 }
 
 
@@ -74,6 +78,7 @@ color: #b5b5b6;
 /**
     modal
 */
+
 #modalregistertitle{
 margin-left:36%;
 }
@@ -92,8 +97,9 @@ margin-left:36%;
     opacity:0.9;
     background-color: #1d1d1d ;
 }
+#modalcontentlogin{margin-top: 150px;}
 
-.modal-content{margin-top: 150px;}
+.modal-content{margin-top: 50px;}
 
 .form-control{
      border-radius: 22px;  
@@ -111,6 +117,7 @@ margin-left:36%;
     margin-left:30%;
     margin-top: 30px;
     margin-bottom: 20px;
+  
 }
 
 #btnmodalregister{margin-left: 8%;}
@@ -123,9 +130,12 @@ margin-left:36%;
 
 #btnmodalfb:hover{
     background-color: #507acf;
+    outline: none;
 }
 .btnmodalform:hover{
     background-color: #1ab5b7;
+    outline: none;
+    
 }
 #logintext{
     color:#169b99;
@@ -268,7 +278,7 @@ footer p a {
 #mobiletitle{display: none;}
 
 #title{
-    color:#8e8a8a #169b99;/*BLUE*/
+    color: #169b99;/*BLUE*/
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 35px;
     margin-top: 250px;
@@ -1220,8 +1230,13 @@ select{
 .blogbox {
     margin-bottom: 15px;
 }
-
-
+.blogbox a{
+    color: #169b99;
+}
+.blogbox a:hover{
+    text-decoration: none;
+    color: #169b99;
+}
 .pagination{margin: 30px;}
 
 #blogpage{
@@ -1247,7 +1262,7 @@ select{
     color: #169b99;
 }
 
-.article, .mediacomments{
+.articlerow, .mediacomments{
     padding-top: 15px;
     padding-bottom: 15px;
     margin-bottom: 30px;
