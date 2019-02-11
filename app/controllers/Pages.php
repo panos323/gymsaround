@@ -34,6 +34,13 @@ class Pages extends Controller {
 
         $this->view('pages/blog', $data);
     }
+    public function article(){
+        $data = [
+            'title' => 'Article'
+        ];
+
+        $this->view('pages/article', $data);
+    }
 
 
 }

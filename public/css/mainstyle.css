@@ -268,7 +268,7 @@ footer p a {
 #mobiletitle{display: none;}
 
 #title{
-    color: #169b99;/*BLUE*/
+    color:#8e8a8a #169b99;/*BLUE*/
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 35px;
     margin-top: 250px;
@@ -1246,3 +1246,45 @@ select{
     padding-top: 45px;
     color: #169b99;
 }
+
+.article, .mediacomments{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    border-bottom: 1px #e3e3e3 solid;
+}
+.media{
+    margin-top: 20px;
+    padding-bottom: 30px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+  }
+  #btncomment{
+    border:2px solid #8e8a8a;
+    background-color: #ffc731;
+    color: #2c2b2b;
+    font-size:20px;
+    border-radius: 22px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 8px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+#btncomment:hover{
+    border:2px solid#ffc731;
+    background-color: white;
+    color:  #ffc731;
+    font-weight: 700;
+}
+
+#commentday{float:right;}
