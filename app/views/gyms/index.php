@@ -53,14 +53,20 @@
     </div>
 <!-----------------------------------------------------------------------------------------------------------------
 -------------------------------------------***IMAGES**--------------------------------------------------------------->
-
+<
     <div id="images">
         <div class="container">
             <p class="basictitle" id="gymstitle">ΦΩΤΟΓΡΑΦΙΕΣ</p>
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-md-12">
-                    <img src= " <?php echo URLROOT;?> /images/gym/image1.jpg" width="365" alt="gymimg">
-                    <img src= " <?php echo URLROOT; ?> /images/gym/image2.jpg" width="365"  alt="gymimg">
+           
+
+            <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery">
+                    <img src= " <?php echo URLROOT;?> /images/gym/image1.jpg" width="365" alt="gymimg"  class="img-fluid">
+                </a>
+                <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery">
+                    <img src= " <?php echo URLROOT;?> /images/gym/image2.jpg" width="365" alt="gymimg"  class="img-fluid">
+                </a>
                     <img src= " <?php echo URLROOT; ?> /images/gym/image3.jpg"  width="365" alt="gymimg">
                 </div>
             </div>
@@ -79,32 +85,55 @@
         <div class="container">
             <p class="basictitle" id="gymstitle">ΠΡΟΣΩΠΙΚΟ</p>
      
-            <div class="row">
-            <div class="col-md-12">
-            <div class="flex-container-sundromes">
-                <div  id="arrow">
-                 <img  src= " <?php echo URLROOT; ?> /images/back.png" width="40" alt="arrow">
+          <!--  <div class="row">
+                <div class="col-md-12">
+                    <div class="flex-container-sundromes">
+                        <div  id="arrow">
+                        <img  src= " <?php echo URLROOT; ?> /images/back.png" width="40" alt="arrow">
+                        </div>
+                        <div id="trainerphoto">
+                            <img src= " <?php echo URLROOT; ?> /images/gym/trainer1.jpg" width="365" alt="gymimg">
+                            <div class="trainerdescr"><p>Γιάννης Κ. - Crossfit trainer</p></div> 
+                        </div>
+                        <div  id="trainerphoto">
+                            <img  src= " <?php echo URLROOT; ?> /images/gym/trainer2.jpg" width="365" height="244" alt="gymimg">
+                            <div class="trainerdescr"><p>Μαρία Κ. - Crossfit trainer</p></div> 
+                        </div>
+                        <div  id="trainerphoto">
+                            <img src= " <?php echo URLROOT; ?> /images/gym/trainer3.jpg" width="365" alt="gymimg">
+                            <div class="trainerdescr"><p>Κώστας Κ. - Crossfit trainer</p></div> 
+                        </div>
+                        <div  id="arrow">
+                        <img src= " <?php echo URLROOT; ?> /images/front.png" width="40" alt="arrow">
+                        </div>
+                    </div>
                 </div>
-                <div id="trainerphoto">
-                    <img src= " <?php echo URLROOT; ?> /images/gym/trainer1.jpg" width="365" alt="gymimg">
-                    <div class="trainerdescr"><p>Γιάννης Κ. - Crossfit trainer</p></div> 
-                </div>
-                <div  id="trainerphoto">
-                    <img  src= " <?php echo URLROOT; ?> /images/gym/trainer2.jpg" width="365" height="244" alt="gymimg">
-                    <div class="trainerdescr"><p>Μαρία Κ. - Crossfit trainer</p></div> 
-                </div>
-                <div  id="trainerphoto">
-                    <img src= " <?php echo URLROOT; ?> /images/gym/trainer3.jpg" width="365" alt="gymimg">
-                    <div class="trainerdescr"><p>Κώστας Κ. - Crossfit trainer</p></div> 
-                </div>
-                <div  id="arrow">
-                 <img src= " <?php echo URLROOT; ?> /images/front.png" width="40" alt="arrow">
-                </div>
-    </div>
-                </div>
-          
-            </div> 
-            </div>   
+             </div> -->
+         
+        <div class="d-flex justify-content-center">
+            <div  id="arrow">
+                <img  src= " <?php echo URLROOT; ?> /images/back.png" width="40" alt="arrow">
+            </div>
+             <div class="p-2 bd-highlight"  id="trainerphoto">
+                    <img src= " <?php echo URLROOT; ?> /images/gym/trainer1.jpg" width="100%" alt="gymimg">
+                    <div class="trainerdescr"><p>Γιάννης Κ. - Crossfit trainer</p></div>  
+             </div>
+            <div class="p-2 bd-highlight" id="trainerphoto">
+                <img  src= " <?php echo URLROOT; ?> /images/gym/trainer2.jpg" width="100%" height="244" alt="gymimg">
+                <div class="trainerdescr"><p>Μαρία Κ. - Crossfit trainer</p></div> 
+            </div>
+            <div class="p-2 bd-highlight" id="trainerphoto">
+                 <img src= " <?php echo URLROOT; ?> /images/gym/trainer3.jpg" width="100%" alt="gymimg">
+                 <div class="trainerdescr"><p>Κώστας Κ. - Crossfit trainer</p></div> 
+            </div>
+            <div  id="arrow">
+                <img src= " <?php echo URLROOT; ?> /images/front.png" width="40" alt="arrow">
+            </div>
+        </div>
+
+
+
+        </div>   
     </div>
 
  <!-----------------------------------------------------------------------------------------------------------------
@@ -150,4 +179,7 @@
              <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d12592.370471965784!2d23.74543255!3d37.9048978!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sel!2sgr!4v1548759265208" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
     </div>
+
+
 <?php require  APPROOT . '/views/inc/footer.php'?>
+

@@ -1262,6 +1262,13 @@ select{
     color: #169b99;
 }
 
+.pagination a{
+    color: #169b99;
+} 
+.pagination a:hover{
+    color: #169b99;
+} 
+
 .articlerow, .mediacomments{
     padding-top: 15px;
     padding-bottom: 15px;
