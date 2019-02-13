@@ -37,7 +37,7 @@
   height: 100vh;
   overflow: auto;
   padding-left: 20px;
-  padding-bottom: 60px;
+  padding-bottom: 180px;
 }
 
 .listings .item {
@@ -184,15 +184,34 @@
   margin-left: 0;
 } 
 
+#searchFieldset {
+    background: #ddd;
+    border: none;
+    padding: 10px;
+    margin: 0;
+}
+
+#feature-filter{
+  width:100%;
+  display:block;
+  text-align:center;
+}
+
+.emptyResultsTitle{
+  text-align:center;
+  color:red;
+}
 </style>
 <!-- style for map -->
+
+
     <!--start search buttons -->
     <div class="row col-lg-12">
         <div class="col-md-4 mt-4 mb-3">
             <button type="button" class="btn btn-outline-info mr-4   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
             <button type="button" class="btn btn-outline-info mr-4  btn-md  customBtnG">Περιοχή  +</button>
             <button type="button" class="btn btn-outline-info mr-4  btn-md  customBtnG">Είδος +</button>
-            <button type="button" class="btn btn-outline-info  btn-md customBtnG">Tιμή +</button>
+            <button type="button" id="sortByPriceBtn" class="btn btn-outline-info  btn-md customBtnG">Tιμή +<i id="AscDescArrowsPrice" class="fa" aria-hidden="true"></i></button>
         </div>
         <div class="col-md-6 offset-1  mt-3 mb-3">
             <div class="input-group">
@@ -212,7 +231,10 @@
               <div class='heading'>
                 <h2 class="text-center">Γυμναστήρια</h2>
               </div>
-              <div id='listings' class='listings'></div>
+              <fieldset id="searchFieldset">
+                <input class="p-2" id='feature-filter' type='text' placeholder='Search by name' />
+              </fieldset>
+              <div id='listings' class='listings mt-2'></div>
         </div>
         <div id='map' class='map'> </div>
         
@@ -258,7 +280,7 @@
           gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
           rating : '\'../public/images/stars.png\'',
           program: 'Crosfii - Boxing  - KingBoxing -  Climbing',
-          gymCost : 'Από 50€',
+          gymCost : 'Από 70€',
           gumLike : '\'../public/images/search/heart.png\''
         }
       },
@@ -281,7 +303,7 @@
           gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
           rating : '\'../public/images/stars.png\'',
           program: 'Crosfii - Boxing  - KingBoxing -  Climbing',
-          gymCost : 'Από 70€',
+          gymCost : 'Από 50€',
           gumLike : '\'../public/images/search/heart.png\''
         }
       },
@@ -304,7 +326,7 @@
           gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
           rating : '\'../public/images/stars.png\'',
           program: 'Zoomba - Boxing  - KingBoxing -  Climbing',
-          gymCost : 'Από 70€',
+          gymCost : 'Από 79€',
           gumLike : '\'../public/images/search/heart.png\''
         }
       },
@@ -327,7 +349,7 @@
           gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
           rating : '\'../public/images/stars.png\'',
           program: 'Zoomba - Boxing  - KingBoxing -  Climbing',
-          gymCost : 'Από 70€',
+          gymCost : 'Από 110€',
           gumLike : '\'../public/images/search/heart.png\''
         }
       },
@@ -355,6 +377,11 @@
         }
       }]
   };
+
+  var filterEl = document.getElementById('feature-filter');
+  var listingEl = document.getElementById('listings');
+  var orderAscDescName = false; //toggle for asc desc order
+
   // This adds the stores to the map
 map.on('load', function(e) {
   map.addSource('places', {
@@ -365,13 +392,40 @@ map.on('load', function(e) {
   buildLocationList(stores); //Initialize the list
 
 
+//Start Search By Name
+  function normalize(string) {
+    return string.trim().toLowerCase();
+  }
+  
+  filterEl.addEventListener('keyup', function(e) {
+    var value = normalize(e.target.value);
+    
+    // Filter visible features that don't match the input value.
+    var filtered = stores.features.filter(function(feature) {
+    var name = normalize(feature.properties.name);
+    
+    return name.indexOf(value) > -1;
+    });
+
+    var listings = document.getElementById('listings');
+      while (listings.firstChild) {
+        listings.removeChild(listings.firstChild);
+    }
+
+    // Populate the sidebar with filtered results
+    buildLocationList(filtered);
+
+  });
+//End Search By Name
+
+
   //Start sort Elements By Name
-  var orderAscDescName = false; //toggle for asc desc order
   function SortByName() {
     orderAscDescName = !orderAscDescName;
 
     var list = document.getElementById("listings");
     var myList = list.getElementsByClassName("item");
+    var elementBtn =  document.getElementById("AscDescArrows");
 
     var aNames = [];
 
@@ -380,12 +434,12 @@ map.on('load', function(e) {
     }//for loop
     
     if (orderAscDescName) {
-      aNames.sort();
-      document.getElementById("AscDescArrows").classList.add("fa-arrow-down");
+        aNames.sort();
+        elementBtn.classList.add("fa-arrow-down");
     } else {
-      aNames.reverse();
-      document.getElementById("AscDescArrows").classList.remove("fa-arrow-down")
-      document.getElementById("AscDescArrows").classList.add("fa-arrow-up")
+        aNames.reverse();
+        elementBtn.classList.remove("fa-arrow-down")
+        elementBtn.classList.add("fa-arrow-up")
     }
     
     for (var i = 0; i < myList.length; i++) {
@@ -403,6 +457,43 @@ map.on('load', function(e) {
   //End sort Elements By Name
 
 
+  //Start sort Elements By Price
+  function SortByPrice() {
+    orderAscDescName = !orderAscDescName;
+
+    var list = document.getElementById("listings");
+    var myList = list.getElementsByClassName("item");
+    var elementBtn = document.getElementById("AscDescArrowsPrice");
+
+    Array.prototype.map.call(myList, function(node) {
+      return {
+        node: node,
+        relevantText: node.querySelector('button').textContent.match(/\d/g).join("")
+      };
+    }).sort(function(a, b) {
+      if (orderAscDescName) {
+        elementBtn.classList.add("fa-arrow-down");
+        return a.relevantText - b.relevantText;
+      } else {
+        elementBtn.classList.remove("fa-arrow-down")
+        elementBtn.classList.add("fa-arrow-up")
+        return b.relevantText - a.relevantText;
+      }
+    }).forEach(function(item) {
+      list.appendChild(item.node);
+    });
+    
+  }//end function
+  
+
+  //on button click call function to sort elements by price
+  document.getElementById("sortByPriceBtn").addEventListener("click", function() {
+    this.innerHTML = this.innerHTML.replace('+', '');
+    SortByPrice();
+  });
+  //End sort Elements By Price
+
+  
   // Add `new mapboxgl.Geocoder` code here
   //start add geocoder for search in Greece
   var geocoder = new MapboxGeocoder({
@@ -563,6 +654,9 @@ function createPopUp(currentFeature) {
 
 function buildLocationList(data) {
   // Iterate through the list of stores
+
+  if ( data.features) {
+
   for (i = 0; i < data.features.length; i++) {
     var currentFeature = data.features[i];
     // Shorten data.feature.properties to just `prop` so we're not
@@ -591,7 +685,7 @@ function buildLocationList(data) {
     }
     details.innerHTML += '<img class="clearfix" src= ' + prop.rating + ' />';
     details.innerHTML += '<p class="lead float-left mt-3"><b>' + prop.program + '</b></p>';
-    details.innerHTML += '<button class="btn btn-warning float-right mt-3" id="btnGymPrice">' + prop.gymCost + '</button>'
+    details.innerHTML += '<button class="btn btn-warning float-right mt-3 mb-3" id="btnGymPrice">' + prop.gymCost + '</button>'
 
     details.innerHTML += '<span class="clearfix"></span>';
 
@@ -626,6 +720,12 @@ function buildLocationList(data) {
     this.parentNode.classList.add('active');
   });
 
+  } 
+  } else {
+      var empty = document.createElement('h2');
+      empty.className = 'emptyResultsTitle';
+      empty.innerHTML = 'There are no results';
+      listingEl.appendChild(empty);
   }
 }//buildLocationList(data)
 
