@@ -1,9 +1,10 @@
 <?php require  APPROOT . '/views/inc/header.php'?>
+
     <div class="row">
-        <div class="col-lg-6 col-md-7">
-            <div class="gymelement">
+        <div class="col-lg-6 col-md-7 gymelement">
+          
                 <div class="row">
-                 <!--   <div class="col-md-6 offset-md-2">
+                 <!-- <div class="col-md-6 offset-md-2">
                         <p id="gymsnames">Workout Hall Crossfit</p>
                         <img src= " <?php echo URLROOT ?> /images/stars.png" alt="stars"/>
                         <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
@@ -13,7 +14,7 @@
                     <div class="col-md-3 offset-md-2">
                          <img id="gymlogo" width="100%" src= " <?php echo URLROOT;?> /images/gym/gymlogo.png" alt="logo"/>
                     </div>
-                    <div class="col-md-6 offset-md-1">
+                    <div class="col-md-6 offset-md-1" >
                         <p id="gymsnames">Workout Hall Crossfit</p>
                         <img src= " <?php echo URLROOT;?> /images/stars.png" alt="stars"/>
                         <div id="gymaddress">
@@ -24,14 +25,16 @@
                         <p><b>Crosfii, Boxing, KingBoxing,Climbing</b></p>
                        <a class="btnorange" id="btnsundromes" href="#">Πακέτα Συνδρομών</a>
                     </div>
-                </div>
+            
 
             </div>
         </div>
         <div class="col-lg-6 col-md-5">
-            <img src= " <?php echo URLROOT;?> /images/gym/bigimggym.jpg" width="100%" height="600" alt="biggym">
+            <img src= " <?php echo URLROOT;?> /images/gym/bigimggym.jpg" width="100%"   height="600"; alt="biggym">
         </div>
     </div>
+
+ 
 <!-----------------------------------------------------------------------------------------------------------------
 -------------------------------------------WHO WE ARE--------------------------------------------------------------->
 
@@ -53,27 +56,21 @@
     </div>
 <!-----------------------------------------------------------------------------------------------------------------
 -------------------------------------------***IMAGES**--------------------------------------------------------------->
-<
+
     <div id="images">
         <div class="container">
             <p class="basictitle" id="gymstitle">ΦΩΤΟΓΡΑΦΙΕΣ</p>
             <div class="row justify-content-center">
-                <div class="col-md-12">
-           
-
-            <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery">
-                    <img src= " <?php echo URLROOT;?> /images/gym/image1.jpg" width="365" alt="gymimg"  class="img-fluid">
-                </a>
-                <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery">
-                    <img src= " <?php echo URLROOT;?> /images/gym/image2.jpg" width="365" alt="gymimg"  class="img-fluid">
-                </a>
-                    <img src= " <?php echo URLROOT; ?> /images/gym/image3.jpg"  width="365" alt="gymimg">
+                <div class="col-md-12"  id="imagerow1">
+                    <img src= " <?php echo URLROOT;?> /images/gym/image1.jpg" width="32%" alt="gymimg"  class="img-fluid">
+                    <img src= " <?php echo URLROOT;?> /images/gym/image2.jpg" width="32%" alt="gymimg"  class="img-fluid">
+                    <img src= " <?php echo URLROOT; ?> /images/gym/image3.jpg"  width="32%" alt="gymimg">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12" id="imagerow2">
-                    <img src= " <?php echo URLROOT; ?> /images/gym/image2.jpg" width="365" alt="gymimg">
-                    <img src= " <?php echo URLROOT; ?> /images/gym/image3.jpg" width="365"  alt="gymimg">
+                    <img src= " <?php echo URLROOT; ?> /images/gym/image2.jpg" width="32%" alt="gymimg">
+                    <img src= " <?php echo URLROOT; ?> /images/gym/image3.jpg" width="32%"  alt="gymimg">
                 </div>
             </div>
         </div>
@@ -110,25 +107,21 @@
                 </div>
              </div> -->
          
-        <div class="d-flex justify-content-center">
-            <div  id="arrow">
-                <img  src= " <?php echo URLROOT; ?> /images/back.png" width="40" alt="arrow">
-            </div>
-             <div class="p-2 bd-highlight"  id="trainerphoto">
+        <div class=" row d-flex justify-content-center">
+         
+             <div class="col-md-4 col-sm-6 col-8 bd-highlight"  id="trainerphoto">
                     <img src= " <?php echo URLROOT; ?> /images/gym/trainer1.jpg" width="100%" alt="gymimg">
                     <div class="trainerdescr"><p>Γιάννης Κ. - Crossfit trainer</p></div>  
              </div>
-            <div class="p-2 bd-highlight" id="trainerphoto">
-                <img  src= " <?php echo URLROOT; ?> /images/gym/trainer2.jpg" width="100%" height="244" alt="gymimg">
+            <div class="col-md-4 col-sm-6 col-8  bd-highlight" id="trainerphoto">
+                <img  src= " <?php echo URLROOT; ?> /images/gym/trainer2.jpg" width="100%" alt="gymimg">
                 <div class="trainerdescr"><p>Μαρία Κ. - Crossfit trainer</p></div> 
             </div>
-            <div class="p-2 bd-highlight" id="trainerphoto">
+            <div class="col-md-4 col-sm-6 col-8  bd-highlight" id="trainerphoto">
                  <img src= " <?php echo URLROOT; ?> /images/gym/trainer3.jpg" width="100%" alt="gymimg">
                  <div class="trainerdescr"><p>Κώστας Κ. - Crossfit trainer</p></div> 
             </div>
-            <div  id="arrow">
-                <img src= " <?php echo URLROOT; ?> /images/front.png" width="40" alt="arrow">
-            </div>
+            
         </div>
 
 
