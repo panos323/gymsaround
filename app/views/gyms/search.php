@@ -201,6 +201,10 @@
   text-align:center;
   color:red;
 }
+
+.ratingStars{
+  cursor:pointer;
+}
 </style>
 <!-- style for map -->
 
@@ -240,6 +244,57 @@
         
         
   <script>
+
+  //start rating stars
+  function ratingStars(ratingStars,firstStar,secondStar,thirdStar,fourthStar,FifthStar) {
+    
+    var totalRatings = document.querySelector("."+ratingStars);
+    var star10 = document.querySelector ("."+firstStar);
+    var star20 = document.querySelector ("."+secondStar);
+    var star30 = document.querySelector ("."+thirdStar);
+    var star40 = document.querySelector ("."+fourthStar);
+    var star50 = document.querySelector ("."+FifthStar);
+
+    var votedOne =  star10.addEventListener("click", function() {
+      document.querySelector ("."+firstStar).style.color="gold";
+      totalRatings.style.pointerEvents = "none";
+    });
+
+    var votedTwo =  star20.addEventListener("click", function() {
+      document.querySelector ("."+firstStar).style.color="gold";
+      document.querySelector ("."+secondStar).style.color="gold";
+      totalRatings.style.pointerEvents = "none";
+    });
+
+    var votedThree =  star30.addEventListener("click", function() {
+      document.querySelector ("."+firstStar).style.color="gold";
+      document.querySelector ("."+secondStar).style.color="gold";
+      document.querySelector ("."+thirdStar).style.color="gold";
+      totalRatings.style.pointerEvents = "none";
+    });
+
+    var votedFour =  star40.addEventListener("click", function() {
+      document.querySelector ("."+firstStar).style.color="gold";
+      document.querySelector ("."+secondStar).style.color="gold";
+      document.querySelector ("."+thirdStar).style.color="gold";
+      document.querySelector ("."+fourthStar).style.color="gold";
+      totalRatings.style.pointerEvents = "none";
+    });
+
+    var votedFour = star50.addEventListener("click", function() {
+      document.querySelector ("."+firstStar).style.color="gold";
+      document.querySelector ("."+secondStar).style.color="gold";
+      document.querySelector ("."+thirdStar).style.color="gold";
+      document.querySelector ("."+fourthStar).style.color="gold";
+      document.querySelector ("."+FifthStar).style.color="gold";
+      totalRatings.style.pointerEvents = "none";
+    });
+
+  }// end function
+//end rating stars
+
+
+
   // This will let you use the .remove() function later on
   if (!('remove' in Element.prototype)) {
     Element.prototype.remove = function() {
@@ -278,7 +333,17 @@
           city: 'Αθήνα',
           postalCode: '20005',
           gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
-          rating : '\'../public/images/stars.png\'',
+          rating : `
+              <span class="ratingStars clearfix" onClick="ratingStars('ratingStar1','start1','start2','start3','start4','start5')"> 
+                  <span class="ratingStar1">
+                    <i class="fa fa-star start1" aria-hidden="true"></i>
+                    <i class="fa fa-star start2" aria-hidden="true"></i>
+                    <i class="fa fa-star start3" aria-hidden="true"></i>
+                    <i class="fa fa-star start4" aria-hidden="true"></i>
+                    <i class="fa fa-star start5" aria-hidden="true"></i>
+                  </span>
+              </span>
+          `,
           program: 'Crosfii - Boxing  - KingBoxing -  Climbing',
           gymCost : 'Από 70€',
           gumLike : '\'../public/images/search/heart.png\''
@@ -301,7 +366,17 @@
           city: 'Αθήνα',
           postalCode: '20037',
           gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
-          rating : '\'../public/images/stars.png\'',
+          rating : `
+              <span class="ratingStars clearfix" onClick="ratingStars('ratingStar2','start11','start12','start13','start14','start15')"> 
+                  <span class="ratingStar2">
+                    <i class="fa fa-star start11" aria-hidden="true"></i>
+                    <i class="fa fa-star start12" aria-hidden="true"></i>
+                    <i class="fa fa-star start13" aria-hidden="true"></i>
+                    <i class="fa fa-star start14" aria-hidden="true"></i>
+                    <i class="fa fa-star start15" aria-hidden="true"></i>
+                  </span>
+              </span>
+          `,
           program: 'Crosfii - Boxing  - KingBoxing -  Climbing',
           gymCost : 'Από 50€',
           gumLike : '\'../public/images/search/heart.png\''
@@ -324,7 +399,17 @@
           city: 'Αθήνα',
           postalCode: '20037',
           gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
-          rating : '\'../public/images/stars.png\'',
+          rating : `
+              <span class="ratingStars clearfix" onClick="ratingStars('ratingStar3','start21','start22','start23','start24','start25')"> 
+                <span class="ratingStar3">
+                  <i class="fa fa-star start21" aria-hidden="true"></i>
+                  <i class="fa fa-star start22" aria-hidden="true"></i>
+                  <i class="fa fa-star start23" aria-hidden="true"></i>
+                  <i class="fa fa-star start24" aria-hidden="true"></i>
+                  <i class="fa fa-star start25" aria-hidden="true"></i>
+                </span>
+              </span>
+          `,
           program: 'Zoomba - Boxing  - KingBoxing -  Climbing',
           gymCost : 'Από 79€',
           gumLike : '\'../public/images/search/heart.png\''
@@ -347,7 +432,17 @@
           city: 'Αθήνα',
           postalCode: '20037',
           gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
-          rating : '\'../public/images/stars.png\'',
+          rating : `
+              <span class="ratingStars clearfix" onClick="ratingStars('ratingStar4','start31','start32','start33','start34','start35')"> 
+                <span class="ratingStar4">
+                  <i class="fa fa-star start31" aria-hidden="true"></i>
+                  <i class="fa fa-star start32" aria-hidden="true"></i>
+                  <i class="fa fa-star start33" aria-hidden="true"></i>
+                  <i class="fa fa-star start34" aria-hidden="true"></i>
+                  <i class="fa fa-star start35" aria-hidden="true"></i>
+                </span>
+              </span>
+          `,
           program: 'Zoomba - Boxing  - KingBoxing -  Climbing',
           gymCost : 'Από 110€',
           gumLike : '\'../public/images/search/heart.png\''
@@ -370,7 +465,17 @@
           city: 'Αθήνα',
           postalCode: '20036',
           gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
-          rating : '\'../public/images/stars.png\'',
+          rating : `
+              <span class="ratingStars clearfix" onClick="ratingStars('ratingStar5','start41','start42','start43','start44','start45')"> 
+                <span class="ratingStar5">
+                  <i class="fa fa-star start41" aria-hidden="true"></i>
+                  <i class="fa fa-star start42" aria-hidden="true"></i>
+                  <i class="fa fa-star start43" aria-hidden="true"></i>
+                  <i class="fa fa-star start44" aria-hidden="true"></i>
+                  <i class="fa fa-star start45" aria-hidden="true"></i>
+                </span>
+              </span>
+          `,
           program: 'Crosfii - Boxing  - KingBoxing -  Climbing',
           gymCost : 'Από 88€',
           gumLike : '\'../public/images/search/heart.png\''
@@ -683,7 +788,7 @@ function buildLocationList(data) {
     if (prop.phone) {
       details.innerHTML += '<p class="lead">' + prop.phoneFormatted + '</p>';
     }
-    details.innerHTML += '<img class="clearfix" src= ' + prop.rating + ' />';
+    details.innerHTML +=  prop.rating ;
     details.innerHTML += '<p class="lead float-left mt-3"><b>' + prop.program + '</b></p>';
     details.innerHTML += '<button class="btn btn-warning float-right mt-3 mb-3" id="btnGymPrice">' + prop.gymCost + '</button>'
 
