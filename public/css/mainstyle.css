@@ -1032,6 +1032,11 @@ textarea {
     #articletitle, #article{margin-left: 50px}
 }
 
+
+
+
+
+
 /****************************RESPONSIVE 992 - 1200*********************************************/
 
   @media (min-width: 992px) and (max-width: 1199.98px){ 
@@ -1140,7 +1145,6 @@ textarea {
             height: 600px !important;
         }
 
-
    }
 
   /****************************RESPONSIVE 768 - 576*********************************************/
@@ -1247,12 +1251,13 @@ textarea {
     /***********GYM INDEX***************/
 
         .maintext{
-             height: 600px !important;
+             height: 600px;
         }
 
         #trainerphoto{ display: block;}
 
-        .trainersrow{height: 800px !important;}
+        .trainersrow{height: 800px;}
+     
   }
 
 /****************************RESPONSIVE 768 - 576*********************************************/
