@@ -8,6 +8,10 @@ body{
     font-family: 'M PLUS 1p', sans-serif;
 }
 
+::selection { 
+    background: #FFDCAC; 
+}
+
 /**
  Navigation Bar Css
  */
@@ -768,13 +772,27 @@ select{
         font-weight:600;
     }
 
-    /*-------end syle div boxes for gyms-------------*/
-    /*
-    .pinkbox{
-        height: 500px;
-        background-color: #169b99;
-        width: 100%;
-    }*/
+    #searchFieldset {
+        background: #ddd;
+        border: none;
+        padding: 10px;
+        margin: 0;
+    }
+    
+    #feature-filter{
+      width:100%;
+      display:block;
+      text-align:center;
+    }
+    
+    .emptyResultsTitle{
+      text-align:center;
+      color:red;
+    }
+    
+    .ratingStars{
+      cursor:pointer;
+    }
 
     /****************************************************************************************************
     ******************************************************************************************************
@@ -1033,7 +1051,49 @@ textarea {
 }
 
 
+/****************************SEARCH RESPONSIVE  1790*********************************************/
 
+@media (max-width: 1790px) {
+    #gymMainPhoto{
+        margin-bottom:10px;
+    }
+
+    #btnGymPrice{
+        float:left !important;
+        display:block !important;
+        margin-left:0px !important;
+        width:150px;
+        margin-bottom:25px !important;
+    }
+
+    #gymsLikeHeart{
+        margin-bottom:20px;
+    }
+
+    .ratingStars{
+        clear:both !important;
+        display:block !important;
+    }
+
+    .gymsTitle{
+        clear:both;
+    }
+
+    #gumsPhoneNum{
+        clear:both;
+    }
+}
+
+/****************************SEARCH RESPONSIVE  1100*********************************************/
+
+@media (max-width: 1100px) {
+
+    #gymsLikeHeart{
+        margin:10px 0 !important;
+        clear:both;
+        float:left !important;
+    }
+}
 
 
 
