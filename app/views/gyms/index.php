@@ -1,7 +1,7 @@
 <?php require  APPROOT . '/views/inc/header.php'?>
 
     <div class="row">
-        <div class="col-lg-6 col-md-7 gymelement">
+        <div class="col-lg-6 col-md-12 gymelement">
           
                 <div class="row">
                  <!-- <div class="col-md-6 offset-md-2">
@@ -11,25 +11,25 @@
                         <p><b>Crosfii, Boxing, KingBoxing,Climbing</b></p>
                         <button class="btnorange" id="btnsearch"><a href="#">Πακέτα Συνδρομών</a></button>
                     </div>-->
-                    <div class="col-md-3 offset-md-2">
+                    <div class="col-lg-3 offset-lg-2 col-md-3 offset-md-1 col-sm-3 offset-sm-1 col-6 offset-1">
                          <img id="gymlogo" width="100%" src= " <?php echo URLROOT;?> /images/gym/gymlogo.png" alt="logo"/>
                     </div>
-                    <div class="col-md-6 offset-md-1" >
+                    <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-10 offset-1" >
                         <p id="gymsnames">Workout Hall Crossfit</p>
                         <img src= " <?php echo URLROOT;?> /images/stars.png" alt="stars"/>
                         <div id="gymaddress">
                             <a href="#">
-                             <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος  <img src= " <?php echo URLROOT;?> /images/gym/mappin.png" alt="pin"/></p>
+                             <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος  <img src= " <?php echo URLROOT;?> /images/gym/mappin.png" width="6%" alt="pin"/></p>
                             </a>
                         </div>
-                        <p><b>Crosfii, Boxing, KingBoxing,Climbing</b></p>
+                        <p id="activities"><b>Crosfii | Boxing | KingBoxing | Climbing</b></p>
                        <a class="btnorange" id="btnsundromes" href="#">Πακέτα Συνδρομών</a>
                     </div>
             
 
             </div>
         </div>
-        <div class="col-lg-6 col-md-5">
+        <div class="col-lg-6 " id="biggymimg">
             <img src= " <?php echo URLROOT;?> /images/gym/bigimggym.jpg" width="100%"   height="600"; alt="biggym">
         </div>
     </div>
@@ -107,7 +107,7 @@
                 </div>
              </div> -->
          
-        <div class=" row d-flex justify-content-center">
+        <div class="row d-flex justify-content-center">
          
              <div class="col-md-4 col-sm-6 col-8 bd-highlight"  id="trainerphoto">
                     <img src= " <?php echo URLROOT; ?> /images/gym/trainer1.jpg" width="100%" alt="gymimg">

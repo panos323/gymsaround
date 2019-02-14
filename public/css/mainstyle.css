@@ -1077,6 +1077,32 @@ textarea {
         margin-bottom: 40px;
     }
    
+
+/***********GYM INDEX*********/
+.gymelement{
+    height: 450px;
+    
+}
+#biggymimg img{
+    height: 450px;
+}
+#gymaddress p{
+    font-size: 15px;
+}
+#gymsnames{
+    font-size: 25px;
+}
+#activities{
+    font-size: 18px;
+}
+#btnsundromes{
+
+    width: 100%;
+}
+#gymlogo{
+    width: 130%;
+}
+
   }
 
   /****************************RESPONSIVE 992 - 768*********************************************/
@@ -1140,10 +1166,32 @@ textarea {
         
 
 /*************GYM INDEX**************/
+        #biggymimg img{display: none;}
+
+        .gymelement{height: 450px;
+        }
 
         #images{
             height: 600px !important;
         }
+        .trainerdescr{height: 50px;}
+        .trainerdescr p{font-size: 16px;
+        }
+        .orangebox{
+            height: 360px;
+            width: 320px;
+            float:left;
+        }
+        .flex-container-sundromes{
+            display: inline;
+        }
+        #price{
+            margin-top: 10px;
+        }
+       .sundromesrow{
+           height: 1050px;
+       }
+      .trainersrow{height: 550px;}
 
    }
 
@@ -1249,6 +1297,18 @@ textarea {
              padding-bottom: 900px;
         }
     /***********GYM INDEX***************/
+    #biggymimg img{display: none;}
+
+        .gymelement{height: 450px;
+        }
+
+        #gymlogo{
+            width: 100%;
+        
+        }
+        #gymaddress p, #activities{
+            font-size: 18px;
+        }
 
         .maintext{
              height: 600px;
@@ -1257,6 +1317,23 @@ textarea {
         #trainerphoto{ display: block;}
 
         .trainersrow{height: 800px;}
+        .orangebox{
+            height: 360px;
+            width: 240px;
+            float:left;
+        }
+        .flex-container-sundromes{
+            display: inline;
+        }
+        #price{
+            margin-top: 10px;
+        }
+       .sundromesrow{
+           height: 1050px;
+       }
+       .trainerdescr{height: 50px;}
+       .trainerdescr p{font-size: 16px;
+       }
      
   }
 
@@ -1367,6 +1444,21 @@ textarea {
 
 
 /*******GYM INDEX*********/
+        #biggymimg img{display: none;}
+
+        .gymelement{height: 500px;}
+
+        #gymaddress p, #activities{font-size: 18px;}
+
+        #gymsnames{
+        padding-top: 30px;
+        font-size: 25px;
+        }
+        #gymlogo{
+            width: 100%;
+            margin-top: 60px;
+        }
+
         #imagerow1 img {
             width:70%;
             padding: 5px;
@@ -1387,10 +1479,7 @@ textarea {
         #trainerphoto{
             margin-top: 20px; 
         }
-
-        #price{
-            font-size: 30px ;
-        }
+     
         .flex-container-sundromes{
             display: inline;
         }
@@ -1399,7 +1488,25 @@ textarea {
            font-size: 20px;
 
     }
-    .orangebox {
-        height: 200px;
+    #trainerphoto {
+        margin-top: 10px;
     }
+    .orangebox {
+        height: 300px;
+        width: 95%;
+    }
+    #price{
+        margin-top: 10px;
+        font-size: 50px;
+    }
+
+    .sundromesrow{
+        height: 1550px;
+    }
+    #month{
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
 }
