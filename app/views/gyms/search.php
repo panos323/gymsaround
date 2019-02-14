@@ -183,28 +183,6 @@
   min-width: 100%;
   margin-left: 0;
 } 
-
-#searchFieldset {
-    background: #ddd;
-    border: none;
-    padding: 10px;
-    margin: 0;
-}
-
-#feature-filter{
-  width:100%;
-  display:block;
-  text-align:center;
-}
-
-.emptyResultsTitle{
-  text-align:center;
-  color:red;
-}
-
-.ratingStars{
-  cursor:pointer;
-}
 </style>
 <!-- style for map -->
 
@@ -212,10 +190,10 @@
     <!--start search buttons -->
     <div class="row col-lg-12">
         <div class="col-md-4 mt-4 mb-3">
-            <button type="button" class="btn btn-outline-info mr-4   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
-            <button type="button" class="btn btn-outline-info mr-4  btn-md  customBtnG">Περιοχή  +</button>
-            <button type="button" class="btn btn-outline-info mr-4  btn-md  customBtnG">Είδος +</button>
-            <button type="button" id="sortByPriceBtn" class="btn btn-outline-info  btn-md customBtnG">Tιμή +<i id="AscDescArrowsPrice" class="fa" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-outline-info mr-4 mb-2   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-outline-info mr-4 mb-2 btn-md  customBtnG">Περιοχή  +</button>
+            <button type="button" class="btn btn-outline-info mr-4 mb-2 btn-md  customBtnG">Είδος +</button>
+            <button type="button" id="sortByPriceBtn" class="btn btn-outline-info mb-2  btn-md customBtnG">Tιμή +<i id="AscDescArrowsPrice" class="fa" aria-hidden="true"></i></button>
         </div>
         <div class="col-md-6 offset-1  mt-3 mb-3">
             <div class="input-group">
@@ -327,6 +305,7 @@
         },
         properties: {
           name : 'Benefit',
+          linkPage : 'http://localhost/gymaround/gyms/index',
           phoneFormatted: '(202) 234-7336',
           phone: '2022347336',
           address: 'Ρόδων 8, Άλιμος',
@@ -360,6 +339,7 @@
         },
         properties: {
           name : 'Iron Gym',
+          linkPage : 'http://localhost/gymaround/gyms/index',
           phoneFormatted: '(202) 507-8357',
           phone: '2025078357',
           address: 'Παπανδρέου Ανδρέα 25, Χαλάνδρι',
@@ -393,6 +373,7 @@
         },
         properties: {
           name : 'Gym Planet',
+          linkPage : 'http://localhost/gymaround/gyms/index',
           phoneFormatted: '(210) 8552198',
           phone: '2025078357',
           address: 'Ζηνωδίας 25, Μαρκόπουλο',
@@ -426,6 +407,7 @@
         },
         properties: {
           name : 'Anavisos Gym',
+          linkPage : 'http://localhost/gymaround/gyms/index',
           phoneFormatted: '(210) 8552198',
           phone: '2025078357',
           address: 'Αναβύσσου 85, Ανάβυσσος',
@@ -459,6 +441,7 @@
         },
         properties: {
           name : 'Hercules',
+          linkPage : 'http://localhost/gymaround/gyms/index',
           phoneFormatted: '(202) 387-9338',
           phone: '2023879338',
           address: 'Αγίου Δημητρίου 25, Κηφισιά',
@@ -782,11 +765,11 @@ function buildLocationList(data) {
     /***********************************************************************************************************************STYLE DIV *****************************************************************************************************************************************************/
 
     var details = listing.appendChild(document.createElement('div'));
-    details.innerHTML = '<img class="float-left img-fluid mr-4"  src= ' + prop.gymPhoto + ' />';
-    details.innerHTML += '<img class="float-right img-fluid" src= ' + prop.gumLike + ' />';
-    details.innerHTML += '<h2 class="gymsTitle"><a href="#">' + prop.name + '</h2></a>';
+    details.innerHTML = '<img id="gymMainPhoto" class="float-left img-fluid mr-4"  src= ' + prop.gymPhoto + ' />';
+    details.innerHTML += '<img id="gymsLikeHeart" class="float-right img-fluid" src= ' + prop.gumLike + ' />';
+    details.innerHTML += '<h2 class="gymsTitle"><a href='+prop.linkPage+' target="_blank">' + prop.name + '</h2></a>';
     if (prop.phone) {
-      details.innerHTML += '<p class="lead">' + prop.phoneFormatted + '</p>';
+      details.innerHTML += '<p id="gumsPhoneNum" class="lead">' + prop.phoneFormatted + '</p>';
     }
     details.innerHTML +=  prop.rating ;
     details.innerHTML += '<p class="lead float-left mt-3"><b>' + prop.program + '</b></p>';
