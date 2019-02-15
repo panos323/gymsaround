@@ -183,6 +183,10 @@
   min-width: 100%;
   margin-left: 0;
 } 
+
+.hideDropDownElement{
+  display:none !important;
+}
 </style>
 <!-- style for map -->
 
@@ -191,7 +195,19 @@
     <div class="row col-lg-12">
         <div class="col-md-4 mt-4 mb-3">
             <button type="button" class="btn btn-outline-info mr-4 mb-2   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
-            <button type="button" class="btn btn-outline-info mr-4 mb-2 btn-md  customBtnG">Περιοχή  +</button>
+            <!-- <button type="button" class="btn btn-outline-info mr-4 mb-2 btn-md  customBtnG">Περιοχή  +</button> -->
+            <div class="dropdown">
+              <button class="btn btn-outline-info mr-4 mb-2 btn-md dropdown-toggle customBtnG" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Περιοχή
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" id="dropdownAthens" href="#">Αθήνα</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" id="dropdownThessaloniki" href="#">Θεσσαλονίκη</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" id="dropdownTrikala" href="#">Τρίκαλα</a> 
+              </div>
+          </div>
             <button type="button" class="btn btn-outline-info mr-4 mb-2 btn-md  customBtnG">Είδος +</button>
             <button type="button" id="sortByPriceBtn" class="btn btn-outline-info mb-2  btn-md customBtnG">Tιμή +<i id="AscDescArrowsPrice" class="fa" aria-hidden="true"></i></button>
         </div>
@@ -435,6 +451,40 @@
         geometry: {
           type: 'Point',
           coordinates: [
+            22.9444,
+            40.6401
+          ] 
+        },
+        properties: {
+          name : 'PowerLift',
+          linkPage : 'http://localhost/gymaround/gyms/index',
+          phoneFormatted: '(210) 8552198',
+          phone: '2025078357',
+          address: 'Τσιμισκή 185',
+          city: 'Θεσσαλονίκη',
+          postalCode: '20037',
+          gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
+          rating : `
+              <span class="ratingStars clearfix" onClick="ratingStars('ratingStar6','start51','start52','start53','start54','start55')"> 
+                <span class="ratingStar4">
+                  <i class="fa fa-star start51" aria-hidden="true"></i>
+                  <i class="fa fa-star start52" aria-hidden="true"></i>
+                  <i class="fa fa-star start53" aria-hidden="true"></i>
+                  <i class="fa fa-star start54" aria-hidden="true"></i>
+                  <i class="fa fa-star start55" aria-hidden="true"></i>
+                </span>
+              </span>
+          `,
+          program: 'Zoomba - Boxing  - KingBoxing -  Climbing',
+          gymCost : 'Από 140€',
+          gumLike : '\'../public/images/search/heart.png\''
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [
             23.8147,
             38.0768
           ]
@@ -463,7 +513,42 @@
           gymCost : 'Από 88€',
           gumLike : '\'../public/images/search/heart.png\''
         }
-      }]
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [
+            21.7679, //trikala
+            39.5557 //trikala
+          ]
+        },
+        properties: {
+          name : 'Trikala Gym',
+          linkPage : 'http://localhost/gymaround/gyms/index',
+          phoneFormatted: '(210) 8552198',
+          phone: '2025078357',
+          address: 'Βασίλη Τσιτσάνη 82',
+          city: 'Τρίκαλα',
+          postalCode: '20037',
+          gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
+          rating : `
+              <span class="ratingStars clearfix" onClick="ratingStars('ratingStar7','start81','start82','start83','start84','start85')"> 
+                <span class="ratingStar7">
+                  <i class="fa fa-star start81" aria-hidden="true"></i>
+                  <i class="fa fa-star start82" aria-hidden="true"></i>
+                  <i class="fa fa-star start83" aria-hidden="true"></i>
+                  <i class="fa fa-star start84" aria-hidden="true"></i>
+                  <i class="fa fa-star start85" aria-hidden="true"></i>
+                </span>
+              </span>
+          `,
+          program: 'Zoomba - Boxing  - KingBoxing -  Climbing',
+          gymCost : 'Από 94€',
+          gumLike : '\'../public/images/search/heart.png\''
+        }
+      }
+     ]
   };
 
   var filterEl = document.getElementById('feature-filter');
@@ -581,7 +666,45 @@ map.on('load', function(e) {
   });
   //End sort Elements By Price
 
+
+
+  //Start sort Elements By Location
+  function SortByLocation(name) {
+    orderAscDescName = !orderAscDescName;
+
+    var list = document.getElementById("listings");
+    var myList = list.getElementsByClassName("item");
+
+    Array.prototype.map.call(myList, function(node) {
+      return {
+        node: node,
+        relevantText: node.querySelector('.title').innerHTML
+      }
+      }).forEach(function(item) {
+        if (item.relevantText.includes(""+name)) {
+          item.node.classList.remove('hideDropDownElement')
+          list.appendChild(item.node);
+        } else {
+          item.node.classList.add('hideDropDownElement')
+        }
+      })
+   
+  }//end function
   
+  //on button click call function to sort elements by Location
+  document.getElementById("dropdownAthens").addEventListener("click", function() {
+    SortByLocation('Αθήνα');
+  });
+  document.getElementById("dropdownThessaloniki").addEventListener("click", function() {
+    SortByLocation('Θεσσαλονίκη');
+  });
+  document.getElementById("dropdownTrikala").addEventListener("click", function() {
+    SortByLocation('Τρίκαλα');
+  });
+  //End sort Elements By Location
+
+  
+
   // Add `new mapboxgl.Geocoder` code here
   //start add geocoder for search in Greece
   var geocoder = new MapboxGeocoder({
@@ -790,7 +913,7 @@ function buildLocationList(data) {
     link.href = '#';
     link.className = 'title';
     link.dataPosition = i;
-    link.innerHTML = prop.address;
+    link.innerHTML = prop.address + ", " + prop.city;
 
    // Add an event listener for the links in the sidebar listing
    link.addEventListener('click', function(e) {
