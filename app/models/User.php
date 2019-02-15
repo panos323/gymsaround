@@ -8,6 +8,23 @@ class User{
     }
 
     /**
+     * Get all users or owners or gyms
+     * depending on $tab
+     *
+     * @param string $type
+     * @return array
+     */
+    public function getAll(string $type){
+        // Retrieve all from db
+        $this->db->query("SELECT * FROM $type");
+        $results = $this->db->resultSet();
+        if($this->db->rowCount() > 0) {
+            return $results;
+        }
+        return [];
+    }
+
+    /**
      * Register User
      * @param array $data
      * @return bool
@@ -88,8 +105,6 @@ class User{
         return false;
     }
 
-
-
     /**
      * Check if the password on db is the same as our input
      * @param string $password
@@ -109,15 +124,9 @@ class User{
         return false;
     }
 
-
-
-
-    /*--------TESTING UPDATES-----------------*/
-
-
     /**
      * Find user's gym
-     * @param int $gym_id
+     * @param string $gym_id
      * @return bool
      */
     public function findUserGym(string $gym_id) {
@@ -159,9 +168,8 @@ class User{
 
     /**
      * Update user by username
-     * @param string $username
+     * @param string $newEmail
      * @param int id
-     * 
      * @return bool
      */
     public function UpdateUserByEmail(string $newEmail, int $id){
@@ -234,8 +242,6 @@ class User{
             return false;
         }
     }
-
-    /*--------TESTING UPDATES-----------------*/
 
 
 }

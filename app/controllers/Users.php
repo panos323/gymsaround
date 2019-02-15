@@ -229,21 +229,33 @@ class Users extends Controller {
         if(!$this->isLoggedIn()){
             redirect('pages/index');
         }
-        if($tab === 'account' || $tab === 'my_gym'){
+        if($tab === 'account' || $tab === 'my_gym' || $tab === 'my_users' || $tab === 'my_owners' || $tab === 'my_gyms'){
             $data = [
                 'tab' => $tab,
                 'name'=> ''
             ];
-            if (empty($_SESSION['gym_id'])) {
-                $data['msg'] = 'Παρακαλώ διαλέχτε γυμναστήριο';
-            } else {
-                $gym = $this->userModel->findUserGym($_SESSION['gym_id']);
-                if($gym) {
-                    $data['name'] = $gym->gym_name;
-                }else {
-                    $data['gym_error'] = 'You are FUCKED. You do not have active GYM';
+            if(!$_SESSION['isAdmin']){
+                if (empty($_SESSION['gym_id'])) {
+                    $data['msg'] = 'Παρακαλώ διαλέχτε γυμναστήριο';
+                } else {
+                    $gym = $this->userModel->findUserGym($_SESSION['gym_id']);
+                    if($gym) {
+                        $data['name'] = $gym->gym_name;
+                    }else {
+                        $data['gym_error'] = 'Δεν έχετε συνδρομή σε κάποιο γυμναστήριο';
+                    }
                 }
+            } else {
+                if ($tab === 'my_users') {
+                    $type = 'users';
+                } elseif ($tab === 'my_owners') {
+                    $type = 'owners';
+                } else {
+                    $type = 'gyms';
+                }
+                $data[$type] = $this->userModel->getAll($type);
             }
+
             $this->view('users/profile', $data);
         }else {
             redirect('users/profile/account');
