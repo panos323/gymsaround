@@ -184,9 +184,6 @@
   margin-left: 0;
 } 
 
-.hideDropDownElement{
-  display:none !important;
-}
 </style>
 <!-- style for map -->
 
@@ -194,22 +191,35 @@
     <!--start search buttons -->
     <div class="row col-lg-12">
         <div class="col-md-4 mt-4 mb-3">
-            <button type="button" class="btn btn-outline-info mr-4 mb-2   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
-            <!-- <button type="button" class="btn btn-outline-info mr-4 mb-2 btn-md  customBtnG">Περιοχή  +</button> -->
-            <div class="dropdown">
+          <button type="button" class="btn btn-outline-info mr-4 mb-2   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
+          <div class="dropdown d-inline-block">
               <button class="btn btn-outline-info mr-4 mb-2 btn-md dropdown-toggle customBtnG" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Περιοχή
               </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" id="dropdownAthens" href="#">Αθήνα</a>
+              <div class="dropdown-menu dropDownMenuCol" aria-labelledby="dropdownMenuButton">
+                <button class="dropdown-item" id="dropdownAthens" href="#">Αθήνα</button>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" id="dropdownThessaloniki" href="#">Θεσσαλονίκη</a>
+                <button class="dropdown-item" id="dropdownThessaloniki" href="#">Θεσσαλονίκη</button>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" id="dropdownTrikala" href="#">Τρίκαλα</a> 
+                <button class="dropdown-item" id="dropdownTrikala" href="#">Τρίκαλα</button> 
               </div>
-          </div>
-            <button type="button" class="btn btn-outline-info mr-4 mb-2 btn-md  customBtnG">Είδος +</button>
-            <button type="button" id="sortByPriceBtn" class="btn btn-outline-info mb-2  btn-md customBtnG">Tιμή +<i id="AscDescArrowsPrice" class="fa" aria-hidden="true"></i></button>
+          </div> 
+          <div class="dropdown d-inline-block">
+              <button class="btn btn-outline-info mr-4 mb-2 btn-md dropdown-toggle customBtnG" type="button" id="dropdownMenuButtonArr" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Είδος
+              </button>
+              <div class="dropdown-menu dropDownMenuCol" aria-labelledby="dropdownMenuButton">
+                <button class="dropdown-item" id="dropdownMartial" data-toggle="tooltip" data-placement="top" title="Boxing,KingBoxing,Muay thai,Krav Maga">Πολεμικές Τέχνες</button>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-item" id="dropdownCrossfit" data-toggle="tooltip" data-placement="top" title="Crossfit" >Crossfit</button>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-item" id="dropdownΑerobic" data-toggle="tooltip" data-placement="top" title="Yoga,Step,Pilates,Zoomba">Αerobic</button> 
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-item" id="dropdownDances" data-toggle="tooltip" data-placement="top" title="Merengue,Salsa,Cumbia,Zoomba,Hip-Hop,Reggaeton">Χοροί</button> 
+              </div>
+          </div> 
+
+          <button type="button" id="sortByPriceBtn" class="btn btn-outline-info mb-2  btn-md customBtnG">Tιμή +<i id="AscDescArrowsPrice" class="fa" aria-hidden="true"></i></button>
         </div>
         <div class="col-md-6 offset-1  mt-3 mb-3">
             <div class="input-group">
@@ -339,7 +349,7 @@
                   </span>
               </span>
           `,
-          program: 'Crosfii - Boxing  - KingBoxing -  Climbing',
+          program: 'Crosfit - Boxing  - KingBoxing -  Salsa',
           gymCost : 'Από 70€',
           gumLike : '\'../public/images/search/heart.png\''
         }
@@ -373,7 +383,7 @@
                   </span>
               </span>
           `,
-          program: 'Crosfii - Boxing  - KingBoxing -  Climbing',
+          program: 'Crossfit - Muay Thai  - KingBoxing ',
           gymCost : 'Από 50€',
           gumLike : '\'../public/images/search/heart.png\''
         }
@@ -407,7 +417,7 @@
                 </span>
               </span>
           `,
-          program: 'Zoomba - Boxing  - KingBoxing -  Climbing',
+          program: 'Zoomba - Boxing  - KingBoxing -  Salsa',
           gymCost : 'Από 79€',
           gumLike : '\'../public/images/search/heart.png\''
         }
@@ -441,7 +451,7 @@
                 </span>
               </span>
           `,
-          program: 'Zoomba - Boxing  - KingBoxing -  Climbing',
+          program: 'KingBoxing - Pilates',
           gymCost : 'Από 110€',
           gumLike : '\'../public/images/search/heart.png\''
         }
@@ -475,7 +485,7 @@
                 </span>
               </span>
           `,
-          program: 'Zoomba - Boxing  - KingBoxing -  Climbing',
+          program: 'Zoomba - Pilates  - Cumbia -  Step',
           gymCost : 'Από 140€',
           gumLike : '\'../public/images/search/heart.png\''
         }
@@ -509,7 +519,7 @@
                 </span>
               </span>
           `,
-          program: 'Crosfii - Boxing  - KingBoxing -  Climbing',
+          program: 'Crossfit - Pilates  - Krav Maga ',
           gymCost : 'Από 88€',
           gumLike : '\'../public/images/search/heart.png\''
         }
@@ -703,6 +713,62 @@ map.on('load', function(e) {
   });
   //End sort Elements By Location
 
+
+  //Start sort Elements By fitness type
+  function SortByType(name) {
+    orderAscDescName = !orderAscDescName;
+
+    var list = document.getElementById("listings");
+    var myList = list.getElementsByClassName("item");
+
+    var martials = ["Boxing", "KingBoxing", "Muay thai", "Krav Maga"];
+    var aerobic = ["Yoga", "Step", "Pilates", "Zoomba"];
+    var crossfit = ["Crossfit"];
+    var dances = ["Merengue", "Salsa", "Cumbia", "Zoomba", "Hip-Hop", "Reggaeton"];
+    
+    Array.prototype.map.call(myList, function(node) {
+      return {
+        node: node,
+        relevantText: node.querySelector('#typeFitness').innerHTML
+      }
+      }).forEach(function(item) {
+      
+        if (name =='Πολεμικές Τέχνες' && martials.some(el => item.relevantText.includes(el))) {
+          item.node.classList.remove('hideDropDownElement')
+          list.appendChild(item.node);
+        }  else if (name =='Crossfit' && crossfit.some(el => item.relevantText.includes(el))) {
+          item.node.classList.remove('hideDropDownElement')
+          list.appendChild(item.node);
+        } else if (name =='Aerobic' && aerobic.some(el => item.relevantText.includes(el))) {
+          item.node.classList.remove('hideDropDownElement')
+          list.appendChild(item.node);
+        }   else if (name =='Χοροί' && dances.some(el => item.relevantText.includes(el))) {
+           item.node.classList.remove('hideDropDownElement')
+           list.appendChild(item.node);
+         } else {
+          item.node.classList.add('hideDropDownElement')
+        }
+
+      })
+   
+  }//end function
+  
+  //on button click call function to sort elements by Location
+  document.getElementById("dropdownMartial").addEventListener("click", function() {
+    SortByType('Πολεμικές Τέχνες');
+  });
+  document.getElementById("dropdownCrossfit").addEventListener("click", function() {
+    SortByType('Crossfit');
+  });
+  document.getElementById("dropdownΑerobic").addEventListener("click", function() {
+    SortByType('Aerobic');
+  });
+  document.getElementById("dropdownDances").addEventListener("click", function() {
+    SortByType('Χοροί');
+  });
+  //End sort Elements By fitness type
+
+
   
 
   // Add `new mapboxgl.Geocoder` code here
@@ -895,7 +961,7 @@ function buildLocationList(data) {
       details.innerHTML += '<p id="gumsPhoneNum" class="lead">' + prop.phoneFormatted + '</p>';
     }
     details.innerHTML +=  prop.rating ;
-    details.innerHTML += '<p class="lead float-left mt-3"><b>' + prop.program + '</b></p>';
+    details.innerHTML += '<p id="typeFitness" class="lead float-left mt-3"><b>' + prop.program + '</b></p>';
     details.innerHTML += '<button class="btn btn-warning float-right mt-3 mb-3" id="btnGymPrice">' + prop.gymCost + '</button>'
 
     details.innerHTML += '<span class="clearfix"></span>';
