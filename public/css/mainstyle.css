@@ -1388,8 +1388,7 @@ textarea {
         #price{
             margin-top: 10px;
         }
-       .sundromesrow{
-           height: 1050px;
+       .sundromesrow{height: 1050px;
        }
        .trainerdescr{height: 50px;}
        .trainerdescr p{font-size: 16px;
@@ -1397,7 +1396,7 @@ textarea {
      
   }
 
-/****************************RESPONSIVE 768 - 576*********************************************/
+/****************************RESPONSIVE 575*********************************************/
  
 
 @media (max-width: 575px) { 
@@ -1489,7 +1488,7 @@ textarea {
             float: left;
         }
 
- /*******PARTNER*********/
+ /*****************PARTNER****************/
 
         #ourservices{
             padding-bottom: 750px;
@@ -1503,7 +1502,7 @@ textarea {
         }
 
 
-/*******GYM INDEX*********/
+/***************GYM INDEX*******************/
         #biggymimg img{display: none;}
 
         .gymelement{height: 500px;}
@@ -1547,26 +1546,26 @@ textarea {
         #blogdescription{
            font-size: 20px;
 
-    }
-    #trainerphoto {
-        margin-top: 10px;
-    }
-    .orangebox {
-        height: 300px;
-        width: 95%;
-    }
-    #price{
-        margin-top: 10px;
-        font-size: 50px;
-    }
+        }
+        #trainerphoto {
+            margin-top: 10px;
+        }
+        .orangebox {
+            height: 300px;
+            width: 95%;
+        }
+        #price{
+            margin-top: 10px;
+            font-size: 50px;
+        }
 
-    .sundromesrow{
-        height: 1550px;
-    }
-    #month{
-        margin-top: 20px;
-        margin-bottom: 20px;
+        .sundromesrow{
+            height: 1550px;
+        }
+        #month{
+            margin-top: 20px;
+            margin-bottom: 20px;
 
-    }
+        }
 
 }
