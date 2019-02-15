@@ -21,7 +21,7 @@
                         <div id="boxgrey">
 
                             <div class="row">
-                                <div class="col-lg-4 offset-lg-4 col-md-5 offset-md-3 col-sm-3 offset-sm-5 col-11 offset-1">
+                                <div class="col-lg-3 offset-lg-4 col-md-5 offset-md-3 col-sm-4 offset-sm-4 col-11 offset-1">
                                     <p id="mobiletitle">Βρες το γυμναστήριο που σου ταιριάζει</p>
                                     <p id="title">Επέλεξε</p>
                                 </div>
@@ -74,14 +74,14 @@
                                 <!--------BEST GYM DESKTOP--------->
                                 <div class="rowbestgym">
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-1">
+                                    <div class="col-lg-4 offset-lg-0 col-md-5 offset-md-0">
                                         <p id="gymname">Workout Hall Crossfit</p>
                                         <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars">
-                                        <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
-                                        <p>Crosfii, Boxing, KingBoxing,Climbing</p>
+                                        <p style="margin-top:10px;">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
+                                        <p style="font-size:18px;"><b>Crosfii, Boxing, KingBoxing,Climbing</b></p>
                                     </div>
-                                    <div class="col-6 offset-2" id="bestgymimg" >
-                                             <img src= " <?php echo URLROOT; ?>/images/bestgym1.jpg" width="100%" height="330">
+                                    <div class="col-lg-6 offset-lg-2 col-md-6 offset-md-1" id="bestgymimg" >
+                                             <img src= " <?php echo URLROOT; ?>/images/bestgym1.jpg" width="100%" height="auto">
                                           <!--  <button class="btnprobolh"><a href="#">Αναζήτηση</a></button>-->
                                     </div>
                                 </div>
@@ -171,37 +171,47 @@
             </div>
         </div>
 </div>
- <!--- START ROW 4- BLOG---->
+<!--- START ROW 4-NEWSLETTER---->
 
-        <div class="row">
-            <div class="col-12">
-                <div class="box3">
-                    <div class="container">
-                         <p class="rowtitle" id="blogtitle">ΥΠΟΣΤΗΡΙΚΤΕΣ</p>
-                         <div class="row">
-                             <div class="col-1" id="sponsors">
-                             <img  src= " <?php echo URLROOT; ?>/images/back.png" alt="stars" width="25" height="30">
-                             </div>
-                             <div class="col-10">
+ <!--- START ROW 4-SPONSORS---->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="box3">
+                <div class="container">
+                    <p class="rowtitle" id="blogtitle">ΥΠΟΣΤΗΡΙΚΤΕΣ</p>
+                        <div class="row">
+                            <div class="col-1" id="sponsors">
+                                <img  src= " <?php echo URLROOT; ?>/images/back.png" alt="stars" width="25" height="30">
+                            </div>
+                            <div class="col-10">
                                 <div class="flex-container">
-                                        <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="90" height="80"></div>
-                                        <div><img src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="90" height="80"></div>
-                                        <div><img src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="90" height="80"></div>
-                                        <div><img src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="90" height="80"></div>
-                                        <div><img src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="90" height="80"></div>
-                                        <div><img src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="90" height="80"></div>
-                                       
+                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
+                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
+                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
+                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
+                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
+                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
                                 </div>
-                             </div>
-                             <div class="col-1" id="sponsors">
-                             <img  src= " <?php echo URLROOT; ?>/images/front.png" alt="stars" width="25" height="30">
-                             </div>
-                         </div>
+                            </div>
+                            <div class="col-1" id="sponsors">
+                                <img  src= " <?php echo URLROOT; ?>/images/front.png" alt="stars" width="25" height="30">
+                            </div>
                     </div>
                 </div>
-            </div> 
-        </div>
+             </div>
+        </div> 
+    </div>
 
+        <!--- START ROW 4-NEWSLETTER---->
+
+<div class="row">
+<div class="col-md-12" id="newsletter">
+
+</div>
+
+
+</div>
 
 </div> <!-- end conatiner fuild-->
 

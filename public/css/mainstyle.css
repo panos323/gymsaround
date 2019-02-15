@@ -285,7 +285,7 @@ footer p a {
 #title{
     color: #169b99;/*BLUE*/
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 35px;
+    font-size: 45px;
     margin-top: 250px;
 }
 
@@ -325,6 +325,9 @@ select{
 #bestgymimg img{margin-bottom: 20px;}
 
 .rowbestgymmobile{display: none;}
+
+
+
 /*******************************************
 -------------BUTTON ORANGE----------------------
 ********************************************/
@@ -443,13 +446,14 @@ select{
 }
 
 #gymtitle{
-    margin-top: 100px;
+    margin-top: 80px;
 }
 
 #gymname{
     font-size:35px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     margin-top: 40px;
+    margin-bottom: 5px;
 }
 #gymname a{
     text-decoration: none;
@@ -526,20 +530,17 @@ select{
 
 
 
-#sponsors{margin-top: 120px;}
+#sponsors{margin-top: 10%;}
 
 .flex-container {
     display: flex;
     flex-wrap: nowrap;
-   
   }
 
   .flex-container > div {
-   
     filter: grayscale(100%);
-    margin-left:55px;
-    text-align: center;
-    margin-top: 88px;
+    margin-top: 10%;
+    margin-left: 5%;
  
   }
 
@@ -548,10 +549,15 @@ select{
     filter: grayscale(0%);
   }
 
+  #newsletter{
+      height: 300px;
+    background-color: #169b99;
+      
+  }
 
   /****************************************************************************************************
   ******************************************************************************************************
-  *****************************----GYM PAGE----*********************************************************/
+  ***********************************----GYM PAGE----****************************************************/
 
  
   .gymelement{
@@ -1018,11 +1024,13 @@ textarea {
 
 
 
-/****************************INDEX RESPONSIVE*********************************************/
+/*********************************************************************************************
+**********************************!!!!!---RESPONCIVE---!!!!***********************************
+********************************************************************************************/
 
-/****************************RESPONSIVE 1790*********************************************/
 
-
+/*********************************************************************************************
+****************************RESPONSIVE 1790*********************************************/
 
 @media (min-width: 1790px) {
     
@@ -1051,7 +1059,7 @@ textarea {
 }
 
 
-/****************************SEARCH RESPONSIVE  1790*********************************************/
+/****************************SEARCH RESPONSIVE  1790**********************************/
 
 @media (max-width: 1790px) {
     #gymMainPhoto{
@@ -1096,39 +1104,31 @@ textarea {
 }
 
 
-
 /****************************RESPONSIVE 992 - 1200*********************************************/
 
   @media (min-width: 992px) and (max-width: 1199.98px){ 
 
-    .fimage, #boxgrey{
-        height: 90vh;
-    }
-    #blogtitle{   
-        padding-top:5px;
-    } 
+    .fimage, #boxgrey{height: 90vh; }
 
-    .btnblue{
-        width:140%;
+    #bestgymimg img{
+        margin-top: 40px;
+       
     }
-    #articletitle {
-        margin-top: 0;
-    }
+    
+
+    #blogtitle{padding-top:5px;} 
+
+    .btnblue{width:140%;}
+
+    #articletitle {margin-top: 0;}
   
-    #boxgrey{
-        opacity:0.9;
-    }
-    #slc1{
-        margin-top: 30px;
-    }
-    #bigtitle{
-        margin-top: 250px;
-    }
+    #boxgrey{opacity:0.9;}
+
+    #bigtitle{margin-top: 180px;}
   
-    #bigtitle, #title{
-        margin-top: 120px;
-    }
-    #title{ margin-top: 130px;}
+    #title{margin-top: 150px;}
+
+
 
     .bestgym{height: 95vh; }
 
@@ -1139,40 +1139,28 @@ textarea {
    
 
 /***********GYM INDEX*********/
-.gymelement{
-    height: 450px;
-    
-}
-#biggymimg img{
-    height: 450px;
-}
-#gymaddress p{
-    font-size: 15px;
-}
-#gymsnames{
-    font-size: 25px;
-}
-#activities{
-    font-size: 18px;
-}
-#btnsundromes{
+    .gymelement{height: 450px;}
 
-    width: 100%;
-}
-#gymlogo{
-    width: 130%;
-}
+    #biggymimg img{height: 450px;}
+
+    #gymaddress p{font-size: 15px;}
+
+    #gymsnames{font-size: 25px;}
+
+    #activities{font-size: 18px;}
+
+    #btnsundromes{width: 100%;}
+
+    #gymlogo{width: 130%;}
 
   }
 
-  /****************************RESPONSIVE 992 - 768*********************************************/
+  /************************************************************************
+  *****************888RESPONSIVE 992 - 768*********************************/
 
   @media (min-width: 768px) and (max-width: 991.98px) { 
       
-    #teamimg img{
-        width:150px;
-       
-    }
+    #teamimg img{width:150px; }
     
     .fimage{height: 500px;}
  
@@ -1180,8 +1168,22 @@ textarea {
         width:110%;
         height: 500px;
     }
+    .rowtitle{
+       padding-top: 30px;
+    }
+    #bestgymimg img{
+        margin-top: 40px;
+    }
+    .bestgym{
+        height: 500px;
+    }
+    #slc1{margin-top: 30px;}
+    .rowtitle{font-size: 35px;}
+    #gymname{font-size: 30px;
+    margin-bottom: 5px;}
+
     #bigtitle{
-        font-size: 40px;
+        font-size: 45px;
         margin-top: 150px;
     }
 
@@ -1194,21 +1196,23 @@ textarea {
     #title{
         color: #169b99;/*BLUE*/
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        font-size: 35px;
+        font-size: 45px;
         margin-top: 100px;
     }
+
+    #scl1{margin-top: 30px;}
    
     #btnfooter{
            width:100%;
            margin-top: 40px;
        }
+
     .socialm{margin-top: 40px;}   
 
-    footer{
-        height: 300px;
-        
-    }
+    footer{ height: 300px;}
+
     .footerrow{margin-top: 30px;}
+
     .footer_logo{
         margin-left: 20%;
         height: 70px;
@@ -1221,11 +1225,11 @@ textarea {
         font-size: 30px;
         color: #b5b5b6;}
         #images{
-            height: 600px;
+        height: 600px;
         }
         
-
 /*************GYM INDEX**************/
+
         #biggymimg img{display: none;}
 
         .gymelement{height: 450px;
@@ -1255,7 +1259,8 @@ textarea {
 
    }
 
-  /****************************RESPONSIVE 768 - 576*********************************************/
+/************************************************************************
+  ***************************RESPONSIVE 768 - 576*************************/
 
   @media (min-width: 575.98px) and (max-width: 767.98px) {
 
@@ -1283,7 +1288,7 @@ textarea {
     #title{
         color: #169b99;/*BLUE*/
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        font-size: 35px;
+        font-size: 45px;
         margin-top: 100px;
     }
         
@@ -1345,58 +1350,46 @@ textarea {
             
     /***********OWNER REGISTER****************/
 
-        #ourservices{
-            padding-bottom: 650px;
-        }
+        #ourservices{padding-bottom: 650px;}
 
-        .titlepartnerform{
-            margin-top: 530px;
-        }
+        .titlepartnerform{margin-top: 530px;}
 
-        .partnerform{
-             padding-bottom: 900px;
-        }
+        .partnerform{padding-bottom: 900px;}
+
     /***********GYM INDEX***************/
-    #biggymimg img{display: none;}
+         #biggymimg img{display: none;}
 
-        .gymelement{height: 450px;
-        }
+        .gymelement{height: 450px;}
 
-        #gymlogo{
-            width: 100%;
-        
-        }
-        #gymaddress p, #activities{
-            font-size: 18px;
-        }
+        #gymlogo{width: 100%;}
 
-        .maintext{
-             height: 600px;
-        }
+        #gymaddress p, #activities{font-size: 18px;}
+
+        .maintext{height: 600px;}
 
         #trainerphoto{ display: block;}
 
         .trainersrow{height: 800px;}
+
         .orangebox{
             height: 360px;
             width: 240px;
             float:left;
         }
-        .flex-container-sundromes{
-            display: inline;
-        }
-        #price{
-            margin-top: 10px;
-        }
-       .sundromesrow{height: 1050px;
-       }
+        .flex-container-sundromes{display: inline;}
+
+        #price{ margin-top: 10px;}
+        
+       .sundromesrow{height: 1050px;}
+
        .trainerdescr{height: 50px;}
-       .trainerdescr p{font-size: 16px;
-       }
+
+       .trainerdescr p{font-size: 16px;}
      
   }
 
-/****************************RESPONSIVE 575*********************************************/
+/**************************************************************************************
+****************************RESPONSIVE 575*********************************************/
  
 
 @media (max-width: 575px) { 
@@ -1495,7 +1488,7 @@ textarea {
             margin-top: 100px;
         }
         .titlepartnerform{
-            margin-top: 580px;
+            margin-top: 450px;
         }
         .partnerform{
             padding-bottom: 900px;
