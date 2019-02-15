@@ -581,22 +581,24 @@ map.on('load', function(e) {
   }
   
   filterEl.addEventListener('keyup', function(e) {
+
+    var list = document.getElementById("listings");
+    var myList = list.getElementsByClassName("item");
     var value = normalize(e.target.value);
-    
-    // Filter visible features that don't match the input value.
-    var filtered = stores.features.filter(function(feature) {
-    var name = normalize(feature.properties.name);
-    
-    return name.indexOf(value) > -1;
-    });
 
-    var listings = document.getElementById('listings');
-      while (listings.firstChild) {
-        listings.removeChild(listings.firstChild);
-    }
-
-    // Populate the sidebar with filtered results
-    buildLocationList(filtered);
+    Array.prototype.map.call(myList, function(node) {
+      return {
+        node: node,
+        relevantText: node.querySelector('.gymsLinkTitle').innerHTML.toLowerCase()
+      }
+      }).forEach(function(item) {
+        if (item.relevantText.includes(value)) {
+          item.node.classList.remove('hideDropDownElement')
+          list.appendChild(item.node);
+        }  else {
+              item.node.classList.add('hideDropDownElement');
+        }
+      })
 
   });
 //End Search By Name
@@ -932,8 +934,6 @@ function createPopUp(currentFeature) {
 function buildLocationList(data) {
   // Iterate through the list of stores
 
-  if ( data.features) {
-
   for (i = 0; i < data.features.length; i++) {
     var currentFeature = data.features[i];
     // Shorten data.feature.properties to just `prop` so we're not
@@ -956,7 +956,7 @@ function buildLocationList(data) {
     var details = listing.appendChild(document.createElement('div'));
     details.innerHTML = '<img id="gymMainPhoto" class="float-left img-fluid mr-4"  src= ' + prop.gymPhoto + ' />';
     details.innerHTML += '<img id="gymsLikeHeart" class="float-right img-fluid" src= ' + prop.gumLike + ' />';
-    details.innerHTML += '<h2 class="gymsTitle"><a href='+prop.linkPage+' target="_blank">' + prop.name + '</h2></a>';
+    details.innerHTML += '<h2 class="gymsTitle"><a class="gymsLinkTitle" href='+prop.linkPage+' target="_blank">' + prop.name + '</h2></a>';
     if (prop.phone) {
       details.innerHTML += '<p id="gumsPhoneNum" class="lead">' + prop.phoneFormatted + '</p>';
     }
@@ -998,12 +998,7 @@ function buildLocationList(data) {
   });
 
   } 
-  } else {
-      var empty = document.createElement('h2');
-      empty.className = 'emptyResultsTitle';
-      empty.innerHTML = 'There are no results';
-      listingEl.appendChild(empty);
-  }
+ 
 }//buildLocationList(data)
 
 // Add an event listener for when a user clicks on the map
