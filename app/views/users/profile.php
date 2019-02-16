@@ -306,8 +306,15 @@
                                                         <span><?php echo $gym->gym_type; ?></span>
                                                     </td>
                                                     <td>
-                                                        <button class="btn btn-sm btn-primary">Ενεργοποίηση</button>
-                                                        <button class="btn btn-sm btn-danger">Διαγραφή</button>
+                                                        <form id="activateGymForm" action="<?php echo URLROOT; ?>/gyms/activateGym" method="post">
+                                                            <input type="hidden" name="isActivated" value="<?php echo $gym->gym_is_activated; ?>">
+                                                            <input type="hidden" name="id" value="<?php echo $gym->gym_id; ?>">
+                                                            <button class="btn btn-sm btn-primary mb-2"><?php echo (!$gym->gym_is_activated) ? 'Ενεργοποίηση ' : 'Απενεργοποίηση  '; ?>Γυμναστηρίου</button>
+                                                        </form>
+                                                        <form id="deleteGymForm" action="<?php echo URLROOT; ?>/gyms/deleteGym" method="post">
+                                                            <input type="hidden" name="id" value="<?php echo $gym->gym_id; ?>">
+                                                            <button class="btn btn-sm btn-danger">Διαγραφή</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
