@@ -8,11 +8,12 @@
             <a href="<?php echo URLROOT; ?>/users/profile/account" class="list-group-item <?php echo ($data['tab'] === 'account') ? 'active_profile_tab' : ''; ?>">Λογαριασμός</a>
             <?php if(!$_SESSION['isAdmin']) : ?>
                 <a href="<?php echo URLROOT; ?>/users/profile/my_gym" class="list-group-item <?php echo ($data['tab'] === 'my_gym') ? 'active_profile_tab' : ''; ?>">Γυμναστήριο</a>
+            <?php else : ?>
+                <a href="<?php echo URLROOT; ?>/users/profile/my_users" class="list-group-item <?php echo ($data['tab'] === 'my_users') ? 'active_profile_tab' : ''; ?>">Χρήστες</a>
+                <a href="<?php echo URLROOT; ?>/users/profile/my_owners" class="list-group-item <?php echo ($data['tab'] === 'my_owners') ? 'active_profile_tab' : ''; ?>">Ιδιοκτήτες</a>
+                <a href="<?php echo URLROOT; ?>/users/profile/my_gyms" class="list-group-item <?php echo ($data['tab'] === 'my_gyms') ? 'active_profile_tab' : ''; ?>">Γυμναστήρια</a>
             <?php endif; ?>
-            <a href="<?php echo URLROOT; ?>/users/profile/my_users" class="list-group-item <?php echo ($data['tab'] === 'my_users') ? 'active_profile_tab' : ''; ?>">Χρήστες</a>
-            <a href="<?php echo URLROOT; ?>/users/profile/my_owners" class="list-group-item <?php echo ($data['tab'] === 'my_owners') ? 'active_profile_tab' : ''; ?>">Ιδιοκτήτες</a>
-            <a href="<?php echo URLROOT; ?>/users/profile/my_gyms" class="list-group-item <?php echo ($data['tab'] === 'my_gyms') ? 'active_profile_tab' : ''; ?>">Γυμναστήρια</a>
-        </div>
+    </div>
     </div>
     <div class="col-md-10">
         <div class="row main_profile">

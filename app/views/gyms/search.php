@@ -242,6 +242,10 @@
               <fieldset id="searchFieldset">
                 <input class="p-2" id='feature-filter' type='text' placeholder='Search by name' />
               </fieldset>
+            <span style="display: none" id="gyms_number"><?php echo count($data); ?></span>
+              <?php foreach ($data as $key=>$gym) : ?>
+                <p style="display: none" id="gyms_results_<?php echo $key; ?>"><?php echo json_encode($gym); ?></p>
+              <?php endforeach; ?>
               <div id='listings' class='listings mt-2'></div>
         </div>
         <div id='map' class='map'> </div>
@@ -563,6 +567,13 @@
 
   var filterEl = document.getElementById('feature-filter');
   var listingEl = document.getElementById('listings');
+  var numberOfGyms = document.getElementById('gyms_number').innerHTML;
+  console.log(numberOfGyms);
+  var allGyms = [];
+  for (var i=0; i<numberOfGyms; i++) {
+      allGyms.push(JSON.parse(document.getElementById('gyms_results_' + i).innerHTML));
+  }
+  console.log(allGyms);
   var orderAscDescName = false; //toggle for asc desc order
 
   // This adds the stores to the map

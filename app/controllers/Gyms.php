@@ -6,7 +6,6 @@ class Gyms extends Controller
     public function __construct()
     {
         $this->gymModel = $this->model('Gym');
-        $this->ownerModel = $this->model('Owner');
     }
 
     public function index(){
@@ -18,7 +17,11 @@ class Gyms extends Controller
     public function search(){
         $data = [];
 
-        $this->view('gyms/search', $data);
+        $data = $this->gymModel->getAllGyms();
+        if (!empty($data)) {
+            $this->view('gyms/search', $data);
+        }
+        redirect('pages/index');
     }
 
     public function activateGym() {

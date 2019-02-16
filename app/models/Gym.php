@@ -10,6 +10,19 @@ class Gym
     }
 
     /**
+     * Get all available gyms
+     * @return bool
+     */
+    public function getAllGyms() {
+        $this->db->query("SELECT * FROM gyms WHERE gym_is_activated = '1' ");
+        $results = $this->db->resultSet();
+        if($this->db->rowCount() > 0) {
+            return $results;
+        }
+        return false;
+    }
+
+    /**
      * Activate or deactivate a gym
      * @param string $isActivated
      * @param string $id
