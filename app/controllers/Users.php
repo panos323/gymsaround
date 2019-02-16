@@ -511,9 +511,6 @@ class Users extends Controller {
         }
     }
 
-
-
-
     public function UserGym() {
 
         // Init data
@@ -533,6 +530,101 @@ class Users extends Controller {
         }
     }
 
-    /*---------------testing updates-----------------------*/
+    public function makeAdmin() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Process form
 
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'isAdmin' => trim($_POST['isAdmin']),
+                'id' => trim($_POST['id']),
+            ];
+
+            if($this->userModel->makeAdmin(!$data['isAdmin'], $data['id'])){
+                flash('admin_success', 'Η ενέργειά σας πραγματοποιήθηκε με επιτυχία.');
+            }else {
+                flash('admin_success', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');
+            }
+            redirect('users/profile/my_users');
+        } else {
+            redirect('users/profile/my_users');
+        }
+    }
+
+    public function deleteUser() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && $_SESSION['isAdmin']) {
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'id' => trim($_POST['id']),
+            ];
+
+            if($this->userModel->deleteUser($data['id'])){
+                flash('admin_success', 'Η ενέργειά σας πραγματοποιήθηκε με επιτυχία.');
+            }else {
+                flash('admin_success', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');
+            }
+            redirect('users/profile/my_users');
+        } else {
+            redirect('users/profile/my_users');
+        }
+    }
+
+    public function activateOwner() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'isActivated' => trim($_POST['isActivated']),
+                'id' => trim($_POST['id']),
+            ];
+
+            if($this->ownerModel->activateOwner(!$data['isActivated'], $data['id'])){
+                flash('owner_success', 'Η ενέργειά σας πραγματοποιήθηκε με επιτυχία.');
+            }else {
+                flash('owner_success', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');
+            }
+            redirect('users/profile/my_owners');
+        } else {
+            redirect('users/profile/my_owners');
+        }
+    }
+
+    public function deleteOwner() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && $_SESSION['isAdmin']) {
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'id' => trim($_POST['id']),
+            ];
+
+            if($this->ownerModel->deleteOwner($data['id'])){
+                flash('owner_success', 'Η ενέργειά σας πραγματοποιήθηκε με επιτυχία.');
+            }else {
+                flash('owner_success', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');
+            }
+            redirect('users/profile/my_owners');
+        } else {
+            redirect('users/profile/my_owners');
+        }
+    }
 }

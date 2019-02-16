@@ -214,8 +214,9 @@ class User{
     }
 
     /**
-     * Update user 
+     * Update user
      * @param array $data
+     * @param string $id
      * @return bool
      */
     public function updateUser(array $data, string $id){
@@ -243,5 +244,41 @@ class User{
         }
     }
 
+    /**
+     * Make a user admin OR remove admin from a user
+     * @param string $isAdmin
+     * @param string $id
+     * @return bool
+     */
+    public function makeAdmin(string $isAdmin, string $id) {
+        $this->db->query('UPDATE users 
+                              SET  user_is_admin = :isAdmin
+                              WHERE user_id = :id');
+        $this->db->bind(':isAdmin', $isAdmin);
+        $this->db->bind(':id', $id);
 
+        try {
+            $this->db->execute();
+            return true;
+        }catch (Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Admin can delete Users if he wants to
+     * @param string $id
+     * @return bool
+     */
+    public function deleteUser(string $id) {
+        $this->db->query('DELETE FROM users WHERE user_id = :id');
+        $this->db->bind(':id', $id);
+
+        try {
+            $this->db->execute();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }

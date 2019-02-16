@@ -352,4 +352,42 @@ class Owner{
             return false;
         }
     }
+
+    /**
+     * Activate an owner OR deactivate
+     * @param string $isActivated
+     * @param string $id
+     * @return bool
+     */
+    public function activateOwner(string $isActivated, string $id) {
+        $this->db->query('UPDATE owners 
+                              SET  owner_is_activated = :isActivated
+                              WHERE owner_id = :id');
+        $this->db->bind(':isActivated', $isActivated);
+        $this->db->bind(':id', $id);
+
+        try {
+            $this->db->execute();
+            return true;
+        }catch (Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Admin can delete Owners if he wants to
+     * @param string $id
+     * @return bool
+     */
+    public function deleteOwner(string $id) {
+        $this->db->query('DELETE FROM owners WHERE owner_id = :id');
+        $this->db->bind(':id', $id);
+
+        try {
+            $this->db->execute();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }

@@ -169,36 +169,46 @@
                             <div class="main-box no-header clearfix">
                                 <div class="main-box-body clearfix">
                                     <div class="table-responsive">
+                                        <?php flash('admin_success'); ?>
                                         <table class="table user-list">
                                             <thead>
                                             <tr>
-                                                <th><span>User</span></th>
+                                                <th><span>Χρήστης</span></th>
                                                 <th><span>Username</span></th>
-                                                <th class="text-center"><span>Created</span></th>
+                                                <th class="text-center"><span>Δημιουργήθηκε</span></th>
                                                 <th><span>Email</span></th>
-                                                <th><span>Actions</span></th>
+                                                <th><span>Ενέργειες</span></th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <?php foreach ($data['users'] as $user) : ?>
-                                                <tr>
-                                                    <td>
-                                                        <img src="https://bootdey.com/img/Content/user_1.jpg" alt="user_profile_picture">
-                                                        <a href="#" class="user-link"><?php echo $user->user_first_name ." ". $user->user_last_name; ?></a>
-                                                        <span class="user-subhead"><?php echo ($user->user_is_admin) ? 'Admin' : 'Member'; ?></span>
-                                                    </td>
-                                                    <td><?php echo $user->user_username; ?></td>
-                                                    <td class="text-center">
-                                                        <span><?php echo $user->user_register_day; ?></span>
-                                                    </td>
-                                                    <td>
-                                                        <span><?php echo $user->user_email; ?></span>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-sm btn-primary">Make Admin</button>
-                                                        <button class="btn btn-sm btn-danger">Delete</button>
-                                                    </td>
-                                                </tr>
+                                                <?php if($user->user_id !== $_SESSION['id']) : ?>
+                                                    <tr>
+                                                        <td>
+                                                            <img src="https://bootdey.com/img/Content/user_1.jpg" alt="user_profile_picture">
+                                                            <a href="#" class="user-link"><?php echo $user->user_first_name ." ". $user->user_last_name; ?></a>
+                                                            <span class="user-subhead"><?php echo ($user->user_is_admin) ? 'Admin' : 'Member'; ?></span>
+                                                        </td>
+                                                        <td><?php echo $user->user_username; ?></td>
+                                                        <td class="text-center">
+                                                            <span><?php echo $user->user_register_day; ?></span>
+                                                        </td>
+                                                        <td>
+                                                            <span><?php echo $user->user_email; ?></span>
+                                                        </td>
+                                                        <td>
+                                                            <form id="makeAdminForm" action="<?php echo URLROOT; ?>/users/makeAdmin" method="post">
+                                                                <input type="hidden" name="isAdmin" value="<?php echo $user->user_is_admin; ?>">
+                                                                <input type="hidden" name="id" value="<?php echo $user->user_id; ?>">
+                                                                <button class="btn btn-sm btn-primary mb-2"><?php echo ($user->user_is_admin) ? 'Αφαίρεση ' : 'Προσθήκη '; ?>Διαχειριστή</button>
+                                                            </form>
+                                                            <form id="deleteUserAdminForm" action="<?php echo URLROOT; ?>/users/deleteUser" method="post">
+                                                                <input type="hidden" name="id" value="<?php echo $user->user_id; ?>">
+                                                                <button class="btn btn-sm btn-danger">Διαγραφή</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                            <?php endif; ?>
                                             <?php endforeach; ?>
                                             </tbody>
                                         </table>
@@ -217,6 +227,7 @@
                                 <div class="main-box-body clearfix">
                                     <div class="table-responsive">
                                         <table class="table user-list">
+                                            <?php flash('owner_success'); ?>
                                             <thead>
                                             <tr>
                                                 <th><span>Owner</span></th>
@@ -242,8 +253,15 @@
                                                         <span><?php echo $owner->owner_email; ?></span>
                                                     </td>
                                                     <td>
-                                                        <button class="btn btn-sm btn-primary">Activate</button>
-                                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                                        <form id="activateOwnerForm" action="<?php echo URLROOT; ?>/users/activateOwner" method="post">
+                                                            <input type="hidden" name="isActivated" value="<?php echo $owner->owner_is_activated; ?>">
+                                                            <input type="hidden" name="id" value="<?php echo $owner->owner_id; ?>">
+                                                            <button class="btn btn-sm btn-primary mb-2"><?php echo (!$owner->owner_is_activated) ? 'Ενεργοποίηση ' : 'Απενεργοποίηση  '; ?>Ιδιοκτήτη</button>
+                                                        </form>
+                                                        <form id="deleteOwnerForm" action="<?php echo URLROOT; ?>/users/deleteOwner" method="post">
+                                                            <input type="hidden" name="id" value="<?php echo $owner->owner_id; ?>">
+                                                            <button class="btn btn-sm btn-danger">Διαγραφή</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
