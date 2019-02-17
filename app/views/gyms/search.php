@@ -702,6 +702,9 @@ map.on('load', function(e) {
         }
       })
 
+      //call function to show total gym results
+      countGymELements(myList)
+
   });
 //End Search By Name
 

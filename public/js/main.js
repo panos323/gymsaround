@@ -25,10 +25,10 @@ $( document ).ready(function() {
     });
 
     //show current item of slider
-    var totalItemsOfSlider = $('.carousel-item').length;
+    var totalItemsOfSlider = $('#carouselItemsDisplay .carousel-item').length;
     var currentIndex = $('div.active').index() + 1;
     $('#number').html('1/3');
-    $("#carouselExampleControls").on('slid.bs.carousel', function() {
+    $("#carouseControlsNumbers").on('slid.bs.carousel', function() {
         currentIndex = $('div.active').index() + 1;
        $('#number').html(''+currentIndex+'/'+totalItemsOfSlider+'');
     });

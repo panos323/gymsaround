@@ -83,8 +83,8 @@
 
                                     <div class="col-lg-6 offset-lg-2 col-md-6 offset-md-1" id="bestgymimg" >
                                         <!--START IMAGE GALLERY-CAROUSEL -->
-                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                            <div class="carousel-inner">
+                                        <div id="carouseControlsNumbers" class="carousel slide" data-ride="carousel">
+                                            <div id="carouselItemsDisplay" class="carousel-inner">
                                                 <div class="carousel-item active">
                                                 <img src="<?php echo URLROOT; ?>/images/bestgym1.jpg" height="auto" class="d-block w-100" alt="...">
                                                 </div>
@@ -95,11 +95,11 @@
                                                 <img src="<?php echo URLROOT; ?>/images/bestgym1.jpg" height="auto" class="d-block w-100" alt="...">
                                                 </div>
                                             </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                            <a class="carousel-control-prev" href="#carouseControlsNumbers" role="button" data-slide="prev">
                                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
-                                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                            <a class="carousel-control-next" href="#carouseControlsNumbers" role="button" data-slide="next">
                                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                 <span class="sr-only">Next</span>
                                             </a>

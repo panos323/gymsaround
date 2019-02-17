@@ -1125,7 +1125,7 @@ textarea {
 }
 
 
-/****************************SEARCH RESPONSIVE  1790**********************************/
+/****************************SEARCH RESPONSIVE  **********************************/
 
 @media (max-width: 1500px) {
 
@@ -1155,6 +1155,26 @@ textarea {
     }
 }
 
+
+@media (max-width: 932px) {
+    .sidebar {
+        width: 40% !important;
+      }
+
+      .map {
+        width: 58% !important;
+      }
+}
+
+@media (max-width: 700px) {
+    .sidebar {
+        width: 47% !important;
+      }
+
+      .map {
+        width: 51% !important;
+      }
+}
 
 /****************************NAVBAR RESPONSIVE  LG BREAKPOINT*********************************************/
 @media (max-width: 991px) { 
