@@ -56,30 +56,54 @@
          
         </div>
         <div class="modal-body">
-        <form>
+            <form id="registerForm" action="<?php echo URLROOT; ?>/users/register" method="post">
                  <div class="form-group">
-                    <label for="exampleInputEmail1">Όνομα</label>
-                    <input type="first-name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                    <label for="name">Όνομα</label>
+                    <input type="text"
+                           class="form-control"
+                           id="name"
+                           name="first_name"
+                    >
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Επώνυμο</label>
-                    <input type="last-name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="last_name">Επώνυμο</label>
+                    <input type="text"
+                           name="last_name"
+                           class="form-control"
+                           id="last_name"
+                    >
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Όνομα Χρήστη</label>
-                    <input type="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                    <label for="username">Όνομα Χρήστη</label>
+                    <input type="text"
+                           class="form-control"
+                           id="username"
+                           name="username"
+                    >
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                    <label for="email">Email</label>
+                    <input type="email"
+                           class="form-control"
+                           id="email"
+                           name="email"
+                    >
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Κωδικός</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="password">Κωδικός</label>
+                    <input type="password"
+                           class="form-control"
+                           id="password"
+                           name="password"
+                    >
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Επιβεβαίωση κωδικού</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" >
+                    <label for="confrim_pass">Επιβεβαίωση κωδικού</label>
+                    <input type="password"
+                           class="form-control"
+                           id="confrim_pass"
+                           name="confirm_password"
+                    >
                 </div>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -90,7 +114,6 @@
                     <label class="form-check-label" for="exampleCheck1">Αποδέχομαι τους όρους</label></br>
                 </div>
                 <button type="submit" class="btnmodalform" id="btnmodalregister">Εγγραφή</button>
-                <button type="submit" class="btnmodalform" id="btnmodalfb">Εγγραφή με facebook</button></br>
                 <a href="#" id="logintext">Είσοδος  ></a>
             </form>
         </div>

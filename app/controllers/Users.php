@@ -91,14 +91,14 @@ class Users extends Controller {
                 // Register User
                 if($this->userModel->register($data)){
                     flash('register_success', 'You are now registered and you can log in');
-                    redirect('users/login');
+                    redirect('pages/index');
                 } else{
                     $data['register_error'] = 'Something went wrong. Please try again.';
-                    $this->view('users/register', $data);
+                    $this->view('pages/index', $data);
                 }
             } else {
                 // Load view with errors
-                $this->view('users/register', $data);
+                $this->view('pages/index', $data);
             }
         }else {
             // Init data
