@@ -334,11 +334,10 @@ class User{
                               WHERE user_id = :id");
         $this->db->bind(':id', $id);
         $this->db->bind(':password', $password);
-        try {
-            $this->db->execute();
+        $this->db->execute();
+        if($this->db->rowCount() > 0){
             return true;
-        } catch (Exception $e) {
-            return false;
         }
+        return false;
     }
 }

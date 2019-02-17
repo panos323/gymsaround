@@ -682,7 +682,7 @@ class Users extends Controller {
                 $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
                 $user_id = $this->userModel->checkTokenAndEmail($data['email'], $token);
                 if($user_id){
-                    if($this->userModel->resetPassword($data['password'], $token)) {
+                    if($this->userModel->resetPassword($user_id, $data['password'])) {
                         flash('reset_success', 'Η ενέργειά σας πραγματοποιήθηκε με επιτυχία.');
                     } else {
                         flash('reset_success', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');

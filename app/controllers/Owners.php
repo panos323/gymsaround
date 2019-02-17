@@ -558,7 +558,7 @@ class Owners extends Controller {
 
             if(empty($data['password_error']) && empty($data['new_password_error']) && empty($data['confirm_password_error'])){
                 // Hash Password
-                $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
+                $data['new_password'] = password_hash($data['new_password'], PASSWORD_BCRYPT);
 
                 if($this->ownerModel->updatePassword($data['new_password'], $_SESSION['id'])){
                     flash('update_password_success', 'Your password has been updated!');
