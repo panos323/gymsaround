@@ -162,7 +162,8 @@
                     <label class="form-check-label" for="exampleCheck1">Check me out</label></br>
                 </div>
                 <button type="submit" class="btnmodalform">Είσοδος</button></br>
-                <a href="#" id="forgotpass">Ξέχασα τον κωδικό!</a>
+                <button type="button"  data-toggle="modal" data-target="#forgotpassmodal" id="forgotpass" >Ξέχασα τον κωδικό!</button>
+                
             </form>
         </div>
         <div class="modal-footer">
@@ -172,4 +173,35 @@
       
     </div>
   </div>
-
+<!-------*******************MODAL FORGOTPASS-------->
+<div id="forgotpassmodal" class="modal fade" role="dialog" style="z-index: 1500;">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content" id="modalcontentfgpass">
+      
+    <div class="modal-header">
+          <h4 class="modal-title" id="forgotpasstitle">Aποστολή νέου κωδικού!</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">     
+            <form id="forgotpassform" action="<?php echo URLROOT; ?>/users/login" method="post">
+            <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email"
+                           class="form-control"
+                           id="email"
+                           name="email"
+                    >
+                </div>
+              
+                <button type="submit" class="btnmodalform">Αποστολή</button></br>
+               
+                
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>

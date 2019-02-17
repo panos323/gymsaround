@@ -12,14 +12,14 @@
                         <button class="btnorange" id="btnsearch"><a href="#">Πακέτα Συνδρομών</a></button>
                     </div>-->
                     <div class="col-lg-3 offset-lg-2 col-md-3 offset-md-1 col-sm-3 offset-sm-1 col-6 offset-1">
-                         <img id="gymlogo" width="100%" src= " <?php echo URLROOT;?> /images/gym/gymlogo.png" alt="logo"/>
+                         <img id="gymlogo" width="100%" src= " <?php echo URLROOT;?>/images/gym/gymlogo.png" alt="logo"/>
                     </div>
                     <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-10 offset-1" >
                         <p id="gymsnames">Workout Hall Crossfit</p>
                         <img src= " <?php echo URLROOT;?> /images/stars.png" alt="stars"/>
                         <div id="gymaddress">
                             <a href="#">
-                             <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος  <img src= " <?php echo URLROOT;?> /images/gym/mappin.png" width="6%" alt="pin"/></p>
+                             <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος  <img src= " <?php echo URLROOT;?>/images/gym/mappin.png" width="6%" alt="pin"/></p>
                             </a>
                         </div>
                         <p id="activities"><b>Crosfii | Boxing | KingBoxing | Climbing</b></p>

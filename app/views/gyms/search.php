@@ -322,7 +322,7 @@
 
   var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
+    style: 'mapbox://styles/mapbox/streets-v9',
     center: [23.727539, 37.983810], //long - lat
     zoom: 10
   });

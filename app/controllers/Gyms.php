@@ -18,10 +18,8 @@ class Gyms extends Controller
         $data = [];
 
         $data = $this->gymModel->getAllGyms();
-        if (!empty($data)) {
             $this->view('gyms/search', $data);
-        }
-        redirect('pages/index');
+        
     }
 
     public function activateGym() {
