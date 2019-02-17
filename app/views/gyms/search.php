@@ -202,7 +202,9 @@
               <button class="btn btn-outline-info mr-4 mb-2 btn-md dropdown-toggle customBtnG" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Περιοχή
               </button>
-              <div class="dropdown-menu dropDownMenuCol" aria-labelledby="dropdownMenuButton">
+              <div class="dropdown-menu dropDownMenuCol showSelectedItemAreas" aria-labelledby="dropdownMenuButton">
+                <button class="dropdown-item" type="reset" id="dropdownReset" href="#">Όλες</button>
+                <div class="dropdown-divider"></div>
                 <button class="dropdown-item" id="dropdownAthens" href="#">Αθήνα</button>
                 <div class="dropdown-divider"></div>
                 <button class="dropdown-item" id="dropdownThessaloniki" href="#">Θεσσαλονίκη</button>
@@ -214,7 +216,9 @@
               <button class="btn btn-outline-info mr-4 mb-2 btn-md dropdown-toggle customBtnG" type="button" id="dropdownMenuButtonArr" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Είδος
               </button>
-              <div class="dropdown-menu dropDownMenuCol" aria-labelledby="dropdownMenuButton">
+              <div class="dropdown-menu dropDownMenuCol showSelectedItemType" aria-labelledby="dropdownMenuButtonArr">
+                <button class="dropdown-item" type="reset" id="dropdownResetTypes" href="#">Όλα</button>
+                <div class="dropdown-divider"></div>
                 <button class="dropdown-item" id="dropdownMartial" data-toggle="tooltip" data-placement="top" title="Boxing,KingBoxing,Muay thai,Krav Maga">Πολεμικές Τέχνες</button>
                 <div class="dropdown-divider"></div>
                 <button class="dropdown-item" id="dropdownCrossfit" data-toggle="tooltip" data-placement="top" title="Crossfit" >Crossfit</button>
@@ -360,8 +364,7 @@
               </span>
           `,
           program: 'Crosfit - Boxing  - KingBoxing -  Salsa',
-          gymCost : 'Από 70€',
-          gumLike : '\'../public/images/search/heart.png\''
+          gymCost : 'Από 70€'
         }
       },
       {
@@ -394,8 +397,7 @@
               </span>
           `,
           program: 'Crossfit - Muay Thai  - KingBoxing ',
-          gymCost : 'Από 50€',
-          gumLike : '\'../public/images/search/heart.png\''
+          gymCost : 'Από 50€'
         }
       },
       {
@@ -428,8 +430,7 @@
               </span>
           `,
           program: 'Zoomba - Boxing  - KingBoxing -  Salsa',
-          gymCost : 'Από 79€',
-          gumLike : '\'../public/images/search/heart.png\''
+          gymCost : 'Από 79€'
         }
       },
       {
@@ -462,8 +463,7 @@
               </span>
           `,
           program: 'KingBoxing - Pilates',
-          gymCost : 'Από 110€',
-          gumLike : '\'../public/images/search/heart.png\''
+          gymCost : 'Από 110€'
         }
       },
       {
@@ -496,8 +496,7 @@
               </span>
           `,
           program: 'Zoomba - Pilates  - Cumbia -  Step',
-          gymCost : 'Από 140€',
-          gumLike : '\'../public/images/search/heart.png\''
+          gymCost : 'Από 140€'
         }
       },
       {
@@ -530,8 +529,7 @@
               </span>
           `,
           program: 'Crossfit - Pilates  - Krav Maga ',
-          gymCost : 'Από 88€',
-          gumLike : '\'../public/images/search/heart.png\''
+          gymCost : 'Από 88€'
         }
       },
       {
@@ -564,8 +562,7 @@
               </span>
           `,
           program: 'Zoomba - Boxing  - KingBoxing -  Climbing',
-          gymCost : 'Από 94€',
-          gumLike : '\'../public/images/search/heart.png\''
+          gymCost : 'Από 94€'
         }
       }
      ]
@@ -1039,14 +1036,13 @@ function buildLocationList(data) {
 
     var details = listing.appendChild(document.createElement('div'));
     details.innerHTML = '<img id="gymMainPhoto" class="float-left img-fluid mr-4"  src= ' + prop.gymPhoto + ' />';
-    details.innerHTML += '<img id="gymsLikeHeart" class="float-right img-fluid" src= ' + prop.gumLike + ' />';
     details.innerHTML += '<h2 class="gymsTitle"><a class="gymsLinkTitle" href='+prop.linkPage+' target="_blank">' + prop.name + '</h2></a>';
     if (prop.phone) {
       details.innerHTML += '<p id="gumsPhoneNum" class="lead">' + prop.phoneFormatted + '</p>';
     }
     details.innerHTML +=  prop.rating ;
     details.innerHTML += '<p id="typeFitness" class="lead float-left mt-3"><b>' + prop.program + '</b></p>';
-    details.innerHTML += '<button class="btn btn-warning float-right mt-3 mb-3" id="btnGymPrice">' + prop.gymCost + '</button>'
+    details.innerHTML += '<button class="btn btn-warning float-right ml-1 mt-3 mb-3" id="btnGymPrice">' + prop.gymCost + '</button>'
 
     details.innerHTML += '<span class="clearfix"></span>';
 
