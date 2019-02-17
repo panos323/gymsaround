@@ -1,51 +1,53 @@
 
 
-    <nav class="navbar navbar-expand-md  navbar-dark " id="navbarstyle">
+    <nav class="navbar navbar-expand-lg  navbar-dark" id="navbarstyle">
     
-        <div class="navbar-header">   
-        <a class="navbar-brand " href="<?php echo URLROOT; ?>"><img class="navbar_logo" src="<?php echo URLROOT; ?>/images/logo.png" alt="logo"> Gymaround</a>
-   
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#mydropdown" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        </div>
-  <div class="collapse navbar-collapse" id="mydropdown">
+    <!-- <div class="navbar-header">    -->
+    <a class="navbar-brand" href="<?php echo URLROOT; ?>"><img class="navbar_logo" src="<?php echo URLROOT; ?>/images/logo.png" alt="logo"> Gymaround</a>
 
-        <ul class="navbar-nav">
-            <li class="nav-item <?php echo (isset($view) && $view==='pages/index') ? 'active' : '';?>">
-                <a class="nav-link" href="<?php echo URLROOT; ?>">Αρχική</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mydropdown" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- </div> -->
+<div class="collapse navbar-collapse" id="mydropdown">
+
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item <?php echo (isset($view) && $view==='pages/index') ? 'active' : '';?>">
+            <a class="nav-link" href="<?php echo URLROOT; ?>">Αρχική</a>
+        </li>
+        <li class="nav-item <?php echo (isset($view) && $view==='gyms/search') ? 'active' : '';?>">
+            <a class="nav-link" href="<?php echo URLROOT; ?>/gyms/search">Γυμναστήρια</a>
+        </li>
+        <li class="nav-item  <?php echo (isset($view) && $view==='pages/blog') ? 'active' : '';?>">
+            <a class="nav-link" href="<?php echo URLROOT; ?>/pages/blog">Blog</a>
+        </li>
+        <li class="nav-item  <?php echo (isset($view) && $view==='pages/about') ? 'active' : '';?>">
+            <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">Εταιρεία</a>
+        </li>
+        <li class="nav-item  <?php echo (isset($view) && $view==='pages/contact') ? 'active' : '';?>">
+            <a class="nav-link" href="<?php echo URLROOT; ?>/pages/contact">Επικοινωνία</a>
+        </li>
+        <?php if(isset($_SESSION['id'])) : ?>
+            <li class="nav-item <?php echo (isset($view) && $view=== $_SESSION['type'] . '/profile') ? 'active' : '';?>">
+                <a class="nav-link" href="<?php echo URLROOT; ?>/<?php echo $_SESSION['type']; ?>/profile/account">Προφίλ</a>
             </li>
-            <li class="nav-item <?php echo (isset($view) && $view==='gyms/search') ? 'active' : '';?>">
-                <a class="nav-link" href="<?php echo URLROOT; ?>/gyms/search">Γυμναστήρια</a>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo URLROOT; ?>/<?php echo $_SESSION['type']; ?>/logout">Αποσύνδεση</a>
             </li>
-            <li class="nav-item  <?php echo (isset($view) && $view==='pages/blog') ? 'active' : '';?>">
-                <a class="nav-link" href="<?php echo URLROOT; ?>/pages/blog">Blog</a>
+        <?php else : ?>
+            <!-- id="btnregister" -->
+            <li id="btnliButtonFirst"  class="nav-item navbar-right btnNavabarStyle" <?php echo (isset($view) && $view=== 'users/register') ? 'active' : '';?>" >
+            <button class="btn btn-outline-info " type="button"  data-toggle="modal" data-target="#registermodal">Εγγραφή</button>
             </li>
-            <li class="nav-item  <?php echo (isset($view) && $view==='pages/about') ? 'active' : '';?>">
-                <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">Εταιρεία</a>
+            <!--  id="btnlogin" -->
+            <li  class="nav-item navbar-right btnNavabarStyle <?php echo (isset($view) && $view==='users/login') ? 'active' : '';?>">
+                 <button  class="btn btn-outline-info" type="button"  id="btnlogin" data-toggle="modal" data-target="#loginmodal">Είσοδος</button>
             </li>
-            <li class="nav-item  <?php echo (isset($view) && $view==='pages/contact') ? 'active' : '';?>">
-                <a class="nav-link" href="<?php echo URLROOT; ?>/pages/contact">Επικοινωνία</a>
-            </li>
-            <?php if(isset($_SESSION['id'])) : ?>
-                <li class="nav-item <?php echo (isset($view) && $view=== $_SESSION['type'] . '/profile') ? 'active' : '';?>">
-                    <a class="nav-link" href="<?php echo URLROOT; ?>/<?php echo $_SESSION['type']; ?>/profile/account">Προφίλ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo URLROOT; ?>/<?php echo $_SESSION['type']; ?>/logout">Αποσύνδεση</a>
-                </li>
-            <?php else : ?>
-                <li id="btnregister" class="nav-item navbar-right" <?php echo (isset($view) && $view=== 'users/register') ? 'active' : '';?>" >
-                <button type="button"  data-toggle="modal" data-target="#registermodal">Εγγραφή</button>
-                </li>
-                <li  id="btnlogin" class="nav-item <?php echo (isset($view) && $view==='users/login') ? 'active' : '';?>">
-                     <button type="button" class="navbar-right" id="btnlogin" data-toggle="modal" data-target="#loginmodal">Είσοδος</button>
-                </li>
-            <?php endif; ?>
-        </ul>
+        <?php endif; ?>
+    </ul>
 
 </div>
-  
+
 </nav>
     
 <!------- *****************MODAL REGISTER*****************------->
