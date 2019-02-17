@@ -86,7 +86,7 @@ class Users extends Controller {
                 // Validated
 
                 // Hash Password
-                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
 
                 // Register User
                 if($this->userModel->register($data)){
