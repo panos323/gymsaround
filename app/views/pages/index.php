@@ -21,14 +21,14 @@
                         <div id="boxgrey">
 
                             <div class="row">
-                                <div class="col-lg-3 offset-lg-4 col-md-5 offset-md-3 col-sm-4 offset-sm-4 col-11 offset-1">
-                                    <p id="mobiletitle">Βρες το γυμναστήριο που σου ταιριάζει</p>
+                                <div class="col-lg-3 offset-lg-4 col-md-5 offset-md-3 col-sm-10  col-12">
+                                    <p id="mobiletitle">Βρες το γυμναστήριο που σου ταιριάζει!</p>
                                     <p id="title">Επέλεξε</p>
                                 </div>
                             </div>
                     
                             <div class="row">
-                                <div class="col-lg-7 offset-lg-2 col-md-9 offset-md-1 col-sm-8 offset-sm-2" id="slc">
+                                <div class="col-lg-7 offset-lg-2 col-md-9 offset-md-1 col-sm-8 offset-sm-1" id="slc">
                                     <select id="slc1">
                                         <option value="hidden">Περιοχή</option>
                                         <option value="athens">Αθήνα</option>
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="row"> 
-                                <div class="col-lg-7 offset-lg-3 col-md-9 offset-md-1 col-sm-8 offset-sm-2">
+                                <div class="col-lg-7 offset-lg-3 col-md-9 offset-md-1 col-sm-8 offset-sm-1">
                                 <button class="btnorange" id="btnsearch">Αναζήτηση</button></a>
                                 </div>
                             </div>

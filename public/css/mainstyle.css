@@ -280,7 +280,9 @@ footer p a {
     height:100vh;
     opacity: 0.8;
 }
-#mobiletitle{display: none;}
+#mobiletitle{
+    display: none;
+    }
 
 #title{
     color: #169b99;/*BLUE*/
@@ -1182,6 +1184,7 @@ textarea {
     #bestgymimg img{
         margin-top: 40px;
     }
+    
     .bestgym{
         height: 500px;
     }
@@ -1282,16 +1285,29 @@ textarea {
         padding: 5px;
     }
 
-    .fimage{height: 500px;}
+    .fimage{height: 500px;
+    background-image: none;
+background-color: #1d1d1d;}
         
     #boxgrey{
-        width:110%;
+        width:120%;
         height: 500px;
+        background-color: #1d1d1d;
     }
+
+  
+  #mobiletitle{
+      display: inline;
+      margin-top: 60px;
+      display: block; 
+      color: #1ecfcc;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 30px;
+      text-align: center;}
 
     #btnsearch{width: 100%;}
 
-    #btnmember, #bigtitle,  .blogrow,  #footermenu, #footerextra,  #footertitle, #arrow{display:none;}
+    #btnmember, #bigtitle,  .blogrow,  #footermenu, #footerextra,  #footertitle, #title, #arrow{display:none;}
 
         
     #btnfooter{
@@ -1430,28 +1446,27 @@ textarea {
             display: block;   
         }
 
-        #mobiletitle{
-            margin-top: 250px;
-            display: inline;
-            color: #169b99;
+       #mobiletitle{
+            margin-top: 60px;
+            display: block; 
+            color: #1ecfcc;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            font-size: 27px;
+            font-size: 30px;
             text-align: center;
         }
-
-        #boxgrey{background-color: #dddee0;}
+    
 
         .fimage{
-            background-color: #dddee0;
+            background-color: #1d1d1d;
             background-image: none;
-            height: 400px;}
+            height: 500px;}
 
-        #btnmember, #bigtitle,  #title, .blogrow, .rowbestgym,  #footermenu, #footerextra,  #imagerow2{display:none;}
+        #btnmember, #bigtitle,  #title, .blogrow, .rowbestgym,  #footermenu, #footerextra,   #imagerow2{display:none;}
                 
         #boxgrey{
-            background-color: none;
+            
             width:100%;
-            height: 300px;
+            height: 350px;
         }
 
         #btnsearch{width: 100%;}
