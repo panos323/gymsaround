@@ -3,7 +3,8 @@
     <nav class="navbar navbar-expand-md  navbar-dark " id="navbarstyle">
     
         <div class="navbar-header">   
-        <a class="navbar-brand " href="<?php echo URLROOT; ?>"><img class="navbar_logo" src="<?php echo URLROOT; ?>/images/logo.png" alt="logo"> Gymaround</a>
+        <a class="navbar-brand " href="<?php echo URLROOT; ?>" ><img class="navbar_logo" src="<?php echo URLROOT; ?>/images/logo.png" alt="logo"></a>
+        <p id="gymaroundlogo" > Gymaround</p>
    
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#mydropdown" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

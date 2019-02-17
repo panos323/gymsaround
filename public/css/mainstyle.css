@@ -28,10 +28,23 @@ font-size: 20px;
 color: #b5b5b6;
 }
 .navbar_logo {
-    height: 50px;
+    height: 45px;
     width: auto;
     padding-left: 20px;
    
+}
+#gymaroundlogo{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 23px;
+    padding-left: 3px;
+    padding-top: 10px;
+    float: right;
+    color: #eaeaea;
+    opacity: 0.8;
+}
+
+#images{
+    height: 600px;
 }
 #btnregister{
     margin-right: 2%;
@@ -146,17 +159,25 @@ margin-left:36%;
     color:#169b99;
     margin-left: 24%;
 }
-#forgotpass{
-    color:#169b99;
-   margin-left: 34%;
-}
+
 .form-group input{font-size:18px;
     border-radius: 22px; 
     height: 45px; }
 
- #forgotpassmodal{opacity: 1 !important;}   
+ #forgotpassmodal{opacity: 1 ;}   
+
  #modalcontentfgpass{margin-top: 150px;}
+
  #forgotpasstitle{margin-left: 15%;}
+
+#forgotpass{
+    background-color: white;
+    color: #169b99;
+    border: none;
+    cursor: pointer;
+    margin-left: 34%;
+    outline: none;
+}
 
 /**
     error page css
@@ -253,7 +274,7 @@ footer p a {
 }
 .footerrow{margin-top: 50px;}
 
-#gymaound{
+#gymaround{
     display: none;
 }
 #sicon img:hover{
@@ -345,6 +366,7 @@ select{
     border-radius: 22px;  
     display: inline-block;
     font-size: 20px;
+    outline: none;
 }
 
 
@@ -370,6 +392,7 @@ select{
     border-radius: 22px;
     padding: 8px;
     font-size: 18px;
+    outline: none;
 }
 #btnfooter:hover{
     background-color: #fbba0b;
@@ -399,6 +422,7 @@ select{
     text-decoration: none;
     display: inline-block; 
     font-size: 20px;
+    outline: none;
 }
 
 
@@ -427,12 +451,14 @@ select{
     margin-right: 180px;
     width: 70%;
     cursor: pointer;
+    outline: none;
 }
 
 
 #btnmember{
     margin-top: 10px; 
     cursor: pointer;
+    outline: none;
    }
 #btnmember:hover{
     color: #1ab5b7;
@@ -716,6 +742,7 @@ select{
             border: 2px solid #169b99;
             width: 85%;
             color:#169b99;
+            outline: none;
         }
 
     .btnsearchpage:hover{
@@ -873,12 +900,11 @@ select{
       filter: grayscale(0%);
       box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);  
   }
-  
-  .partnerform{
+ .partnerform{
       background-color: white;
       height:700px;
       width: 100%;
-      margin-top:352px;
+      margin-top:355px;
       background-image: linear-gradient(to right,#169b99 , #1ecfcc);
   }
 
@@ -898,7 +924,7 @@ select{
       text-align: center;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   }
-  #btnformpartner{
+ #btnformpartner{
     background-color: #ffc731;
     color: #2c2b2b;
     font-size:20px;
@@ -960,7 +986,7 @@ select{
 }
 .pagination{margin: 30px;}
 
-#blogpage{
+#contactpage, #blogpage{
     
         margin-top: 380px;
         height:250px;
@@ -970,12 +996,13 @@ select{
     
 }
 
-#blogdescription{
+#contactdescription, #blogdescription{
     text-align: center;
     font-size: 25px;
     color: #2c2b2b;
 }
-#blogpagetitle {
+
+#contactpagetitle, #blogpagetitle {
     text-align: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 40px;
@@ -1032,11 +1059,41 @@ textarea {
 
 #commentday{float:right;}
 
+/****************************************************************************************************
+  ******************************************************************************************************
+  *****************************----CONTACT PAGE----*********************************************************/
 
+  #imgcontact{
 
+    background-repeat: no-repeat;
+    width:100%;
+    background-image:url(../images/contact.jpeg);
+    background-size:cover;
+    height:50vh;
+    min-height: 500px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 180px;
 
+}
+ #btncontactform{
+    background-color: #ffc731;
+    color: #2c2b2b;
+    font-size:20px;
+    border-radius: 22px;
+    padding: 8px;
+    font-weight: 600;
 
+}
+#btncontactform:hover{
+    background-color: white;
+    color: #ffc731;
+    font-weight: 600;
+    border: 1px solid #ffc731;
 
+}
 
 /*********************************************************************************************
 **********************************!!!!!---RESPONCIVE---!!!!***********************************
@@ -1234,11 +1291,13 @@ textarea {
         width: auto;
     }
    
-    #gymaound{
+    #gymaround{
         display:block;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 30px;
-        color: #b5b5b6;}
+        color: #eaeaea;
+        opacity: 0.8;}
+
         #images{
         height: 600px;
         }
@@ -1327,11 +1386,12 @@ background-color: #1d1d1d;}
         width: auto;
     }
     
-    #gymaound{
+    #gymaround{
         display:block;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 30px;
-        color: #b5b5b6;
+        color: #eaeaea;
+        opacity: 0.8;
     }
 
 
@@ -1488,7 +1548,7 @@ background-color: #1d1d1d;}
             display: none;
         }
 
-        #gymaound{
+        #gymaround{
             display:block;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             font-size: 30px;

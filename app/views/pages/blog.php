@@ -6,13 +6,10 @@
         <div class="col-8 offset-2" id="blogpage">
             <p id="blogpagetitle" >Blog</p>
             <p id="blogdescription" > Μάθε τα πάντα για την γυμναστική και τη σωστή διατροφή!</p>
+        </div>
     </div>
 </div>
-</div>
 <div class="container">
-
-
-    
     <div class="row">
         <div class="col-md-6">
            <a href="#"><img src= " <?php echo URLROOT;?> /images/blog/imgblog1.jpg" style="margin-bottom:15px;" width="100%" alt="stars"/></a>

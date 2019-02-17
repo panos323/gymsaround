@@ -6,7 +6,7 @@
             <div class="col-lg-2 offset-lg-1 col-md-3 offset-md-1 col-sm-5 offset-sm-3 mb-4">
                 <div class="pl-4">
                     <a href="<?php echo URLROOT; ?>"><img class="footer_logo" src="<?php echo URLROOT; ?>/images/logo.png" alt="logo_footer"></a>
-                    <p id="gymaound">Gymaround</p>
+                    <p id="gymaround">Gymaround</p>
                 </div>
             </div>
             <div class="col-md-2 col-sm-6 mb-4" id="footermenu">
@@ -52,7 +52,7 @@
         </div>
     </div>
     <div class="footer-copyright text-center py-3">© 2018 Copyright:
-        <a href="<?php echo URLROOT; ?>"> gymaround.com</a>
+        <a href="<?php echo URLROOT; ?>" style="color: #169b99;text-decoration:none;"> gymaround.com</a>
     </div>
 </footer><!--row-->
 
