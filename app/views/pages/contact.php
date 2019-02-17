@@ -7,6 +7,7 @@
         <!--register-->
         <div class="col-lg-6 col-md-8 mx-auto mt-5">
             <div class="card card-body mt-5" id="cardBodyReg">
+                <?php flash('email_success'); ?>
                 <h2>Επικοινωνήστε μαζί μας</h2>
                 <form id="contactForm" action="<?php echo URLROOT; ?>/pages/contact" method="post">
                     <div class="form-row mt-3">
@@ -14,14 +15,14 @@
                             <input type="text"
                                    name="first_name"
                                    class="form-control form-control-lg"
-                                   placeholder="Name"
+                                   placeholder="'Ονομα"
                             >
                         </div>
                         <div class="form-group col-sm-6">
                             <input type="text"
                                    name="last_name"
                                    class="form-control form-control-lg"
-                                   placeholder="Last Name"
+                                   placeholder="Επίθετο"
                             >
                         </div>
                     </div><!--form-row-->
@@ -33,6 +34,13 @@
                          >
                     </div>
                     <div class="form-group mt-3">
+                        <input type="text"
+                               name="subject"
+                               class="form-control form-control-lg"
+                               placeholder="Θέμα"
+                        >
+                    </div>
+                    <div class="form-group">
                         <label for="email_text"></label>
                         <textarea name="email_text" class="form-control" id="email_text" cols="30" rows="10" placeholder="Στείλτε μας το μήνυμά σας"></textarea>
                     </div>

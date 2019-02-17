@@ -44,9 +44,35 @@ class Pages extends Controller {
 
     public function contact() {
         $data = [];
-        mailer();
-        $this->view('pages/contact', $data);
+
+        // Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'full_name' => trim($_POST['first_name']).' '.trim($_POST['last_name']),
+                'receiver_name' => '',
+                'message' => trim($_POST['email_text']),
+                'sender_email' => trim($_POST['email']),
+                'subject' => trim($_POST['subject']),
+                'receiver_email' => 'info@georgegeorgakas.com',
+            ];
+
+            // Register User
+            if(mailer($data)){
+                flash('email_success', 'Ευχαριστούμε που επικοινωνήσατε μαζί μας.');
+                redirect('pages/contact');
+            } else{
+                flash('email_success', 'Κάτι πήγε λάθος. Παρακαλούμε προσπαθείστε ξανά.', 'alert alert-danger');
+                redirect('pages/contact');
+            }
+        } else {
+            // Load view with errors
+            $this->view('pages/contact', $data);
+        }
     }
-
-
 }

@@ -23,6 +23,9 @@
             <li class="nav-item  <?php echo (isset($view) && $view==='pages/about') ? 'active' : '';?>">
                 <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">Εταιρεία</a>
             </li>
+            <li class="nav-item  <?php echo (isset($view) && $view==='pages/contact') ? 'active' : '';?>">
+                <a class="nav-link" href="<?php echo URLROOT; ?>/pages/contact">Επικοινωνία</a>
+            </li>
             <?php if(isset($_SESSION['id'])) : ?>
                 <li class="nav-item <?php echo (isset($view) && $view=== $_SESSION['type'] . '/profile') ? 'active' : '';?>">
                     <a class="nav-link" href="<?php echo URLROOT; ?>/<?php echo $_SESSION['type']; ?>/profile/account">Προφίλ</a>
