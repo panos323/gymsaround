@@ -1083,21 +1083,18 @@ textarea {
 
 /****************************SEARCH RESPONSIVE  1790**********************************/
 
-@media (max-width: 1790px) {
-    #gymMainPhoto{
-        margin-bottom:10px;
-    }
+@media (max-width: 1500px) {
 
     #btnGymPrice{
         float:left !important;
         display:block !important;
-        margin-left:0px !important;
+        margin-left:0 auto !important;
         width:150px;
         margin-bottom:25px !important;
     }
 
-    #gymsLikeHeart{
-        margin-bottom:20px;
+    #gymMainPhoto{
+        margin-bottom:10px;
     }
 
     .ratingStars{
@@ -1114,16 +1111,6 @@ textarea {
     }
 }
 
-/****************************SEARCH RESPONSIVE  1100*********************************************/
-
-@media (max-width: 1100px) {
-
-    #gymsLikeHeart{
-        margin:10px 0 !important;
-        clear:both;
-        float:left !important;
-    }
-}
 
 /****************************NAVBAR RESPONSIVE  LG BREAKPOINT*********************************************/
 @media (max-width: 991px) { 
