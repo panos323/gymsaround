@@ -42,5 +42,11 @@ class Pages extends Controller {
         $this->view('pages/article', $data);
     }
 
+    public function contact() {
+        $data = [];
+        mailer();
+        $this->view('pages/contact', $data);
+    }
+
 
 }
