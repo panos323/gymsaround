@@ -233,10 +233,7 @@
           <button type="button" id="sortByPriceBtn" class="btn btn-outline-info mb-2  btn-md customBtnG">Tιμή +<i id="AscDescArrowsPrice" class="fa" aria-hidden="true"></i></button>
         </div>
         <div class="col-md-3 offset-1  mt-3 mb-3">
-            <!-- <div class="input-group">
-                <div id='geocoder' class='geocoder'>
-              </div> -->
-            </div>
+            <p id="totalGymResulstsSpan" class="lead"></p>
         </div>
     </div> <!--row-->
     <!--end search buttons -->
@@ -311,6 +308,29 @@
 
   }// end function
 //end rating stars
+
+
+  //start function that display total results the founded
+  function countGymELements(myList) {
+    var count = 0;
+    var resultsLength = document.querySelector("#totalGymResulstsSpan");
+
+      for (let i = 0; i < myList.length; i++) {
+        var thisElem = myList[i];
+        if (!thisElem.classList.contains("hideDropDownElement"))
+            count++;
+      }
+      if (count > 1) {
+        resultsLength.classList.add("text-success");
+        resultsLength.innerHTML = 'Βρέθηκαν ' + count.toString() + " αποτελέσματα";
+      } else if (count == 1) {
+        resultsLength.classList.remove("text-success");
+        resultsLength.innerHTML = 'Βρέθηκε ' + count.toString() + " αποτελέσμα";
+      } else {
+        resultsLength.innerHTML = 'Δεν βρέθηκαν αποτελέσματα'
+      }
+  }
+//end function that display total results the founded
 
 
 
@@ -713,6 +733,9 @@ map.on('load', function(e) {
         myList[i].innerHTML = aNames[i];
     }//for loop
     
+    //call function to show total gym results
+    countGymELements(myList)
+
   }//end function
 
 
@@ -731,6 +754,7 @@ map.on('load', function(e) {
     var list = document.getElementById("listings");
     var myList = list.getElementsByClassName("item");
     var elementBtn = document.getElementById("AscDescArrowsPrice");
+    var resultsLength = document.querySelector("#totalGymResulstsSpan");
 
     Array.prototype.map.call(myList, function(node) {
       return {
@@ -748,8 +772,12 @@ map.on('load', function(e) {
       }
     }).forEach(function(item) {
       list.appendChild(item.node);
+      resultsLength.innerHTML=  myList.length.toString();
     });
     
+    //call function to show total gym results
+    countGymELements(myList)
+
   }//end function
   
 
@@ -768,6 +796,7 @@ map.on('load', function(e) {
 
     var list = document.getElementById("listings");
     var myList = list.getElementsByClassName("item");
+    var resultsLength = document.querySelector("#totalGymResulstsSpan");
 
     Array.prototype.map.call(myList, function(node) {
       return {
@@ -782,6 +811,8 @@ map.on('load', function(e) {
           item.node.classList.add('hideDropDownElement')
         }
       })
+      //call function to show total gym results
+      countGymELements(myList)
    
   }//end function
   
@@ -834,7 +865,9 @@ map.on('load', function(e) {
         }
 
       })
-   
+      
+      //call function to show total gym results
+      countGymELements(myList);
   }//end function
   
   //on button click call function to sort elements by Location
@@ -1012,12 +1045,17 @@ function createPopUp(currentFeature) {
       '<p class="lead">' + currentFeature.properties.address + '</p>')
     .addTo(map);
 }
-
+//call function to show total gym results
+//countGymELements(myList)
 
 function buildLocationList(data) {
+  var resultsLength = document.querySelector("#totalGymResulstsSpan");
+      resultsLength.classList.add("text-success");
   // Iterate through the list of stores
 
   for (i = 0; i < data.features.length; i++) {
+    resultsLength.innerHTML = 'Βρέθηκαν ' + data.features.length.toString() + " αποτελέσματα";
+    
     var currentFeature = data.features[i];
     // Shorten data.feature.properties to just `prop` so we're not
     // writing this long form over and over again.
@@ -1051,7 +1089,7 @@ function buildLocationList(data) {
     //distance appears on search
     if (prop.distance) {
       var roundedDistance = Math.round(prop.distance * 100) / 100;
-      //console.log('distance EXISTS')
+      
       details.innerHTML += '<p class="lead mt-3 mb-4"><mark>' + roundedDistance + ' miles away<mark></p>';
     }
 
