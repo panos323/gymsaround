@@ -24,4 +24,14 @@ $( document ).ready(function() {
         location.reload();
     });
 
- });
+    //show current item of slider
+    var totalItemsOfSlider = $('.carousel-item').length;
+    var currentIndex = $('div.active').index() + 1;
+    $('#number').html('1/3');
+    $("#carouselExampleControls").on('slid.bs.carousel', function() {
+        currentIndex = $('div.active').index() + 1;
+       $('#number').html(''+currentIndex+'/'+totalItemsOfSlider+'');
+    });
+
+    
+ }); // ON PAGE LOADED
