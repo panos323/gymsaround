@@ -281,4 +281,64 @@ class User{
             return false;
         }
     }
+
+    /**
+     * Search for user by email.
+     * If exists add token for password recovery.
+     * @param string $email
+     * @param string $token
+     * @return bool
+     */
+    public function forgotPassword(string $email, string $token = '') {
+        $this->db->query('UPDATE users
+                              SET user_token = :token
+                              WHERE user_email = :email');
+        $this->db->bind(':email', $email);
+        $this->db->bind(':token', $token);
+        $this->db->execute();
+        if($this->db->rowCount() > 0){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Check token and email if exist on user
+     * @param string $email
+     * @param string $token
+     * @return bool
+     */
+    public function checkTokenAndEmail(string $email, string $token) {
+        $this->db->query("SELECT  *
+                              FROM users
+                              WHERE user_email = :email AND user_token = :token");
+        $this->db->bind(':email', $email);
+        $this->db->bind(':token', $token);
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0) {
+            return $row->user_id;
+        }
+        return false;
+    }
+
+    /**
+     * Change user's password without login
+     * @param string $id
+     * @param string $password
+     * @return bool
+     */
+    public function resetPassword(string $id, string $password) {
+        $this->db->query("UPDATE users
+                              SET user_password = :password,
+                                  user_token = ''
+                              WHERE user_id = :id");
+        $this->db->bind(':id', $id);
+        $this->db->bind(':password', $password);
+        try {
+            $this->db->execute();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }

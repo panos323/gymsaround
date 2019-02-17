@@ -184,8 +184,9 @@
           <h4 class="modal-title" id="forgotpasstitle">Aποστολή νέου κωδικού!</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <div class="modal-body">     
-            <form id="forgotpassform" action="<?php echo URLROOT; ?>/users/login" method="post">
+        <div class="modal-body">
+            <?php flash('forgot_success'); ?>
+            <form id="forgotpassform" action="<?php echo URLROOT; ?>/users/forgotPassword" method="post">
             <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email"
@@ -194,10 +195,7 @@
                            name="email"
                     >
                 </div>
-              
                 <button type="submit" class="btnmodalform">Αποστολή</button></br>
-               
-                
             </form>
         </div>
         <div class="modal-footer">
