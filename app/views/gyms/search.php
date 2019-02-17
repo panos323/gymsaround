@@ -171,18 +171,19 @@
 }
 
  .mapboxgl-ctrl-geocoder {
-  border: 0;
-  border-radius: 0;
+  top:-6px;
   position: relative;
-  top: 0;
-  width: 800px;
-  margin-top: 0;
+  left:8px;
+  /* border: 0;
+  border-radius: 0;
+  width: 400px;
+  margin-top: 0; */
 }
 
-.mapboxgl-ctrl-geocoder > div {
-  min-width: 100%;
+/* .mapboxgl-ctrl-geocoder > div {
+  min-width: 50%;
   margin-left: 0;
-} 
+}  */
 
 .mapboxgl-popup-close-button{
   display:block;
@@ -196,7 +197,7 @@
 
     <!--start search buttons -->
     <div class="row col-lg-12">
-        <div class="col-md-4 mt-4 mb-3">
+        <div class="col-md-7 mt-4 mb-3">
           <button type="button" class="btn btn-outline-info mr-4 mb-2   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
           <div class="dropdown d-inline-block">
               <button class="btn btn-outline-info mr-4 mb-2 btn-md dropdown-toggle customBtnG" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -231,10 +232,10 @@
 
           <button type="button" id="sortByPriceBtn" class="btn btn-outline-info mb-2  btn-md customBtnG">Tιμή +<i id="AscDescArrowsPrice" class="fa" aria-hidden="true"></i></button>
         </div>
-        <div class="col-md-6 offset-1  mt-3 mb-3">
-            <div class="input-group">
+        <div class="col-md-3 offset-1  mt-3 mb-3">
+            <!-- <div class="input-group">
                 <div id='geocoder' class='geocoder'>
-              </div>
+              </div> -->
             </div>
         </div>
     </div> <!--row-->
@@ -858,10 +859,11 @@ map.on('load', function(e) {
   //start add geocoder for search in Greece
   var geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
+    placeholder: 'Search by area',
     bbox: [19.858037278278772,35.9369788149224,26.47077930220928,41.490542182273316],
   });
 
-  document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+  map.addControl(geocoder, 'top-left');
   //end add geocoder for search
 
   // Add the `map.addSource` and `map.addLayer` here

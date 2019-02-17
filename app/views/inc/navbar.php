@@ -1,22 +1,14 @@
 
 
-    <nav class="navbar navbar-expand-lg  navbar-dark" id="navbarstyle">
+<nav class="navbar navbar-expand-lg  navbar-dark" id="navbarstyle">
     
-        <div class="navbar-header">   
-        <a class="navbar-brand " href="<?php echo URLROOT; ?>" ><img class="navbar_logo" src="<?php echo URLROOT; ?>/images/logo.png" alt="logo"></a>
+        <a class="navbar-brand" href="<?php echo URLROOT; ?>" ><img class="navbar_logo" src="<?php echo URLROOT; ?>/images/logo.png" alt="logo"></a>
         <p id="gymaroundlogo" > Gymaround</p>
    
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#mydropdown" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        </div>
   <div class="collapse navbar-collapse" id="mydropdown">
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mydropdown" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- </div> -->
-<div class="collapse navbar-collapse" id="mydropdown">
 
     <ul class="navbar-nav ml-auto">
         <li class="nav-item <?php echo (isset($view) && $view==='pages/index') ? 'active' : '';?>">
@@ -53,7 +45,7 @@
         <?php endif; ?>
     </ul>
 
-</div>
+  </div>
 
 </nav>
     
