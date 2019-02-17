@@ -5,16 +5,16 @@
         <div class="row">
             <div class="col-lg-2 offset-lg-1 col-md-3 offset-md-1 col-sm-5 offset-sm-3 mb-4">
                 <div class="pl-4">
-                    <a href="<?php echo URLROOT; ?>"><img class="footer_logo" src="<?php echo URLROOT ?>/images/logo.png" alt="logo_footer"></a>
+                    <a href="<?php echo URLROOT; ?>"><img class="footer_logo" src="<?php echo URLROOT; ?>/images/logo.png" alt="logo_footer"></a>
                     <p id="gymaound">Gymaround</p>
                 </div>
             </div>
             <div class="col-md-2 col-sm-6 mb-4" id="footermenu">
                 <h3 class="mb-3">Μενού</h3>
-                <p><a href="">Αρχική</a></p>
-                <p><a href="">Γυμναστήρια</a></p>
-                <p><a href="">Εταιρεία</a></p>
-                <p><a href="">Επικοινωνία</a></p>
+                <p><a href="<?php echo URLROOT; ?>/pages/index">Αρχική</a></p>
+                <p><a href="<?php echo URLROOT; ?>/gyms/search">Γυμναστήρια</a></p>
+                <p><a href="<?php echo URLROOT; ?>/pages/about">Εταιρεία</a></p>
+                <p><a href="<?php echo URLROOT; ?>/pages/contact">Επικοινωνία</a></p>
             </div>
             <div class="col-md-2 col-sm-6 mb-4" id="footerextra">
                 <h3 class="mb-3">Εξτρας</h3>

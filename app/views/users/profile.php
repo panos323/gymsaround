@@ -6,15 +6,17 @@
     <div class="col-md-2 sidemenu">
         <div class="list-group">
             <a href="<?php echo URLROOT; ?>/users/profile/account" class="list-group-item <?php echo ($data['tab'] === 'account') ? 'active_profile_tab' : ''; ?>">Λογαριασμός</a>
-            <a href="<?php echo URLROOT; ?>/users/profile/my_gym" class="list-group-item <?php echo ($data['tab'] === 'my_gym') ? 'active_profile_tab' : ''; ?>">Γυμναστήριο</a>
-        </div>
+            <?php if(!$_SESSION['isAdmin']) : ?>
+                <a href="<?php echo URLROOT; ?>/users/profile/my_gym" class="list-group-item <?php echo ($data['tab'] === 'my_gym') ? 'active_profile_tab' : ''; ?>">Γυμναστήριο</a>
+            <?php else : ?>
+                <a href="<?php echo URLROOT; ?>/users/profile/my_users" class="list-group-item <?php echo ($data['tab'] === 'my_users') ? 'active_profile_tab' : ''; ?>">Χρήστες</a>
+                <a href="<?php echo URLROOT; ?>/users/profile/my_owners" class="list-group-item <?php echo ($data['tab'] === 'my_owners') ? 'active_profile_tab' : ''; ?>">Ιδιοκτήτες</a>
+                <a href="<?php echo URLROOT; ?>/users/profile/my_gyms" class="list-group-item <?php echo ($data['tab'] === 'my_gyms') ? 'active_profile_tab' : ''; ?>">Γυμναστήρια</a>
+            <?php endif; ?>
+    </div>
     </div>
     <div class="col-md-10">
         <div class="row main_profile">
-
-            <?php if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) : ?>
-                <h1>Welcome Admin</h1>
-            <?php endif; ?>
             <!-- This is the display for Users info -->
             <?php if($data['tab'] === 'account')  : ?>
                 <div class="col-md-11 profile_boxes">
@@ -160,7 +162,171 @@
                         <h4>Αν χρειαζεται καποιο notification για τον admin</h4>
                     </div>
                 <?php endif; ?>
-
+            <?php elseif($data['tab'] === 'my_users')  : ?>
+                <hr>
+                <div class="container bootstrap snippet">
+                    <div class="row admin_users">
+                        <div class="col-lg-12">
+                            <div class="main-box no-header clearfix">
+                                <div class="main-box-body clearfix">
+                                    <div class="table-responsive">
+                                        <?php flash('admin_success'); ?>
+                                        <table class="table user-list">
+                                            <thead>
+                                            <tr>
+                                                <th><span>Χρήστης</span></th>
+                                                <th><span>Username</span></th>
+                                                <th class="text-center"><span>Δημιουργήθηκε</span></th>
+                                                <th><span>Email</span></th>
+                                                <th><span>Ενέργειες</span></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php foreach ($data['users'] as $user) : ?>
+                                                <?php if($user->user_id !== $_SESSION['id']) : ?>
+                                                    <tr>
+                                                        <td>
+                                                            <img src="https://bootdey.com/img/Content/user_1.jpg" alt="user_profile_picture">
+                                                            <a href="#" class="user-link"><?php echo $user->user_first_name ." ". $user->user_last_name; ?></a>
+                                                            <span class="user-subhead"><?php echo ($user->user_is_admin) ? 'Admin' : 'Member'; ?></span>
+                                                        </td>
+                                                        <td><?php echo $user->user_username; ?></td>
+                                                        <td class="text-center">
+                                                            <span><?php echo $user->user_register_day; ?></span>
+                                                        </td>
+                                                        <td>
+                                                            <span><?php echo $user->user_email; ?></span>
+                                                        </td>
+                                                        <td>
+                                                            <form id="makeAdminForm" action="<?php echo URLROOT; ?>/users/makeAdmin" method="post">
+                                                                <input type="hidden" name="isAdmin" value="<?php echo $user->user_is_admin; ?>">
+                                                                <input type="hidden" name="id" value="<?php echo $user->user_id; ?>">
+                                                                <button class="btn btn-sm btn-primary mb-2"><?php echo ($user->user_is_admin) ? 'Αφαίρεση ' : 'Προσθήκη '; ?>Διαχειριστή</button>
+                                                            </form>
+                                                            <form id="deleteUserAdminForm" action="<?php echo URLROOT; ?>/users/deleteUser" method="post">
+                                                                <input type="hidden" name="id" value="<?php echo $user->user_id; ?>">
+                                                                <button class="btn btn-sm btn-danger">Διαγραφή</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                            <?php endif; ?>
+                                            <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php elseif($data['tab'] === 'my_owners')  : ?>
+                <hr>
+                <div class="container bootstrap snippet">
+                    <div class="row admin_users">
+                        <div class="col-lg-12">
+                            <div class="main-box no-header clearfix">
+                                <div class="main-box-body clearfix">
+                                    <div class="table-responsive">
+                                        <table class="table user-list">
+                                            <?php flash('owner_success'); ?>
+                                            <thead>
+                                            <tr>
+                                                <th><span>Owner</span></th>
+                                                <th><span>Username</span></th>
+                                                <th class="text-center"><span>Status</span></th>
+                                                <th><span>Email</span></th>
+                                                <th><span>Actions</span></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php foreach ($data['owners'] as $owner) : ?>
+                                                <tr>
+                                                    <td>
+                                                        <img src="https://bootdey.com/img/Content/user_1.jpg" alt="owner_profile_picture">
+                                                        <a href="#" class="user-link"><?php echo $owner->owner_first_name ." ". $owner->owner_last_name; ?></a>
+                                                        <span class="user-subhead">Owner</span>
+                                                    </td>
+                                                    <td><?php echo $owner->owner_username; ?></td>
+                                                    <td class="text-center">
+                                                        <span><?php echo ($owner->owner_is_activated) ? '<span class="owner_active">active</span>' : 'pending'; ?></span>
+                                                    </td>
+                                                    <td>
+                                                        <span><?php echo $owner->owner_email; ?></span>
+                                                    </td>
+                                                    <td>
+                                                        <form id="activateOwnerForm" action="<?php echo URLROOT; ?>/users/activateOwner" method="post">
+                                                            <input type="hidden" name="isActivated" value="<?php echo $owner->owner_is_activated; ?>">
+                                                            <input type="hidden" name="id" value="<?php echo $owner->owner_id; ?>">
+                                                            <button class="btn btn-sm btn-primary mb-2"><?php echo (!$owner->owner_is_activated) ? 'Ενεργοποίηση ' : 'Απενεργοποίηση  '; ?>Ιδιοκτήτη</button>
+                                                        </form>
+                                                        <form id="deleteOwnerForm" action="<?php echo URLROOT; ?>/users/deleteOwner" method="post">
+                                                            <input type="hidden" name="id" value="<?php echo $owner->owner_id; ?>">
+                                                            <button class="btn btn-sm btn-danger">Διαγραφή</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php elseif($data['tab'] === 'my_gyms')  : ?>
+                <hr>
+                <div class="container bootstrap snippet">
+                    <div class="row admin_users">
+                        <div class="col-lg-12">
+                            <div class="main-box no-header clearfix">
+                                <div class="main-box-body clearfix">
+                                    <div class="table-responsive">
+                                        <table class="table user-list">
+                                            <thead>
+                                            <tr>
+                                                <th><span>Γυμναστήριο</span></th>
+                                                <th><span>Διεύθυνση</span></th>
+                                                <th><span>Κατάσταση</span></th>
+                                                <th><span>Τύπος</span></th>
+                                                <th><span>Ενέργειες</span></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php foreach ($data['gyms'] as $gym) : ?>
+                                                <tr>
+                                                    <td>
+                                                        <img src="https://bootdey.com/img/Content/user_1.jpg" alt="user_profile_picture">
+                                                        <a href="#" class="user-link"><?php echo $gym->gym_name; ?></a>
+                                                    </td>
+                                                    <td><?php echo $gym->gym_location; ?></td>
+                                                    <td>
+                                                        <span><?php echo ($gym->gym_is_activated) ? '<span class="owner_active">ενεργό</span>' : 'εκκρεμή'; ?></span>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <span><?php echo $gym->gym_type; ?></span>
+                                                    </td>
+                                                    <td>
+                                                        <form id="activateGymForm" action="<?php echo URLROOT; ?>/gyms/activateGym" method="post">
+                                                            <input type="hidden" name="isActivated" value="<?php echo $gym->gym_is_activated; ?>">
+                                                            <input type="hidden" name="id" value="<?php echo $gym->gym_id; ?>">
+                                                            <button class="btn btn-sm btn-primary mb-2"><?php echo (!$gym->gym_is_activated) ? 'Ενεργοποίηση ' : 'Απενεργοποίηση  '; ?>Γυμναστηρίου</button>
+                                                        </form>
+                                                        <form id="deleteGymForm" action="<?php echo URLROOT; ?>/gyms/deleteGym" method="post">
+                                                            <input type="hidden" name="id" value="<?php echo $gym->gym_id; ?>">
+                                                            <button class="btn btn-sm btn-danger">Διαγραφή</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <!-- It should should never reach this display but just in case -->
             <?php else: ?>
             <div>

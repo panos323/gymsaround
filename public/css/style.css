@@ -135,6 +135,80 @@ body{
     color: #ffffff;
 }
 
+/**
+    Admin Profile Css
+ */
+.admin_users .main-box.no-header {
+    padding-top: 20px;
+}
+.admin_users .main-box {
+    background: #FFFFFF;
+    -webkit-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -moz-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -o-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -ms-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    box-shadow: 1px 1px 2px 0 #CCCCCC;
+    margin-bottom: 16px;
+    -webikt-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.admin_users .table a.table-link.danger {
+    color: #e74c3c;
+}
+.admin_users .label {
+    border-radius: 3px;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+.admin_users .user-list tbody td .user-subhead {
+    font-size: 0.875em;
+    font-style: italic;
+}
+.admin_users .user-list tbody td .user-link {
+    display: block;
+    font-size: 1.25em;
+    padding-top: 3px;
+    margin-left: 60px;
+}
+.admin_users a {
+    color: #3498db !important;
+    outline: none!important;
+    background: none !important;
+}
+.admin_users .user-list tbody td>img {
+    position: relative;
+    max-width: 50px;
+    float: left;
+    margin-right: 15px;
+}
+
+.admin_users .table thead tr th {
+    text-transform: uppercase;
+    font-size: 0.875em;
+}
+.table thead tr th {
+    border-bottom: 2px solid #e7ebee;
+}
+.admin_users .table tbody tr td:first-child {
+    font-size: 1.125em;
+    font-weight: 300;
+}
+.admin_users .table tbody tr td {
+    font-size: 0.875em;
+    vertical-align: middle;
+    border-top: 1px solid #e7ebee;
+    padding: 12px 8px;
+}
+
+.admin_users .owner_active{
+    color: #fff !important;
+    background-color: #218838 !important;
+    border-color: #1e7e34 !important;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
 
 /**
     Footer Css

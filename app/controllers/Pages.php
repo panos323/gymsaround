@@ -26,4 +26,27 @@ class Pages extends Controller {
         $this->view('pages/error', $data);
     }
 
+    
+    public function blog(){
+        $data = [
+            'title' => 'Blog'
+        ];
+
+        $this->view('pages/blog', $data);
+    }
+    public function article(){
+        $data = [
+            'title' => 'Article'
+        ];
+
+        $this->view('pages/article', $data);
+    }
+
+    public function contact() {
+        $data = [];
+        mailer();
+        $this->view('pages/contact', $data);
+    }
+
+
 }

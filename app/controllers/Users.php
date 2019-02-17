@@ -91,14 +91,14 @@ class Users extends Controller {
                 // Register User
                 if($this->userModel->register($data)){
                     flash('register_success', 'You are now registered and you can log in');
-                    redirect('users/login');
+                    redirect('pages/index');
                 } else{
                     $data['register_error'] = 'Something went wrong. Please try again.';
-                    $this->view('users/register', $data);
+                    $this->view('pages/index', $data);
                 }
             } else {
                 // Load view with errors
-                $this->view('users/register', $data);
+                $this->view('pages/index', $data);
             }
         }else {
             // Init data
@@ -229,21 +229,33 @@ class Users extends Controller {
         if(!$this->isLoggedIn()){
             redirect('pages/index');
         }
-        if($tab === 'account' || $tab === 'my_gym'){
+        if($tab === 'account' || $tab === 'my_gym' || $tab === 'my_users' || $tab === 'my_owners' || $tab === 'my_gyms'){
             $data = [
                 'tab' => $tab,
                 'name'=> ''
             ];
-            if (empty($_SESSION['gym_id'])) {
-                $data['msg'] = 'Παρακαλώ διαλέχτε γυμναστήριο';
-            } else {
-                $gym = $this->userModel->findUserGym($_SESSION['gym_id']);
-                if($gym) {
-                    $data['name'] = $gym->gym_name;
-                }else {
-                    $data['gym_error'] = 'You are FUCKED. You do not have active GYM';
+            if(!$_SESSION['isAdmin']){
+                if (empty($_SESSION['gym_id'])) {
+                    $data['msg'] = 'Παρακαλώ διαλέχτε γυμναστήριο';
+                } else {
+                    $gym = $this->userModel->findUserGym($_SESSION['gym_id']);
+                    if($gym) {
+                        $data['name'] = $gym->gym_name;
+                    }else {
+                        $data['gym_error'] = 'Δεν έχετε συνδρομή σε κάποιο γυμναστήριο';
+                    }
                 }
+            } else {
+                if ($tab === 'my_users') {
+                    $type = 'users';
+                } elseif ($tab === 'my_owners') {
+                    $type = 'owners';
+                } else {
+                    $type = 'gyms';
+                }
+                $data[$type] = $this->userModel->getAll($type);
             }
+
             $this->view('users/profile', $data);
         }else {
             redirect('users/profile/account');
@@ -499,9 +511,6 @@ class Users extends Controller {
         }
     }
 
-
-
-
     public function UserGym() {
 
         // Init data
@@ -521,6 +530,101 @@ class Users extends Controller {
         }
     }
 
-    /*---------------testing updates-----------------------*/
+    public function makeAdmin() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Process form
 
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'isAdmin' => trim($_POST['isAdmin']),
+                'id' => trim($_POST['id']),
+            ];
+
+            if($this->userModel->makeAdmin(!$data['isAdmin'], $data['id'])){
+                flash('admin_success', 'Η ενέργειά σας πραγματοποιήθηκε με επιτυχία.');
+            }else {
+                flash('admin_success', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');
+            }
+            redirect('users/profile/my_users');
+        } else {
+            redirect('users/profile/my_users');
+        }
+    }
+
+    public function deleteUser() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && $_SESSION['isAdmin']) {
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'id' => trim($_POST['id']),
+            ];
+
+            if($this->userModel->deleteUser($data['id'])){
+                flash('admin_success', 'Η ενέργειά σας πραγματοποιήθηκε με επιτυχία.');
+            }else {
+                flash('admin_success', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');
+            }
+            redirect('users/profile/my_users');
+        } else {
+            redirect('users/profile/my_users');
+        }
+    }
+
+    public function activateOwner() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'isActivated' => trim($_POST['isActivated']),
+                'id' => trim($_POST['id']),
+            ];
+
+            if($this->ownerModel->activateOwner(!$data['isActivated'], $data['id'])){
+                flash('owner_success', 'Η ενέργειά σας πραγματοποιήθηκε με επιτυχία.');
+            }else {
+                flash('owner_success', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');
+            }
+            redirect('users/profile/my_owners');
+        } else {
+            redirect('users/profile/my_owners');
+        }
+    }
+
+    public function deleteOwner() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && $_SESSION['isAdmin']) {
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'id' => trim($_POST['id']),
+            ];
+
+            if($this->ownerModel->deleteOwner($data['id'])){
+                flash('owner_success', 'Η ενέργειά σας πραγματοποιήθηκε με επιτυχία.');
+            }else {
+                flash('owner_success', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');
+            }
+            redirect('users/profile/my_owners');
+        } else {
+            redirect('users/profile/my_owners');
+        }
+    }
 }
