@@ -126,7 +126,7 @@
   padding: 1%;
 }
 
-.mapboxgl-popup-content h3 {
+.mapboxgl-popup-content h4 {
   background: #169b99;
   color: #fff;
   margin: 0;
@@ -137,7 +137,7 @@
   margin-top: -15px;
 }
 
-.mapboxgl-popup-content h4 {
+.mapboxgl-popup-content p {
   margin: 0;
   display: block;
   padding: 10px;
@@ -183,6 +183,12 @@
   min-width: 100%;
   margin-left: 0;
 } 
+
+.mapboxgl-popup-close-button{
+  display:block;
+  font-size:36px;
+  font-weight:bold;
+}
 
 </style>
 <!-- style for map -->
@@ -318,7 +324,7 @@
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
     center: [23.727539, 37.983810], //long - lat
-    zoom: 9
+    zoom: 10
   });
 
   var stores = {
@@ -576,6 +582,29 @@
   console.log(allGyms);
   var orderAscDescName = false; //toggle for asc desc order
 
+
+
+// Because features come from tiled vector data, feature geometries may be split
+// or duplicated across tile boundaries and, as a result, features may appear
+// multiple times in query results.
+  function getUniqueFeatures(array, comparatorProperty) {
+    var existingFeatureKeys = {};
+    // Because features come from tiled vector data, feature geometries may be split
+    // or duplicated across tile boundaries and, as a result, features may appear
+    // multiple times in query results.
+    var uniqueFeatures = array.filter(function(el) {
+    if (existingFeatureKeys[el.properties[comparatorProperty]]) {
+      return false;
+    } else {
+      existingFeatureKeys[el.properties[comparatorProperty]] = true;
+      return true;
+    }
+  });
+ 
+return uniqueFeatures;
+}
+
+
   // This adds the stores to the map
 map.on('load', function(e) {
   map.addSource('places', {
@@ -584,6 +613,50 @@ map.on('load', function(e) {
   });
 
   buildLocationList(stores); //Initialize the list
+
+
+  //Start Show results based on map scrolling
+  map.on('moveend', function(ev) {
+    
+    var features = map.queryRenderedFeatures(ev.point);
+    // console.log(features[0].geometry.coordinates) 
+    var searchResult = features[0].geometry.coordinates;
+
+    // Add `forEach` function 
+    var options = { units: 'miles' };
+
+    stores.features.forEach(function(store) {
+        Object.defineProperty(store.properties, 'distance', {
+          value: turf.distance(searchResult, store.geometry, options),
+          writable: true,
+          enumerable: true,
+          configurable: true
+        });
+          
+      });//end forEach
+
+      // Add `sort` function 
+      stores.features.sort(function(a, b) {
+        if (a.properties.distance > b.properties.distance) {
+          return 1;
+        }
+        if (a.properties.distance < b.properties.distance) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });//end `sort` function 
+
+        
+      var listings = document.getElementById('listings');
+      while (listings.firstChild) {
+        listings.removeChild(listings.firstChild);
+      }
+
+      buildLocationList(stores);
+  }); //on result
+
+//End Show results based on map scrolling
 
 
 //Start Search By Name
@@ -934,10 +1007,10 @@ function createPopUp(currentFeature) {
   // Check if there is already a popup on the map and if so, remove it
   if (popUps[0]) popUps[0].remove();
 
-  var popup = new mapboxgl.Popup({ closeOnClick: false })
+  var popup = new mapboxgl.Popup({ closeOnClick: true })
     .setLngLat(currentFeature.geometry.coordinates)
-    .setHTML('<h3>Διεύθυνση</h3>' +
-      '<h4>' + currentFeature.properties.address + '</h4>')
+    .setHTML('<h4>Διεύθυνση</h4>' +
+      '<p class="lead">' + currentFeature.properties.address + '</p>')
     .addTo(map);
 }
 
