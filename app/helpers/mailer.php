@@ -3,7 +3,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-function mailer() {
+function mailer($attrs) {
     $mail = new PHPMailer(true);
     try {
         // Server Settings
@@ -17,16 +17,18 @@ function mailer() {
         $mail->Port = 465;                                          // TCP port to connect to
 
         // Recipients
-        $mail->setFrom('12467gr@saeinstitute.edu', 'First Last');
-        $mail->addAddress('georgegeorgakas13@hotmail.com', 'George Georgakas');
-
+        $mail->setFrom($attrs['sender_email'], $attrs['full_name']);
+        $mail->addAddress($attrs['receiver_email'], $attrs['receiver_name']);
 
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
-        $mail->Subject = 'Here is the subject';
-        $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        $mail->Subject = $attrs['subject'];
+        $mail->Body    = $attrs['message'];
+        $mail->AltBody = $attrs['message'];
+
+        $mail->send();
+        return true;
     } catch (Exception $e) {
-        echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+        return false;
     }
 }
