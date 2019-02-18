@@ -152,24 +152,28 @@
         <div class="modal-body">     
             <form id="loginForm" action="<?php echo URLROOT; ?>/users/login" method="post">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email ή Όνομα Χρήστη</label>
+                    <label for="exampleInputEmailLog">Email ή Όνομα Χρήστη</label>
+                    <span class="text-center text-danger font-italic nameEmailLoginErr"></span>
                     <input type="text"
                            name="login_credential"
                            class="form-control"
-                           id="exampleInputEmail1"
+                           id="exampleInputEmailLog"
                           >
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Κωδικός</label>
+                    <label for="passwordLoginPopUp">Κωδικός</label>
+                    <span class="text-center text-danger font-italic PasswordErrLogin"></span>
                     <input type="password"
                            class="form-control"
-                           id="exampleInputPassword1"
+                           id="passwordLoginPopUp"
                            name="password"
                          >
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label></br>
+                    <input type="checkbox" class="form-check-input" id="checkOutLoginC">
+                    <label class="form-check-label" for="checkOutLoginC">Check me out</label>
+                    <span class="text-center text-danger font-italic checkIfCheckedLogin"></span>
+                    </br>
                 </div>
                 <button type="submit" class="btnmodalform">Είσοδος</button></br>
                 <button type="button"  data-toggle="modal" data-target="#forgotpassmodal" id="forgotpass" >Ξέχασα τον κωδικό!</button>

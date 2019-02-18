@@ -35,10 +35,11 @@ $( document ).ready(function() {
 
 
 
-    //START VALIDATIONS FOR REGISTER FORM SUBMIT
+    //START VALIDATIONS FOR FORM SUBMIT
     var registerUserForm = $("#registerForm");
-    
-    //ON FORM SUMBIT
+    var loginUserForm = $("#loginmodal");
+
+    //ON REGISTER POP UP FORM SUMBIT
     registerUserForm.on("submit", function(e) {
 
         var firstname = $("#name").val().trim();
@@ -48,7 +49,6 @@ $( document ).ready(function() {
         var myPassword = $("#password").val().trim();
         var passwordConfirm = $("#confrim_pass").val().trim();
         var isCheckForm = $("#acceptTerms").is(":checked");
-        console.log(isCheckForm)
 
         validateName(firstname,e);
         validateSurName(surname,e);
@@ -58,6 +58,53 @@ $( document ).ready(function() {
         validateMatchingPassword(myPassword,passwordConfirm,e);
         validateCheckboxField(isCheckForm,e);
     }) // on submit 
+
+    //ON LOGIN POP UP FORM SUMBIT
+    loginUserForm.on("submit", function(e) {
+
+        var nameEmail = $("#exampleInputEmailLog").val().trim();
+        var myPassword = $("#passwordLoginPopUp").val().trim();
+        var isCheckForm = $("#checkOutLoginC").is(":checked");
+
+        validateNameEmail(nameEmail,e);
+        validateLoginPassword(myPassword,e);
+        validateLoginCheckbox(isCheckForm,e);
+    }) // on submit 
+
+
+    //START FUNCTIONS FOR LOGIN POP UP VALIDATION
+
+    function validateNameEmail(nameEmail,e) {
+        if (!isValidName(nameEmail)) {
+            $(".nameEmailLoginErr").text(' (Name/Email should be at least two characters long)');
+            e.preventDefault();
+        } else {
+            $(".nameEmailLoginErr").text("");
+        }
+    } //end function 
+
+
+    function validateLoginPassword(myPassword,e) {
+        if (!isValidPassowrd(myPassword)) {
+        $(".PasswordErrLogin").text(" (Please enter a password that contains at least 6 characters)");
+        e.preventDefault();
+        } else {
+            $(".PasswordErrLogin").text("");
+        }
+    } //end function
+
+    function validateLoginCheckbox(isCheckForm,e) {
+        if (!isCheckForm) {
+            $(".checkIfCheckedLogin").text(" (Please agree with the terms)");
+            e.preventDefault();
+        } else {
+            $(".checkIfCheckedLogin").text("");
+        }
+    }
+    
+
+    //END FUNCTIONS FOR LOGIN POP UP VALIDATION
+
 
 
     // FUNCTIONS FOR NAME VALIDATION
@@ -183,7 +230,7 @@ $( document ).ready(function() {
     function hasWhiteSpace(username) {
         return !/\s/.test(username);
     }
-    //END VALIDATIONS FOR REGISTER FORM SUBMIT
+    //END VALIDATIONS FOR FORM SUBMIT
 
 
 
