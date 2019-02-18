@@ -61,9 +61,10 @@
          
         </div>
         <div class="modal-body">
-            <form id="registerForm" action="<?php echo URLROOT; ?>/users/register" method="post">
+        <form id="registerForm" action="<?php echo URLROOT; ?>/users/register" method="post">
                  <div class="form-group">
                     <label for="name">Όνομα</label>
+                    <span class="text-center text-danger font-italic nameErr"></span>
                     <input type="text"
                            class="form-control"
                            id="name"
@@ -72,6 +73,7 @@
                 </div>
                 <div class="form-group">
                     <label for="last_name">Επώνυμο</label>
+                    <span class="text-center text-danger font-italic SurnameErr"></span>
                     <input type="text"
                            name="last_name"
                            class="form-control"
@@ -80,6 +82,7 @@
                 </div>
                 <div class="form-group">
                     <label for="username">Όνομα Χρήστη</label>
+                    <span class="text-center text-danger font-italic UsernameErr"></span>
                     <input type="text"
                            class="form-control"
                            id="username"
@@ -88,6 +91,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
+                    <span class="text-center text-danger font-italic MailErr"></span>
                     <input type="email"
                            class="form-control"
                            id="email"
@@ -96,6 +100,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Κωδικός</label>
+                    <span class="text-center text-danger font-italic PasswordErr"></span>
                     <input type="password"
                            class="form-control"
                            id="password"
@@ -104,6 +109,7 @@
                 </div>
                 <div class="form-group">
                     <label for="confrim_pass">Επιβεβαίωση κωδικού</label>
+                    <span class="text-center text-danger font-italic passwordMatchErr"></span>
                     <input type="password"
                            class="form-control"
                            id="confrim_pass"
@@ -112,14 +118,17 @@
                 </div>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Εγγραφή στο Newslettert</label></br>
+                    <label class="form-check-label" for="exampleCheck1">Εγγραφή στο Newslettert</label><br>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Αποδέχομαι τους όρους</label></br>
+                    <input type="checkbox" class="form-check-input" id="acceptTerms">
+                    <label class="form-check-label" for="acceptTerms">Αποδέχομαι τους όρους 
+                    </label>
+                    <span class="text-center text-danger font-italic checkIfChecked"></span>
+                    <br>
                 </div>
                 <button type="submit" class="btnmodalform" id="btnmodalregister">Εγγραφή</button>
-                <a href="#" id="logintext">Είσοδος  ></a>
+                <a href="#" id="logintext">Είσοδος></a>
             </form>
         </div>
         <div class="modal-footer">
