@@ -101,6 +101,15 @@ class Owners extends Controller {
 
                 // Register User
                 if($this->ownerModel->register($data)){
+                    $attrs = [
+                        'full_name' => 'GymAround',
+                        'receiver_name' => '',
+                        'message' => 'Καλώς ήρθατε στο GymAround! Σύντομα κάποιος απο την ομάδα μας θα επικοινωνήσει μαζί σας!',
+                        'sender_email' => 'info@georgegeorgakas.com',
+                        'subject' => 'Επιτυχής Εγγραφή στο GymAround',
+                        'receiver_email' => $data['email'],
+                    ];
+                    mailer($attrs);
                     flash('register_owner_success', 'Ευχαριστούμε για την εγγραφή σας. Σύντομα θα επικοινωνήσουμε μαζί σας.');
                     redirect('owners/index');
                 } else{

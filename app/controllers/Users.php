@@ -90,6 +90,15 @@ class Users extends Controller {
 
                 // Register User
                 if($this->userModel->register($data)){
+                    $attrs = [
+                        'full_name' => 'GymAround',
+                        'receiver_name' => '',
+                        'message' => 'Καλώς ήρθατε στο GymAround! Ευχαριστούμε που μας επιλέξατε! Ξεκινήστε σήμερα τη γυμναστική σας!',
+                        'sender_email' => 'info@georgegeorgakas.com',
+                        'subject' => 'Επιτυχής Εγγραφή στο GymAround',
+                        'receiver_email' => $data['email'],
+                    ];
+                    mailer($attrs);
                     flash('register_success', 'You are now registered and you can log in');
                     redirect('pages/index');
                 } else{
