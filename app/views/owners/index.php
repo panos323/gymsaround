@@ -1,7 +1,5 @@
 <?php require  APPROOT . '/views/inc/header.php'?>
 
-
-
 <div class="row">
     <div class="col-md-12" id="imgpartner">
         <div class="col-8 offset-2" id="ourservices">
@@ -20,6 +18,7 @@
                      <p>Απόκτησε νεες συνδρομες</p>
                 </div>
             </div>
+            <?php flash('register_owner_success'); ?>
         </div>
     </div>
 </div>
@@ -30,41 +29,84 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <div class="container">
-                <form>
+                <form id="registerOwnerForm" action="<?php echo URLROOT; ?>/owners/index" method="post">
                 <div class="form-row">
                         <div class="form-group col-md-6">
-                        <label>Όνομα</label>
-                        <input type="text" class="form-control" id="inputEmail4" >
+                            <label for="name">Όνομα</label>
+                            <input type="text"
+                                   name="first_name"
+                                   class="form-control <?php echo (!empty($data['fname_error'])) ? 'is-invalid' : ''; ?>"
+                                   id="name"
+                                   value="<?php echo $data['first_name']; ?>"
+                            >
+                            <span class="invalid-feedback"><?php echo $data['fname_error']; ?></span>
                         </div>
                         <div class="form-group col-md-6">
-                        <label >Επώνυμο</label>
-                        <input type="text" class="form-control" id="inputPassword4">
+                            <label for="last-name">Επώνυμο</label>
+                            <input type="text"
+                                   name="last_name"
+                                   class="form-control <?php echo (!empty($data['lname_error'])) ? 'is-invalid' : ''; ?>"
+                                   id="last-name"
+                                   value="<?php echo $data['last_name']; ?>"
+                            >
+                            <span class="invalid-feedback"><?php echo $data['lname_error']; ?></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label >Όνομα Χρήστη</label>
-                        <input type="text" class="form-control" id="inputAddress2" >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Email</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <label for="username">Όνομα Χρήστη</label>
+                        <input type="text"
+                               name="username"
+                               class="form-control <?php echo (!empty($data['username_error'])) ? 'is-invalid' : ''; ?>"
+                               id="username"
+                               value="<?php echo $data['username']; ?>"
+                        >
+                        <span class="invalid-feedback"><?php echo $data['username_error']; ?></span>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                        <label >Κωδιός</label>
-                        <input type="password" class="form-control" id="inputPassword4">
+                            <label for="email">Email</label>
+                            <input type="email"
+                                   name="email"
+                                   class="form-control <?php echo (!empty($data['email_error'])) ? 'is-invalid' : ''; ?>"
+                                   id="email"
+                                   placeholder="name@example.com"
+                                   value="<?php echo $data['email']; ?>"
+                            >
+                            <span class="invalid-feedback"><?php echo $data['email_error']; ?></span>
                         </div>
                         <div class="form-group col-md-6">
-                        <label for="inputPassword4">Επιβεβαίωση Κωδικού</label></label>
-                        <input type="password" class="form-control" id="inputPassword4">
+                            <label for="number">Τήλεφωνο</label>
+                            <input type="number"
+                                   id="number"
+                                   name="phone"
+                                   class="form-control <?php echo (!empty($data['phone_error'])) ? 'is-invalid' : ''; ?>"
+                                   value="<?php echo $data['phone']; ?>">
+                            <span class="invalid-feedback"><?php echo $data['phone_error']; ?></span>
                         </div>
                     </div>
-                    
-                   
-                    
-                  
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="password">Κωδικός</label>
+                            <input  type="password"
+                                    name="password"
+                                    class="form-control <?php echo (!empty($data['pass_error'])) ? 'is-invalid' : ''; ?>"
+                                    id="password"
+                                    value="<?php echo $data['password']; ?>"
+                            >
+                            <span class="invalid-feedback"><?php echo $data['pass_error']; ?></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="conf_pass">Επιβεβαίωση Κωδικού</label>
+                            <input type="password"
+                                   name="confirm_password"
+                                   class="form-control <?php echo (!empty($data['confirm_pass_error'])) ? 'is-invalid' : ''; ?>"
+                                   id="conf_pass"
+                                   value="<?php echo $data['confirm_password']; ?>">
+                            <span class="invalid-feedback"><?php echo $data['confirm_pass_error']; ?></span>
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary" id="btnformpartner">Εγγραφή</button>
                 </form>
             </div>

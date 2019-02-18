@@ -914,9 +914,9 @@ select{
   }
  .partnerform{
       background-color: white;
-      height:700px;
       width: 100%;
       margin-top:355px;
+      padding-bottom:100px;
       background-image: linear-gradient(to right,#169b99 , #1ecfcc);
   }
 

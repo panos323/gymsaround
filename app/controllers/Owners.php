@@ -6,12 +6,6 @@ class Owners extends Controller {
     }
 
     public function index(){
-        $data = [];
-        $this->view('owners/index', $data);
-    }
-
-    public function register(){
-
         // Check for POST
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Process form
@@ -40,42 +34,42 @@ class Owners extends Controller {
 
             // Validate email
             if(empty($data['email'])){
-                $data['email_error'] = 'Please enter email';
+                $data['email_error'] = 'Παρακαλώ γράψτε το email σας.';
             } else {
                 // Check if email already exists
                 if($this->ownerModel->findOwnerByEmail($data['email'])){
-                    $data['email_error'] = 'Email already exists';
+                    $data['email_error'] = 'Το email χρησιμοποιείται ηδη.';
                 }
             }
 
             // Validate first name
             if(empty($data['first_name'])){
-                $data['fname_error'] = 'Please enter first name';
+                $data['fname_error'] = 'Παρακαλώ γράψτε το όνομά σας.';
             }
 
             // Validate last name
             if(empty($data['last_name'])){
-                $data['lname_error'] = 'Please enter last name';
+                $data['lname_error'] = 'Παρακαλώ γράψτε το επίθετό σας.';
             }
 
             // Validate username
             if(empty($data['username'])){
-                $data['username_error'] = 'Please enter username';
+                $data['username_error'] = 'Παρακαλώ γράψτε το όνομα χρήστη που επιθυμείτε.';
             }
 
             // Validate password
             if(empty($data['password'])){
-                $data['pass_error'] = 'Please enter password';
+                $data['pass_error'] = 'Παρακαλώ επιλέξτε κωδικό.';
             } elseif (strlen($data['password']) < 6){
-                $data['pass_error'] = 'Password must be at least 6 characters';
+                $data['pass_error'] = 'Ο κωδικός πρέπει να είναι τουλάχιστον 6 χαρακτήρες.';
             }
 
             // Validate confirm password
             if(empty($data['confirm_password'])){
-                $data['confirm_pass_error'] = 'Please confirm password';
+                $data['confirm_pass_error'] = 'Παρακαλώ επιβεβαιώστε τον κωδικό σας.';
             } else {
                 if($data['password'] != $data['confirm_password']){
-                    $data['confirm_pass_error'] = 'Passwords do not match';
+                    $data['confirm_pass_error'] = 'Οι κωδικοί δεν ταιριάζουν.';
                 }
             }
 
@@ -100,22 +94,22 @@ class Owners extends Controller {
                 // Validated
 
                 // Hash Password
-                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
 
                 // Make phone int
                 $data['phone'] = $data['phone'] +0;
 
                 // Register User
                 if($this->ownerModel->register($data)){
-                    flash('register_success', 'Thank you for joining us. One of our people will get in contact with you soon.');
-                    redirect('owners/login');
+                    flash('register_owner_success', 'Ευχαριστούμε για την εγγραφή σας. Σύντομα θα επικοινωνήσουμε μαζί σας.');
+                    redirect('owners/index');
                 } else{
-                    $data['register_error'] = 'Something went wrong. Please try again.';
-                    $this->view('owners/register', $data);
+                    $data['register_error'] = 'Κάτι δεν πήγε καλά. Παρακαλώ προσπθείστε ξανά.';
+                    $this->view('owners/index', $data);
                 }
             } else {
                 // Load view with errors
-                $this->view('owners/register', $data);
+                $this->view('owners/index', $data);
             }
         }else {
             // Init data
@@ -138,7 +132,7 @@ class Owners extends Controller {
             ];
 
             // Load view
-            $this->view('owners/register', $data);
+            $this->view('owners/index', $data);
 
         }
     }
