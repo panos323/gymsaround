@@ -29,13 +29,26 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <div class="container">
+
+            <!-- if any errors start  display here -->
+            <ul style="list-style-type: none;" id="displayErrorsList" class="text-center">
+                <li id="nameOwnerErrorDis"></li>
+                <li id="LastNameOwnerErrorDis"></li>
+                <li id="UsernameOwnerErrorDis"></li>
+                <li id="ownerEmailErrorDis"></li>
+                <li id="ownerPhoneErrorDis"></li>
+                <li id="onwerPassErrorDis"></li>
+                <li id="onwerPassConfirmErrorDis"></li>
+            </ul>
+            <!-- if any errors end  display here -->
+
                 <form id="registerOwnerForm" action="<?php echo URLROOT; ?>/owners/index" method="post">
                 <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="name">Όνομα</label>
                             <input type="text"
                                    name="first_name"
-                                   class="form-control <?php echo (!empty($data['fname_error'])) ? 'is-invalid' : ''; ?>"
+                                   class="ownerNameInput form-control <?php echo (!empty($data['fname_error'])) ? 'is-invalid' : ''; ?>"
                                    id="name"
                                    value="<?php echo $data['first_name']; ?>"
                             >
@@ -45,7 +58,7 @@
                             <label for="last-name">Επώνυμο</label>
                             <input type="text"
                                    name="last_name"
-                                   class="form-control <?php echo (!empty($data['lname_error'])) ? 'is-invalid' : ''; ?>"
+                                   class="ownerLastNameInput form-control <?php echo (!empty($data['lname_error'])) ? 'is-invalid' : ''; ?>"
                                    id="last-name"
                                    value="<?php echo $data['last_name']; ?>"
                             >
@@ -56,7 +69,7 @@
                         <label for="username">Όνομα Χρήστη</label>
                         <input type="text"
                                name="username"
-                               class="form-control <?php echo (!empty($data['username_error'])) ? 'is-invalid' : ''; ?>"
+                               class="ownerUserNameInput form-control <?php echo (!empty($data['username_error'])) ? 'is-invalid' : ''; ?>"
                                id="username"
                                value="<?php echo $data['username']; ?>"
                         >
@@ -68,7 +81,7 @@
                             <label for="email">Email</label>
                             <input type="email"
                                    name="email"
-                                   class="form-control <?php echo (!empty($data['email_error'])) ? 'is-invalid' : ''; ?>"
+                                   class="ownerEmailInput form-control <?php echo (!empty($data['email_error'])) ? 'is-invalid' : ''; ?>"
                                    id="email"
                                    placeholder="name@example.com"
                                    value="<?php echo $data['email']; ?>"
@@ -80,7 +93,7 @@
                             <input type="number"
                                    id="number"
                                    name="phone"
-                                   class="form-control <?php echo (!empty($data['phone_error'])) ? 'is-invalid' : ''; ?>"
+                                   class="ownerPhoneInput form-control <?php echo (!empty($data['phone_error'])) ? 'is-invalid' : ''; ?>"
                                    value="<?php echo $data['phone']; ?>">
                             <span class="invalid-feedback"><?php echo $data['phone_error']; ?></span>
                         </div>
@@ -91,7 +104,7 @@
                             <label for="password">Κωδικός</label>
                             <input  type="password"
                                     name="password"
-                                    class="form-control <?php echo (!empty($data['pass_error'])) ? 'is-invalid' : ''; ?>"
+                                    class="ownerPasswordInput form-control <?php echo (!empty($data['pass_error'])) ? 'is-invalid' : ''; ?>"
                                     id="password"
                                     value="<?php echo $data['password']; ?>"
                             >
@@ -101,7 +114,7 @@
                             <label for="conf_pass">Επιβεβαίωση Κωδικού</label>
                             <input type="password"
                                    name="confirm_password"
-                                   class="form-control <?php echo (!empty($data['confirm_pass_error'])) ? 'is-invalid' : ''; ?>"
+                                   class="ownerPasswordMatchInput form-control <?php echo (!empty($data['confirm_pass_error'])) ? 'is-invalid' : ''; ?>"
                                    id="conf_pass"
                                    value="<?php echo $data['confirm_password']; ?>">
                             <span class="invalid-feedback"><?php echo $data['confirm_pass_error']; ?></span>

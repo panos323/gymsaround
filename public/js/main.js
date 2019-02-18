@@ -38,10 +38,12 @@ $( document ).ready(function() {
     //START VALIDATIONS FOR FORM SUBMIT
     var registerUserForm = $("#registerForm");
     var loginUserForm = $("#loginmodal");
+    var registerOwnerForm = $("#registerOwnerForm");
+
 
     //ON REGISTER POP UP FORM SUMBIT
     registerUserForm.on("submit", function(e) {
-
+        
         var firstname = $("#name").val().trim();
         var surname = $("#last_name").val().trim();
         var username = $("#username").val().trim();
@@ -71,9 +73,122 @@ $( document ).ready(function() {
         validateLoginCheckbox(isCheckForm,e);
     }) // on submit 
 
+    //ON REGISTER OWNERS FORM SUMBIT
+    registerOwnerForm.on("submit", function(e) {
+        
+        var firstname = $(".ownerNameInput").val().trim();
+        var surname = $(".ownerLastNameInput").val().trim();
+        var username = $(".ownerUserNameInput").val().trim();
+        var emailcheck = $(".ownerEmailInput").val().trim();
+        var mobilecheck = $(".ownerPhoneInput").val().trim();
+        var myPassword = $(".ownerPasswordInput").val().trim();
+        var passwordConfirm = $(".ownerPasswordMatchInput").val().trim();
+        //var isCheckForm = $("#acceptTerms").is(":checked");
+
+        validateOwnerName(firstname,e);
+        validateOwnerSurName(surname,e);
+        validateOwnerUserName(username,e);
+        validateOwnerEmail(emailcheck,e);
+        validateOwnerPassword(myPassword,e);
+        validateOwnerPhone(mobilecheck,e);
+        validateOwnerMatchingPassword(myPassword,passwordConfirm,e);
+        //validateOwnerCheckboxField(isCheckForm,e);
+    }) // on submit 
+
+
+    //START FUNCTIONS FOR OWNER  VALIDATION
+    function validateOwnerName(nameEmail,e) {
+        if (!isValidName(nameEmail)) {
+           $("#nameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Name should be at least  two characters long<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            e.preventDefault();
+        } else if (!isOnlyLetters(nameEmail)) {
+            $("#nameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Name should contain only characters<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            e.preventDefault();
+        } else {
+            $("#nameOwnerErrorDis").html("");
+            $("#nameOwnerErrorDis").css("display","none")
+        }
+    } //end function 
+
+    function validateOwnerSurName(surname,e) {
+        if (!isValidName(surname)) {
+           $("#LastNameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Surname should be at least  two characters long<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            e.preventDefault();
+        } else if (!isOnlyLetters(surname)) {
+            $("#LastNameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Surname should contain only characters<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            e.preventDefault();
+        } else {
+            $("#LastNameOwnerErrorDis").html("");
+            $("#LastNameOwnerErrorDis").css("display","none")
+        }
+    } //end function 
+
+
+    function validateOwnerUserName(username,e) {
+        if (!isValidSurName(username)) {
+            $("#UsernameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Username should be at least  two characters long<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            e.preventDefault();
+        } else if (!hasWhiteSpace(username)) {
+            $("#UsernameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Please enter a valid Username<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            e.preventDefault();
+        } else {
+            $("#UsernameOwnerErrorDis").html("");
+            $("#UsernameOwnerErrorDis").css("display","none");
+        }
+    } // end function
+
+    function validateOwnerEmail(emailcheck,e) {
+        if (!isValidEmail(emailcheck)) {
+            $("#ownerEmailErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Please enter a valid email<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            e.preventDefault();
+        } else if (isEmailOk(emailcheck)) {
+            $("#ownerEmailErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Please enter a valid email<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            e.preventDefault();
+        } else {
+            $("#ownerEmailErrorDis").html("");
+            $("#ownerEmailErrorDis").css("display","block");
+        }
+    } //end function
+
+    function validateOwnerPassword(myPassword,e) {
+        if (!isValidPassowrd(myPassword)) {
+        $("#onwerPassErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Please enter a password that contains at least 6 characters<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+        e.preventDefault();
+        } else {
+            $("#onwerPassErrorDis").html("");
+            $("#onwerPassErrorDis").css("display","block");
+        }
+    } //end function
+
+
+    function validateOwnerMatchingPassword(myPassword,passwordConfirm,e) {
+        if (myPassword !== passwordConfirm) {
+        $("#onwerPassConfirmErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Passwords should match<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+        e.preventDefault();
+        } else {
+            $("#onwerPassConfirmErrorDis").html("");
+            $("#onwerPassConfirmErrorDis").css("display","block")
+        }
+    } //end function
+
+    function validateOwnerPhone(mobilecheck,e) {
+        if (!isValidPhone(mobilecheck)) {
+           $("#ownerPhoneErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Phone should have 10 numbers<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            e.preventDefault();
+        } else {
+            $("#ownerPhoneErrorDis").html("");
+            $("#ownerPhoneErrorDis").css("display","block")
+        }
+    } //end function 
+
+    function isValidPhone(mobilecheck) {
+        return mobilecheck.length == 10 && /^\d{10}$/.test(mobilecheck);
+    } //end function
+    //END FUNCTIONS FOR OWNER  VALIDATION
+
+
 
     //START FUNCTIONS FOR LOGIN POP UP VALIDATION
-
     function validateNameEmail(nameEmail,e) {
         if (!isValidName(nameEmail)) {
             $(".nameEmailLoginErr").text(' (Name/Email should be at least two characters long)');
@@ -82,7 +197,6 @@ $( document ).ready(function() {
             $(".nameEmailLoginErr").text("");
         }
     } //end function 
-
 
     function validateLoginPassword(myPassword,e) {
         if (!isValidPassowrd(myPassword)) {
@@ -101,8 +215,6 @@ $( document ).ready(function() {
             $(".checkIfCheckedLogin").text("");
         }
     }
-    
-
     //END FUNCTIONS FOR LOGIN POP UP VALIDATION
 
 
@@ -156,8 +268,6 @@ $( document ).ready(function() {
         }
     } // end function
 
-    
-
     function isValidSurName(username) {
         return username.length >= 2;
     } //end function
@@ -210,7 +320,6 @@ $( document ).ready(function() {
         }
     } //end function
 
-
     //FUNCTION FOR CHECKBOX VALIDATION
     function validateCheckboxField(isCheckForm,e) {
         if (!isCheckForm) {
@@ -232,6 +341,8 @@ $( document ).ready(function() {
     }
     //END VALIDATIONS FOR FORM SUBMIT
 
+
+    
 
 
  }); // ON PAGE LOADED
