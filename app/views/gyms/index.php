@@ -15,11 +15,11 @@
                          <img id="gymlogo" width="100%" src= " <?php echo URLROOT;?>/images/gym/gymlogo.png" alt="logo"/>
                     </div>
                     <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-10 offset-1" >
-                        <p id="gymsnames">Workout Hall Crossfit</p>
+                        <p id="gymsnames"><?php echo $data->gym_name; ?></p>
                         <img src= " <?php echo URLROOT;?> /images/stars.png" alt="stars"/>
                         <div id="gymaddress">
                             <a href="#">
-                             <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος  <img src= " <?php echo URLROOT;?>/images/gym/mappin.png" width="6%" alt="pin"/></p>
+                             <p><?php echo $data->gym_location;?>  <img src= " <?php echo URLROOT;?>/images/gym/mappin.png" width="20%" alt="pin"/></p>
                             </a>
                         </div>
                         <p id="activities"><b>Crosfii | Boxing | KingBoxing | Climbing</b></p>
