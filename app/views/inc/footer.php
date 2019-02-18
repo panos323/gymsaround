@@ -18,10 +18,10 @@
             </div>
             <div class="col-md-2 col-sm-6 mb-4" id="footerextra">
                 <h3 class="mb-3">Εξτρας</h3>
-                <p><a href="">Οροι Χρήσης</a></p>
-                <p><a href="">Πολιτική Απορρήτου</a></p>
-                <p><a href="">Πολιτική Cookies</a></p>
-                <p><a href="">FAQ</a></p>
+                <p><a href="<?php echo URLROOT; ?>/pages/termsofuse">Οροι Χρήσης</a></p>
+                <p><a href="<?php echo URLROOT; ?>/pages/privcypolicy">Πολιτική Απορρήτου</a></p>
+                <p><a href="<?php echo URLROOT; ?>/pages/cookiespolicy">Πολιτική Cookies</a></p>
+               <!--<p><a href="">FAQ</a></p>-->
             </div>
             <div class="col-lg-2 col-md-4 col-sm-12 mb-4">
                 <h3 class="mb-4" id="footertitle">Συνεργάτες</h3>

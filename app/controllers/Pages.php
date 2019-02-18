@@ -41,6 +41,27 @@ class Pages extends Controller {
 
         $this->view('pages/article', $data);
     }
+    public function termsofuse(){
+        $data = [
+            'title' => 'termsofuse'
+        ];
+
+        $this->view('pages/termsofuse', $data);
+    }
+    public function privacypolicy(){
+        $data = [
+            'title' => 'privacypolicy'
+        ];
+
+        $this->view('pages/privacypolicy', $data);
+    }
+    public function cookiespolicy(){
+        $data = [
+            'title' => 'cookiespolicy'
+        ];
+
+        $this->view('pages/cookiespolicy', $data);
+    }
 
     public function contact() {
         $data = [];
