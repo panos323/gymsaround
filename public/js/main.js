@@ -39,7 +39,10 @@ $( document ).ready(function() {
     var registerUserForm = $("#registerForm");
     var loginUserForm = $("#loginmodal");
     var registerOwnerForm = $("#registerOwnerForm");
-
+    var updateUserDetailsForm = $("#updateDetailsForm");
+    var updateUserDetailsFormUsername = $("#updateUsernameForm");
+    var updateUserEmailForm = $("#updateEmailForm");
+    var updatePasswordForm = $("#updatePasswordForm");
 
     //ON REGISTER POP UP FORM SUMBIT
     registerUserForm.on("submit", function(e) {
@@ -95,14 +98,142 @@ $( document ).ready(function() {
         //validateOwnerCheckboxField(isCheckForm,e);
     }) // on submit 
 
+    //ON UPDATE USER DETAILS
+    updateUserDetailsForm.on("submit", function(e) {
+
+        var firstname = $(".updateUserFirstName").val().trim();
+        var surname = $(".updateUserLastName").val().trim();
+
+        validateUpdateUserName(firstname,e);
+        validateUpdateUserSurName(surname,e);
+
+    }) // on submit 
+
+    updateUserDetailsFormUsername.on("submit", function(e) {
+
+        var username = $(".updateUserUserName").val().trim();
+       
+        validateUpdateUserUserName(username,e);
+
+    }) // on submit 
+
+    updateUserEmailForm.on("submit", function(e) {
+
+        var emailCheck = $(".updateUserEmailNew").val().trim();
+       
+        validateUpdateUserEmail(emailCheck,e);
+
+    }) // on submit 
+
+    updatePasswordForm.on("submit", function(e) {
+        
+        var myPassword = $(".checkCurrUSerPassword").val().trim();
+        var checkUSerPasswordNew = $(".checkUSerPasswordNew").val().trim();
+        var checkUSerPasswordNewAgain = $(".checkUSerPasswordNewAgain").val().trim();
+        
+        validateCurrentUserPass(myPassword,e);
+        validateCurrentUserPassnew(checkUSerPasswordNew,e);
+        validateCurrentUserPassnewAgain(checkUSerPasswordNewAgain,e);
+        validateMatchingPasswordUserUpdate(checkUSerPasswordNew,checkUSerPasswordNewAgain,e);
+
+    }) // on submit 
+
+
+    //START FUNCTIONS FOR UPDATE USER  VALIDATION
+    function validateUpdateUserName(firstname,e) {
+        if (!isValidName(firstname)) {
+            $(".nameUserUpdateErr").text(' (Το όνομα πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
+            e.preventDefault();
+        } else if (!isOnlyLetters(firstname)) {
+            $(".nameUserUpdateErr").text(' (Το όνομα πρέπει να περιέχει μόνο γράμματα)');
+            e.preventDefault();
+        } else {
+            $(".nameUserUpdateErr").text("");
+        }
+    } //end function 
+
+    function validateUpdateUserSurName(surname,e) {
+        if (!isValidSurName(surname)) {
+            $(".lastnameUserUpdateErr").text(' (Το επώνυμο πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
+            e.preventDefault();
+        } else if (!isOnlyLetters(surname)) {
+            $(".lastnameUserUpdateErr").text(' (Το επώνυμο πρέπει να περιέχει μόνο γράμματα)');
+            e.preventDefault();
+        } else {
+            $(".lastnameUserUpdateErr").html("");
+        }
+    } // end function
+
+    function validateUpdateUserUserName(username,e) {
+        if (!isValidSurName(username)) {
+            $(".UserNameUserUpdateErr").text(' (Το όνομα χρήστη πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
+            e.preventDefault();
+        } else if (!hasWhiteSpace(username)) {
+            $(".UserNameUserUpdateErr").text(' (Το όνομα χρήστη δεν πρέπει να περιέχει κενά)');
+            e.preventDefault();
+        } else {
+            $(".UserNameUserUpdateErr").html("");
+        }
+    } // end function
+
+    function validateUpdateUserEmail(emailcheck,e) {
+        if (!isValidEmail(emailcheck)) {
+            $(".mailUserUpdateErr").text('(Παρακαλώ γράψτε το email σας)');
+            e.preventDefault();
+        } else if (isEmailOk(emailcheck)) {
+            $(".mailUserUpdateErr").text('(Παρακαλώ εισάγετε μια έγκυρη ηλεκτρονική διεύθυνση)');
+            e.preventDefault();
+        } else {
+            $(".mailUserUpdateErr").html("");
+        }
+    } //end function
+
+    function validateCurrentUserPass(myPassword,e) {
+        if (!isValidPassowrd(myPassword)) {
+        $(".checkUserPasswordCurrentErr").text(" (Ο κωδικός ασφαλείας πρέπει να είναι τουλάχιστον 6 χαρακτήρες)");
+        e.preventDefault();
+        } else {
+            $(".checkUserPasswordCurrentErr").text("");
+        }
+    } //end function
+
+    function validateCurrentUserPassnew(checkUSerPasswordNew,e) {
+        if (!isValidPassowrd(checkUSerPasswordNew)) {
+        $(".checkUserPasswordnewErr").text(" (Ο κωδικός ασφαλείας πρέπει να είναι τουλάχιστον 6 χαρακτήρες)");
+        e.preventDefault();
+        } else {
+            $(".checkUserPasswordnewErr").text("");
+        }
+    } //end function
+
+    function validateCurrentUserPassnewAgain(checkUSerPasswordNewAgain,e) {
+        if (!isValidPassowrd(checkUSerPasswordNewAgain)) {
+        $(".checkUserPasswordnewAgainErr").text(" (Ο κωδικός ασφαλείας πρέπει να είναι τουλάχιστον 6 χαρακτήρες)");
+        e.preventDefault();
+        } else {
+            $(".checkUserPasswordnewAgainErr").text("");
+        }
+    } //end function
+
+    function validateMatchingPasswordUserUpdate(checkUSerPasswordNew,checkUSerPasswordNewAgain,e) {
+        if (checkUSerPasswordNew !== checkUSerPasswordNewAgain) {
+        $(".checkUserPasswordMatchErr").text(" (Οι κωδικοί ασφαλείας δεν ταιριάζουν)");
+        e.preventDefault();
+    } else {
+        $(".checkUserPasswordMatchErr").text("");
+    }
+} //end function
+
+    //END FUNCTIONS FOR UPDATE USER  VALIDATION
+
 
     //START FUNCTIONS FOR OWNER  VALIDATION
     function validateOwnerName(nameEmail,e) {
         if (!isValidName(nameEmail)) {
-           $("#nameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Name should be at least  two characters long<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+           $("#nameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert">Το όνομα πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
             e.preventDefault();
         } else if (!isOnlyLetters(nameEmail)) {
-            $("#nameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Name should contain only characters<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            $("#nameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert">Το όνομα πρέπει να περιέχει μόνο γράμματα<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
             e.preventDefault();
         } else {
             $("#nameOwnerErrorDis").html("");
@@ -112,10 +243,10 @@ $( document ).ready(function() {
 
     function validateOwnerSurName(surname,e) {
         if (!isValidName(surname)) {
-           $("#LastNameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Surname should be at least  two characters long<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+           $("#LastNameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert">Το επώνυμο πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
             e.preventDefault();
         } else if (!isOnlyLetters(surname)) {
-            $("#LastNameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Surname should contain only characters<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            $("#LastNameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert">Το επώνυμο πρέπει να περιέχει μόνο γράμματα<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
             e.preventDefault();
         } else {
             $("#LastNameOwnerErrorDis").html("");
@@ -126,10 +257,10 @@ $( document ).ready(function() {
 
     function validateOwnerUserName(username,e) {
         if (!isValidSurName(username)) {
-            $("#UsernameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Username should be at least  two characters long<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            $("#UsernameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert">Το όνομα χρήστη πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
             e.preventDefault();
         } else if (!hasWhiteSpace(username)) {
-            $("#UsernameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Please enter a valid Username<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            $("#UsernameOwnerErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert">Το όνομα χρήστη δεν πρέπει να περιέχει κενά<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
             e.preventDefault();
         } else {
             $("#UsernameOwnerErrorDis").html("");
@@ -139,10 +270,10 @@ $( document ).ready(function() {
 
     function validateOwnerEmail(emailcheck,e) {
         if (!isValidEmail(emailcheck)) {
-            $("#ownerEmailErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Please enter a valid email<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            $("#ownerEmailErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert">Παρακαλώ γράψτε το email σας<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
             e.preventDefault();
         } else if (isEmailOk(emailcheck)) {
-            $("#ownerEmailErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Please enter a valid email<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+            $("#ownerEmailErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert">Παρακαλώ εισάγετε μια έγκυρη ηλεκτρονική διεύθυνση<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
             e.preventDefault();
         } else {
             $("#ownerEmailErrorDis").html("");
@@ -152,7 +283,7 @@ $( document ).ready(function() {
 
     function validateOwnerPassword(myPassword,e) {
         if (!isValidPassowrd(myPassword)) {
-        $("#onwerPassErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Please enter a password that contains at least 6 characters<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+        $("#onwerPassErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert">Ο κωδικός ασφαλείας πρέπει να είναι τουλάχιστον 6 χαρακτήρες<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
         e.preventDefault();
         } else {
             $("#onwerPassErrorDis").html("");
@@ -163,7 +294,7 @@ $( document ).ready(function() {
 
     function validateOwnerMatchingPassword(myPassword,passwordConfirm,e) {
         if (myPassword !== passwordConfirm) {
-        $("#onwerPassConfirmErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Passwords should match<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+        $("#onwerPassConfirmErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert">Οι κωδικοί ασφαλείας δεν ταιριάζουν<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
         e.preventDefault();
         } else {
             $("#onwerPassConfirmErrorDis").html("");
@@ -173,7 +304,7 @@ $( document ).ready(function() {
 
     function validateOwnerPhone(mobilecheck,e) {
         if (!isValidPhone(mobilecheck)) {
-           $("#ownerPhoneErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error!</strong> Phone should have 10 numbers<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+           $("#ownerPhoneErrorDis").html('<div class="alert alert-danger alert-dismissible fade show" role="alert">Παρακαλώ εισάγετε τον τηλεφωνικό σας αριθμό<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
             e.preventDefault();
         } else {
             $("#ownerPhoneErrorDis").html("");
@@ -191,7 +322,7 @@ $( document ).ready(function() {
     //START FUNCTIONS FOR LOGIN POP UP VALIDATION
     function validateNameEmail(nameEmail,e) {
         if (!isValidName(nameEmail)) {
-            $(".nameEmailLoginErr").text(' (Name/Email should be at least two characters long)');
+            $(".nameEmailLoginErr").text(' (Το πεδίο πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
             e.preventDefault();
         } else {
             $(".nameEmailLoginErr").text("");
@@ -200,7 +331,7 @@ $( document ).ready(function() {
 
     function validateLoginPassword(myPassword,e) {
         if (!isValidPassowrd(myPassword)) {
-        $(".PasswordErrLogin").text(" (Please enter a password that contains at least 6 characters)");
+        $(".PasswordErrLogin").text(" (Ο κωδικός ασφαλείας πρέπει να είναι τουλάχιστον 6 χαρακτήρες)");
         e.preventDefault();
         } else {
             $(".PasswordErrLogin").text("");
@@ -209,7 +340,7 @@ $( document ).ready(function() {
 
     function validateLoginCheckbox(isCheckForm,e) {
         if (!isCheckForm) {
-            $(".checkIfCheckedLogin").text(" (Please agree with the terms)");
+            $(".checkIfCheckedLogin").text(" (Παρακαλώ αποδεχθείτε τους όρους)");
             e.preventDefault();
         } else {
             $(".checkIfCheckedLogin").text("");
@@ -222,10 +353,10 @@ $( document ).ready(function() {
     // FUNCTIONS FOR NAME VALIDATION
     function validateName(firstname,e) {
         if (!isValidName(firstname)) {
-            $(".nameErr").text(' (Name should be at least two characters long)');
+            $(".nameErr").text(' (Το όνομα πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
             e.preventDefault();
         } else if (!isOnlyLetters(firstname)) {
-            $(".nameErr").text(' (Name should contain only characters)');
+            $(".nameErr").text(' (Το όνομα πρέπει να περιέχει μόνο γράμματα)');
             e.preventDefault();
         } else {
             $(".nameErr").text("");
@@ -240,10 +371,10 @@ $( document ).ready(function() {
     // FUNCTIONS FOR SURNAME VALIDATION
     function validateSurName(surname,e) {
         if (!isValidSurName(surname)) {
-            $(".SurnameErr").text(' (Surname should be at least two characters long)');
+            $(".SurnameErr").text(' (Το επώνυμο πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
             e.preventDefault();
         } else if (!isOnlyLetters(surname)) {
-            $(".SurnameErr").text(' (Surname should contain only characters)');
+            $(".SurnameErr").text(' (Το επώνυμο πρέπει να περιέχει μόνο γράμματα)');
             e.preventDefault();
         } else {
             $(".SurnameErr").html("");
@@ -258,10 +389,10 @@ $( document ).ready(function() {
     // FUNCTIONS FOR SURNAME VALIDATION
     function validateUserName(username,e) {
         if (!isValidSurName(username)) {
-            $(".UsernameErr").text(' (Username should be at least two characters long)');
+            $(".UsernameErr").text(' (Το όνομα χρήστη πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
             e.preventDefault();
         } else if (!hasWhiteSpace(username)) {
-            $(".UsernameErr").text(' (Please enter a valid username)');
+            $(".UsernameErr").text(' (Το όνομα χρήστη δεν πρέπει να περιέχει κενά)');
             e.preventDefault();
         } else {
             $(".UsernameErr").html("");
@@ -276,10 +407,10 @@ $( document ).ready(function() {
     // FUNCTIONS FOR EMAIL VALIDATION
     function validateEmail(emailcheck,e) {
         if (!isValidEmail(emailcheck)) {
-            $(".MailErr").text('(Please enter a valid email)');
+            $(".MailErr").text('(Παρακαλώ γράψτε το email σας)');
             e.preventDefault();
         } else if (isEmailOk(emailcheck)) {
-            $(".MailErr").text('(Please enter a valid email)');
+            $(".MailErr").text('(Παρακαλώ εισάγετε μια έγκυρη ηλεκτρονική διεύθυνση)');
             e.preventDefault();
         } else {
             $(".MailErr").html("");
@@ -287,7 +418,7 @@ $( document ).ready(function() {
     } //end function
 
     function isValidEmail(emailcheck) {
-        return emailcheck.length >= 6;
+        return emailcheck.length >= 3;
     } //end function
 
     function isEmailOk(emailcheck) {
@@ -298,7 +429,7 @@ $( document ).ready(function() {
     // FUNCTIONS FOR PASSWORD VALIDATION
     function validatePassword(myPassword,e) {
         if (!isValidPassowrd(myPassword)) {
-        $(".PasswordErr").text(" (Please enter a password that contains at least 6 characters)");
+        $(".PasswordErr").text(" (Ο κωδικός ασφαλείας πρέπει να είναι τουλάχιστον 6 χαρακτήρες)");
         e.preventDefault();
         } else {
             $(".PasswordErr").text("");
@@ -313,7 +444,7 @@ $( document ).ready(function() {
     // FUNCTIONS FOR RE-ENTER PASSWORD VALIDATION
     function validateMatchingPassword(myPassword,passwordConfirm,e) {
             if (myPassword !== passwordConfirm) {
-            $(".passwordMatchErr").text(" (Passwords should match)");
+            $(".passwordMatchErr").text(" (Οι κωδικοί ασφαλείας δεν ταιριάζουν)");
             e.preventDefault();
         } else {
             $(".passwordMatchErr").text("");
@@ -323,7 +454,7 @@ $( document ).ready(function() {
     //FUNCTION FOR CHECKBOX VALIDATION
     function validateCheckboxField(isCheckForm,e) {
         if (!isCheckForm) {
-            $(".checkIfChecked").text(" (Please agree with the terms)");
+            $(".checkIfChecked").text(" (Παρακαλώ αποδεχθείτε τους όρους χρήσης)");
             e.preventDefault();
         } else {
             $(".checkIfChecked").text("");
