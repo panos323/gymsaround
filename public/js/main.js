@@ -43,8 +43,14 @@ $( document ).ready(function() {
     var updateUserDetailsFormUsername = $("#updateUsernameForm");
     var updateUserEmailForm = $("#updateEmailForm");
     var updatePasswordForm = $("#updatePasswordForm");
+    var updateDetailsFormAdmin = $("#updateDetailsFormAdmin");
+    var updateOwnernameForm = $("#updateOwnernameForm");
+    var updateEmailFormOwners = $("#updateEmailFormOwners");
+    var updateOwnersPasswordForm = $("#updateOwnersPasswordForm");
 
-    //ON REGISTER POP UP FORM SUMBIT
+
+
+    //START ON REGISTER POP UP FORM SUMBIT
     registerUserForm.on("submit", function(e) {
         
         var firstname = $("#name").val().trim();
@@ -63,8 +69,10 @@ $( document ).ready(function() {
         validateMatchingPassword(myPassword,passwordConfirm,e);
         validateCheckboxField(isCheckForm,e);
     }) // on submit 
+    //END ON REGISTER POP UP FORM SUMBIT
 
-    //ON LOGIN POP UP FORM SUMBIT
+
+    //START ON LOGIN POP UP FORM SUMBIT
     loginUserForm.on("submit", function(e) {
 
         var nameEmail = $("#exampleInputEmailLog").val().trim();
@@ -75,8 +83,10 @@ $( document ).ready(function() {
         validateLoginPassword(myPassword,e);
         validateLoginCheckbox(isCheckForm,e);
     }) // on submit 
+    //END ON LOGIN POP UP FORM SUMBIT
 
-    //ON REGISTER OWNERS FORM SUMBIT
+
+    //START ON REGISTER OWNERS FORM SUMBIT
     registerOwnerForm.on("submit", function(e) {
         
         var firstname = $(".ownerNameInput").val().trim();
@@ -97,8 +107,54 @@ $( document ).ready(function() {
         validateOwnerMatchingPassword(myPassword,passwordConfirm,e);
         //validateOwnerCheckboxField(isCheckForm,e);
     }) // on submit 
+    //END ON REGISTER OWNERS FORM SUMBIT
 
-    //ON UPDATE USER DETAILS
+
+
+    //START ON UPDATE OWNER DETAILS
+    updateDetailsFormAdmin.on("submit", function(e) {
+
+        var firstname = $(".updateOwnerFirstName").val().trim();
+        var surname = $(".updateOwnerLastName").val().trim();
+        var mobilecheck = $(".updateOwnerPhoneInput").val().trim();
+
+        validateUpdateOwnerName(firstname,e);
+        validateUpdateOwnerSurName(surname,e);
+        validateUpdateOwnerPhone(mobilecheck,e);
+    }) // on submit 
+
+    updateOwnernameForm = $("#updateOwnernameForm").on("submit", function(e) {
+        var username = $(".updateOwnerUserName").val().trim();
+       
+        validateUpdateOwnerUserName(username,e);
+
+    }) // on submit 
+
+    updateEmailFormOwners.on("submit", function(e) {
+
+        var emailCheck = $(".updateOwnerEmailNew").val().trim();
+       
+        validateUpdateOwnerEmail(emailCheck,e);
+
+    }) // on submit 
+
+    updateOwnersPasswordForm.on("submit", function(e) {
+        
+        var myPassword = $(".checkCurrOwnerPassword").val().trim();
+        var checkUSerPasswordNew = $(".checkOwnerPasswordNew").val().trim();
+        var checkUSerPasswordNewAgain = $(".checkOwnerPasswordNewAgain").val().trim();
+        
+        validateCurrentOwnerPass(myPassword,e);
+        validateCurrentOwnerPassnew(checkUSerPasswordNew,e);
+        validateCurrentOwnerPassnewAgain(checkUSerPasswordNewAgain,e);
+        validateMatchingPasswordOwnerUpdate(checkUSerPasswordNew,checkUSerPasswordNewAgain,e);
+
+    }) // on submit 
+    //END ON UPDATE OWNER DETAILS
+
+
+
+    //START ON UPDATE USER DETAILS
     updateUserDetailsForm.on("submit", function(e) {
 
         var firstname = $(".updateUserFirstName").val().trim();
@@ -137,6 +193,109 @@ $( document ).ready(function() {
         validateMatchingPasswordUserUpdate(checkUSerPasswordNew,checkUSerPasswordNewAgain,e);
 
     }) // on submit 
+    //END ON UPDATE USER DETAILS
+    
+
+
+
+
+     //START FUNCTIONS FOR UPDATE OWNER  VALIDATION
+     function validateUpdateOwnerName(firstname,e) {
+        if (!isValidName(firstname)) {
+            $(".nameOwnerUpdateErr").text(' (Το όνομα πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
+            e.preventDefault();
+        } else if (!isOnlyLetters(firstname)) {
+            $(".nameOwnerUpdateErr").text(' (Το όνομα πρέπει να περιέχει μόνο γράμματα)');
+            e.preventDefault();
+        } else {
+            $(".nameOwnerUpdateErr").text("");
+        }
+    } //end function 
+
+    function validateUpdateOwnerSurName(surname,e) {
+        if (!isValidSurName(surname)) {
+            $(".lastnameOwnerUpdateErr").text(' (Το επώνυμο πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
+            e.preventDefault();
+        } else if (!isOnlyLetters(surname)) {
+            $(".lastnameOwnerUpdateErr").text(' (Το επώνυμο πρέπει να περιέχει μόνο γράμματα)');
+            e.preventDefault();
+        } else {
+            $(".lastnameOwnerUpdateErr").html("");
+        }
+    } // end function
+
+    
+    function validateUpdateOwnerPhone(mobilecheck,e) {
+        if (!isValidPhone(mobilecheck)) {
+           $(".phoneOwnerUpdateErr").html(" (Παρακαλώ εισάγετε τον τηλεφωνικό σας αριθμό)")
+            e.preventDefault();
+        } else {
+            $(".phoneOwnerUpdateErr").html("");
+        }
+    } //end function 
+
+    function validateUpdateOwnerUserName(username,e) {
+        if (!isValidSurName(username)) {
+            $(".userNameOwnerUpdateErr").text(' (Το όνομα χρήστη πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
+            e.preventDefault();
+        } else if (!hasWhiteSpace(username)) {
+            $(".userNameOwnerUpdateErr").text(' (Το όνομα χρήστη δεν πρέπει να περιέχει κενά)');
+            e.preventDefault();
+        } else {
+            $(".userNameOwnerUpdateErr").html("");
+        }
+    } // end function
+
+    function validateUpdateOwnerEmail(emailcheck,e) {
+        if (!isValidEmail(emailcheck)) {
+            $(".EmailOwnerUpdateErr").html(' (Παρακαλώ γράψτε το email σας)')
+            e.preventDefault();
+        } else if (isEmailOk(emailcheck)) {
+            $(".EmailOwnerUpdateErr").html(' (Παρακαλώ εισάγετε μια έγκυρη ηλεκτρονική διεύθυνση)')
+            e.preventDefault();
+        } else {
+            $(".EmailOwnerUpdateErr").html("");
+        }
+    } //end function
+
+
+    function validateCurrentOwnerPass(myPassword,e) {
+        if (!isValidPassowrd(myPassword)) {
+        $(".PassWordOwnerUpdateErr").text(" (Ο κωδικός ασφαλείας πρέπει να είναι τουλάχιστον 6 χαρακτήρες)");
+        e.preventDefault();
+        } else {
+            $(".PassWordOwnerUpdateErr").text("");
+        }
+    } //end function
+
+    function validateCurrentOwnerPassnew(checkUSerPasswordNew,e) {
+        if (!isValidPassowrd(checkUSerPasswordNew)) {
+        $(".PassWordOwnerUpdateNewErr").text(" (Ο κωδικός ασφαλείας πρέπει να είναι τουλάχιστον 6 χαρακτήρες)");
+        e.preventDefault();
+        } else {
+            $(".PassWordOwnerUpdateNewErr").text("");
+        }
+    } //end function
+
+    function validateCurrentOwnerPassnewAgain(checkUSerPasswordNewAgain,e) {
+        if (!isValidPassowrd(checkUSerPasswordNewAgain)) {
+        $(".PassWordOwnerUpdateNewConfirmErr").text(" (Ο κωδικός ασφαλείας πρέπει να είναι τουλάχιστον 6 χαρακτήρες)");
+        e.preventDefault();
+        } else {
+            $(".PassWordOwnerUpdateNewConfirmErr").text("");
+        }
+    } //end function
+
+    function validateMatchingPasswordOwnerUpdate(checkUSerPasswordNew,checkUSerPasswordNewAgain,e) {
+        if (checkUSerPasswordNew !== checkUSerPasswordNewAgain) {
+        $(".PassWordOwnerUpdateMatchesConfirmErr").text(" (Οι κωδικοί ασφαλείας δεν ταιριάζουν)");
+        e.preventDefault();
+        } else {
+            $(".PassWordOwnerUpdateMatchesConfirmErr").text("");
+        }
+    } //end function
+    //END FUNCTIONS FOR UPDATE OWNER  VALIDATION
+
 
 
     //START FUNCTIONS FOR UPDATE USER  VALIDATION
@@ -219,11 +378,10 @@ $( document ).ready(function() {
         if (checkUSerPasswordNew !== checkUSerPasswordNewAgain) {
         $(".checkUserPasswordMatchErr").text(" (Οι κωδικοί ασφαλείας δεν ταιριάζουν)");
         e.preventDefault();
-    } else {
-        $(".checkUserPasswordMatchErr").text("");
-    }
-} //end function
-
+        } else {
+            $(".checkUserPasswordMatchErr").text("");
+        }
+    } //end function
     //END FUNCTIONS FOR UPDATE USER  VALIDATION
 
 
