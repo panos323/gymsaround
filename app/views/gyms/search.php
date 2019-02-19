@@ -711,30 +711,29 @@ map.on('load', function(e) {
 
   //Start sort Elements By Name
   function SortByName() {
-    orderAscDescName = !orderAscDescName;
+   orderAscDescName = !orderAscDescName;
 
     var list = document.getElementById("listings");
     var myList = list.getElementsByClassName("item");
     var elementBtn =  document.getElementById("AscDescArrows");
 
-    var aNames = [];
-
-    for (var i = 0; i < myList.length; i++) {
-        aNames[i] = myList[i].innerHTML;
-    }//for loop
-    
-    if (orderAscDescName) {
-        aNames.sort();
+    Array.prototype.map.call(myList, function(node) {
+      return {
+        node: node,
+        relevantText: node.querySelector('.gymsLinkTitle').innerHTML.replace(" ","").toLowerCase()
+      };
+    }).sort(function(a, b) {
+      if (orderAscDescName) {
         elementBtn.classList.add("fa-arrow-down");
-    } else {
-        aNames.reverse();
+        return b.relevantText.localeCompare(a.firstname);
+      } else {
         elementBtn.classList.remove("fa-arrow-down")
         elementBtn.classList.add("fa-arrow-up")
-    }
-    
-    for (var i = 0; i < myList.length; i++) {
-        myList[i].innerHTML = aNames[i];
-    }//for loop
+        return a.relevantText.localeCompare(b.relevantText);
+      }
+    }).forEach(function(item) {
+      list.appendChild(item.node);
+    });
     
     //call function to show total gym results
     countGymELements(myList)
@@ -800,7 +799,7 @@ map.on('load', function(e) {
     var list = document.getElementById("listings");
     var myList = list.getElementsByClassName("item");
     var resultsLength = document.querySelector("#totalGymResulstsSpan");
-
+    var resetLocation = document.getElementById("dropdownMenuButtonArr").innerHTML = "Είδος";
     Array.prototype.map.call(myList, function(node) {
       return {
         node: node,
@@ -838,7 +837,7 @@ map.on('load', function(e) {
 
     var list = document.getElementById("listings");
     var myList = list.getElementsByClassName("item");
-
+    var resetArea = document.getElementById("dropdownMenuButton").innerHTML = "Περιοχή";
     var martials = ["Boxing", "KingBoxing", "Muay thai", "Krav Maga"];
     var aerobic = ["Yoga", "Step", "Pilates", "Zoomba"];
     var crossfit = ["Crossfit"];
