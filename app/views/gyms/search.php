@@ -1010,8 +1010,12 @@ stores.features.forEach(function(marker, i) {
     var el = document.createElement('div'); // Create an img element for the marker
     el.id = 'marker-' + i;
     el.className = 'marker';
+
+    //add custom marker
+    el.style.backgroundImage = 'url(../public/images/markerGym2.svg';
+
     // Add markers to the map at all points
-    new mapboxgl.Marker(el, { offset: [-28, -46] })
+    new mapboxgl.Marker(el, { offset: [-18, -26] }) //-28, -46 for the default image
       .setLngLat(marker.geometry.coordinates)
       .addTo(map);
 
