@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-           <a href="#"><img src= " <?php echo URLROOT;?> /images/blog/imgblog1.jpg" style="margin-bottom:15px;" width="100%" alt="stars"/></a>
+           <a href="#"><img src= " <?php echo URLROOT;?>/images/blog/imgblog1.jpg" style="margin-bottom:15px;" width="100%" alt="stars"/></a>
         </div>   
         <div class="col-md-6 blogbox">
         <a href="#"> <h4>Διατάσεις: Πότε, πώς & γιατί πρέπει να τις κάνεις</h4></a>
@@ -26,7 +26,7 @@
 
     <div class="row">
         <div class="col-md-6 ">
-             <a href="#"><img src= " <?php echo URLROOT;?> /images/blog/imgblog5.jpg"  style="margin-bottom:15px;" width="100%" alt="stars"/></a>
+             <a href="#"><img src= " <?php echo URLROOT;?>/images/blog/imgblog5.jpg"  style="margin-bottom:15px;" width="100%" alt="stars"/></a>
         </div>   
         <div class="col-md-6 blogbox">
             <a href="#"> <h4>10 λόγοι για να ξεκινήσετε το τρέξιμο σήμερα</h4></a>
@@ -38,7 +38,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <a href="#"> <img src= " <?php echo URLROOT;?> /images/blog/imgblog2.jpeg" style="margin-bottom:15px;" width="100%" alt="stars"/></a>
+            <a href="#"> <img src= " <?php echo URLROOT;?>/images/blog/imgblog2.jpeg" style="margin-bottom:15px;" width="100%" alt="stars"/></a>
         </div>   
         <div class="col-md-6 blogbox">
             <a href="#"> <h4>Πορτοκάλια και λεμόνια μειώνουν τις συνέπειες της παχυσαρκίας</h4></a>

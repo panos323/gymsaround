@@ -58,13 +58,16 @@
 -------------------------------------------***IMAGES**--------------------------------------------------------------->
 
     <div id="images">
-        <div class="container">
+
+     
+
+ <div class="container">
             <p class="basictitle" id="gymstitle">ΦΩΤΟΓΡΑΦΙΕΣ</p>
             <div class="row justify-content-center">
                 <div class="col-md-12"  id="imagerow1">
-                    <img src= " <?php echo URLROOT;?> /images/gym/image1.jpg" width="32%" alt="gymimg"  class="img-fluid">
-                    <img src= " <?php echo URLROOT;?> /images/gym/image2.jpg" width="32%" alt="gymimg"  class="img-fluid">
-                    <img src= " <?php echo URLROOT; ?> /images/gym/image3.jpg"  width="32%" alt="gymimg">
+                <img src= " <?php echo URLROOT; ?> /images/gym/image2.jpg" width="32%" alt="gymimg">
+                <img src= " <?php echo URLROOT; ?> /images/gym/image2.jpg" width="32%" alt="gymimg">
+                <img src= " <?php echo URLROOT; ?> /images/gym/image2.jpg" width="32%" alt="gymimg">
                 </div>
             </div>
             <div class="row">
@@ -134,16 +137,29 @@
     <div class="sundromesrow">
         <div class="container">
             <p class="basictitle" id="gymstitle">ΠΑΚΕΤΑ ΣΥΝΔΡΟΜΩΝ</p>
-            
                 <div class="row">
                     <div class="col-md-12">
                         <div class="flex-container-sundromes">
-                        <div class="orangebox">
-                            <p id="month"><b>1 ΜΗΝΑΣ</b></p>
-                            <p><b>CrossFit</b></p>
-                            <p><b>Climbing</b></p>
-                            <p id="price"><b>70€</b></p>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="orangebox">
+                                    <p id="month"><b>1 ΜΗΝΑΣ</b></p>
+                                    <p><b>CrossFit</b></p>
+                                    <p><b>Climbing</b></p>
+                                    <p id="price"><b>70€</b></p>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <h1>John Doe</h1> 
+                                <p>Architect & Engineer</p> 
+                                <p>We love that guy</p>
+                            </div>
                         </div>
+                     </div>
+                   
+
+
                         <div class="orangebox">
                             <p id="month"><b>3 ΜΗΝΑΣ</b></p>
                             <p><b>CrossFit</b></p>

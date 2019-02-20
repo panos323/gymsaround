@@ -264,7 +264,7 @@ margin-left:36%;
  */
 
 footer{
-    height: 400px;
+    height: 100%;
     background-color: #1d1d1d;
     color: #ffffff;
 }
@@ -313,9 +313,10 @@ footer p a {
 
 #boxgrey{
     background-color:#1d1d1d;/*grey*/
-    width:35vw;
+    width:105%;
     height:100vh;
     opacity: 0.8;
+    padding: 0;
 }
 #mobiletitle{
     display: none;
@@ -696,7 +697,7 @@ select{
         height: 700px;
         background-color: #1d1d1d;}
 
-    .orangebox{
+     .orangebox{
         width: 265px;
         height: 420px;
         background-color: none;
@@ -1256,7 +1257,7 @@ textarea {
   }
 
   /************************************************************************
-  *****************888RESPONSIVE 992 - 768*********************************/
+  ********************RESPONSIVE 992 - 768*********************************/
 
   @media (min-width: 768px) and (max-width: 991.98px) { 
       
@@ -1297,10 +1298,11 @@ textarea {
     #title{
         color: #169b99;/*BLUE*/
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        font-size: 45px;
-        margin-top: 100px;
+        font-size: 54px;
+        margin-top: 80px;
     }
-
+    
+    
     #scl1{margin-top: 30px;}
    
     #btnfooter{
@@ -1310,7 +1312,7 @@ textarea {
 
     .socialm{margin-top: 40px;}   
 
-    footer{ height: 300px;}
+    footer{ height: 100%;}
 
     .footerrow{margin-top: 30px;}
 
@@ -1330,7 +1332,9 @@ textarea {
         #images{
         height: 600px;
         }
+/*************OWNER INDEX**************/
         
+     #partnerform{margin-top: 30%;}   
 /*************GYM INDEX**************/
 
         #biggymimg img{display: none;}
@@ -1344,7 +1348,7 @@ textarea {
         .trainerdescr{height: 50px;}
         .trainerdescr p{font-size: 16px;
         }
-        .orangebox{
+        .flip-card, .orangebox{
             height: 360px;
             width: 320px;
             float:left;
@@ -1406,10 +1410,6 @@ background-color: #1d1d1d;}
         width:100%;
     }
 
-    footer{
-         height: 430px;
-    }
-
     .footer_logo{
         height: 100px;
         width: auto;
@@ -1465,7 +1465,7 @@ background-color: #1d1d1d;}
 
         .titlepartnerform{margin-top: 530px;}
 
-        .partnerform{padding-bottom: 900px;}
+      
 
     /***********GYM INDEX***************/
          #biggymimg img{display: none;}
@@ -1482,7 +1482,7 @@ background-color: #1d1d1d;}
 
         .trainersrow{height: 800px;}
 
-        .orangebox{
+        .flip-card, .orangebox{
             height: 360px;
             width: 240px;
             float:left;
@@ -1566,8 +1566,6 @@ background-color: #1d1d1d;}
 
         #btnfooter{ width:70%; }
 
-        footer{ height: 430px; }
-
         .footer_logo{
             height: 100px;
             width: auto;
@@ -1600,10 +1598,7 @@ background-color: #1d1d1d;}
         .titlepartnerform{
             margin-top: 450px;
         }
-        .partnerform{
-            padding-bottom: 900px;
-        }
-
+       
 
 /***************GYM INDEX*******************/
         #biggymimg img{display: none;}
@@ -1653,7 +1648,7 @@ background-color: #1d1d1d;}
         #trainerphoto {
             margin-top: 10px;
         }
-        .orangebox {
+        .flip-card, .orangebox {
             height: 300px;
             width: 95%;
         }
@@ -1671,4 +1666,56 @@ background-color: #1d1d1d;}
 
         }
 
+
+/***************BLOG*******************/
+#imgblog{
+    background-image:url(../images/blog/blog_mobile.jpg);
+    height: 25vh;
 }
+
+
+}
+
+
+/***************************ANIMATE********************/
+
+.flip-card {
+    width: 265px;
+    height: 420px;
+    background-color: none;
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-front {
+   
+    color: black;
+    z-index: 2;
+  }
+  
+  .flip-card-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
+    z-index: 1;
+  }

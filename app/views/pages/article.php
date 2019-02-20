@@ -13,10 +13,10 @@
 
     <div class="row">
         <div class="col-md-12">
-            <img src= " <?php echo URLROOT;?> /images/blog/imgblog1.jpg" style="margin-bottom:15px;" width="100%" alt="stars"/>
+            <img src= " <?php echo URLROOT;?>/images/blog/imgblog1.jpg" style="margin-bottom:15px;" width="100%" alt="stars"/>
             <div class="row">
                 <div class="col-md-1 offset-md-9">
-                <img style="border-radius:50%;"class="mr-3"  src= " <?php echo URLROOT; ?> /images/blog/user.jpg" width="60" alt="Generic placeholder image">
+                <img style="border-radius:50%;"class="mr-3"  src= " <?php echo URLROOT; ?>/images/blog/user.jpg" width="60" alt="Generic placeholder image">
                 </div>
                 <div class="col-md-2">
                     <p style="font-size:15px;color:#2c2b2b;margin-top:5px;margin-bottom:5px;">Μαρία</p>
@@ -50,7 +50,7 @@
     </div>
 
     <div class="media mediacomments">
-     <img style="border-radius:50%;" class="mr-3"  src= " <?php echo URLROOT; ?> /images/blog/user1.jpg" width="80" alt="Generic placeholder image">
+     <img style="border-radius:50%;" class="mr-3"  src= " <?php echo URLROOT; ?>/images/blog/user1.jpg" width="80" alt="Generic placeholder image">
         <div class="media-body">
             <h5 class="mt-0" style="padding-top:10px;">Μαρία</h5></h5>
             <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. te fringilla. Donec laciniafaucibus.</p>
@@ -59,7 +59,7 @@
     </div>
 
     <div class="media mediacomments">
-     <img  style="border-radius:50%;" class="mr-3"  src= " <?php echo URLROOT; ?> /images/blog/user2.jpg" width="80" alt="Generic placeholder image">
+     <img  style="border-radius:50%;" class="mr-3"  src= " <?php echo URLROOT; ?>/images/blog/user2.jpg" width="80" alt="Generic placeholder image">
          <div class="media-body">
             <h5 class="mt-0" style="padding-top:10px;">Νίκος</h5></h5>
             <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. te fringilla. Donec laciniafaucibus.</p>

@@ -6,8 +6,8 @@
             <div class="col-12 fimage">
                 
                     <div class="row">
-                        <div class="col-lg-5 offset-lg-1 col-md-5 offset-md-0">
-                            <p id="bigtitle">ΒΡΕΣ ΤΟ ΓΥΜΝΑΣΤΗΡΙΟΥ ΠΟΥ ΣΟΥ ΤΑΙΡΙΑΖΕΙ</p>
+                        <div class="col-lg-4 offset-lg-1 col-md-4 offset-md-0">
+                            <p id="bigtitle" class="animated fadeInLeft">ΒΡΕΣ ΤΟ ΓΥΜΝΑΣΤΗΡΙΟΥ ΠΟΥ ΣΟΥ ΤΑΙΡΙΑΖΕΙ</p>
                                 <div class="row">
                                     <div class="col-lg-5 col-md-6 offset-md-0">
                                    <button class="btnblue" id="btnmember">Γίνε Μέλος</button></a>
@@ -17,18 +17,18 @@
                             </div>
                     
 
-                    <div class="col-lg-4 offset-lg-2 col-md-6 offset-md-1 col-sm-12">
+                    <div class="col-lg-5 offset-lg-2 col-md-7 offset-md-1 col-sm-12">
                         <div id="boxgrey">
 
                             <div class="row">
-                                <div class="col-lg-3 offset-lg-4 col-md-5 offset-md-3 col-sm-10  col-12">
+                                <div class="col-lg-3 offset-lg-5 col-md-5 offset-md-3 col-sm-10  col-12">
                                     <p id="mobiletitle">Βρες το γυμναστήριο που σου ταιριάζει!</p>
                                     <p id="title">Επέλεξε</p>
                                 </div>
                             </div>
                     
                             <div class="row">
-                                <div class="col-lg-7 offset-lg-2 col-md-9 offset-md-1 col-sm-8 offset-sm-1" id="slc">
+                                <div class="col-lg-7 offset-lg-3 col-md-9 offset-md-1 col-sm-8 offset-sm-1" id="slc">
                                     <select id="slc1">
                                         <option value="hidden">Περιοχή</option>
                                         <option value="athens">Αθήνα</option>
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="row"> 
-                                <div class="col-lg-7 offset-lg-3 col-md-9 offset-md-1 col-sm-8 offset-sm-1">
+                                <div class="col-lg-7 offset-lg-4 col-md-9 offset-md-1 col-sm-8 offset-sm-1">
                                 <button class="btnorange" id="btnsearch">Αναζήτηση</button></a>
                                 </div>
                             </div>
