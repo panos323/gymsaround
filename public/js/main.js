@@ -693,7 +693,7 @@ $( document ).ready(function() {
 
     //FUNCTION TO CHECK IF ONLY HAS LETTERS
     function isOnlyLetters(firstname) {
-        return !/[^a-z]/i.test(firstname);
+        return !/[^a-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]/i.test(firstname);
     }
 
     //FUNCTION TO CHECK FOR WHITESPACES
