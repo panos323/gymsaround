@@ -366,6 +366,13 @@ select{
 .rowbestgymmobile{display: none;}
 
 
+.displaySecondGym,.displayThirdGym,.displaySecondGymPhoto,.displayThirdGymPhoto{
+    display:none;
+}
+
+#leftArrowChangeGym,#rightArrowChangeGym{
+    cursor:pointer;
+}
 
 /*******************************************
 -------------BUTTON ORANGE----------------------

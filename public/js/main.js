@@ -25,14 +25,86 @@ $( document ).ready(function() {
     });
 
     //show current item of slider
-    var totalItemsOfSlider = $('#carouselItemsDisplay .carousel-item').length;
-    var currentIndex = $('div.active').index() + 1;
     $('#number').html('1/3');
-    $("#carouseControlsNumbers").on('slid.bs.carousel', function() {
-        currentIndex = $('div.active').index() + 1;
-       $('#number').html(''+currentIndex+'/'+totalItemsOfSlider+'');
+
+    //start Change gyms on index based on arrow clicked
+    var firstGym = $(".displayFirstGym");
+        firstGym.css("display","block");
+
+    var secondGym = $(".displaySecondGym");
+        secondGym.css("display","none");
+
+    var thirdGym = $(".displayThirdGym");
+        thirdGym.css("display","none");
+
+    var firstGymPhoto = $(".displayFirstGymPhoto");
+        firstGymPhoto.css("display","block");
+
+    var secondGymPhoto = $(".displaySecondGymPhoto");
+        secondGymPhoto.css("display","none");
+
+    var thirdGymPhoto = $(".displayThirdGymPhoto");
+        thirdGymPhoto.css("display","none");
+
+    $("#leftArrowChangeGym").on("click", function() {
+        if (firstGym.css('display') == 'block'){
+            $('#number').html('3/3');
+            firstGym.css("display","none");
+            firstGymPhoto.css("display","none");
+            secondGym.css("display","none");
+            secondGymPhoto.css("display","none");
+            thirdGym.css("display","block");
+            thirdGymPhoto.css("display","block");
+
+        } else if (thirdGym.css('display') == 'block'){
+            $('#number').html('2/3');
+            thirdGym.css("display","none");
+            thirdGymPhoto.css("display","none");
+            firstGym.css("display","none");
+            firstGymPhoto.css("display","none");
+            secondGym.css("display","block");
+            secondGymPhoto.css("display","block");
+            
+        } else if (secondGym.css('display') == 'block'){
+            $('#number').html('1/3');
+            secondGym.css("display","none");
+            secondGymPhoto.css("display","none");
+            thirdGym.css("display","none");
+            thirdGymPhoto.css("display","none");
+            firstGym.css("display","block");
+            firstGymPhoto.css("display","block");
+        }
     });
 
+    $("#rightArrowChangeGym").on("click", function() {
+        if (firstGym.css('display') == 'block'){
+            $('#number').html('2/3');
+            firstGym.css("display","none");
+            firstGymPhoto.css("display","none");
+            secondGym.css("display","block");
+            secondGymPhoto.css("display","block");
+
+        } else if (secondGym.css('display') == 'block'){
+            $('#number').html('3/3');
+            firstGym.css("display","none");
+            firstGymPhoto.css("display","none");
+            secondGym.css("display","none");
+            secondGymPhoto.css("display","none");
+            thirdGym.css("display","block");
+            thirdGymPhoto.css("display","block");
+
+        } else if (thirdGym.css('display') == 'block'){
+            $('#number').html('1/3');
+            thirdGym.css("display","none");
+            thirdGymPhoto.css("display","none");
+            secondGym.css("display","none");
+            secondGymPhoto.css("display","none");
+            firstGym.css("display","block");
+            firstGymPhoto.css("display","block");
+        }
+
+    });
+    //end Change gyms on index based on arrow clicked
 
 
     //START VALIDATIONS FOR FORM SUBMIT
@@ -635,3 +707,4 @@ $( document ).ready(function() {
 
 
  }); // ON PAGE LOADED
+ 
