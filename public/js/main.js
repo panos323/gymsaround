@@ -131,7 +131,26 @@ $( document ).ready(function() {
     var updateOwnernameForm = $("#updateOwnernameForm");
     var updateEmailFormOwners = $("#updateEmailFormOwners");
     var updateOwnersPasswordForm = $("#updateOwnersPasswordForm");
+    var contactForm = $("#contactForm");
 
+
+
+    //START ON CONTACT US FORM SUBMIT
+    contactForm.on("submit", function(e) {
+        
+        var firstname = $("#formContactName").val().trim();
+        var surname = $("#formContactLastName").val().trim();
+        var emailcheck = $("#formContactEmail").val().trim();
+        var subject =  $("#formContactSubject").val().trim();
+        var mainSubject = $(".mainSubjectForm").val().trim();
+
+        validateContactUSName(firstname,e);
+        validateContactUsSurName(surname,e);
+        validateContactUsEmail(emailcheck,e);
+        validateContactUsSubject(subject,e);
+        validateContactUsMainSubject(mainSubject,e);
+    }) // on submit 
+    //END ON CONTACT US FORM SUBMIT
 
 
     //START ON REGISTER POP UP FORM SUMBIT
@@ -281,6 +300,62 @@ $( document ).ready(function() {
     
 
 
+    //START FUNCTIONS FOR CONTACT US FORM  VALIDATION
+    function validateContactUSName(firstname,e) {
+        if (!isValidName(firstname)) {
+            $(".nameContactErr").text(' (Το όνομα πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
+            e.preventDefault();
+        } else if (!isOnlyLetters(firstname)) {
+            $(".nameContactErr").text(' (Το όνομα πρέπει να περιέχει μόνο γράμματα)');
+            e.preventDefault();
+        } else {
+            $(".nameContactErr").text("");
+        }
+    } //end function 
+
+    function validateContactUsSurName(surname,e) {
+        if (!isValidSurName(surname)) {
+            $(".nameLastContactErr").text(' (Το επώνυμο πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
+            e.preventDefault();
+        } else if (!isOnlyLetters(surname)) {
+            $(".nameLastContactErr").text(' (Το επώνυμο πρέπει να περιέχει μόνο γράμματα)');
+            e.preventDefault();
+        } else {
+            $(".nameLastContactErr").html("");
+        }
+    } // end function
+
+    function validateContactUsEmail(emailcheck,e) {
+        if (!isValidEmail(emailcheck)) {
+            $(".EmailContactErr").html(' (Παρακαλώ γράψτε το email σας)')
+            e.preventDefault();
+        } else if (isEmailOk(emailcheck)) {
+            $(".EmailContactErr").html(' (Παρακαλώ εισάγετε μια έγκυρη ηλεκτρονική διεύθυνση)')
+            e.preventDefault();
+        } else {
+            $(".EmailContactErr").html("");
+        }
+    } //end function
+
+    function validateContactUsSubject(subject,e) {
+        if (!isValidSurName(subject)) {
+            $(".SubjectContactErr").text(' (Το θέμα χρήστη πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
+            e.preventDefault();
+        }  else {
+            $(".SubjectContactErr").html("");
+        }
+    } // end function
+
+    function validateContactUsMainSubject(subject,e) {
+        if (!isValidSurName(subject)) {
+            $(".SubjectMainContactErr").text(' (Το κυρίως θέμα πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
+            e.preventDefault();
+        }  else {
+            $(".SubjectMainContactErr").html("");
+        }
+    } // end function
+
+    //END FUNCTIONS FOR CONTACT US FORM  VALIDATION
 
 
      //START FUNCTIONS FOR UPDATE OWNER  VALIDATION

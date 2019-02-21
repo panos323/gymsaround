@@ -22,34 +22,43 @@
                             <input type="text"
                                    name="first_name"
                                    class="form-control form-control-lg"
+                                   id="formContactName"
                                    placeholder="'Ονομα"
                             >
+                            <span class="text-center text-danger font-italic nameContactErr"></span>
                         </div>
                         <div class="form-group col-sm-6">
                             <input type="text"
                                    name="last_name"
                                    class="form-control form-control-lg"
+                                   id="formContactLastName"
                                    placeholder="Επίθετο"
                             >
+                            <span class="text-center text-danger font-italic nameLastContactErr"></span>
                         </div>
                     </div><!--form-row-->
                     <div class="form-group mt-3">
                         <input type="email"
                                name="email"
                                class="form-control form-control-lg"
+                               id="formContactEmail"
                                placeholder="E-mail"
                          >
+                         <span class="text-center text-danger font-italic EmailContactErr"></span>
                     </div>
                     <div class="form-group mt-3">
                         <input type="text"
                                name="subject"
                                class="form-control form-control-lg"
+                               id="formContactSubject"
                                placeholder="Θέμα"
                         >
+                        <span class="text-center text-danger font-italic SubjectContactErr"></span>
                     </div>
                     <div class="form-group">
                         <label for="email_text"></label>
-                        <textarea name="email_text" class="form-control" id="email_text" cols="30" rows="10" placeholder="Στείλτε μας το μήνυμά σας"></textarea>
+                        <textarea class="mainSubjectForm" name="email_text" class="form-control" id="email_text" cols="30" rows="10" placeholder="Στείλτε μας το μήνυμά σας"></textarea>
+                        <span class="text-center text-danger font-italic SubjectMainContactErr"></span>
                     </div>
                     <div class="row mt-4">
                         <div class="col-md-4 offset-md-4 col-sm-10 offset-sm-1 btn-group  mb-4" role="group" aria-label="Second group">
