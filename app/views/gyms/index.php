@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-10 offset-1" >
                         <p id="gymsnames"><?php echo $data->gym_name; ?></p>
-                        <img src= " <?php echo URLROOT;?> /images/stars.png" alt="stars"/>
+                        <img src= " <?php echo URLROOT;?>/images/stars.png" alt="stars"/>
                         <div id="gymaddress">
                             <a href="#">
                              <p><?php echo $data->gym_location;?>  <img src= " <?php echo URLROOT;?>/images/gym/mappin.png" width="20%" alt="pin"/></p>
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="col-lg-6 " id="biggymimg">
-            <img src= " <?php echo URLROOT;?> /images/gym/bigimggym.jpg" width="100%"   height="600"; alt="biggym">
+            <img src= " <?php echo URLROOT;?>/images/gym/bigimggym.jpg" width="100%"   height="600"; alt="biggym">
         </div>
     </div>
 
@@ -65,15 +65,15 @@
             <p class="basictitle" id="gymstitle">ΦΩΤΟΓΡΑΦΙΕΣ</p>
             <div class="row justify-content-center">
                 <div class="col-md-12"  id="imagerow1">
-                <img src= " <?php echo URLROOT; ?> /images/gym/image2.jpg" width="32%" alt="gymimg">
-                <img src= " <?php echo URLROOT; ?> /images/gym/image2.jpg" width="32%" alt="gymimg">
-                <img src= " <?php echo URLROOT; ?> /images/gym/image2.jpg" width="32%" alt="gymimg">
+                <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
+                <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
+                <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12" id="imagerow2">
-                    <img src= " <?php echo URLROOT; ?> /images/gym/image2.jpg" width="32%" alt="gymimg">
-                    <img src= " <?php echo URLROOT; ?> /images/gym/image3.jpg" width="32%"  alt="gymimg">
+                    <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
+                    <img src= " <?php echo URLROOT; ?>/images/gym/image3.jpg" width="32%"  alt="gymimg">
                 </div>
             </div>
         </div>
@@ -113,15 +113,15 @@
         <div class="row d-flex justify-content-center">
          
              <div class="col-md-4 col-sm-6 col-8 bd-highlight"  id="trainerphoto">
-                    <img src= " <?php echo URLROOT; ?> /images/gym/trainer1.jpg" width="100%" alt="gymimg">
+                    <img src= " <?php echo URLROOT; ?>/images/gym/trainer1.jpg" width="100%" alt="gymimg">
                     <div class="trainerdescr"><p>Γιάννης Κ. - Crossfit trainer</p></div>  
              </div>
             <div class="col-md-4 col-sm-6 col-8  bd-highlight" id="trainerphoto">
-                <img  src= " <?php echo URLROOT; ?> /images/gym/trainer2.jpg" width="100%" alt="gymimg">
+                <img  src= " <?php echo URLROOT; ?>/images/gym/trainer2.jpg" width="100%" alt="gymimg">
                 <div class="trainerdescr"><p>Μαρία Κ. - Crossfit trainer</p></div> 
             </div>
             <div class="col-md-4 col-sm-6 col-8  bd-highlight" id="trainerphoto">
-                 <img src= " <?php echo URLROOT; ?> /images/gym/trainer3.jpg" width="100%" alt="gymimg">
+                 <img src= " <?php echo URLROOT; ?>/images/gym/trainer3.jpg" width="100%" alt="gymimg">
                  <div class="trainerdescr"><p>Κώστας Κ. - Crossfit trainer</p></div> 
             </div>
             
