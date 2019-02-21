@@ -15,7 +15,8 @@
         </div>
     </div>
    <div class="row">
-        <div class="col-md-12">
+       <div class="aboutscroll hide">
+        <div class="col-md-12" id="bigabouttext">
             <p> What is Lorem Ipsum?
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
             text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived 
@@ -29,6 +30,7 @@
             not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with 
             the release of Letraset sheetscontaining Lorem Ipsum passages, and more recently with desktop publishing software 
             like Aldus PageMaker including versions of Lorem Ipsum</p>
+        </div>
         </div>
     </div>
 </div>  
@@ -59,4 +61,19 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    (function(){
+       var  aboutEl= $('div.aboutscroll'),
+            aboutoffset= 200,
+            documentEl=$(document);
+        
+        documentEl.on("scroll", function(){
+            if (documentEl.scrollTop() > aboutoffset && aboutEl.hasClass('hide')) aboutEl.removeClass('hide');
+            
+        });
+        })();
+    </script>
+
 <?php require  APPROOT . '/views/inc/footer.php'?>
+

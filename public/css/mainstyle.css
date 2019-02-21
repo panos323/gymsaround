@@ -1762,3 +1762,26 @@ background-color: #1d1d1d;}
     transform: rotateY(180deg);
     z-index: 1;
   }
+
+    /*****ANIMATION ONSCROLLL*****/  
+
+.aboutscroll{
+    margin:0 auto;
+    transform-style: preserve-3d;
+    transform: perspective(600px);      
+    }
+          
+  
+.aboutscroll #bigabouttext{
+    
+        font-weight: 400;
+    }
+    
+.aboutscroll #bigabouttext{
+        transition: all 0.8s ease;}
+    
+.aboutscroll.hide #bigabouttext{
+        opacity: 0;
+        transform: translate3d(0, 0, 200px) rotateY(-30deg);
+    }
+
