@@ -59,9 +59,9 @@
         <!--- END ROW 1---->
 
         <!--- START ROW 2 - GYM ---->
-<div class="bestgym">
+
      <div class="row">
-        <div class="col-12">
+        <div class="col-12 mb-5">
             <div class="box1">
                         <div class="container">
                     
@@ -147,12 +147,12 @@
                                   
                                     
                                      <div class="row" id="bgborder">
-                                         <div class="col-5">
+                                         <div class="col-md-5 col-sm-5 offset-sm-0 col-10 offset-1 mb-4">
                                          <img src= " <?php echo URLROOT; ?>/images/bestgym1.jpg" width="100%" height="auto">
                                          </div>
-                                         <div class="col-7">
+                                         <div class="col-md-7 col-sm-7 offset-sm-0 col-10 offset-1">
                                                 <p id="gymname">Workout Hall Crossfit</p>
-                                                <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars" width="30%">
+                                                <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars" width="20%">
                                                 <p style="margin-top:10px; id="bgelementmobile">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
                                                 <p id="bgelementmobile"><b>Crosfii, Boxing, KingBoxing,Climbing</b></p>
                                          </div>
@@ -163,7 +163,7 @@
                                          </div>
                                          <div class="col-7">
                                                 <p id="gymname">Benefit</p>
-                                                <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars">
+                                                <img src= " <?php echo URLROOT; ?>/images/stars.png"  width="30%" alt="stars">
                                                 <p style="margin-top:10px;">Ιωνίας 25, Τρίκαλα</p>
                                                 <p><b>Salsa, Zumba, KingBoxing</b></p>
                                          </div>
@@ -174,7 +174,7 @@
                                          </div>
                                          <div class="col-7">
                                                 <p id="gymname">BodyBuilding Club</p>
-                                                <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars">
+                                                <img src= " <?php echo URLROOT; ?>/images/stars.png"  width="30%" alt="stars">
                                                 <p  style="margin-top:10px;">Ριχάρδου 27, Θεσσαλονίκη</p>
                                                 <p><b>Crosfit, Pilates,BodyBuilding</b></p>
                                          </div>
@@ -188,7 +188,7 @@
                 </div>   
                 </div>   
      </div>         
-     </div>
+    
  <!--- START ROW 3 - BLOG---->
 <div class="blogrow">
         <div class="row">
@@ -216,12 +216,12 @@
 
  <!--- START ROW 4-SPONSORS---->
 
-    <div class="row mt-5">
+    <div class="row">
         <div class="col-12">
             <div class="box3">
                 <div class="container">
-                    <p class="rowtitle" id="blogtitle">ΥΠΟΣΤΗΡΙΚΤΕΣ</p>
-                        <div class="row mb-5">
+                    <p class="rowtitle" id="sponsorstitle">ΥΠΟΣΤΗΡΙΚΤΕΣ</p>
+                        <div class="row my-5">
                             <div class="flexAllItems">
                             <div class="col-1" id="sponsors1">
                                 <i class="text-secondary fa fa-arrow-left fa-2x" aria-hidden="true"></i>
@@ -256,10 +256,7 @@
 
 <div class="row">
 <div class="col-md-12" id="newsletter">
-
 </div>
-
-
 </div>
 
 </div> <!-- end conatiner fuild-->

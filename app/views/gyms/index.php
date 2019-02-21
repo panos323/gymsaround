@@ -38,9 +38,9 @@
 <!-----------------------------------------------------------------------------------------------------------------
 -------------------------------------------WHO WE ARE--------------------------------------------------------------->
 
-    <div class="container maintext">
+    <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mb-5">
                 <p class="basictitle" id="gymstitle">ΠΟΙΟΙ ΕΙΜΑΣΤΕ</p>
                 <p>Το Workout Hall δημιουργήθηκε το 2008, στη Γλυφάδα, σε έναν χώρο 90 τ.μ., αποκλειστικά για personal training. Σταδιακά αναπτύχθηκε και αποτελεί σήμερα ένα υπερσύγχρονο αθλητ
                     ικό κέντρο, 7.000 τ.μ., με indoor & outdoor training space.Η προσωπική εμπειρία, η αδιάλειπτη ενασχόληση με τον αθλητισμό και η αγάπη γι’ αυτόνοδήγησε στην δημιουργία του ση
@@ -64,14 +64,14 @@
  <div class="container">
             <p class="basictitle" id="gymstitle">ΦΩΤΟΓΡΑΦΙΕΣ</p>
             <div class="row justify-content-center">
-                <div class="col-md-12"  id="imagerow1">
+                <div class="col-md-12 mb-1"  id="imagerow1">
                 <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
                 <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
                 <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12" id="imagerow2">
+                <div class="col-md-12 mb-5" id="imagerow2">
                     <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
                     <img src= " <?php echo URLROOT; ?>/images/gym/image3.jpg" width="32%"  alt="gymimg">
                 </div>
@@ -81,7 +81,7 @@
 <!-----------------------------------------------------------------------------------------------------------------
 -------------------------------------------***TRAINERS**--------------------------------------------------------------->
 
-    <div class="trainersrow">
+    
         <div class="container">
             <p class="basictitle" id="gymstitle">ΠΡΟΣΩΠΙΚΟ</p>
      
@@ -112,15 +112,15 @@
          
         <div class="row d-flex justify-content-center">
          
-             <div class="col-md-4 col-sm-6 col-8 bd-highlight"  id="trainerphoto">
+             <div class="col-md-4 col-sm-6 col-10 bd-highlight "  id="trainerphoto">
                     <img src= " <?php echo URLROOT; ?>/images/gym/trainer1.jpg" width="100%" alt="gymimg">
                     <div class="trainerdescr"><p>Γιάννης Κ. - Crossfit trainer</p></div>  
              </div>
-            <div class="col-md-4 col-sm-6 col-8  bd-highlight" id="trainerphoto">
+            <div class="col-md-4 col-sm-6 col-10 bd-highlight" id="trainerphoto">
                 <img  src= " <?php echo URLROOT; ?>/images/gym/trainer2.jpg" width="100%" alt="gymimg">
                 <div class="trainerdescr"><p>Μαρία Κ. - Crossfit trainer</p></div> 
             </div>
-            <div class="col-md-4 col-sm-6 col-8  bd-highlight" id="trainerphoto">
+            <div class="col-md-4 col-sm-6 col-10 bd-highlight mb-5" id="trainerphoto">
                  <img src= " <?php echo URLROOT; ?>/images/gym/trainer3.jpg" width="100%" alt="gymimg">
                  <div class="trainerdescr"><p>Κώστας Κ. - Crossfit trainer</p></div> 
             </div>
@@ -130,7 +130,7 @@
 
 
         </div>   
-    </div>
+  
 
  <!-----------------------------------------------------------------------------------------------------------------
 -------------------------------------------***SYNDROMES**--------------------------------------------------------------->   
@@ -138,7 +138,7 @@
         <div class="container">
             <p class="basictitle" id="gymstitle">ΠΑΚΕΤΑ ΣΥΝΔΡΟΜΩΝ</p>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-5">
                         <div class="flex-container-sundromes">
                         <div class="flip-card">
                             <div class="flip-card-inner">
@@ -151,9 +151,8 @@
                                 </div>
                             </div>
                             <div class="flip-card-back">
-                                <h1>John Doe</h1> 
-                                <p>Architect & Engineer</p> 
-                                <p>We love that guy</p>
+                                <h5>Mηνιαία Συνδρομή</h5>
+                                <a href="#">Aγορά</a>
                             </div>
                         </div>
                      </div>
