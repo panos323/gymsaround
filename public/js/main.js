@@ -107,6 +107,18 @@ $( document ).ready(function() {
     //end Change gyms on index based on arrow clicked
 
 
+    //start on arrow click change sponsors on index page
+    $("#sponsors2").on("click", function() {
+        $(".sponsorsSecond").css("display","block");
+        $(".sponsorsFirst").css("display","none");
+    });
+    $("#sponsors1").on("click", function() {
+        $(".sponsorsFirst").css("display","block");
+        $(".sponsorsSecond").css("display","none");
+    });
+    //end on arrow click change sponsors on index page
+
+
     //START VALIDATIONS FOR FORM SUBMIT
     var registerUserForm = $("#registerForm");
     var loginUserForm = $("#loginmodal");

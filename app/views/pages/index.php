@@ -221,23 +221,31 @@
             <div class="box3">
                 <div class="container">
                     <p class="rowtitle" id="blogtitle">ΥΠΟΣΤΗΡΙΚΤΕΣ</p>
-                        <div class="row">
-                            <div class="col-1" id="sponsors">
-                                <img  src= " <?php echo URLROOT; ?>/images/back.png" alt="stars" width="25" height="30">
+                        <div class="row mb-5">
+                            <div class="flexAllItems">
+                            <div class="col-1" id="sponsors1">
+                                <i class="text-secondary fa fa-arrow-left fa-2x" aria-hidden="true"></i>
                             </div>
                             <div class="col-10">
                                 <div class="flex-container">
-                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
-                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
-                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
-                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
-                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
-                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
-                                </div>
+                                    <!-- first sponsors -->
+                                    <div class="sponsorsFirst"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder-red.png" alt="stars" width="100%" height="auto"></div>
+                                    <div class="sponsorsFirst"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder-red.png" alt="stars" width="100%" height="auto"></div>
+                                    <div class="sponsorsFirst"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder-red.png" alt="stars" width="100%" height="auto"></div>
+                                    <div class="sponsorsFirst"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder-red.png" alt="stars" width="100%" height="auto"></div>
+                                    
+                                    <!-- second sponsors -->
+                                    <div class="sponsorsSecond"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder.jpg" alt="stars" width="100%" height="auto"></div>
+                                    <div class="sponsorsSecond"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder.jpg" alt="stars" width="100%" height="auto"></div>
+                                    <div class="sponsorsSecond"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder.jpg" alt="stars" width="100%" height="auto"></div>
+                                    <div class="sponsorsSecond"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder.jpg" alt="stars" width="100%" height="auto"></div>
+                                </div> <!-- flex container -->
                             </div>
-                            <div class="col-1" id="sponsors">
-                                <img  src= " <?php echo URLROOT; ?>/images/front.png" alt="stars" width="25" height="30">
+                            <div class="col-1" id="sponsors2">
+                                <i class="text-secondary fa fa-arrow-right fa-2x" aria-hidden="true"></i>
                             </div>
+                        </div>  <!-- flex all -->
+                        
                     </div>
                 </div>
              </div>
