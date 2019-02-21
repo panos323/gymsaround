@@ -198,7 +198,7 @@
     <!--start search buttons -->
     <div class="row col-lg-12">
         <div class="col-md-7 mt-4 mb-3">
-          <button type="button" class="btn btn-outline-info mr-4 mb-2   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
+          <button type="button" class=" sortByNameBtn btn btn-outline-info mr-4 mb-2   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
           <div class="dropdown d-inline-block">
               <button class="btn btn-outline-info mr-4 mb-2 btn-md dropdown-toggle customBtnG" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Περιοχή
@@ -214,8 +214,8 @@
               </div>
           </div> 
           <div class="dropdown d-inline-block">
-              <button class="btn btn-outline-info mr-4 mb-2 btn-md dropdown-toggle customBtnG" type="button" id="dropdownMenuButtonArr" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Είδος
+              <button class="dropdownMenuButtonArr btn btn-outline-info mr-4 mb-2 btn-md dropdown-toggle customBtnG" type="button" id="dropdownMenuButtonArr" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Τύπος Γυμναστικής
               </button>
               <div class="dropdown-menu dropDownMenuCol showSelectedItemType" aria-labelledby="dropdownMenuButtonArr">
                 <button class="dropdown-item" type="reset" id="dropdownResetTypes" href="#">Όλα</button>
@@ -831,6 +831,20 @@ map.on('load', function(e) {
   //End sort Elements By Location
 
 
+   //start If values of location dropdown are set from index page then display them first
+   if (window.localStorage.getItem('DropdownValueSelected') ==  document.getElementById("dropdownAthens").innerHTML){
+        SortByLocation('Αθήνα');
+        document.getElementById("dropdownMenuButton").innerHTML = 'Αθήνα';
+    } else if (window.localStorage.getItem('DropdownValueSelected') ==  document.getElementById("dropdownThessaloniki").innerHTML){
+        SortByLocation('Θεσσαλονίκη');
+        document.getElementById("dropdownMenuButton").innerHTML = 'Θεσσαλονίκη';
+    } else if (window.localStorage.getItem('DropdownValueSelected') ==  document.getElementById("dropdownTrikala").innerHTML){
+        SortByLocation('Τρίκαλα');
+        document.getElementById("dropdownMenuButton").innerHTML = 'Τρίκαλα';
+    }
+  //end If values of location dropdown are set from index page then display them first
+
+
   //Start sort Elements By fitness type
   function SortByType(name) {
     orderAscDescName = !orderAscDescName;
@@ -886,6 +900,25 @@ map.on('load', function(e) {
     SortByType('Χοροί');
   });
   //End sort Elements By fitness type
+
+
+   //start If values of location dropdown are set from index page then display them first
+   if (window.localStorage.getItem('DropdownValueSelectedType') ==  document.getElementById("dropdownMartial").innerHTML){
+        SortByType('Πολεμικές Τέχνες');
+        document.getElementById("dropdownMenuButtonArr").innerHTML = 'Πολεμικές Τέχνες';
+    } else if (window.localStorage.getItem('DropdownValueSelectedType') ==  document.getElementById("dropdownCrossfit").innerHTML){
+        SortByType('Crossfit');
+        document.getElementById("dropdownMenuButtonArr").innerHTML = 'Crossfit';
+    } else if (window.localStorage.getItem('DropdownValueSelectedType') ==        document.getElementById("dropdownΑerobic").innerHTML){
+      SortByType('Aerobic');
+        document.getElementById("dropdownMenuButtonArr").innerHTML = 'Aerobic';
+    } else if (window.localStorage.getItem('DropdownValueSelectedType') ==   document.getElementById("dropdownDances").innerHTML){
+      SortByType('Χοροί');
+        document.getElementById("dropdownMenuButtonArr").innerHTML = 'Χοροί';
+    }
+  //end If values of location dropdown are set from index page then display them first
+
+
 
 
   

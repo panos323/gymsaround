@@ -29,25 +29,25 @@
                     
                             <div class="row">
                                 <div class="col-lg-7 offset-lg-3 col-md-9 offset-md-1 col-sm-8 offset-sm-1" id="slc">
-                                    <select id="slc1">
+                                    <select id="slc1" class="sortByNameBtn">
                                         <option value="hidden">Περιοχή</option>
-                                        <option value="athens">Αθήνα</option>
-                                        <option value="thessalonikh">Θεσσαλονίκη</option>
-                                        <option value="Trikala">Τρίκαλα</option>
-                                        <option value="kalamata">Καλαμάτα</option>
+                                        <option id="dropdownAthens" value="Αθήνα">Αθήνα</option>
+                                        <option value="Θεσσαλονίκη">Θεσσαλονίκη</option>
+                                        <option value="Τρίκαλα">Τρίκαλα</option>
+                                        <option value="Καλαμάτα">Καλαμάτα</option>
                                     </select>
-                                    <select id="slc2">
+                                    <select id="slc2" class="dropdownMenuButtonArr">
                                         <option value="hidden">Τύπος Γυμναστικής</option>
-                                        <option value="cross">Crossfit</option>
-                                        <option value="box">Box</option>
-                                        <option value="yoga">Yoga</option>
-                                        <option value="Pilates">Pilates</option>
+                                        <option value="Πολεμικές Τέχνες">Πολεμικές Τέχνες</option>
+                                        <option value="Crossfit">Crossfit</option>
+                                        <option value="Αerobic">Αerobic</option>
+                                        <option value="Χοροί">Χοροί</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="row"> 
                                 <div class="col-lg-7 offset-lg-4 col-md-9 offset-md-1 col-sm-8 offset-sm-1">
-                                <button class="btnorange" id="btnsearch">Αναζήτηση</button></a>
+                                <a href="<?php echo URLROOT; ?>/gyms/search"><button class="btnorange" id="btnsearch">Αναζήτηση</button></a>
                                 </div>
                             </div>
             
@@ -153,7 +153,7 @@
                                          <div class="col-md-7 col-sm-7 offset-sm-0 col-10 offset-1">
                                                 <p id="gymname">Workout Hall Crossfit</p>
                                                 <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars" width="20%">
-                                                <p style="margin-top:10px; id="bgelementmobile">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
+                                                <p style="margin-top:10px;" id="bgelementmobile">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
                                                 <p id="bgelementmobile"><b>Crosfii, Boxing, KingBoxing,Climbing</b></p>
                                          </div>
                                        </div> 

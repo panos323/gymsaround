@@ -790,6 +790,50 @@ $( document ).ready(function() {
     //END VALIDATIONS FOR FORM SUBMIT
 
 
+
+
+
+     //START IF LOCATIONS OPTIONS ARE SET FROM INDEX PAGE THEN PASS THE VALUE TO GYM PAGE 
+     $('.sortByNameBtn').css("cursor","pointer");
+     $('.dropdownMenuButtonArr').css("cursor","pointer");
+ 
+     $(".sortByNameBtn").on("change", function() {
+         //var selector = $('.sortByNameBtn'); // for vaninlla js
+         //var value = selector.prop('selectedIndex'); // for vanilla js
+         var value = $('.sortByNameBtn :selected').text();
+ 
+         //pass in local storage the value of the selecton options
+         localStorage.removeItem('DropdownValueSelectedType');
+         localStorage.setItem("DropdownValueSelected",value);
+ 
+         //disable the other dropdown
+         if (value !== 'Περιοχή') {
+             $('.dropdownMenuButtonArr').attr('disabled', 'disabled');
+             $('.dropdownMenuButtonArr').css("cursor","not-allowed");
+         } else {
+             $('.dropdownMenuButtonArr').removeAttr('disabled');
+             $('.dropdownMenuButtonArr').css("cursor","pointer");
+         }
+     });
+ 
+     $(".dropdownMenuButtonArr").on("change", function() {
+         var valueType = $('.dropdownMenuButtonArr :selected').text();
+ 
+         //pass in local storage the value of the selecton options
+         localStorage.removeItem('DropdownValueSelected');
+         localStorage.setItem("DropdownValueSelectedType",valueType);
+ 
+          //disable the other dropdown
+          if (valueType !== 'Τύπος Γυμναστικής') {
+             $('.sortByNameBtn').attr('disabled', 'disabled');
+             $('.sortByNameBtn').css("cursor","not-allowed");
+         } else {
+             $('.sortByNameBtn').removeAttr('disabled');
+             $('.sortByNameBtn').css("cursor","pointer");
+         }
+     });
+      //END IF LOCATIONS OPTIONS ARE SET FROM INDEX PAGE THEN PASS THE VALUE TO GYM PAGE
+ 
     
 
 
