@@ -8,20 +8,21 @@ class Gyms extends Controller
         $this->gymModel = $this->model('Gym');
     }
 
-    public function index(){
-        $data = [];
+    public function index(string $id){
+        $gym = $this->gymModel->findGymById($id);
+        if($gym) {
+            $this->view('gyms/index', $gym);
+        }
 
-        $this->view('gyms/index', $data);
+        redirect('pages/search');
     }
 
     public function search(){
         $data = [];
 
         $data = $this->gymModel->getAllGyms();
-        if (!empty($data)) {
             $this->view('gyms/search', $data);
-        }
-        redirect('pages/index');
+        
     }
 
     public function activateGym() {

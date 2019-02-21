@@ -5,6 +5,7 @@
     require_once 'helpers/url_helper.php';
     require_once 'helpers/session_helper.php';
     require_once 'helpers/mailer.php';
+    require_once 'helpers/generateToken.php';
 
     // Autoload Core Libraries
     spl_autoload_register(function ($classname){

@@ -12,14 +12,14 @@
                         <button class="btnorange" id="btnsearch"><a href="#">Πακέτα Συνδρομών</a></button>
                     </div>-->
                     <div class="col-lg-3 offset-lg-2 col-md-3 offset-md-1 col-sm-3 offset-sm-1 col-6 offset-1">
-                         <img id="gymlogo" width="100%" src= " <?php echo URLROOT;?> /images/gym/gymlogo.png" alt="logo"/>
+                         <img id="gymlogo" width="100%" src= " <?php echo URLROOT;?>/images/gym/gymlogo.png" alt="logo"/>
                     </div>
                     <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-10 offset-1" >
-                        <p id="gymsnames">Workout Hall Crossfit</p>
+                        <p id="gymsnames"><?php echo $data->gym_name; ?></p>
                         <img src= " <?php echo URLROOT;?> /images/stars.png" alt="stars"/>
                         <div id="gymaddress">
                             <a href="#">
-                             <p>Ρόδων 6 & Κυβέλης 17456, Άλιμος  <img src= " <?php echo URLROOT;?> /images/gym/mappin.png" width="6%" alt="pin"/></p>
+                             <p><?php echo $data->gym_location;?>  <img src= " <?php echo URLROOT;?>/images/gym/mappin.png" width="20%" alt="pin"/></p>
                             </a>
                         </div>
                         <p id="activities"><b>Crosfii | Boxing | KingBoxing | Climbing</b></p>
@@ -58,13 +58,16 @@
 -------------------------------------------***IMAGES**--------------------------------------------------------------->
 
     <div id="images">
-        <div class="container">
+
+     
+
+ <div class="container">
             <p class="basictitle" id="gymstitle">ΦΩΤΟΓΡΑΦΙΕΣ</p>
             <div class="row justify-content-center">
                 <div class="col-md-12"  id="imagerow1">
-                    <img src= " <?php echo URLROOT;?> /images/gym/image1.jpg" width="32%" alt="gymimg"  class="img-fluid">
-                    <img src= " <?php echo URLROOT;?> /images/gym/image2.jpg" width="32%" alt="gymimg"  class="img-fluid">
-                    <img src= " <?php echo URLROOT; ?> /images/gym/image3.jpg"  width="32%" alt="gymimg">
+                <img src= " <?php echo URLROOT; ?> /images/gym/image2.jpg" width="32%" alt="gymimg">
+                <img src= " <?php echo URLROOT; ?> /images/gym/image2.jpg" width="32%" alt="gymimg">
+                <img src= " <?php echo URLROOT; ?> /images/gym/image2.jpg" width="32%" alt="gymimg">
                 </div>
             </div>
             <div class="row">
@@ -134,16 +137,29 @@
     <div class="sundromesrow">
         <div class="container">
             <p class="basictitle" id="gymstitle">ΠΑΚΕΤΑ ΣΥΝΔΡΟΜΩΝ</p>
-            
                 <div class="row">
                     <div class="col-md-12">
                         <div class="flex-container-sundromes">
-                        <div class="orangebox">
-                            <p id="month"><b>1 ΜΗΝΑΣ</b></p>
-                            <p><b>CrossFit</b></p>
-                            <p><b>Climbing</b></p>
-                            <p id="price"><b>70€</b></p>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="orangebox">
+                                    <p id="month"><b>1 ΜΗΝΑΣ</b></p>
+                                    <p><b>CrossFit</b></p>
+                                    <p><b>Climbing</b></p>
+                                    <p id="price"><b>70€</b></p>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <h1>John Doe</h1> 
+                                <p>Architect & Engineer</p> 
+                                <p>We love that guy</p>
+                            </div>
                         </div>
+                     </div>
+                   
+
+
                         <div class="orangebox">
                             <p id="month"><b>3 ΜΗΝΑΣ</b></p>
                             <p><b>CrossFit</b></p>

@@ -77,4 +77,21 @@ class Gym
             return false;
         }
     }
+
+    /**
+     * Find Gym by ID
+     * @param string $gym_id
+     * @return bool
+     */
+    public function findGymById(string $gym_id) {
+        $this->db->query('SELECT * FROM gyms WHERE gym_id = :gym_id');
+        $this->db->bind(':gym_id', $gym_id);
+        $row = $this->db->single();
+        // Check row
+        if($this->db->rowCount() > 0){
+            return $row;
+        }else {
+            return false;
+        }
+    }
 }

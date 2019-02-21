@@ -27,17 +27,19 @@
                             <div class="form-group col-sm-6">
                                 <input type="text"
                                        name="first_name"
-                                       class="form-control form-control-lg <?php echo (isset($data['name_error']) && !empty($data['name_error'])) ? 'is-invalid' : ''; ?>"
+                                       class="updateUserFirstName form-control form-control-lg <?php echo (isset($data['name_error']) && !empty($data['name_error'])) ? 'is-invalid' : ''; ?>"
                                        value="<?php echo $_SESSION['first_name']; ?>">
                                 <span class="invalid-feedback"><?php echo isset($data['name_error']) ? $data['name_error'] : ''; ?></span>
+                                <span class="text-center text-danger font-italic nameUserUpdateErr"></span>
                             </div>
                             <div class="form-group col-sm-6">
                                 <input type="text"
                                        name="last_name"
-                                       class="form-control form-control-lg <?php echo (isset($data['last_name_error']) && !empty($data['last_name_error'])) ? 'is-invalid' : ''; ?>"
+                                       class="updateUserLastName form-control form-control-lg <?php echo (isset($data['last_name_error']) && !empty($data['last_name_error'])) ? 'is-invalid' : ''; ?>"
                                        placeholder="<?php echo isset($data['last_name']) ? $data['last_name'] : ''; ?>"
                                        value="<?php echo $_SESSION['last_name'] ?>">
                                 <span class="invalid-feedback"><?php echo isset($data['last_name_error']) ? $data['last_name_error'] : ''; ?></span>
+                                <span class="text-center text-danger font-italic lastnameUserUpdateErr"></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -69,10 +71,11 @@
                         <div class="form-group">
                             <input type="text"
                                    name="new_username"
-                                   class="form-control form-control-lg <?php echo (isset($data['new_username_error']) && !empty($data['new_username_error'])) ? 'is-invalid' : ''; ?>"
+                                   class="updateUserUserName form-control form-control-lg <?php echo (isset($data['new_username_error']) && !empty($data['new_username_error'])) ? 'is-invalid' : ''; ?>"
                                    placeholder="Enter New Username"
                                    value="<?php echo isset($data['new_username']) ? $data['new_username'] : ''; ?>">
                             <span class="invalid-feedback"><?php echo isset($data['new_username_error']) ? $data['new_username_error'] : ''; ?></span>
+                            <span class="text-center text-danger font-italic UserNameUserUpdateErr"></span>
                         </div>
                         <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
                             <button type="submit"  value="Register" class="btn btn-success">Update Username</button>
@@ -95,10 +98,11 @@
                         <div class="form-group">
                             <input type="text"
                                    name="new_email"
-                                   class="form-control form-control-lg <?php echo (isset($data['new_email_error']) && !empty($data['new_email_error'])) ? 'is-invalid' : ''; ?>"
+                                   class="updateUserEmailNew form-control form-control-lg <?php echo (isset($data['new_email_error']) && !empty($data['new_email_error'])) ? 'is-invalid' : ''; ?>"
                                    placeholder="Enter New E-mail"
                                    value="<?php echo isset($data['new_email']) ? $data['new_email'] : ''; ?>">
                             <span class="invalid-feedback"><?php echo isset($data['new_email_error']) ? $data['new_email_error'] : ''; ?></span>
+                            <span class="text-center text-danger font-italic mailUserUpdateErr"></span>
                         </div>
                         <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
                             <button type="submit"  value="Register" class="btn btn-success">Update E-mail</button>
@@ -113,26 +117,30 @@
                         <div class="form-group">
                             <input type="password"
                                    name="password"
-                                   class="form-control form-control-lg <?php echo (isset($data['password_error']) && !empty($data['password_error'])) ? 'is-invalid' : ''; ?>"
+                                   class="checkCurrUSerPassword form-control form-control-lg <?php echo (isset($data['password_error']) && !empty($data['password_error'])) ? 'is-invalid' : ''; ?>"
                                    placeholder="Enter current password"
                                    value="<?php echo isset($data['password']) ? $data['password'] : ''; ?>">
                             <span class="invalid-feedback"><?php echo isset($data['password_error']) ? $data['password_error'] : ''; ?></span>
+                            <span class="text-center text-danger font-italic checkUserPasswordCurrentErr"></span>
                         </div>
                         <div class="form-group">
                             <input type="password"
                                    name="new_password"
-                                   class="form-control form-control-lg <?php echo (isset($data['new_password_error']) && !empty($data['new_password_error'])) ? 'is-invalid' : ''; ?>"
+                                   class="checkUSerPasswordNew form-control form-control-lg <?php echo (isset($data['new_password_error']) && !empty($data['new_password_error'])) ? 'is-invalid' : ''; ?>"
                                    placeholder="Enter New Password"
                                    value="<?php echo isset($data['new_password']) ? $data['new_password'] : ''; ?>">
                             <span class="invalid-feedback"><?php echo isset($data['new_password_error']) ? $data['new_password_error'] : ''; ?></span>
+                            <span class="text-center text-danger font-italic checkUserPasswordnewErr"></span>
                         </div>
                         <div class="form-group">
                             <input type="password"
                                    name="confirm_password"
-                                   class="form-control form-control-lg <?php echo (isset($data['confirm_password_error']) && !empty($data['confirm_password_error'])) ? 'is-invalid' : ''; ?>"
+                                   class="checkUSerPasswordNewAgain form-control form-control-lg <?php echo (isset($data['confirm_password_error']) && !empty($data['confirm_password_error'])) ? 'is-invalid' : ''; ?>"
                                    placeholder="Confirm New Password"
                                    value="<?php echo isset($data['confirm_password']) ? $data['confirm_password'] : ''; ?>">
                             <span class="invalid-feedback"><?php echo isset($data['confirm_password_error']) ? $data['confirm_password_error'] : ''; ?></span>
+                            <span class="text-center text-danger font-italic checkUserPasswordnewAgainErr"></span>
+                            <span class="text-center text-danger font-italic checkUserPasswordMatchErr"></span>
                         </div>
                         <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
                             <button type="submit"  value="Register" class="btn btn-success">Update Password</button>

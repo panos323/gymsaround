@@ -209,6 +209,17 @@ body{
     padding: 5px 15px;
 }
 
+/**
+       Blog Css
+ */
+.maxLength{
+    display: block !important;
+    max-height: 9em;
+    white-space: pre-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 /**
     Footer Css

@@ -15,33 +15,43 @@ body{
 /**
  Navigation Bar Css
  */
- .navbar-collapse{width: auto;}
+    .navbar-collapse{width: auto;}
 
-#navbarstyle{background-color: #2c2b2b;}
-#navbarstyle a{color:#}
+    #navbarstyle{background-color: #2c2b2b;}
 
-#sitename{float:right;
-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-padding-top: 25px;
-padding-left: 10px;
-font-size: 20px;
-color: #b5b5b6;
-}
-.navbar_logo {
-    height: 50px;
-    width: auto;
-    padding-left: 20px;
-   
-}
-#btnregister{
+    #navbarstyle a{color:#}
+
+    #sitename{
+        float:right;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        padding-top: 25px;
+        padding-left: 10px;
+        font-size: 20px;
+        color: #b5b5b6;
+    }
+    .navbar_logo {
+        height: 45px;
+        width: auto;
+        padding-left: 20px;
+    }
+   .nav-item > a{
+        color: #e3e3e3 !important;
+    }
+    .nav-item > a:hover{
+        color: #1ab5b7 !important;
+    }
+    .nav-item > a:active{
+        color: #1ab5b7 !important;
+    }
+/* #btnregister{
     margin-right: 2%;
     
 }
 #btnlogin{
     margin-right: 4%;
    
-}
-#btnregister button, #btnlogin button{
+} */
+/* #btnregister button, #btnlogin button{
     background-color: #2c2b2b;
     width:100%;
     border: none;
@@ -58,8 +68,16 @@ color: #b5b5b6;
     background-color: #1ab5b7;
     color:#1d1d1d; 
   
+} */
+
+#btnliButtonFirst{
+    margin-left:20px;
+    margin-right:10px;
 }
 
+.btnNavabarStyle button{
+    border-radius: 22px;
+}
 
 #btnmodal:hover{
     background-color:#1ab5b7;
@@ -146,13 +164,25 @@ margin-left:36%;
     color:#169b99;
     margin-left: 24%;
 }
-#forgotpass{
-    color:#169b99;
-   margin-left: 34%;
-}
+
 .form-group input{font-size:18px;
     border-radius: 22px; 
     height: 45px; }
+
+ #forgotpassmodal{opacity: 1 ;}   
+
+ #modalcontentfgpass{margin-top: 150px;}
+
+ #forgotpasstitle{margin-left: 15%;}
+
+#forgotpass{
+    background-color: white;
+    color: #169b99;
+    border: none;
+    cursor: pointer;
+    margin-left: 34%;
+    outline: none;
+}
 
 /**
     error page css
@@ -234,7 +264,7 @@ margin-left:36%;
  */
 
 footer{
-    height: 400px;
+    height: 100%;
     background-color: #1d1d1d;
     color: #ffffff;
 }
@@ -249,11 +279,18 @@ footer p a {
 }
 .footerrow{margin-top: 50px;}
 
-#gymaound{
+#gymaround{
     display: none;
 }
 #sicon img:hover{
     opacity: 0.6;
+}
+#footermenu > p > a , #footerextra > p > a{
+    color: #e3e3e3;
+    text-decoration: none;
+}
+#footermenu > p > a:hover, #footerextra > p > a:hover{
+    color: #1ab5b7;
 }
 
 /*-------------INDEX ----------------------*/
@@ -276,11 +313,14 @@ footer p a {
 
 #boxgrey{
     background-color:#1d1d1d;/*grey*/
-    width:35vw;
+    width:105%;
     height:100vh;
     opacity: 0.8;
+    padding: 0;
 }
-#mobiletitle{display: none;}
+#mobiletitle{
+    display: none;
+    }
 
 #title{
     color: #169b99;/*BLUE*/
@@ -327,6 +367,13 @@ select{
 .rowbestgymmobile{display: none;}
 
 
+.displaySecondGym,.displayThirdGym,.displaySecondGymPhoto,.displayThirdGymPhoto{
+    display:none;
+}
+
+#leftArrowChangeGym,#rightArrowChangeGym{
+    cursor:pointer;
+}
 
 /*******************************************
 -------------BUTTON ORANGE----------------------
@@ -339,6 +386,7 @@ select{
     border-radius: 22px;  
     display: inline-block;
     font-size: 20px;
+    outline: none;
 }
 
 
@@ -364,6 +412,7 @@ select{
     border-radius: 22px;
     padding: 8px;
     font-size: 18px;
+    outline: none;
 }
 #btnfooter:hover{
     background-color: #fbba0b;
@@ -393,6 +442,7 @@ select{
     text-decoration: none;
     display: inline-block; 
     font-size: 20px;
+    outline: none;
 }
 
 
@@ -421,12 +471,14 @@ select{
     margin-right: 180px;
     width: 70%;
     cursor: pointer;
+    outline: none;
 }
 
 
 #btnmember{
     margin-top: 10px; 
     cursor: pointer;
+    outline: none;
    }
 #btnmember:hover{
     color: #1ab5b7;
@@ -469,14 +521,13 @@ select{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
 
 .box1{
-    height: 65vh;
+    /* height: 65vh; */
     width: 100%;
     background-size: cover;
     display: table;
     background-attachment: fixed;}
 
 .box2{
-   
     height: 450px;
     width:110%;
     background-image:url(../images/indexblogphoto.jpeg);
@@ -486,7 +537,7 @@ select{
 }
 
 .box3 {
-    height:400px;
+    margin-bottom:50px;
     width: 100%;
     background-size: cover;
     display: table;
@@ -527,30 +578,40 @@ select{
     padding: 5px;
 }
 
+.flexAllItems{
+    display:flex;
+    align-items: center;
+}
 
+.sponsorsFirst,.sponsorsSecond{
+    margin-left:1%;
+    margin-right:1%;
+}
 
+.sponsorsSecond{
+    display:none;
+}
 
-#sponsors{margin-top: 10%;}
+#sponsors1,#sponsors2{
+    cursor:pointer;
+}
 
 .flex-container {
     display: flex;
     flex-wrap: nowrap;
-  }
+    justify-content: space-between;
+}
 
   .flex-container > div {
     filter: grayscale(100%);
-    margin-top: 10%;
-    margin-left: 5%;
- 
   }
 
   .flex-container > div:hover{
-         
     filter: grayscale(0%);
   }
 
   #newsletter{
-      height: 300px;
+    height: 300px;
     background-color: #169b99;
       
   }
@@ -652,7 +713,7 @@ select{
         height: 700px;
         background-color: #1d1d1d;}
 
-    .orangebox{
+     .orangebox{
         width: 265px;
         height: 420px;
         background-color: none;
@@ -710,6 +771,7 @@ select{
             border: 2px solid #169b99;
             width: 85%;
             color:#169b99;
+            outline: none;
         }
 
     .btnsearchpage:hover{
@@ -867,12 +929,11 @@ select{
       filter: grayscale(0%);
       box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);  
   }
-  
-  .partnerform{
+ .partnerform{
       background-color: white;
-      height:700px;
       width: 100%;
-      margin-top:352px;
+      margin-top:355px;
+      padding-bottom:100px;
       background-image: linear-gradient(to right,#169b99 , #1ecfcc);
   }
 
@@ -892,7 +953,7 @@ select{
       text-align: center;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   }
-  #btnformpartner{
+ #btnformpartner{
     background-color: #ffc731;
     color: #2c2b2b;
     font-size:20px;
@@ -954,7 +1015,7 @@ select{
 }
 .pagination{margin: 30px;}
 
-#blogpage{
+#contactpage, #blogpage{
     
         margin-top: 380px;
         height:250px;
@@ -964,12 +1025,13 @@ select{
     
 }
 
-#blogdescription{
+#contactdescription, #blogdescription{
     text-align: center;
     font-size: 25px;
     color: #2c2b2b;
 }
-#blogpagetitle {
+
+#contactpagetitle, #blogpagetitle {
     text-align: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 40px;
@@ -1026,11 +1088,41 @@ textarea {
 
 #commentday{float:right;}
 
+/****************************************************************************************************
+  ******************************************************************************************************
+  *****************************----CONTACT PAGE----*********************************************************/
 
+  #imgcontact{
 
+    background-repeat: no-repeat;
+    width:100%;
+    background-image:url(../images/contact.jpeg);
+    background-size:cover;
+    height:50vh;
+    min-height: 500px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 180px;
 
+}
+ #btncontactform{
+    background-color: #ffc731;
+    color: #2c2b2b;
+    font-size:20px;
+    border-radius: 22px;
+    padding: 8px;
+    font-weight: 600;
 
+}
+#btncontactform:hover{
+    background-color: white;
+    color: #ffc731;
+    font-weight: 600;
+    border: 1px solid #ffc731;
 
+}
 
 /*********************************************************************************************
 **********************************!!!!!---RESPONCIVE---!!!!***********************************
@@ -1067,23 +1159,20 @@ textarea {
 }
 
 
-/****************************SEARCH RESPONSIVE  1790**********************************/
+/****************************SEARCH RESPONSIVE  **********************************/
 
-@media (max-width: 1790px) {
-    #gymMainPhoto{
-        margin-bottom:10px;
-    }
+@media (max-width: 1500px) {
 
     #btnGymPrice{
         float:left !important;
         display:block !important;
-        margin-left:0px !important;
+        margin-left:0 auto !important;
         width:150px;
         margin-bottom:25px !important;
     }
 
-    #gymsLikeHeart{
-        margin-bottom:20px;
+    #gymMainPhoto{
+        margin-bottom:10px;
     }
 
     .ratingStars{
@@ -1100,16 +1189,36 @@ textarea {
     }
 }
 
-/****************************SEARCH RESPONSIVE  1100*********************************************/
 
-@media (max-width: 1100px) {
+@media (max-width: 932px) {
+    .sidebar {
+        width: 40% !important;
+      }
 
-    #gymsLikeHeart{
-        margin:10px 0 !important;
-        clear:both;
-        float:left !important;
-    }
+      .map {
+        width: 58% !important;
+      }
 }
+
+@media (max-width: 700px) {
+    .sidebar {
+        width: 47% !important;
+      }
+
+      .map {
+        width: 51% !important;
+      }
+}
+
+/****************************NAVBAR RESPONSIVE  LG BREAKPOINT*********************************************/
+@media (max-width: 991px) { 
+    #btnliButtonFirst{
+        margin-left:0px;
+        margin-right:0px;
+        margin-top:14px;
+        margin-bottom:8px;
+    }
+ }
 
 
 /****************************RESPONSIVE 992 - 1200*********************************************/
@@ -1164,7 +1273,7 @@ textarea {
   }
 
   /************************************************************************
-  *****************888RESPONSIVE 992 - 768*********************************/
+  ********************RESPONSIVE 992 - 768*********************************/
 
   @media (min-width: 768px) and (max-width: 991.98px) { 
       
@@ -1182,6 +1291,7 @@ textarea {
     #bestgymimg img{
         margin-top: 40px;
     }
+    
     .bestgym{
         height: 500px;
     }
@@ -1204,10 +1314,11 @@ textarea {
     #title{
         color: #169b99;/*BLUE*/
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        font-size: 45px;
-        margin-top: 100px;
+        font-size: 54px;
+        margin-top: 80px;
     }
-
+    
+    
     #scl1{margin-top: 30px;}
    
     #btnfooter{
@@ -1217,7 +1328,7 @@ textarea {
 
     .socialm{margin-top: 40px;}   
 
-    footer{ height: 300px;}
+    footer{ height: 100%;}
 
     .footerrow{margin-top: 30px;}
 
@@ -1227,15 +1338,19 @@ textarea {
         width: auto;
     }
    
-    #gymaound{
+    #gymaround{
         display:block;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 30px;
-        color: #b5b5b6;}
+        color: #eaeaea;
+        opacity: 0.8;}
+
         #images{
         height: 600px;
         }
+/*************OWNER INDEX**************/
         
+     #partnerform{margin-top: 30%;}   
 /*************GYM INDEX**************/
 
         #biggymimg img{display: none;}
@@ -1249,7 +1364,7 @@ textarea {
         .trainerdescr{height: 50px;}
         .trainerdescr p{font-size: 16px;
         }
-        .orangebox{
+        .flip-card, .orangebox{
             height: 360px;
             width: 320px;
             float:left;
@@ -1272,6 +1387,16 @@ textarea {
 
   @media (min-width: 575.98px) and (max-width: 767.98px) {
 
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:center;
+    } 
+
+    .sponsorsFirst,.sponsorsSecond{
+        margin: 1% 0;
+    }
+
     #imagerow1 img {
          width:45%;
         padding: 5px;
@@ -1282,30 +1407,33 @@ textarea {
         padding: 5px;
     }
 
-    .fimage{height: 500px;}
+    .fimage{height: 500px;
+    background-image: none;
+background-color: #1d1d1d;}
         
     #boxgrey{
-        width:110%;
+        width:120%;
         height: 500px;
+        background-color: #1d1d1d;
     }
+
+  
+  #mobiletitle{
+      display: inline;
+      margin-top: 60px;
+      display: block; 
+      color: #1ecfcc;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 30px;
+      text-align: center;}
 
     #btnsearch{width: 100%;}
 
-    #btnmember, #bigtitle,  .blogrow,  #footermenu, #footerextra,  #footertitle, #arrow{display:none;}
+    #btnmember, #bigtitle,  .blogrow,  #footermenu, #footerextra,  #footertitle, #title, #arrow{display:none;}
 
-    #title{
-        color: #169b99;/*BLUE*/
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        font-size: 45px;
-        margin-top: 100px;
-    }
         
     #btnfooter{
         width:100%;
-    }
-
-    footer{
-         height: 430px;
     }
 
     .footer_logo{
@@ -1313,11 +1441,12 @@ textarea {
         width: auto;
     }
     
-    #gymaound{
+    #gymaround{
         display:block;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 30px;
-        color: #b5b5b6;
+        color: #eaeaea;
+        opacity: 0.8;
     }
 
 
@@ -1362,7 +1491,7 @@ textarea {
 
         .titlepartnerform{margin-top: 530px;}
 
-        .partnerform{padding-bottom: 900px;}
+      
 
     /***********GYM INDEX***************/
          #biggymimg img{display: none;}
@@ -1379,7 +1508,7 @@ textarea {
 
         .trainersrow{height: 800px;}
 
-        .orangebox{
+        .flip-card, .orangebox{
             height: 360px;
             width: 240px;
             float:left;
@@ -1402,6 +1531,23 @@ textarea {
 
 @media (max-width: 575px) { 
 
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:center;
+        }
+
+        .sponsorsFirst,.sponsorsSecond{
+            margin: 1% 0;
+        }
+
+        #sponsors2{
+            margin-left:-20px;
+        }
+
+        .sponsorsFirst img, .sponsorsSecond img {
+            /* width:40vw; */
+        }
 
         .rowtitle{
             margin-top: 0;
@@ -1436,35 +1582,32 @@ textarea {
             display: block;   
         }
 
-        #mobiletitle{
-            margin-top: 250px;
-            display: inline;
-            color: #169b99;
+       #mobiletitle{
+            margin-top: 60px;
+            display: block; 
+            color: #1ecfcc;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            font-size: 27px;
+            font-size: 30px;
             text-align: center;
         }
-
-        #boxgrey{background-color: #dddee0;}
+    
 
         .fimage{
-            background-color: #dddee0;
+            background-color: #1d1d1d;
             background-image: none;
-            height: 400px;}
+            height: 500px;}
 
-        #btnmember, #bigtitle,  #title, .blogrow, .rowbestgym,  #footermenu, #footerextra,  #imagerow2{display:none;}
+        #btnmember, #bigtitle,  #title, .blogrow, .rowbestgym,  #footermenu, #footerextra,   #imagerow2{display:none;}
                 
         #boxgrey{
-            background-color: none;
+            
             width:100%;
-            height: 300px;
+            height: 350px;
         }
 
         #btnsearch{width: 100%;}
 
         #btnfooter{ width:70%; }
-
-        footer{ height: 430px; }
 
         .footer_logo{
             height: 100px;
@@ -1475,7 +1618,7 @@ textarea {
             display: none;
         }
 
-        #gymaound{
+        #gymaround{
             display:block;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             font-size: 30px;
@@ -1498,10 +1641,7 @@ textarea {
         .titlepartnerform{
             margin-top: 450px;
         }
-        .partnerform{
-            padding-bottom: 900px;
-        }
-
+       
 
 /***************GYM INDEX*******************/
         #biggymimg img{display: none;}
@@ -1551,7 +1691,7 @@ textarea {
         #trainerphoto {
             margin-top: 10px;
         }
-        .orangebox {
+        .flip-card, .orangebox {
             height: 300px;
             width: 95%;
         }
@@ -1569,4 +1709,79 @@ textarea {
 
         }
 
+
+/***************BLOG*******************/
+#imgblog{
+    background-image:url(../images/blog/blog_mobile.jpg);
+    height: 25vh;
 }
+
+
+}
+
+
+/***************************ANIMATE********************/
+
+.flip-card {
+    width: 265px;
+    height: 420px;
+    background-color: none;
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-front {
+   
+    color: black;
+    z-index: 2;
+  }
+  
+  .flip-card-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+
+    /*****ANIMATION ONSCROLLL*****/  
+
+.aboutscroll{
+    margin:0 auto;
+    transform-style: preserve-3d;
+    transform: perspective(600px);      
+    }
+          
+  
+.aboutscroll #bigabouttext{
+    
+        font-weight: 400;
+    }
+    
+.aboutscroll #bigabouttext{
+        transition: all 0.8s ease;}
+    
+.aboutscroll.hide #bigabouttext{
+        opacity: 0;
+        transform: translate3d(0, 0, 200px) rotateY(-30deg);
+    }
+

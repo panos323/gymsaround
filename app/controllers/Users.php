@@ -90,6 +90,15 @@ class Users extends Controller {
 
                 // Register User
                 if($this->userModel->register($data)){
+                    $attrs = [
+                        'full_name' => 'GymAround',
+                        'receiver_name' => '',
+                        'message' => 'Καλώς ήρθατε στο GymAround! Ευχαριστούμε που μας επιλέξατε! Ξεκινήστε σήμερα τη γυμναστική σας!',
+                        'sender_email' => 'info@georgegeorgakas.com',
+                        'subject' => 'Επιτυχής Εγγραφή στο GymAround',
+                        'receiver_email' => $data['email'],
+                    ];
+                    mailer($attrs);
                     flash('register_success', 'You are now registered and you can log in');
                     redirect('pages/index');
                 } else{
@@ -625,6 +634,82 @@ class Users extends Controller {
             redirect('users/profile/my_owners');
         } else {
             redirect('users/profile/my_owners');
+        }
+    }
+
+    public function forgotPassword() {
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'email' => trim($_POST['email']),
+            ];
+
+            $token = generateRandomString();
+            if($this->userModel->forgotPassword($data['email'], $token)){
+                $attrs = [
+                    'full_name' => 'GymAround',
+                    'receiver_name' => '',
+                    'message' => URLROOT . '/users/reset/'.urlencode($token),
+                    'sender_email' => 'info@georgegeorgakas.com',
+                    'subject' => 'Reset Your Password',
+                    'receiver_email' => $data['email'],
+                ];
+                if(mailer($attrs)){
+                    flash('forgot_success', 'Η ενέργειά σας πραγματοποιήθηκε με επιτυχία.');
+                }else {
+                    flash('forgot_success', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');
+                }
+            }else {
+                flash('forgot_success', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');
+            }
+            redirect('pages/index');
+        } else {
+            redirect('pages/index');
+        }
+    }
+
+    public function reset(string $token = '') {
+        if (!empty($token)) {
+            //Check for POST
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                //Process form
+
+                //Sanitize POST data
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'email' => trim($_POST['email']),
+                    'password' => trim($_POST['password'])
+                ];
+
+                $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
+                $user_id = $this->userModel->checkTokenAndEmail($data['email'], $token);
+                if($user_id){
+                    if($this->userModel->resetPassword($user_id, $data['password'])) {
+                        flash('reset_success', 'Η ενέργειά σας πραγματοποιήθηκε με επιτυχία.');
+                    } else {
+                        flash('reset_success', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');
+                    }
+                } else {
+                    flash('reset_success', 'Δε βρέθηκε ο χρήστης.', 'alert alert-danger');
+                }
+                redirect('users/reset/'.$token);
+            } else {
+                //Process form
+                $data = [
+                    'token' => $token
+                ];
+
+                $this->view('users/reset', $data);
+            }
+        } else {
+            redirect('pages/index');
         }
     }
 }

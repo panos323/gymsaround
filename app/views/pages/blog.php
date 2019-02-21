@@ -6,30 +6,26 @@
         <div class="col-8 offset-2" id="blogpage">
             <p id="blogpagetitle" >Blog</p>
             <p id="blogdescription" > Μάθε τα πάντα για την γυμναστική και τη σωστή διατροφή!</p>
+        </div>
     </div>
-</div>
 </div>
 <div class="container">
-
-
-    
-    <div class="row">
-        <div class="col-md-6">
-           <a href="#"><img src= " <?php echo URLROOT;?> /images/blog/imgblog1.jpg" style="margin-bottom:15px;" width="100%" alt="stars"/></a>
-        </div>   
-        <div class="col-md-6 blogbox">
-        <a href="#"> <h4>Διατάσεις: Πότε, πώς & γιατί πρέπει να τις κάνεις</h4></a>
-            <br>
-            <p>Πιθανώς, έχεις ακούσει αρκετές φορές ότι χρειάζονται οι διατάσεις όταν γυμνάζεστε. Τους λόγους όμως σου τους 
-                έχουν εξηγήσει ποτέ;Πολλοί τις θεωρούν βαρετές και χάσιμο χρόνου. Μέγα Λάθος! Οι διατάσεις είναι ενστικτωδώς μέρος 
-                της καθημερινότητάς μας. </p>
-            </div>  
-    </div>
-
+    <?php foreach ($data as $article) : ?>
+        <div class="row">
+            <div class="col-md-6">
+               <a href="<?php echo URLROOT.'/pages/article/'.$article->post_id;?>"><img src= " <?php echo URLROOT;?>/images/blog/imgblog1.jpg" style="margin-bottom:15px;" width="100%" alt="stars"/></a>
+            </div>
+            <div class="col-md-6 blogbox">
+            <a href="<?php echo URLROOT.'/pages/article/'.$article->post_id;?>"> <h4><?php echo $article->post_title; ?></h4></a>
+                <br>
+                <p class="maxLength"><?php echo $article->post_description; ?></p>
+                </div>
+        </div>
+    <?php endforeach; ?>
 
     <div class="row">
         <div class="col-md-6 ">
-             <a href="#"><img src= " <?php echo URLROOT;?> /images/blog/imgblog5.jpg"  style="margin-bottom:15px;" width="100%" alt="stars"/></a>
+             <a href="#"><img src= " <?php echo URLROOT;?>/images/blog/imgblog5.jpg"  style="margin-bottom:15px;" width="100%" alt="stars"/></a>
         </div>   
         <div class="col-md-6 blogbox">
             <a href="#"> <h4>10 λόγοι για να ξεκινήσετε το τρέξιμο σήμερα</h4></a>
@@ -41,7 +37,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <a href="#"> <img src= " <?php echo URLROOT;?> /images/blog/imgblog2.jpeg" style="margin-bottom:15px;" width="100%" alt="stars"/></a>
+            <a href="#"> <img src= " <?php echo URLROOT;?>/images/blog/imgblog2.jpeg" style="margin-bottom:15px;" width="100%" alt="stars"/></a>
         </div>   
         <div class="col-md-6 blogbox">
             <a href="#"> <h4>Πορτοκάλια και λεμόνια μειώνουν τις συνέπειες της παχυσαρκίας</h4></a>

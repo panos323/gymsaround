@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet"><!--FONT MPLUS--->
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/mainstyle.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/animate.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -20,9 +21,13 @@
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.css' type='text/css' />
     <!-- Turf.js plugin -->
     <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
-    <!-- END SCRIPTS MAP  -->
+    <script src="jq.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <title><?php echo SITENAME; ?></title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+    <!-- END SCRIPTS MAP  -->
+   
+
 
 </head>
 <body>

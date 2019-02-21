@@ -6,8 +6,8 @@
             <div class="col-12 fimage">
                 
                     <div class="row">
-                        <div class="col-lg-5 offset-lg-1 col-md-5 offset-md-0">
-                            <p id="bigtitle">ΒΡΕΣ ΤΟ ΓΥΜΝΑΣΤΗΡΙΟΥ ΠΟΥ ΣΟΥ ΤΑΙΡΙΑΖΕΙ</p>
+                        <div class="col-lg-4 offset-lg-1 col-md-4 offset-md-0">
+                            <p id="bigtitle" class="animated fadeInLeft">ΒΡΕΣ ΤΟ ΓΥΜΝΑΣΤΗΡΙΟΥ ΠΟΥ ΣΟΥ ΤΑΙΡΙΑΖΕΙ</p>
                                 <div class="row">
                                     <div class="col-lg-5 col-md-6 offset-md-0">
                                    <button class="btnblue" id="btnmember">Γίνε Μέλος</button></a>
@@ -17,18 +17,18 @@
                             </div>
                     
 
-                    <div class="col-lg-4 offset-lg-2 col-md-6 offset-md-1 col-sm-12">
+                    <div class="col-lg-5 offset-lg-2 col-md-7 offset-md-1 col-sm-12">
                         <div id="boxgrey">
 
                             <div class="row">
-                                <div class="col-lg-3 offset-lg-4 col-md-5 offset-md-3 col-sm-4 offset-sm-4 col-11 offset-1">
-                                    <p id="mobiletitle">Βρες το γυμναστήριο που σου ταιριάζει</p>
+                                <div class="col-lg-3 offset-lg-5 col-md-5 offset-md-3 col-sm-10  col-12">
+                                    <p id="mobiletitle">Βρες το γυμναστήριο που σου ταιριάζει!</p>
                                     <p id="title">Επέλεξε</p>
                                 </div>
                             </div>
                     
                             <div class="row">
-                                <div class="col-lg-7 offset-lg-2 col-md-9 offset-md-1 col-sm-8 offset-sm-2" id="slc">
+                                <div class="col-lg-7 offset-lg-3 col-md-9 offset-md-1 col-sm-8 offset-sm-1" id="slc">
                                     <select id="slc1">
                                         <option value="hidden">Περιοχή</option>
                                         <option value="athens">Αθήνα</option>
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="row"> 
-                                <div class="col-lg-7 offset-lg-3 col-md-9 offset-md-1 col-sm-8 offset-sm-2">
+                                <div class="col-lg-7 offset-lg-4 col-md-9 offset-md-1 col-sm-8 offset-sm-1">
                                 <button class="btnorange" id="btnsearch">Αναζήτηση</button></a>
                                 </div>
                             </div>
@@ -73,30 +73,72 @@
                                 </div>
                                 <!--------BEST GYM DESKTOP--------->
                                 <div class="rowbestgym">
-                                <div class="row">
-                                    <div class="col-lg-4 offset-lg-0 col-md-5 offset-md-0">
-                                        <p id="gymname">Workout Hall Crossfit</p>
-                                        <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars">
-                                        <p style="margin-top:10px;">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
-                                        <p style="font-size:18px;"><b>Crosfii, Boxing, KingBoxing,Climbing</b></p>
-                                    </div>
-                                    <div class="col-lg-6 offset-lg-2 col-md-6 offset-md-1" id="bestgymimg" >
-                                             <img src= " <?php echo URLROOT; ?>/images/bestgym1.jpg" width="100%" height="auto">
-                                          <!--  <button class="btnprobolh"><a href="#">Αναζήτηση</a></button>-->
-                                    </div>
-                                </div>
+                                    <div class="row">
+                                        <div class="col-lg-4 offset-lg-0 col-md-5 offset-md-0">
+                                            <!--start first gym details to display -->
+                                            <div class="displayFirstGym">
+                                                <p id="gymname">Workout Hall Crossfit</p>
+                                                <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars">
+                                                <p style="margin-top:10px;">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
+                                                <p style="font-size:18px;"><b>Crosfii, Boxing, KingBoxing,Climbing</b></p>
+                                            </div>
+                                            <!--end first gym details to display -->
+
+                                            <!--start second gym details to display -->
+                                            <div class="displaySecondGym">
+                                                <p id="gymname">Benefit</p>
+                                                <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars">
+                                                <p style="margin-top:10px;">Ιωνίας 25, Τρίκαλα</p>
+                                                <p style="font-size:18px;"><b>Salsa, Zumba, KingBoxing</b></p>
+                                            </div>
+                                            <!--end second gym details to display -->
+
+                                            <!--start third gym details to display -->
+                                            <div class="displayThirdGym">
+                                                <p id="gymname">BodyBuilding Club</p>
+                                                <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars">
+                                                <p style="margin-top:10px;">Ριχάρδου 27, Θεσσαλονίκη</p>
+                                                <p style="font-size:18px;"><b>Crosfit, Pilates,BodyBuilding</b></p>
+                                            </div>
+                                            <!--end third gym details to display -->
+                                        </div>
+
+                                        <div class="col-lg-6 offset-lg-2 col-md-6 offset-md-1" id="bestgymimg" >
+                                            <!--start first gym photo to display -->
+                                            <div class="displayFirstGymPhoto">
+                                                <img src="<?php echo URLROOT; ?>/images/bestgym1.jpg" height="auto" class="d-block w-100" alt="Gym Photo">      
+                                            </div>
+                                            <!--start first gym photo to display -->
+
+                                            <!--start second gym photo to display -->
+                                            <div class="displaySecondGymPhoto">
+                                                <img src="<?php echo URLROOT; ?>/images/bestgym2.jpeg" height="auto" class="d-block w-100" alt="Gym Photo">      
+                                            </div>
+                                            <!--start second gym photo to display -->
+
+                                            <!--start third gym photo to display -->
+                                            <div class="displayThirdGymPhoto">
+                                                <img src="<?php echo URLROOT; ?>/images/bestgym3.jpeg" height="auto" class="d-block w-100" alt="Gym Photo">      
+                                            </div>
+                                            <!--start third gym photo to display -->
+                                        </div>
+
+                                    </div><!--end row-->
                             
-                                <div class="row">
-                                    <div class="col-md-1 offset-md-7 col-sm-1 offset-sm-6">
-                                        <img  src= " <?php echo URLROOT; ?>/images/back.png" alt="stars" width="25" height="30" style="float:right;">
-                                    </div>
-                                    <div class="col-lg-2 col-sm-2  ">
-                                        <p id="number"  style="text-align:center;"><span id="numbercolor">1 </span>/ 3 </p>
-                                    </div>
-                                    <div class="col-1 ">
-                                        <img  src= " <?php echo URLROOT; ?>/images/front.png" alt="stars" width="25" height="30" style="float:left;">
-                                    </div>
-                                </div>
+
+                                    <div class="row">
+                                        <!--start arrow controls -->
+                                        <div id="leftArrowChangeGym" class="col-md-1 offset-md-7 col-sm-1 offset-sm-6">
+                                            <i class="text-info fa fa-arrow-left fa-2x" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col-lg-2 col-sm-2">
+                                            <p id="number" style="text-align:center;"><span id="numbercolor"></p>
+                                        </div>
+                                        <div id="rightArrowChangeGym" class="col-1 ">
+                                            <i class="text-info fa fa-arrow-right fa-2x" aria-hidden="true"></i>
+                                        </div>
+                                        <!--end arrow controls -->
+                                    </div><!--end row-->
                                 </div>
 
 
@@ -111,34 +153,33 @@
                                          <div class="col-7">
                                                 <p id="gymname">Workout Hall Crossfit</p>
                                                 <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars" width="30%">
-                                                <p id="bgelementmobile">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
-                                                <p id="bgelementmobile">Crosfii, Boxing, KingBoxing,Climbing</p>
+                                                <p style="margin-top:10px; id="bgelementmobile">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
+                                                <p id="bgelementmobile"><b>Crosfii, Boxing, KingBoxing,Climbing</b></p>
                                          </div>
                                        </div> 
                                      <div class="row" id="bgborder">
                                          <div class="col-5">
-                                         <img src= " <?php echo URLROOT; ?>/images/bestgym1.jpg" width="100%" height="auto">
+                                         <img src= " <?php echo URLROOT; ?>/images/bestgym2.jpeg" width="100%" height="auto">
                                          </div>
                                          <div class="col-7">
-                                                <p id="gymname">Workout Hall Crossfit</p>
-                                                <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars" width="30%">
-                                                <p id="bgelementmobile">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
-                                                <p id="bgelementmobile">Crosfii, Boxing, KingBoxing,Climbing</p>
+                                                <p id="gymname">Benefit</p>
+                                                <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars">
+                                                <p style="margin-top:10px;">Ιωνίας 25, Τρίκαλα</p>
+                                                <p><b>Salsa, Zumba, KingBoxing</b></p>
                                          </div>
                                      </div>
                                      <div class="row" id="bgborder">
                                          <div class="col-5">
-                                         <img src= " <?php echo URLROOT; ?>/images/bestgym1.jpg" width="100%" height="auto">
+                                         <img src= " <?php echo URLROOT; ?>/images/bestgym3.jpeg" width="100%" height="auto">
                                          </div>
                                          <div class="col-7">
-                                                <p id="gymname">Workout Hall Crossfit</p>
-                                                <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars" width="30%">
-                                                <p id="bgelementmobile">Ρόδων 6 & Κυβέλης 17456, Άλιμος</p>
-                                                <p id="bgelementmobile">Crosfii, Boxing, KingBoxing,Climbing</p>
+                                                <p id="gymname">BodyBuilding Club</p>
+                                                <img src= " <?php echo URLROOT; ?>/images/stars.png" alt="stars">
+                                                <p  style="margin-top:10px;">Ριχάρδου 27, Θεσσαλονίκη</p>
+                                                <p><b>Crosfit, Pilates,BodyBuilding</b></p>
                                          </div>
                                      </div>
-                                  
-
+                                
                                  </div>
 
 
@@ -175,28 +216,36 @@
 
  <!--- START ROW 4-SPONSORS---->
 
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-12">
             <div class="box3">
                 <div class="container">
                     <p class="rowtitle" id="blogtitle">ΥΠΟΣΤΗΡΙΚΤΕΣ</p>
-                        <div class="row">
-                            <div class="col-1" id="sponsors">
-                                <img  src= " <?php echo URLROOT; ?>/images/back.png" alt="stars" width="25" height="30">
+                        <div class="row mb-5">
+                            <div class="flexAllItems">
+                            <div class="col-1" id="sponsors1">
+                                <i class="text-secondary fa fa-arrow-left fa-2x" aria-hidden="true"></i>
                             </div>
                             <div class="col-10">
                                 <div class="flex-container">
-                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
-                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
-                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
-                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
-                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
-                                    <div> <img  src= " <?php echo URLROOT; ?>/images/testlogo.png" alt="stars" width="100%" height="auto"></div>
-                                </div>
+                                    <!-- first sponsors -->
+                                    <div class="sponsorsFirst"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder-red.png" alt="stars" width="100%" height="auto"></div>
+                                    <div class="sponsorsFirst"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder-red.png" alt="stars" width="100%" height="auto"></div>
+                                    <div class="sponsorsFirst"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder-red.png" alt="stars" width="100%" height="auto"></div>
+                                    <div class="sponsorsFirst"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder-red.png" alt="stars" width="100%" height="auto"></div>
+                                    
+                                    <!-- second sponsors -->
+                                    <div class="sponsorsSecond"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder.jpg" alt="stars" width="100%" height="auto"></div>
+                                    <div class="sponsorsSecond"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder.jpg" alt="stars" width="100%" height="auto"></div>
+                                    <div class="sponsorsSecond"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder.jpg" alt="stars" width="100%" height="auto"></div>
+                                    <div class="sponsorsSecond"> <img class="img-fluid" src= " <?php echo URLROOT; ?>/images/placeholder.jpg" alt="stars" width="100%" height="auto"></div>
+                                </div> <!-- flex container -->
                             </div>
-                            <div class="col-1" id="sponsors">
-                                <img  src= " <?php echo URLROOT; ?>/images/front.png" alt="stars" width="25" height="30">
+                            <div class="col-1" id="sponsors2">
+                                <i class="text-secondary fa fa-arrow-right fa-2x" aria-hidden="true"></i>
                             </div>
+                        </div>  <!-- flex all -->
+                        
                     </div>
                 </div>
              </div>

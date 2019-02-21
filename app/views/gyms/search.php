@@ -171,18 +171,19 @@
 }
 
  .mapboxgl-ctrl-geocoder {
-  border: 0;
-  border-radius: 0;
+  top:-6px;
   position: relative;
-  top: 0;
-  width: 800px;
-  margin-top: 0;
+  left:8px;
+  /* border: 0;
+  border-radius: 0;
+  width: 400px;
+  margin-top: 0; */
 }
 
-.mapboxgl-ctrl-geocoder > div {
-  min-width: 100%;
+/* .mapboxgl-ctrl-geocoder > div {
+  min-width: 50%;
   margin-left: 0;
-} 
+}  */
 
 .mapboxgl-popup-close-button{
   display:block;
@@ -196,13 +197,15 @@
 
     <!--start search buttons -->
     <div class="row col-lg-12">
-        <div class="col-md-4 mt-4 mb-3">
+        <div class="col-md-7 mt-4 mb-3">
           <button type="button" class="btn btn-outline-info mr-4 mb-2   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
           <div class="dropdown d-inline-block">
               <button class="btn btn-outline-info mr-4 mb-2 btn-md dropdown-toggle customBtnG" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Περιοχή
               </button>
-              <div class="dropdown-menu dropDownMenuCol" aria-labelledby="dropdownMenuButton">
+              <div class="dropdown-menu dropDownMenuCol showSelectedItemAreas" aria-labelledby="dropdownMenuButton">
+                <button class="dropdown-item" type="reset" id="dropdownReset" href="#">Όλες</button>
+                <div class="dropdown-divider"></div>
                 <button class="dropdown-item" id="dropdownAthens" href="#">Αθήνα</button>
                 <div class="dropdown-divider"></div>
                 <button class="dropdown-item" id="dropdownThessaloniki" href="#">Θεσσαλονίκη</button>
@@ -214,7 +217,9 @@
               <button class="btn btn-outline-info mr-4 mb-2 btn-md dropdown-toggle customBtnG" type="button" id="dropdownMenuButtonArr" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Είδος
               </button>
-              <div class="dropdown-menu dropDownMenuCol" aria-labelledby="dropdownMenuButton">
+              <div class="dropdown-menu dropDownMenuCol showSelectedItemType" aria-labelledby="dropdownMenuButtonArr">
+                <button class="dropdown-item" type="reset" id="dropdownResetTypes" href="#">Όλα</button>
+                <div class="dropdown-divider"></div>
                 <button class="dropdown-item" id="dropdownMartial" data-toggle="tooltip" data-placement="top" title="Boxing,KingBoxing,Muay thai,Krav Maga">Πολεμικές Τέχνες</button>
                 <div class="dropdown-divider"></div>
                 <button class="dropdown-item" id="dropdownCrossfit" data-toggle="tooltip" data-placement="top" title="Crossfit" >Crossfit</button>
@@ -227,11 +232,8 @@
 
           <button type="button" id="sortByPriceBtn" class="btn btn-outline-info mb-2  btn-md customBtnG">Tιμή +<i id="AscDescArrowsPrice" class="fa" aria-hidden="true"></i></button>
         </div>
-        <div class="col-md-6 offset-1  mt-3 mb-3">
-            <div class="input-group">
-                <div id='geocoder' class='geocoder'>
-              </div>
-            </div>
+        <div class="col-md-3 offset-1  mt-3 mb-3">
+            <p id="totalGymResulstsSpan" class="lead"></p>
         </div>
     </div> <!--row-->
     <!--end search buttons -->
@@ -308,6 +310,29 @@
 //end rating stars
 
 
+  //start function that display total results the founded
+  function countGymELements(myList) {
+    var count = 0;
+    var resultsLength = document.querySelector("#totalGymResulstsSpan");
+
+      for (let i = 0; i < myList.length; i++) {
+        var thisElem = myList[i];
+        if (!thisElem.classList.contains("hideDropDownElement"))
+            count++;
+      }
+      if (count > 1) {
+        resultsLength.classList.add("text-success");
+        resultsLength.innerHTML = 'Βρέθηκαν ' + count.toString() + " αποτελέσματα";
+      } else if (count == 1) {
+        resultsLength.classList.remove("text-success");
+        resultsLength.innerHTML = 'Βρέθηκε ' + count.toString() + " αποτελέσμα";
+      } else {
+        resultsLength.innerHTML = 'Δεν βρέθηκαν αποτελέσματα'
+      }
+  }
+//end function that display total results the founded
+
+
 
   // This will let you use the .remove() function later on
   if (!('remove' in Element.prototype)) {
@@ -322,7 +347,7 @@
 
   var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
+    style: 'mapbox://styles/mapbox/streets-v9',
     center: [23.727539, 37.983810], //long - lat
     zoom: 10
   });
@@ -360,8 +385,7 @@
               </span>
           `,
           program: 'Crosfit - Boxing  - KingBoxing -  Salsa',
-          gymCost : 'Από 70€',
-          gumLike : '\'../public/images/search/heart.png\''
+          gymCost : 'Από 70€'
         }
       },
       {
@@ -394,8 +418,7 @@
               </span>
           `,
           program: 'Crossfit - Muay Thai  - KingBoxing ',
-          gymCost : 'Από 50€',
-          gumLike : '\'../public/images/search/heart.png\''
+          gymCost : 'Από 50€'
         }
       },
       {
@@ -428,8 +451,7 @@
               </span>
           `,
           program: 'Zoomba - Boxing  - KingBoxing -  Salsa',
-          gymCost : 'Από 79€',
-          gumLike : '\'../public/images/search/heart.png\''
+          gymCost : 'Από 79€'
         }
       },
       {
@@ -462,8 +484,7 @@
               </span>
           `,
           program: 'KingBoxing - Pilates',
-          gymCost : 'Από 110€',
-          gumLike : '\'../public/images/search/heart.png\''
+          gymCost : 'Από 110€'
         }
       },
       {
@@ -496,8 +517,7 @@
               </span>
           `,
           program: 'Zoomba - Pilates  - Cumbia -  Step',
-          gymCost : 'Από 140€',
-          gumLike : '\'../public/images/search/heart.png\''
+          gymCost : 'Από 140€'
         }
       },
       {
@@ -530,8 +550,7 @@
               </span>
           `,
           program: 'Crossfit - Pilates  - Krav Maga ',
-          gymCost : 'Από 88€',
-          gumLike : '\'../public/images/search/heart.png\''
+          gymCost : 'Από 88€'
         }
       },
       {
@@ -564,8 +583,7 @@
               </span>
           `,
           program: 'Zoomba - Boxing  - KingBoxing -  Climbing',
-          gymCost : 'Από 94€',
-          gumLike : '\'../public/images/search/heart.png\''
+          gymCost : 'Από 94€'
         }
       }
      ]
@@ -684,37 +702,42 @@ map.on('load', function(e) {
         }
       })
 
+      //call function to show total gym results
+      countGymELements(myList)
+
   });
 //End Search By Name
 
 
   //Start sort Elements By Name
   function SortByName() {
-    orderAscDescName = !orderAscDescName;
+   orderAscDescName = !orderAscDescName;
 
     var list = document.getElementById("listings");
     var myList = list.getElementsByClassName("item");
     var elementBtn =  document.getElementById("AscDescArrows");
 
-    var aNames = [];
-
-    for (var i = 0; i < myList.length; i++) {
-        aNames[i] = myList[i].innerHTML;
-    }//for loop
-    
-    if (orderAscDescName) {
-        aNames.sort();
+    Array.prototype.map.call(myList, function(node) {
+      return {
+        node: node,
+        relevantText: node.querySelector('.gymsLinkTitle').innerHTML.replace(" ","").toLowerCase()
+      };
+    }).sort(function(a, b) {
+      if (orderAscDescName) {
         elementBtn.classList.add("fa-arrow-down");
-    } else {
-        aNames.reverse();
+        return b.relevantText.localeCompare(a.firstname);
+      } else {
         elementBtn.classList.remove("fa-arrow-down")
         elementBtn.classList.add("fa-arrow-up")
-    }
+        return a.relevantText.localeCompare(b.relevantText);
+      }
+    }).forEach(function(item) {
+      list.appendChild(item.node);
+    });
     
-    for (var i = 0; i < myList.length; i++) {
-        myList[i].innerHTML = aNames[i];
-    }//for loop
-    
+    //call function to show total gym results
+    countGymELements(myList)
+
   }//end function
 
 
@@ -733,6 +756,7 @@ map.on('load', function(e) {
     var list = document.getElementById("listings");
     var myList = list.getElementsByClassName("item");
     var elementBtn = document.getElementById("AscDescArrowsPrice");
+    var resultsLength = document.querySelector("#totalGymResulstsSpan");
 
     Array.prototype.map.call(myList, function(node) {
       return {
@@ -750,8 +774,12 @@ map.on('load', function(e) {
       }
     }).forEach(function(item) {
       list.appendChild(item.node);
+      resultsLength.innerHTML=  myList.length.toString();
     });
     
+    //call function to show total gym results
+    countGymELements(myList)
+
   }//end function
   
 
@@ -770,7 +798,8 @@ map.on('load', function(e) {
 
     var list = document.getElementById("listings");
     var myList = list.getElementsByClassName("item");
-
+    var resultsLength = document.querySelector("#totalGymResulstsSpan");
+    var resetLocation = document.getElementById("dropdownMenuButtonArr").innerHTML = "Είδος";
     Array.prototype.map.call(myList, function(node) {
       return {
         node: node,
@@ -784,6 +813,8 @@ map.on('load', function(e) {
           item.node.classList.add('hideDropDownElement')
         }
       })
+      //call function to show total gym results
+      countGymELements(myList)
    
   }//end function
   
@@ -806,7 +837,7 @@ map.on('load', function(e) {
 
     var list = document.getElementById("listings");
     var myList = list.getElementsByClassName("item");
-
+    var resetArea = document.getElementById("dropdownMenuButton").innerHTML = "Περιοχή";
     var martials = ["Boxing", "KingBoxing", "Muay thai", "Krav Maga"];
     var aerobic = ["Yoga", "Step", "Pilates", "Zoomba"];
     var crossfit = ["Crossfit"];
@@ -836,7 +867,9 @@ map.on('load', function(e) {
         }
 
       })
-   
+      
+      //call function to show total gym results
+      countGymELements(myList);
   }//end function
   
   //on button click call function to sort elements by Location
@@ -861,11 +894,13 @@ map.on('load', function(e) {
   //start add geocoder for search in Greece
   var geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
+    placeholder: 'Search by area',
     bbox: [19.858037278278772,35.9369788149224,26.47077930220928,41.490542182273316],
   });
 
-  document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+  map.addControl(geocoder, 'top-left');
   //end add geocoder for search
+
 
   // Add the `map.addSource` and `map.addLayer` here
   map.addSource('single-point', {
@@ -974,8 +1009,12 @@ stores.features.forEach(function(marker, i) {
     var el = document.createElement('div'); // Create an img element for the marker
     el.id = 'marker-' + i;
     el.className = 'marker';
+
+    //add custom marker
+    el.style.backgroundImage = 'url(../public/images/markerGym2.svg';
+
     // Add markers to the map at all points
-    new mapboxgl.Marker(el, { offset: [-28, -46] })
+    new mapboxgl.Marker(el, { offset: [-18, -26] }) //-28, -46 for the default image
       .setLngLat(marker.geometry.coordinates)
       .addTo(map);
 
@@ -1013,12 +1052,17 @@ function createPopUp(currentFeature) {
       '<p class="lead">' + currentFeature.properties.address + '</p>')
     .addTo(map);
 }
-
+//call function to show total gym results
+//countGymELements(myList)
 
 function buildLocationList(data) {
+  var resultsLength = document.querySelector("#totalGymResulstsSpan");
+      resultsLength.classList.add("text-success");
   // Iterate through the list of stores
 
   for (i = 0; i < data.features.length; i++) {
+    resultsLength.innerHTML = 'Βρέθηκαν ' + data.features.length.toString() + " αποτελέσματα";
+    
     var currentFeature = data.features[i];
     // Shorten data.feature.properties to just `prop` so we're not
     // writing this long form over and over again.
@@ -1039,21 +1083,20 @@ function buildLocationList(data) {
 
     var details = listing.appendChild(document.createElement('div'));
     details.innerHTML = '<img id="gymMainPhoto" class="float-left img-fluid mr-4"  src= ' + prop.gymPhoto + ' />';
-    details.innerHTML += '<img id="gymsLikeHeart" class="float-right img-fluid" src= ' + prop.gumLike + ' />';
     details.innerHTML += '<h2 class="gymsTitle"><a class="gymsLinkTitle" href='+prop.linkPage+' target="_blank">' + prop.name + '</h2></a>';
     if (prop.phone) {
       details.innerHTML += '<p id="gumsPhoneNum" class="lead">' + prop.phoneFormatted + '</p>';
     }
     details.innerHTML +=  prop.rating ;
     details.innerHTML += '<p id="typeFitness" class="lead float-left mt-3"><b>' + prop.program + '</b></p>';
-    details.innerHTML += '<button class="btn btn-warning float-right mt-3 mb-3" id="btnGymPrice">' + prop.gymCost + '</button>'
+    details.innerHTML += '<button class="btn btn-warning float-right ml-1 mt-3 mb-3" id="btnGymPrice">' + prop.gymCost + '</button>'
 
     details.innerHTML += '<span class="clearfix"></span>';
 
     //distance appears on search
     if (prop.distance) {
       var roundedDistance = Math.round(prop.distance * 100) / 100;
-      //console.log('distance EXISTS')
+      
       details.innerHTML += '<p class="lead mt-3 mb-4"><mark>' + roundedDistance + ' miles away<mark></p>';
     }
 
@@ -1114,6 +1157,14 @@ map.on('click', function(e) {
     listing.classList.add('active');
   }
 });
+
+// Add geolocate control to the map.
+map.addControl(new mapboxgl.GeolocateControl({
+  positionOptions: {
+  enableHighAccuracy: true
+  },
+  trackUserLocation: true
+}));
 
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
