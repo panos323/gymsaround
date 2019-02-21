@@ -2,6 +2,7 @@
 
 class Pages extends Controller {
     public function __construct(){
+        $this->generalModel = $this->model('General');
     }
 
     public function index(){
@@ -28,18 +29,23 @@ class Pages extends Controller {
 
     
     public function blog(){
-        $data = [
-            'title' => 'Blog'
-        ];
+        $articles = $this->generalModel->getAllArticles();
+        if(!$articles) {
+            $articles = [];
+        }
 
-        $this->view('pages/blog', $data);
+        $this->view('pages/blog', $articles);
     }
-    public function article(){
-        $data = [
-            'title' => 'Article'
-        ];
+    public function article(string $id = null){
+        if(!is_null($id)) {
 
-        $this->view('pages/article', $data);
+            $data = $this->generalModel->getArticleById($id);
+
+            if ($data) {
+                $this->view('pages/article', $data);
+            }
+        }
+        redirect('pages/blog');
     }
     public function termsofuse(){
         $data = [
