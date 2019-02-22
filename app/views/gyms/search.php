@@ -3,6 +3,14 @@
 <!-- style for map -->
 <style>
 
+  #heightInSidebarMap{
+    height:auto !important;
+  }
+
+  #showResultsOnMobile{
+    display:none;
+  }
+
 .sidebar {
   width: 30%;
   height: 100%;
@@ -174,16 +182,7 @@
   top:-6px;
   position: relative;
   left:8px;
-  /* border: 0;
-  border-radius: 0;
-  width: 400px;
-  margin-top: 0; */
 }
-
-/* .mapboxgl-ctrl-geocoder > div {
-  min-width: 50%;
-  margin-left: 0;
-}  */
 
 .mapboxgl-popup-close-button{
   display:block;
@@ -241,7 +240,7 @@
 
 
 <div class="row">
-    <div class="col-md-12" style="height:100vh;">
+    <div id="heightInSidebarMap" class="col-md-12">
         <!-- MAP -->
         <div class='sidebar'>
               <div class='heading'>
@@ -256,6 +255,7 @@
               <?php endforeach; ?>
               <div id='listings' class='listings mt-2'></div>
         </div>
+        <div id="showResultsOnMobile" class="lead bg-danger text-white">Τα αποτελέσματα στον χάρτη</div>
         <div id='map' class='map'> </div>
         
         
@@ -1115,6 +1115,7 @@ function buildLocationList(data) {
     /***********************************************************************************************************************STYLE DIV *****************************************************************************************************************************************************/
 
     var details = listing.appendChild(document.createElement('div'));
+    details.classList.add("controlDivDetails");
     details.innerHTML = '<img id="gymMainPhoto" class="float-left img-fluid mr-4"  src= ' + prop.gymPhoto + ' />';
     details.innerHTML += '<h2 class="gymsTitle"><a class="gymsLinkTitle" href='+prop.linkPage+' target="_blank">' + prop.name + '</h2></a>';
     if (prop.phone) {
@@ -1198,6 +1199,9 @@ map.addControl(new mapboxgl.GeolocateControl({
   },
   trackUserLocation: true
 }));
+
+//Add full zoom option
+//map.addControl(new mapboxgl.FullscreenControl());
 
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
