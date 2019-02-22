@@ -308,7 +308,7 @@ footer p a {
     font-weight: 500;
     font-size:60px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    margin-top:330px;
+    margin-top:50%;
 }
 
 #boxgrey{
@@ -326,7 +326,7 @@ footer p a {
     color: #169b99;/*BLUE*/
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 45px;
-    margin-top: 250px;
+    margin-top: 200px;
 }
 
 select{
@@ -376,10 +376,14 @@ select{
 }
 
 #titlenewsletter{ 
-font-size: 35px;
-color: white;
-text-align: center;
-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
+    text-align:center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 35px;
+    color: white;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 
  #subscribeForm div input{
      opacity: 0.8;
@@ -388,6 +392,14 @@ font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
    color: white;
 }
 #btnregister{
+    background-color: #fbba0b;
+    border: none;
+    height: 45px;
+    border-radius: 22px;  
+    display: inline-block;
+    font-size: 20px;
+    outline: none;
+    width: 100%;
     
 }
 /*******************************************
@@ -626,9 +638,26 @@ font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
   }
 
   #newsletter{
-   
     background-image: linear-gradient(to right,#169b99 , #1ecfcc);
-      
+  }
+  #btnnewsletter{
+    background-color: #ffc731;
+    color: white;
+    font-weight: 500;
+    border: none;
+    height: 45px;
+    border-radius: 22px;
+    display: inline-block;
+    font-size: 20px;
+    outline: none;
+    width: 100%;
+    cursor: pointer;
+
+  }
+  #btnnewsletter:hover{
+     background-color: #fbba0b;
+     font-weight: 700;
+      border: 2px solid #fba30b;
   }
 
   /****************************************************************************************************
@@ -967,9 +996,16 @@ font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
       text-align: center;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   }
+  #registerOwnerForm div input{
+    opacity: 0.8;
+}
+#registerOwnerForm div label{
+  color: white;
+}
+
  #btnformpartner{
     background-color: #ffc731;
-    color: #2c2b2b;
+    color: white;
     font-size:20px;
     border-radius: 22px;
     width: 40%;
@@ -980,6 +1016,7 @@ font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
 }
 #btnformpartner:hover{
     background-color: #fbba0b;
+    border: 2px solid #fba30b;
 }
 
 #stepsicons img{
@@ -1204,8 +1241,16 @@ textarea {
     }
 
 
-
-
+    .anime {
+        opacity: 0;
+        transform: translate3d(-100px,0,0);
+        transition: all 0.8s ease;
+    }
+    
+    .anime-start {
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
 
 
 
@@ -1372,7 +1417,7 @@ textarea {
        
     }
     
-
+  
     #blogtitle{padding-top:5px;} 
 
     .btnblue{width:140%;}
@@ -1417,6 +1462,9 @@ textarea {
   @media (min-width: 768px) and (max-width: 991.98px) { 
       
     #teamimg img{width:150px; }
+    .nav-item > a{
+        border-bottom:1px solid #303741;
+    }
     
     .fimage{height: 500px;}
  
@@ -1517,6 +1565,9 @@ textarea {
   ***************************RESPONSIVE 768 - 576*************************/
 
   @media (min-width: 575.98px) and (max-width: 767.98px) {
+    .nav-item > a{
+        border-bottom:1px solid #303741;
+    }
 
     .flex-container {
         display: flex;
@@ -1672,6 +1723,9 @@ background-color: #1d1d1d;}
  
 
 @media (max-width: 575px) { 
+    .nav-item > a{
+        border-bottom:1px solid #303741;
+    }
     .navbar_logo {
         height:30px;
         width: auto;
