@@ -256,10 +256,12 @@
 
     <div class="row">
         <div class="col-md-12" id="newsletter">
+       
             <div class="row">
-                <div class="col-md-6 offset-md-3">
+                <div class="col-md-6 offset-md-3 my-5"  >
+                <p id="titlenewsletter"style="text-align:center">Εγγραφείτε στο Newsletter μας!</p>
                     <form id="subscribeForm" action="<?php echo URLROOT; ?>/pages/index" method="post">
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             <label for="name">Όνομα</label>
                             <span class="text-center text-danger font-italic nameErr"></span>
                             <input type="text"
@@ -268,7 +270,7 @@
                                    name="first_name"
                             >
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             <label for="last_name">Επώνυμο</label>
                             <span class="text-center text-danger font-italic SurnameErr"></span>
                             <input type="text"
@@ -286,7 +288,7 @@
                                    id="email"
                             >
                         </div>
-                        <button type="submit">Εγγραφή</button>
+                        <button type="submit" class="btnorange" id="btnregister">Εγγραφή</button>
                     </form>
                 </div>
             </div>

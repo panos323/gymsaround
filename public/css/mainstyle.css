@@ -375,6 +375,21 @@ select{
     cursor:pointer;
 }
 
+#titlenewsletter{ 
+font-size: 35px;
+color: white;
+text-align: center;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
+
+ #subscribeForm div input{
+     opacity: 0.8;
+ }
+ #subscribeForm div label{
+   color: white;
+}
+#btnregister{
+    
+}
 /*******************************************
 -------------BUTTON ORANGE----------------------
 ********************************************/
@@ -611,8 +626,8 @@ select{
   }
 
   #newsletter{
-    height: 300px;
-    background-color: #169b99;
+   
+    background-image: linear-gradient(to right,#169b99 , #1ecfcc);
       
   }
 
@@ -945,8 +960,7 @@ select{
     padding-top: 45px;
     color: #169b99;
 }
-
-  .titlepartnerform{
+ .titlepartnerform{
       padding: 60px;
       font-size: 35px;
       color: white;
