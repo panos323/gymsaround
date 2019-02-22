@@ -254,10 +254,44 @@
 
         <!--- START ROW 4-NEWSLETTER---->
 
-<div class="row">
-<div class="col-md-12" id="newsletter">
-</div>
-</div>
+    <div class="row">
+        <div class="col-md-12" id="newsletter">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form id="subscribeForm" action="<?php echo URLROOT; ?>/pages/index" method="post">
+                        <div class="form-group">
+                            <label for="name">Όνομα</label>
+                            <span class="text-center text-danger font-italic nameErr"></span>
+                            <input type="text"
+                                   class="form-control"
+                                   id="name"
+                                   name="first_name"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Επώνυμο</label>
+                            <span class="text-center text-danger font-italic SurnameErr"></span>
+                            <input type="text"
+                                   name="last_name"
+                                   class="form-control"
+                                   id="last_name"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <span class="text-center text-danger font-italic SurnameErr"></span>
+                            <input type="email"
+                                   name="email"
+                                   class="form-control"
+                                   id="email"
+                            >
+                        </div>
+                        <button type="submit">Εγγραφή</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div> <!-- end conatiner fuild-->
 

@@ -24,6 +24,10 @@ class ComposerStaticInit39a42d8703ef7b08c0a8d3d5fb98534d
         array (
             'Facebook\\' => 9,
         ),
+        'D' => 
+        array (
+            'DrewM\\MailChimp\\' => 16,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -42,6 +46,10 @@ class ComposerStaticInit39a42d8703ef7b08c0a8d3d5fb98534d
         'Facebook\\' => 
         array (
             0 => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook',
+        ),
+        'DrewM\\MailChimp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/drewm/mailchimp-api/src',
         ),
     );
 

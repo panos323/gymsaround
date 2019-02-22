@@ -6,10 +6,45 @@ class Pages extends Controller {
     }
 
     public function index(){
-        $data = [
-            'title' => 'Welcome'
-        ];
+        // Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
 
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'first_name' => trim($_POST['first_name']),
+                'last_name' => trim($_POST['last_name']),
+                'email' => trim($_POST['email']),
+                'first_name_error' => '',
+                'last_name_error' => '',
+                'email_error' => ''
+            ];
+
+            if(empty($data['first_name'])) {
+                $data['first_name_error'] = 'Παρακαλώ δώστε το όνομά σας.';
+            }
+            if(empty($data['last_name'])) {
+                $data['last_name_error'] = 'Παρακαλώ δώστε το επίθετό σας.';
+            }
+            if(empty($data['email'])) {
+                $data['email_error'] = 'Παρακαλώ δώστε το email σας.';
+            }
+
+            if (empty($data['first_name_error']) && empty($data['last_name_error']) && empty($data['email_error'])) {
+                $result = mailChimp($data);
+            }
+        } else {
+            $data = [
+                'first_name' => '',
+                'last_name' => '',
+                'email' => '',
+                'first_name_error' => '',
+                'last_name_error' => '',
+                'email_error' => ''
+            ];
+        }
         $this->view('pages/index', $data);
     }
 
