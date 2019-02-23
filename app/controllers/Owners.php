@@ -190,6 +190,8 @@ class Owners extends Controller {
                 'type_error' => '',
             ];
 
+            $data['image_file'] = addImage('gyms_images', $data['name']);
+
             // Validate gym name
             if(empty($data['name'])){
                 $data['name_error'] = 'Please enter a name for the gym';

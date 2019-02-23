@@ -244,8 +244,8 @@ class Owner{
      */
     public function register_gym(array $data){
         //Query
-        $this->db->query('INSERT INTO gyms (gym_name, gym_description, gym_location, gym_type, gym_monthly_price, gym_yearly_price, owners_owner_id)
-                              VALUES (:name, :description, :location, :type, :month_price, :year_price, :owners)');
+        $this->db->query('INSERT INTO gyms (gym_name, gym_description, gym_location, gym_type, gym_monthly_price, gym_yearly_price, gym_logo, owners_owner_id)
+                              VALUES (:name, :description, :location, :type, :month_price, :year_price, :logo, :owners)');
 
         // Bind values
         $this->db->bind(':name', $data['name']);
@@ -255,6 +255,7 @@ class Owner{
         $this->db->bind(':month_price', $data['month_price']);
         $this->db->bind(':year_price', $data['year_price']);
         $this->db->bind(':owners', $_SESSION['id']);
+        $this->db->bind(':logo', $data['image_file']);
 
         // Execute
         try {

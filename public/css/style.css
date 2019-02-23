@@ -130,7 +130,7 @@ body{
     padding: 0 !important;
 }
 
-.profile_boxes .form-group input, .add_trainer_modal .form-group input {
+.profile_boxes .form-group input, .add_trainer_modal .form-group input, .main_profile .form-group input {
     border-radius: 0 !important;
 }
 

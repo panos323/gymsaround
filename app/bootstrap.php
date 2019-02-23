@@ -7,6 +7,7 @@
     require_once 'helpers/mailer.php';
     require_once 'helpers/generateToken.php';
     require_once 'helpers/mailchimp.php';
+    require_once 'helpers/addImages.php';
 
     // Autoload Core Libraries
     spl_autoload_register(function ($classname){

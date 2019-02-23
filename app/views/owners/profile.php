@@ -164,7 +164,7 @@
                                         type="text"
                                         id="name"
                                         class="form-control"
-                                        placeholder="name@example.com">
+                                >
                             </div>
                             <div class="form-group">
                                 <label for="location">Τοποθεσία</label>
@@ -173,7 +173,7 @@
                                         type="text"
                                         id="location"
                                         class="form-control"
-                                        placeholder="name@example.com">
+                                >
                             </div>
                             <div class="form-group">
                                 <label for="type">Τύπος Γυμναστηρίου</label>
@@ -182,7 +182,7 @@
                                         type="text"
                                         id="type"
                                         class="form-control"
-                                        placeholder="name@example.com">
+                                >
                             </div>
                             <div class="form-group">
                                 <label for="year_price">Ετήσια Συνδρομή</label>
@@ -210,7 +210,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="logo">Το logo σας</label>
-                                <input name="logo" type="file" class="form-control-file" id="logo">
+                                <input name="image" type="file" class="form-control-file" id="logo">
                             </div>
                             <button type="submit" class="btn btn-success">Προσθέστε το γυμναστήριό σας</button>
                         </form>

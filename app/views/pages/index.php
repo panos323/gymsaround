@@ -12,45 +12,33 @@
                                     <div class="col-lg-5 col-md-6 offset-md-0">
                                    <button class="btnblue" id="btnmember">Γίνε Μέλος</button></a>
                                     </div>
-                                </div> 
-                                    
+                                </div>
                             </div>
-                    
-
-                    <div class="col-lg-5 offset-lg-2 col-md-7 offset-md-1 col-sm-12">
+                    <div class="col-lg-5 offset-lg-2 col-md-7 offset-md-1 col-sm-12" style="padding-right: 0 !important;">
                         <div id="boxgrey">
 
                             <div class="row">
-                                <div class="col-lg-3 offset-lg-5 col-md-5 offset-md-3 col-sm-10  col-12">
+                                <div class="col-lg-12  col-md-12 col-sm-10 col-12">
                                     <p id="mobiletitle">Βρες το γυμναστήριο που σου ταιριάζει!</p>
                                     <p id="title">Επέλεξε</p>
+                                        <select id="slc1" class="sortByNameBtn">
+                                            <option value="hidden">Περιοχή</option>
+                                            <option id="dropdownAthens" value="Αθήνα">Αθήνα</option>
+                                            <option value="Θεσσαλονίκη">Θεσσαλονίκη</option>
+                                            <option value="Τρίκαλα">Τρίκαλα</option>
+                                            <option value="Καλαμάτα">Καλαμάτα</option>
+                                        </select>
+                                        <select id="slc2" class="dropdownMenuButtonArr">
+                                            <option value="hidden">Τύπος Γυμναστικής</option>
+                                            <option value="Πολεμικές Τέχνες">Πολεμικές Τέχνες</option>
+                                            <option value="Crossfit">Crossfit</option>
+                                            <option value="Αerobic">Αerobic</option>
+                                            <option value="Χοροί">Χοροί</option>
+                                        </select>
+                                    <a href="<?php echo URLROOT; ?>/gyms/search"><button class="btnorange" id="btnsearch">Αναζήτηση</button></a>
+
                                 </div>
                             </div>
-                    
-                            <div class="row">
-                                <div class="col-lg-7 offset-lg-3 col-md-9 offset-md-1 col-sm-8 offset-sm-1" id="slc">
-                                    <select id="slc1" class="sortByNameBtn">
-                                        <option value="hidden">Περιοχή</option>
-                                        <option id="dropdownAthens" value="Αθήνα">Αθήνα</option>
-                                        <option value="Θεσσαλονίκη">Θεσσαλονίκη</option>
-                                        <option value="Τρίκαλα">Τρίκαλα</option>
-                                        <option value="Καλαμάτα">Καλαμάτα</option>
-                                    </select>
-                                    <select id="slc2" class="dropdownMenuButtonArr">
-                                        <option value="hidden">Τύπος Γυμναστικής</option>
-                                        <option value="Πολεμικές Τέχνες">Πολεμικές Τέχνες</option>
-                                        <option value="Crossfit">Crossfit</option>
-                                        <option value="Αerobic">Αerobic</option>
-                                        <option value="Χοροί">Χοροί</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row"> 
-                                <div class="col-lg-7 offset-lg-4 col-md-9 offset-md-1 col-sm-8 offset-sm-1">
-                                <a href="<?php echo URLROOT; ?>/gyms/search"><button class="btnorange" id="btnsearch">Αναζήτηση</button></a>
-                                </div>
-                            </div>
-            
                         </div> <!--edn box grey--->
                     </div><!-- end col-4 offset-2-->
                 </div><!--col-12 fimage-->
@@ -105,7 +93,7 @@
 
                                         <div class="col-lg-6 offset-lg-2 col-md-6 offset-md-1" id="bestgymimg" >
                                             <!--start first gym photo to display -->
-                                            <div class="displayFirstGymPhoto animated fadeInRight">
+                                            <div class="displayFirstGymPhoto anime">
                                                 <img src="<?php echo URLROOT; ?>/images/bestgym1.jpg" height="auto" class="d-block w-100" alt="Gym Photo">      
                                             </div>
                                             <!--start first gym photo to display -->
@@ -307,18 +295,18 @@
 <script type="text/javascript">
 
 debounce = function(func, wait, immediate) {
-	var timeout;
-	return function() {
-		var context = this, args = arguments;
-		var later = function() {
-			timeout = null;
-			if (!immediate) func.apply(context, args);
-		};
-		var callNow = immediate && !timeout;
-		clearTimeout(timeout);
-		timeout = setTimeout(later, wait);
-		if (callNow) func.apply(context, args);
-	};
+    var timeout;
+    return function() {
+        var context = this, args = arguments;
+        var later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
 };
 
 

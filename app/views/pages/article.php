@@ -16,7 +16,7 @@
             <img src= " <?php echo URLROOT;?>/images/blog/imgblog1.jpg" style="margin-bottom:15px;" width="100%" alt="stars"/>
             <div class="row">
                 <div class="col-md-1 offset-md-9">
-                <img style="border-radius:50%;"class="mr-3"  src= " <?php echo URLROOT; ?>/images/blog/user.jpg" width="60" alt="Generic placeholder image">
+                <img style="border-radius:50%;"class="mr-3"  src= "../../public/images/usersProfileImage/<?php echo $data->user_username.'/'.$data->user_image; ?>" width="60" alt="Generic placeholder image">
                 </div>
                 <div class="col-md-2">
                     <p style="font-size:15px;color:#2c2b2b;margin-top:5px;margin-bottom:5px;"><?php echo $data->user_first_name; ?></p>
