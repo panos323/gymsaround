@@ -15,11 +15,11 @@
                          <img id="gymlogo" width="100%" src= " <?php echo URLROOT;?>/images/gym/gymlogo.png" alt="logo"/>
                     </div>
                     <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-10 offset-1" >
-                        <p id="gymsnames"><?php echo $data->gym_name; ?></p>
+                        <p id="gymsnames"><?php echo $data['gym']->gym_name; ?></p>
                         <img src= " <?php echo URLROOT;?>/images/stars.png" alt="stars"/>
                         <div id="gymaddress">
                             <a href="#">
-                             <p><?php echo $data->gym_location;?>  <img src= " <?php echo URLROOT;?>/images/gym/mappin.png" width="20%" alt="pin"/></p>
+                             <p><?php echo $data['gym']->gym_location;?>  <img src= " <?php echo URLROOT;?>/images/gym/mappin.png" width="20%" alt="pin"/></p>
                             </a>
                         </div>
                         <p id="activities"><b>Crosfii | Boxing | KingBoxing | Climbing</b></p>
@@ -84,67 +84,21 @@
     
         <div class="container">
             <p class="basictitle" id="gymstitle">ΠΡΟΣΩΠΙΚΟ</p>
-     
-         
         <div class="row d-flex justify-content-center">
-
-
-
-
-
             <!--START DYNAMIC EXAMPLE SLIDER -->
             <div id="carouselDynamicIndicators" class="banner carousel slide">
             <ol class="carousel-indicators">
-                <?php if($data->gym_images) :?>
-                    <li data-target="#carouselDynamicIndicators" data-slide-to="0" class="active"></li> 
-                <?php endif; ?>
-                <?php if($data->gym_images) :?>
-                    <li data-target="#carouselDynamicIndicators" data-slide-to="1"></li>
-                <?php endif; ?>
-                <?php if($data->gym_images) :?>
-                    <li data-target="#carouselDynamicIndicators" data-slide-to="2"></li>
-                <?php endif; ?>
-                <?php if($data->gym_images) :?>
-                    <li data-target="#carouselDynamicIndicators" data-slide-to="3"></li>
-                <?php endif; ?>
-                <?php if($data->gym_images) :?>
-                    <li data-target="#carouselDynamicIndicators" data-slide-to="4"></li>
-                <?php endif; ?>
-                <?php if($data->gym_images) :?>
-                    <li data-target="#carouselDynamicIndicators" data-slide-to="5"></li>
-                <?php endif; ?>
+                <?php foreach ($data['trainers'] as $key=>$trainer) : ?>
+                    <li data-target="#carouselDynamicIndicators" data-slide-to="<?php echo $key; ?>"></li>
+                <?php endforeach; ?>
             </ol>
             <div class="carousel-inner">
-                <?php if($data->gym_images) :?>
-                <div class="carousel-item img1 active">
-                    <img class="d-block w-100" src="<?php echo $mediaUrl.'slider/'.$data->gym_images; ?>" alt="First slide">
-                </div>
-                <?php endif; ?>
-                <?php if($data->gym_images) :?>
-                <div class="carousel-item img2">
-                    <img class="d-block w-100" src="<?php echo $mediaUrl.'slider/'.$data->gym_images; ?>" alt="Second slide">
-                </div>
-                <?php endif; ?>
-                <?php if($data->gym_images) :?>
-                <div class="carousel-item img3">
-                    <img class="d-block w-100" src="<?php echo $mediaUrl.'slider/'.$data->gym_images; ?>" alt="Third slide">
-                </div>
-                <?php endif; ?>
-                <?php if($data->gym_images) :?>
-                <div class="carousel-item img4">
-                    <img class="d-block w-100" src="<?php echo $mediaUrl.'slider/'.$data->gym_images; ?>" alt="Fourth slide">
-                </div>
-                <?php endif; ?>
-                <?php if($data->gym_images) :?>
-                <div class="carousel-item img5">
-                    <img class="d-block w-100" src="<?php echo $mediaUrl.'slider/'.$data->gym_images; ?>" alt="Fifth slide">
-                </div>
-                <?php endif; ?>
-                <?php if($data->gym_images) :?>
-                <div class="carousel-item img6">
-                    <img class="d-block w-100" src="<?php echo $mediaUrl.'slider/'.$data->gym_images; ?>" alt="Sixth slide">
-                </div>
-                <?php endif; ?>
+                <?php foreach ($data['trainers'] as $key=>$trainer) : ?>
+                    <div class="carousel-item img<?php echo $key; ?>">
+                        <img class="d-block w-100" src="<?php echo '../../public/images/trainers/'.$data['gym']->gym_name.'/'.$trainer->trainer_image; ?>" alt="First slide">
+                        <div class="trainerdescr"><p><?php echo $trainer->trainer_name.'-'.$trainer->trainer_title;?></p></div>
+                    </div>
+                <?php endforeach; ?>
             </div>
             <a class="carousel-control-prev" href="#carouselDynamicIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
