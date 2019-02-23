@@ -96,7 +96,7 @@
             </div>
             <div class="row d-flex justify-content-center">
             <!--START DYNAMIC EXAMPLE SLIDER -->
-                <div class="col-md-6">
+                <div class="col-md-6 mb-5">
                     <div id="carouselDynamicIndicators" class="banner carousel slide">
                         <ol class="carousel-indicators">
                             <?php foreach ($data['trainers'] as $key=>$trainer) : ?>
