@@ -40,9 +40,11 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mb-5">
+        <div class="aboutscroll hide">
+            <div class="col-md-12 my-5" id="bigabouttext">
                 <p class="basictitle" id="gymstitle">ΠΟΙΟΙ ΕΙΜΑΣΤΕ</p>
-                <p>Το Workout Hall δημιουργήθηκε το 2008, στη Γλυφάδα, σε έναν χώρο 90 τ.μ., αποκλειστικά για personal training. Σταδιακά αναπτύχθηκε και αποτελεί σήμερα ένα υπερσύγχρονο αθλητ
+             
+                <p> Το Workout Hall δημιουργήθηκε το 2008, στη Γλυφάδα, σε έναν χώρο 90 τ.μ., αποκλειστικά για personal training. Σταδιακά αναπτύχθηκε και αποτελεί σήμερα ένα υπερσύγχρονο αθλητ
                     ικό κέντρο, 7.000 τ.μ., με indoor & outdoor training space.Η προσωπική εμπειρία, η αδιάλειπτη ενασχόληση με τον αθλητισμό και η αγάπη γι’ αυτόνοδήγησε στην δημιουργία του ση
                     μερινού Workout Hall.</p>
 
@@ -51,7 +53,9 @@
                 <p>Το Workout Hall δημιουργήθηκε το 2008, στη Γλυφάδα, σε έναν χώρο 90 τ.μ., αποκλειστικά για personal training. Σταδιακά αναπτύχθηκε και αποτελεί σήμερα ένα υπερσύγχρονο αθλητ
                     ικό κέντρο, 7.000 τ.μ., με indoor & outdoor training space.Η προσωπική εμπειρία, η αδιάλειπτη ενασχόληση με τον αθλητισμό και η αγάπη γι’ αυτόνοδήγησε στην δημιουργία του ση
                     μερινού Workout Hall.</p>
+
             </div>
+</div>
         </div>
     </div>
 <!-----------------------------------------------------------------------------------------------------------------
@@ -62,7 +66,12 @@
      
 
  <div class="container">
-            <p class="basictitle" id="gymstitle">ΦΩΤΟΓΡΑΦΙΕΣ</p>
+     <div class="row">
+         <div class="col-md-5 mt-5 mb-3">
+         <p class="basictitle" id="gymstitle">ΦΩΤΟΓΡΑΦΙΕΣ</p>
+</div>
+     </div>
+        
             <div class="row justify-content-center">
                 <div class="col-md-12 mb-1"  id="imagerow1">
                 <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
@@ -83,7 +92,11 @@
 
     
         <div class="container">
+        <div class="row">
+            <div class="col-md-5 mt-5 mb-3">
             <p class="basictitle" id="gymstitle">ΠΡΟΣΩΠΙΚΟ</p>
+                </div>
+</div> 
         <div class="row d-flex justify-content-center">
             <!--START DYNAMIC EXAMPLE SLIDER -->
             <div id="carouselDynamicIndicators" class="banner carousel slide">
@@ -144,7 +157,11 @@
 -------------------------------------------***SYNDROMES**--------------------------------------------------------------->   
     <div class="sundromesrow">
         <div class="container">
+        <div class="row">
+            <div class="col-md-5 mt-5 mb-3">
             <p class="basictitle" id="gymstitle">ΠΑΚΕΤΑ ΣΥΝΔΡΟΜΩΝ</p>
+                </div>
+</div> 
                 <div class="row">
                     <div class="col-md-12 mb-5">
                         <div class="flex-container-sundromes">
@@ -196,6 +213,17 @@
         </div>
     </div>
 
-
+    <script type="text/javascript">
+    (function(){
+       var  aboutEl= $('div.aboutscroll'),
+            aboutoffset= 200,
+            documentEl=$(document);
+        
+        documentEl.on("scroll", function(){
+            if (documentEl.scrollTop() > aboutoffset && aboutEl.hasClass('hide')) aboutEl.removeClass('hide');
+            
+        });
+        })();
+    </script>
 <?php require  APPROOT . '/views/inc/footer.php'?>
 

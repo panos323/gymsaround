@@ -15,7 +15,8 @@
         </div>
     </div>
    <div class="row">
-       <div class="aboutscroll hide">
+       
+      <!-- <div class="aboutscroll hide">-->
         <div class="col-md-12 mb-5" id="bigabouttext">
             <p> 
                 Είμαστε ο Γιώργος, η Θεοδώρα, ο Πάνος και πολλοί ακόμα. Έχουμε πολύ διαφορετικές ιστορίες αλλά κοινή αποστολή. Αυτή έχει σημασία. Τα υπόλοιπα είναι ιστορία.
@@ -33,7 +34,7 @@
                 κάπου να βρεις τις καλύτερες δραστηριότητες τόσο για τα απογεύματά σου όσο και για τα ΣουΚου.
             </p>
         </div>
-        </div>
+        <!--</div>-->
     </div>
 </div>  
 
@@ -63,7 +64,7 @@
         </div>
     </div>
 </div>
-
+<!--
 <script type="text/javascript">
     (function(){
        var  aboutEl= $('div.aboutscroll'),
@@ -75,7 +76,7 @@
             
         });
         })();
-    </script>
+    </script>-->
 
 <?php require  APPROOT . '/views/inc/footer.php'?>
 
