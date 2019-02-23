@@ -377,6 +377,7 @@ class Owners extends Controller {
             // Init data
             $data = [
                 'name' => trim($_POST['name']),
+                'gym_name' => trim($_POST['gym_name']),
                 'description' => trim($_POST['description']),
                 'title' => trim($_POST['title']),
                 'id' => trim($_POST['id']),
@@ -384,6 +385,8 @@ class Owners extends Controller {
                 'description_error' => '',
                 'title_error' => '',
             ];
+
+            $data['image_file'] = addImage('trainers',$data['gym_name']);
 
             // Validate gym name
             if(empty($data['name'])){
@@ -744,6 +747,56 @@ class Owners extends Controller {
 
         } else {
             redirect('owners/profile/account');
+        }
+    }
+
+    public function updateLogo() {
+        // Check for POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'name' => trim($_POST['name']),
+                'id' => trim($_POST['id'])
+            ];
+
+            $data['image_file'] = addImage('gyms_images', $data['name']);
+
+            if($this->ownerModel->updateLogo($data['image_file'], $data['id'])) {
+                flash('gym_update','Το logo σας άλλαξε με επιτυχία!');
+            }else{
+                flash('gym_update', 'Η ενέργεια απέτυχε. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+            }
+            redirect('owners/profile/my_gym');
+        }
+    }
+
+    public function addGymPhoto() {
+        // Check for POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'name' => trim($_POST['name']),
+                'id' => trim($_POST['id'])
+            ];
+
+            $data['image_file'] = addImage('gyms_images', $data['name']);
+
+            if($this->ownerModel->updateLogo($data['image_file'], $data['id'])) {
+                flash('gym_update','Το logo σας άλλαξε με επιτυχία!');
+            }else{
+                flash('gym_update', 'Η ενέργεια απέτυχε. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+            }
+            redirect('owners/profile/my_gym');
         }
     }
 }

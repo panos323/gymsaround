@@ -6,12 +6,18 @@ class Gyms extends Controller
     public function __construct()
     {
         $this->gymModel = $this->model('Gym');
+        $this->ownerModel = $this->model('Owner');
     }
 
     public function index(string $id){
         $gym = $this->gymModel->findGymById($id);
+        $trainers = $this->ownerModel->getTrainersByGymId($id);
         if($gym) {
-            $this->view('gyms/index', $gym);
+            $data = [
+                'gym' => $gym,
+                'trainers' => $trainers
+            ];
+            $this->view('gyms/index', $data);
         }
 
         redirect('pages/search');

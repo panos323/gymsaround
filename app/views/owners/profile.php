@@ -216,28 +216,6 @@
                         </form>
                 </div>
                 <?php else : ?>
-                    <div class="col-md-6 mb-4 profile_boxes mt-4">
-                        <h4>Το logo σας</h4>
-                        <?php flash('gym_update'); ?>
-                        <form id="addImagesToGymForm" class="p-2" action="<?php echo URLROOT; ?>/owners/addGymPhotos" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="logo">Το logo σας</label>
-                                <input name="logo" type="file" class="form-control-file" id="logo">
-                            </div>
-                            <button type="submit" class="btn btn-success">Αλλαγή Logo</button>
-                        </form>
-                    </div>
-                    <div class="col-md-5 mb-4  offset-1 profile_boxes mt-4">
-                        <h4>Προσθήκη φωτογραφιών</h4>
-                        <?php flash('gym_update'); ?>
-                        <form id="addImagesToGymForm" class="p-2" action="<?php echo URLROOT; ?>/owners/addGymPhotos" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="logo">Το logo σας</label>
-                                <input name="logo" type="file" class="form-control-file" id="logo">
-                            </div>
-                            <button type="submit" class="btn btn-success">Προσθήκη</button>
-                        </form>
-                    </div>
                     <div class="col-md-12 profile_boxes">
                         <h4>Το γυμναστήριό μου</h4>
                         <?php flash('gym_update'); ?>
@@ -304,10 +282,34 @@
                             <button type="submit" class="btn btn-danger">Διαγραφή Γυμναστηρίου</button>
                         </form>
                     </div>
+                    <div class="col-md-6 mb-4 profile_boxes mt-4">
+                        <h4>Το logo σας</h4>
+                        <?php flash('gym_update'); ?>
+                        <form id="addImagesToGymForm" class="p-2" action="<?php echo URLROOT; ?>/owners/updateLogo" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <input type="hidden" name="name" value="<?php echo $data['my_gym_details']['gym_name']; ?>">
+                                <input type="hidden" name="id" value="<?php echo $data['my_gym_details']['gym_id']; ?>">
+                                <img class="rounded-circle" style="height: 200px; width: auto;" src="../../public/images/<?php echo isset($data['my_gym_details']['gym_logo']) ? 'gyms_images/'.$data['my_gym_details']['gym_name'].'/'.$data['my_gym_details']['gym_logo'] : 'placeholder.jpg' ?>" alt="my_image">
+                                <input name="image" type="file" class="form-control-file" id="logo">
+                            </div>
+                            <button type="submit" class="btn btn-success">Αλλαγή Logo</button>
+                        </form>
+                    </div>
+                    <div class="col-md-5 mb-4  offset-1 profile_boxes mt-4">
+                        <h4>Προσθήκη φωτογραφιών</h4>
+                        <?php flash('gym_update'); ?>
+                        <form id="addImagesToGymForm" class="p-2" action="<?php echo URLROOT; ?>/owners/addGymPhotos" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <p>Προσθέστε μέχρι 6 στο σύνολο φωτογραφίες για το γυμναστήριό σας.</p>
+                                <input name="logo" type="file" class="form-control-file" id="logo">
+                            </div>
+                            <button type="submit" class="btn btn-success">Προσθήκη</button>
+                        </form>
+                    </div>
                     <div class="col-md-12 profile_boxes mt-4">
                         <h4>Προβολή  φωτογραφιών</h4>
                         <?php flash('gym_update'); ?>
-                        <form id="addImagesToGymForm" class="p-2" action="<?php echo URLROOT; ?>/owners/addGymPhotos" method="post" enctype="multipart/form-data">
+                        <form id="addImagesToGymForm" class="p-2" action="<?php echo URLROOT; ?>/owners/removePhoto" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="logo">Το logo σας</label>
                                 <input name="logo" type="file" class="form-control-file" id="logo">
@@ -367,6 +369,7 @@
                     <?php foreach ($data['trainers'] as $key=>$trainer) { ?>
                         <form class="mt-4" id="updateTrainerForm<?php echo $key; ?>" action="<?php echo URLROOT; ?>/owners/update_trainer" method="post" enctype="multipart/form-data">
                             <div class="form-group">
+                                <input type="hidden" name="gym_name" value="<?php echo $data['my_gym_details']['gym_name']; ?>">
                                 <label for="name<?php echo $key; ?>">Όνομα</label>
                                 <input
                                         name="name"
@@ -386,8 +389,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="image">Φωτογραφία Γυμναστή</label>
-                                    <input type="file" name="txt_file" class="form-control" value="<?php echo $trainer->trainer_image; ?>"/>
-                                    <p><img src="../../public/images/<?php echo $data['my_gym_details']['gym_name']; ?>/<?php echo $trainer->trainer_image; ?>" height="auto" width="300" /></p>
+                                    <input type="file" name="image" class="form-control" value="<?php echo $trainer->trainer_image; ?>"/>
+                                    <p><img src="../../public/images/trainers/<?php echo $data['my_gym_details']['gym_name']; ?>/<?php echo $trainer->trainer_image; ?>" height="auto" width="300" /></p>
                             </div>
                             <div class="form-group">
                                 <label for="description<?php echo $key; ?>">Περιγραφή</label>
