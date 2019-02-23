@@ -195,8 +195,9 @@
 
 
     <!--start search buttons -->
-    <div class="row col-lg-12">
-        <div class="col-md-7 mt-4 mb-3">
+    <div class="row col-lg-12 mt-5">
+        <div class="col-md-7 mt-5 mb-3">
+        
           <button type="button" class=" sortByNameBtn btn btn-outline-info mr-4 mb-2   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
           <div class="dropdown d-inline-block">
               <button class="btn btn-outline-info mr-4 mb-2 btn-md dropdown-toggle customBtnG" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -66,7 +66,7 @@
                         <div class="container">
                     
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-4 mt-5">
                                         <p class="rowtitle" id="gymtitle">ΔΗΜΟΦΙΛΗ</p> 
                                         <div class="orangeline"></div>
                                     </div>
@@ -217,7 +217,7 @@
  <!--- START ROW 4-SPONSORS---->
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 mt-lg-5 mt-md-5 mt-0">
             <div class="box3">
                 <div class="container">
                     <p class="rowtitle" id="sponsorstitle">ΥΠΟΣΤΗΡΙΚΤΕΣ</p>
