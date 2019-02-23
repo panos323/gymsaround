@@ -143,7 +143,7 @@ margin-left:36%;
   
 }
 
-#btnmodalregister{margin-left: 8%;}
+
 
 #btnmodalfb{
     float: right;
@@ -162,7 +162,7 @@ margin-left:36%;
 }
 #logintext{
     color:#169b99;
-    margin-left: 24%;
+    margin-left: 46%;
 }
 
 .form-group input{font-size:18px;
@@ -1834,7 +1834,9 @@ background-color: #1d1d1d;}
             width:100px;
             float: left;
         }
-
+        #logintext{
+            margin-left: 41%;
+        }
  /*****************PARTNER****************/
 
         #ourservices{
