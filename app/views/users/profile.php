@@ -15,7 +15,7 @@
             <?php endif; ?>
     </div>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10 minimum_height_profiles">
         <div class="row main_profile">
             <!-- This is the display for Users info -->
             <?php if($data['tab'] === 'account')  : ?>

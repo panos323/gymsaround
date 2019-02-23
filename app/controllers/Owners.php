@@ -151,6 +151,7 @@ class Owners extends Controller {
             redirect('pages/index');
         }
         if($tab === 'account' || $tab === 'my_gym' || $tab === 'my_trainers'){
+            $owner = $this->ownerModel->findOwnerById($_SESSION['id']);
             $gym = $this->ownerModel->getGymByUserId($_SESSION['id']);
             $_SESSION['gym_id'] = isset($gym->gym_id) ? $gym->gym_id : '';
             $trainers = $this->ownerModel->getTrainersByGymId();
@@ -158,7 +159,8 @@ class Owners extends Controller {
                 'no_gym' => empty($gym) ? 'Δεν έχετε δημιουργήσει το γυμναστήριο σας.' : '',
                 'my_gym_details' => empty($gym) ? '' : (array) $gym,
                 'trainers' => empty($trainers) ? '' : (array) $trainers,
-                'tab' => $tab
+                'tab' => $tab,
+                'owner' => $owner
             ];
             $this->view('owners/profile', $data);
         }else {
@@ -462,7 +464,7 @@ class Owners extends Controller {
 
             // Init data
             $data = [
-                'name' => trim($_POST['name']),
+                'name' => trim($_POST['first_name']),
                 'last_name' => trim($_POST['last_name']),
                 'phone' => trim($_POST['phone']),
                 'name_error' => '',
@@ -471,6 +473,17 @@ class Owners extends Controller {
                 'update_error' => '',
                 'tab' => 'account'
             ];
+            // Get Image Details
+            $data['image_file'] = $_FILES["image"]["name"];
+            $temp  = $_FILES["image"]["tmp_name"];
+
+            $owner_image_path = '../public/images/ownersProfileImage/'.$_SESSION['username'];
+            if (!file_exists($owner_image_path)) {
+                mkdir($owner_image_path, 0777, true);
+            }
+
+            move_uploaded_file($temp, $owner_image_path.'/'.$data['image_file']);
+
 
             // Check name field
             if(empty($data['name'])){

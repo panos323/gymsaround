@@ -37,7 +37,23 @@ class Owner{
     }
 
     /**
-     * Find user by email
+     * Find owner by ID
+     * @param string $id
+     * @return bool
+     */
+    public function findOwnerById(string $id){
+        $this->db->query('SELECT * FROM owners WHERE owner_id = :id');
+        $this->db->bind(':id', $id);
+        $row = $this->db->single();
+        // Check row
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+        return false;
+    }
+
+    /**
+     * Find owner by email
      * @param string $email
      * @return bool
      */
@@ -54,7 +70,7 @@ class Owner{
     }
 
     /**
-     * Find user by username
+     * Find owner by username
      * @param string $username
      * @return bool
      */
@@ -174,12 +190,13 @@ class Owner{
      */
     public function updateDetails(array $data, int $id){
         $this->db->query('UPDATE owners 
-                              SET owner_first_name = :name, owner_last_name = :last_name, owner_phone = :phone
+                              SET owner_first_name = :name, owner_last_name = :last_name, owner_phone = :phone, owner_image = :image
                               WHERE owner_id = :id');
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':last_name', $data['last_name']);
         $this->db->bind(':phone', $data['phone']);
         $this->db->bind(':id', $id);
+        $this->db->bind(':image', $data['image_file']);
         try{
             $this->db->execute();
             return true;
