@@ -329,7 +329,7 @@ footer p a {
     color: #169b99;/*BLUE*/
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 45px;
-    margin-top: 200px;
+    margin-top: 240px;
 }
 
 select{
@@ -344,6 +344,12 @@ select{
     line-height: normal;
 
 
+}
+#dropdownAthens{
+    border-bottom: 1px solid #303741 !important;
+    height: 20px;
+    margin-right: 10px;
+    color:red !important;
 }
 
 #slc1{
@@ -1245,7 +1251,7 @@ textarea {
     .anime {
         opacity: 0;
         transform: translate3d(-100px,0,0);
-        transition: all 0.8s ease;
+        transition: all 0.8s ease-in;
     }
     
     .anime-start {
@@ -1253,8 +1259,16 @@ textarea {
         transform: translate3d(0,0,0);
     }
 
+    .anime-left {
+        opacity: 0;
+        transform: translate3d(100px,0,0);
+        transition: all 0.8s ease-in;
+    }
 
-
+    .anime-end{
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
 
 
 /*********************************************************************************************
@@ -1495,7 +1509,7 @@ textarea {
         margin-top: 150px;
     }
 
-    #btnsearch{width: 100%;}
+    #btnsearch{width: 60%;}
 
     #gymtitle{margin-top: 30px;}
 
@@ -1621,7 +1635,7 @@ background-color: #1d1d1d;}
       font-size: 30px;
       text-align: center;}
 
-    #btnsearch{width: 100%;}
+    #btnsearch{width: 60%;}
 
     #btnmember, #bigtitle,  .blogrow,  #footermenu, #footerextra,  #footertitle, #title, #arrow{display:none;}
 
@@ -1725,7 +1739,10 @@ background-color: #1d1d1d;}
 ****************************RESPONSIVE 575*********************************************/
  
 
-@media (max-width: 575px) { 
+@media (max-width: 575px) {
+    
+    #navbarstyle{height: 10vh;}
+
     .nav-item > a{
         border-bottom:1px solid #303741;
     }
@@ -1739,6 +1756,9 @@ background-color: #1d1d1d;}
             display: flex;
             flex-wrap: wrap;
             justify-content:center;
+        }
+        #slc1, #slc2 {
+            width: 80%;
         }
         #sponsorstitle {
             margin-top: 0;
@@ -1817,7 +1837,7 @@ background-color: #1d1d1d;}
             height: 350px;
         }
 
-        #btnsearch{width: 100%;}
+        #btnsearch{width: 80%;}
 
         #btnfooter{ width:70%; }
 
