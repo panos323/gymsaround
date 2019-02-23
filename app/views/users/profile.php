@@ -22,36 +22,45 @@
                 <div class="col-md-11 profile_boxes">
                     <h4>Tα στοιχεία μου</h4>
                     <?php flash('update_details_success'); ?>
-                    <form id="updateDetailsForm" action="<?php echo URLROOT; ?>/users/updateUser" method="post">
-                        <div class="form-row">
-                            <div class="form-group col-sm-6">
-                                <input type="text"
-                                       name="first_name"
-                                       class="updateUserFirstName form-control form-control-lg <?php echo (isset($data['name_error']) && !empty($data['name_error'])) ? 'is-invalid' : ''; ?>"
-                                       value="<?php echo $_SESSION['first_name']; ?>">
-                                <span class="invalid-feedback"><?php echo isset($data['name_error']) ? $data['name_error'] : ''; ?></span>
-                                <span class="text-center text-danger font-italic nameUserUpdateErr"></span>
+                    <form id="updateDetailsForm" class="p-2" action="<?php echo URLROOT; ?>/users/updateUser" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img class="rounded-circle" style="height: 250px; width: auto;" src="../../public/images/<?php echo isset($data['user']->user_image) ? 'usersProfileImage/'.$_SESSION['username'].'/'.$data['user']->user_image : 'placeholder.jpg' ?>" alt="my_image">
                             </div>
-                            <div class="form-group col-sm-6">
-                                <input type="text"
-                                       name="last_name"
-                                       class="updateUserLastName form-control form-control-lg <?php echo (isset($data['last_name_error']) && !empty($data['last_name_error'])) ? 'is-invalid' : ''; ?>"
-                                       placeholder="<?php echo isset($data['last_name']) ? $data['last_name'] : ''; ?>"
-                                       value="<?php echo $_SESSION['last_name'] ?>">
-                                <span class="invalid-feedback"><?php echo isset($data['last_name_error']) ? $data['last_name_error'] : ''; ?></span>
-                                <span class="text-center text-danger font-italic lastnameUserUpdateErr"></span>
+                            <div class="col-sm-8">
+                                    <div class="form-group">
+                                    <input type="text"
+                                           name="first_name"
+                                           class="updateUserFirstName form-control form-control-lg <?php echo (isset($data['name_error']) && !empty($data['name_error'])) ? 'is-invalid' : ''; ?>"
+                                           value="<?php echo $_SESSION['first_name']; ?>">
+                                    <span class="invalid-feedback"><?php echo isset($data['name_error']) ? $data['name_error'] : ''; ?></span>
+                                    <span class="text-center text-danger font-italic nameUserUpdateErr"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text"
+                                           name="last_name"
+                                           class="updateUserLastName form-control form-control-lg <?php echo (isset($data['last_name_error']) && !empty($data['last_name_error'])) ? 'is-invalid' : ''; ?>"
+                                           placeholder="<?php echo isset($data['last_name']) ? $data['last_name'] : ''; ?>"
+                                           value="<?php echo $_SESSION['last_name'] ?>">
+                                    <span class="invalid-feedback"><?php echo isset($data['last_name_error']) ? $data['last_name_error'] : ''; ?></span>
+                                    <span class="text-center text-danger font-italic lastnameUserUpdateErr"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text"
+                                           name="address"
+                                           class="form-control form-control-lg"
+                                           placeholder="<?php echo isset($_SESSION['address']) ? $_SESSION['address'] : 'Δώστε τη διεύθυνσή σας'; ?>"
+                                           value="<?php echo isset($data['user']->user_address) ? $data['user']->user_address : ''; ?>">
+                                    <span class="invalid-feedback"><?php echo isset($data['address_error']) ? $data['address_error'] : ''; ?></span>
+                                </div>
+                                <div class="form-group ml-2">
+                                    <label for="image" class="col-form-label">Φωτογραφία Προφίλ:</label><br>
+                                    <input type="file" id="image" name="image"">
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <input type="text"
-                                   name="address"
-                                   class="form-control form-control-lg"
-                                   placeholder="<?php echo isset($_SESSION['address']) ? '' : 'Enter your Address number'; ?>"
-                                   value="<?php echo isset($_SESSION['address']) ? $_SESSION['address'] : ''; ?>">
-                            <span class="invalid-feedback"><?php echo isset($data['address_error']) ? $data['address_error'] : ''; ?></span>
-                        </div>
-                        <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
-                            <button type="submit"  value="Register" class="btn btn-success">Update Details</button>
+                        <div class="btn-group mb-3" role="group" aria-label="Second group">
+                            <button type="submit"  value="Register" class="btn btn-success">Ανανέωση στοιχείων</button>
                         </div>
                         <span class="invalid-feedback"><?php echo isset($data['']) ? $data[''] : ''; ?></span>
                     </form>
@@ -59,7 +68,7 @@
                 <div class="col-md-5 profile_boxes mt-4">
                     <h4>Αλλαγή Username</h4>
                     <?php flash('update_username_success'); ?>
-                    <form id="updateUsernameForm" action="<?php echo URLROOT; ?>/users/UpdateUserUsername" method="post">
+                    <form id="updateUsernameForm" class="p-2" action="<?php echo URLROOT; ?>/users/UpdateUserUsername" method="post">
                         <div class="form-group">
                             <input type="text"
                                    name="disable_username"
@@ -77,7 +86,7 @@
                             <span class="invalid-feedback"><?php echo isset($data['new_username_error']) ? $data['new_username_error'] : ''; ?></span>
                             <span class="text-center text-danger font-italic UserNameUserUpdateErr"></span>
                         </div>
-                        <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
+                        <div class="btn-group mb-3" role="group" aria-label="Second group">
                             <button type="submit"  value="Register" class="btn btn-success">Update Username</button>
                         </div>
                         <span class="invalid-feedback"><?php echo isset($data['update_error']) ? $data['update_error'] : ''; ?></span>
@@ -86,7 +95,7 @@
                 <div class="col-md-5 offset-1 profile_boxes mt-4">
                     <h4>Αλλαγή E-mail</h4>
                     <?php flash('update_mail_success'); ?>
-                    <form id="updateEmailForm" action="<?php echo URLROOT; ?>/users/UpdateUserEmail" method="post">
+                    <form id="updateEmailForm" class="p-2" action="<?php echo URLROOT; ?>/users/UpdateUserEmail" method="post">
                         <div class="form-group">
                             <input type="text"
                                    name="email"
@@ -104,7 +113,7 @@
                             <span class="invalid-feedback"><?php echo isset($data['new_email_error']) ? $data['new_email_error'] : ''; ?></span>
                             <span class="text-center text-danger font-italic mailUserUpdateErr"></span>
                         </div>
-                        <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
+                        <div class="btn-group mb-3" role="group" aria-label="Second group">
                             <button type="submit"  value="Register" class="btn btn-success">Update E-mail</button>
                         </div>
                         <span class="invalid-feedback"><?php echo isset($data['update_error']) ? $data['update_error'] : ''; ?></span>
@@ -113,7 +122,7 @@
                 <div class="col-md-5 profile_boxes mt-4">
                     <h4>Αλλαγή Password</h4>
                     <?php flash('update_password_success'); ?>
-                    <form id="updatePasswordForm" action="<?php echo URLROOT; ?>/users/UpdateUserPassword" method="post">
+                    <form id="updatePasswordForm" class="p-2" action="<?php echo URLROOT; ?>/users/UpdateUserPassword" method="post">
                         <div class="form-group">
                             <input type="password"
                                    name="password"
@@ -142,34 +151,12 @@
                             <span class="text-center text-danger font-italic checkUserPasswordnewAgainErr"></span>
                             <span class="text-center text-danger font-italic checkUserPasswordMatchErr"></span>
                         </div>
-                        <div class="btn-group ml-3 mb-3" role="group" aria-label="Second group">
+                        <div class="btn-group mb-3" role="group" aria-label="Second group">
                             <button type="submit"  value="Register" class="btn btn-success">Update Password</button>
                         </div>
                         <span class="invalid-feedback"><?php echo isset($data['update_error']) ? $data['update_error'] : ''; ?></span>
                     </form>
                 </div>
-
-                <?php if(!$_SESSION['isAdmin']) : ?>
-                    <!-- This is the display for gym details upload -->
-                    <div class="col-md-5 offset-1 profile_boxes mt-4">
-                        <h4>Το γυμναστήριό μου</h4>
-                        <?php if(!empty($data['msg'])) : ?>
-                            <div class="no-gym mt-3">
-                                <?php echo $data['msg'];?>
-                                <a href="<?php echo URLROOT; ?>/gyms/search">Βρείτε το γυμναστήριο που σας ταιριάζει</a>
-                            </div>
-                        <?php else : ?>
-                            <div>
-                                <?php echo $data['name'];?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                <?php else : ?>
-                    <!-- TODO: Check to remove if not needed -->
-                    <div class="col-md-5 offset-1 profile_boxes mt-4">
-                        <h4>Αν χρειαζεται καποιο notification για τον admin</h4>
-                    </div>
-                <?php endif; ?>
             <?php elseif($data['tab'] === 'my_users')  : ?>
                 <hr>
                 <div class="container bootstrap snippet">

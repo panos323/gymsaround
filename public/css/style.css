@@ -129,6 +129,10 @@ body{
     padding: 0 !important;
 }
 
+.profile_boxes .form-group input {
+    border-radius: 0 !important;
+}
+
 .profile_boxes h4 {
     background: cadetblue;
     padding: 10px 20px;
