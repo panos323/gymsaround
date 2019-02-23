@@ -6,6 +6,8 @@
     require_once 'helpers/session_helper.php';
     require_once 'helpers/mailer.php';
     require_once 'helpers/generateToken.php';
+    require_once 'helpers/mailchimp.php';
+    require_once 'helpers/addImages.php';
 
     // Autoload Core Libraries
     spl_autoload_register(function ($classname){
@@ -13,7 +15,9 @@
             require_once '../vendor/phpmailer/phpmailer/src/Exception.php';
             require_once '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
             require_once '../vendor/phpmailer/phpmailer/src/SMTP.php';
-        }else{
+        } elseif (substr($classname, 0, 5) === 'DrewM') {
+            require_once '../vendor/drewm/mailchimp-api/src/MailChimp.php';
+        } else{
             require_once 'libraries/' . $classname . '.php';
         }
     });

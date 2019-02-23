@@ -53,6 +53,21 @@ class User{
     }
 
     /**
+     * Find user by ID
+     * @param string $id
+     * @return bool
+     */
+    public function findUserById(string $id){
+        $this->db->query('SELECT * FROM users WHERE user_id = :id');
+        $this->db->bind(':id', $id);
+        $row = $this->db->single();
+        // Check row
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+        return false;
+    }
+    /**
      * Find user by email
      * @param string $email
      * @return bool
@@ -225,7 +240,8 @@ class User{
         $this->db->query('UPDATE users 
                           SET user_first_name = :first_name,
                               user_last_name = :last_name,
-                              user_address = :address
+                              user_address = :address,
+                              user_image = :image
                           WHERE user_id = :id
                         ');
 
@@ -234,6 +250,7 @@ class User{
         $this->db->bind(':last_name',$data['last_name']);
         $this->db->bind(':address',$data['address']);
         $this->db->bind(':id', $id);
+        $this->db->bind(':image', $data['image_file']);
 
         // Execute
         try{

@@ -17,7 +17,7 @@
                 <?php flash('email_success'); ?>
                
                 <form id="contactForm" action="<?php echo URLROOT; ?>/pages/contact" method="post">
-                    <div class="form-row mt-3">
+                    <div class="form-row ">
                         <div class="form-group col-sm-6">
                             <input type="text"
                                    name="first_name"
@@ -37,7 +37,7 @@
                             <span class="text-center text-danger font-italic nameLastContactErr"></span>
                         </div>
                     </div><!--form-row-->
-                    <div class="form-group mt-3">
+                    <div class="form-group">
                         <input type="email"
                                name="email"
                                class="form-control form-control-lg"

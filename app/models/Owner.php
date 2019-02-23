@@ -37,7 +37,23 @@ class Owner{
     }
 
     /**
-     * Find user by email
+     * Find owner by ID
+     * @param string $id
+     * @return bool
+     */
+    public function findOwnerById(string $id){
+        $this->db->query('SELECT * FROM owners WHERE owner_id = :id');
+        $this->db->bind(':id', $id);
+        $row = $this->db->single();
+        // Check row
+        if($this->db->rowCount() > 0){
+            return $row;
+        }
+        return false;
+    }
+
+    /**
+     * Find owner by email
      * @param string $email
      * @return bool
      */
@@ -54,7 +70,7 @@ class Owner{
     }
 
     /**
-     * Find user by username
+     * Find owner by username
      * @param string $username
      * @return bool
      */
@@ -174,12 +190,13 @@ class Owner{
      */
     public function updateDetails(array $data, int $id){
         $this->db->query('UPDATE owners 
-                              SET owner_first_name = :name, owner_last_name = :last_name, owner_phone = :phone
+                              SET owner_first_name = :name, owner_last_name = :last_name, owner_phone = :phone, owner_image = :image
                               WHERE owner_id = :id');
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':last_name', $data['last_name']);
         $this->db->bind(':phone', $data['phone']);
         $this->db->bind(':id', $id);
+        $this->db->bind(':image', $data['image_file']);
         try{
             $this->db->execute();
             return true;
@@ -210,9 +227,9 @@ class Owner{
      *
      * @return array
      */
-    public function getTrainersByGymId(){
+    public function getTrainersByGymId($id = null){
         $this->db->query('SELECT * FROM trainers WHERE gym_id = :id');
-        $this->db->bind(':id', $_SESSION['gym_id']);
+        $this->db->bind(':id', is_null($id) ? $_SESSION['gym_id'] : $id);
         $row = $this->db->resultSet();
         if($this->db->rowCount() > 0){
             return $row;
@@ -227,8 +244,8 @@ class Owner{
      */
     public function register_gym(array $data){
         //Query
-        $this->db->query('INSERT INTO gyms (gym_name, gym_description, gym_location, gym_type, gym_monthly_price, gym_yearly_price, owners_owner_id)
-                              VALUES (:name, :description, :location, :type, :month_price, :year_price, :owners)');
+        $this->db->query('INSERT INTO gyms (gym_name, gym_description, gym_location, gym_type, gym_monthly_price, gym_yearly_price, gym_logo, owners_owner_id)
+                              VALUES (:name, :description, :location, :type, :month_price, :year_price, :logo, :owners)');
 
         // Bind values
         $this->db->bind(':name', $data['name']);
@@ -238,6 +255,7 @@ class Owner{
         $this->db->bind(':month_price', $data['month_price']);
         $this->db->bind(':year_price', $data['year_price']);
         $this->db->bind(':owners', $_SESSION['id']);
+        $this->db->bind(':logo', $data['image_file']);
 
         // Execute
         try {
@@ -246,6 +264,25 @@ class Owner{
         } catch (Exception $e) {
             return false;
         }
+    }
+
+    /**
+     * Update Logo of Gym
+     * @param string $logo
+     * @param string $id
+     * @return bool
+     */
+    public function updateLogo(string $logo, string $id){
+        $this->db->query('UPDATE gyms 
+                              SET gym_logo = :logo
+                              WHERE gym_id = :id');
+        $this->db->bind(':logo', $logo);
+        $this->db->bind(':id', $id);
+        $this->db->execute();
+        if($this->db->rowCount() > 0) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -323,12 +360,14 @@ class Owner{
         $this->db->query('UPDATE trainers 
                               SET trainer_name = :name,
                                   trainer_title = :title,
-                                  trainer_description = :description
+                                  trainer_description = :description,
+                                  trainer_image = :image
                               WHERE trainer_id = :id');
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':title', $data['title']);
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':id', $data['id']);
+        $this->db->bind(':image', $data['image_file']);
         try{
             $this->db->execute();
             return true;

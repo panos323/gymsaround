@@ -14,7 +14,7 @@ class General
      * @return bool
      */
     public function getArticleById(string $articleId){
-        $this->db->query('SELECT u.user_first_name, u.user_image , posts.*
+        $this->db->query('SELECT u.user_first_name, u.user_image , u.user_username, posts.*
                               FROM posts 
                               JOIN users u 
                               on posts.user_id = u.user_id

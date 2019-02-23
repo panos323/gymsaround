@@ -243,6 +243,7 @@ class Users extends Controller {
                 'tab' => $tab,
                 'name'=> ''
             ];
+            $data['user'] = $this->userModel->findUserById($_SESSION['id']);
             if(!$_SESSION['isAdmin']){
                 if (empty($_SESSION['gym_id'])) {
                     $data['msg'] = 'Παρακαλώ διαλέχτε γυμναστήριο';
@@ -294,7 +295,6 @@ class Users extends Controller {
         return false;
     }
 
-    /*---------------testing updates-----------------------*/
     public function updateUser() {
         //Check for POST
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -314,6 +314,17 @@ class Users extends Controller {
                 'update_error' => '',
                 'tab' => 'account'
             ];
+
+            // Get Image Details
+            $data['image_file'] = $_FILES["image"]["name"];
+            $temp  = $_FILES["image"]["tmp_name"];
+
+            $user_image_path = '../public/images/usersProfileImage/'.$_SESSION['username'];
+            if (!file_exists($user_image_path)) {
+                mkdir($user_image_path, 0777, true);
+            }
+
+            move_uploaded_file($temp, $user_image_path.'/'.$data['image_file']); //move upload file temporary directory to your upload folder
         
 
         // Validate first name

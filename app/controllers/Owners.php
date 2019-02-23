@@ -151,6 +151,7 @@ class Owners extends Controller {
             redirect('pages/index');
         }
         if($tab === 'account' || $tab === 'my_gym' || $tab === 'my_trainers'){
+            $owner = $this->ownerModel->findOwnerById($_SESSION['id']);
             $gym = $this->ownerModel->getGymByUserId($_SESSION['id']);
             $_SESSION['gym_id'] = isset($gym->gym_id) ? $gym->gym_id : '';
             $trainers = $this->ownerModel->getTrainersByGymId();
@@ -158,7 +159,8 @@ class Owners extends Controller {
                 'no_gym' => empty($gym) ? 'Δεν έχετε δημιουργήσει το γυμναστήριο σας.' : '',
                 'my_gym_details' => empty($gym) ? '' : (array) $gym,
                 'trainers' => empty($trainers) ? '' : (array) $trainers,
-                'tab' => $tab
+                'tab' => $tab,
+                'owner' => $owner
             ];
             $this->view('owners/profile', $data);
         }else {
@@ -187,6 +189,8 @@ class Owners extends Controller {
                 'location_error' => '',
                 'type_error' => '',
             ];
+
+            $data['image_file'] = addImage('gyms_images', $data['name']);
 
             // Validate gym name
             if(empty($data['name'])){
@@ -373,6 +377,7 @@ class Owners extends Controller {
             // Init data
             $data = [
                 'name' => trim($_POST['name']),
+                'gym_name' => trim($_POST['gym_name']),
                 'description' => trim($_POST['description']),
                 'title' => trim($_POST['title']),
                 'id' => trim($_POST['id']),
@@ -380,6 +385,8 @@ class Owners extends Controller {
                 'description_error' => '',
                 'title_error' => '',
             ];
+
+            $data['image_file'] = addImage('trainers',$data['gym_name']);
 
             // Validate gym name
             if(empty($data['name'])){
@@ -462,7 +469,7 @@ class Owners extends Controller {
 
             // Init data
             $data = [
-                'name' => trim($_POST['name']),
+                'name' => trim($_POST['first_name']),
                 'last_name' => trim($_POST['last_name']),
                 'phone' => trim($_POST['phone']),
                 'name_error' => '',
@@ -471,6 +478,17 @@ class Owners extends Controller {
                 'update_error' => '',
                 'tab' => 'account'
             ];
+            // Get Image Details
+            $data['image_file'] = $_FILES["image"]["name"];
+            $temp  = $_FILES["image"]["tmp_name"];
+
+            $owner_image_path = '../public/images/ownersProfileImage/'.$_SESSION['username'];
+            if (!file_exists($owner_image_path)) {
+                mkdir($owner_image_path, 0777, true);
+            }
+
+            move_uploaded_file($temp, $owner_image_path.'/'.$data['image_file']);
+
 
             // Check name field
             if(empty($data['name'])){
@@ -729,6 +747,56 @@ class Owners extends Controller {
 
         } else {
             redirect('owners/profile/account');
+        }
+    }
+
+    public function updateLogo() {
+        // Check for POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'name' => trim($_POST['name']),
+                'id' => trim($_POST['id'])
+            ];
+
+            $data['image_file'] = addImage('gyms_images', $data['name']);
+
+            if($this->ownerModel->updateLogo($data['image_file'], $data['id'])) {
+                flash('gym_update','Το logo σας άλλαξε με επιτυχία!');
+            }else{
+                flash('gym_update', 'Η ενέργεια απέτυχε. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+            }
+            redirect('owners/profile/my_gym');
+        }
+    }
+
+    public function addGymPhoto() {
+        // Check for POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'name' => trim($_POST['name']),
+                'id' => trim($_POST['id'])
+            ];
+
+            $data['image_file'] = addImage('gyms_images', $data['name']);
+
+            if($this->ownerModel->updateLogo($data['image_file'], $data['id'])) {
+                flash('gym_update','Το logo σας άλλαξε με επιτυχία!');
+            }else{
+                flash('gym_update', 'Η ενέργεια απέτυχε. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+            }
+            redirect('owners/profile/my_gym');
         }
     }
 }

@@ -103,7 +103,7 @@ body{
 .profile .sidemenu{
     text-align: center;
     padding-right: 0;
-    background: darkcyan;
+    background: #2c2b2b;
 }
 
 .profile a{
@@ -117,6 +117,7 @@ body{
 .profile a:hover{
     background: #ffb243;
     color: cadetblue;
+    font-weight: bold;
 }
 
 .main_profile{
@@ -127,6 +128,14 @@ body{
     border: 1px solid cadetblue;
     width: 100%;
     padding: 0 !important;
+}
+
+.profile_boxes .form-group input, .add_trainer_modal .form-group input, .main_profile .form-group input {
+    border-radius: 0 !important;
+}
+
+.minimum_height_profiles {
+    min-height: 90vh;
 }
 
 .profile_boxes h4 {

@@ -15,11 +15,11 @@
                          <img id="gymlogo" width="100%" src= " <?php echo URLROOT;?>/images/gym/gymlogo.png" alt="logo"/>
                     </div>
                     <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-10 offset-1" >
-                        <p id="gymsnames"><?php echo $data->gym_name; ?></p>
+                        <p id="gymsnames"><?php echo $data['gym']->gym_name; ?></p>
                         <img src= " <?php echo URLROOT;?>/images/stars.png" alt="stars"/>
                         <div id="gymaddress">
                             <a href="#">
-                             <p><?php echo $data->gym_location;?>  <img src= " <?php echo URLROOT;?>/images/gym/mappin.png" width="20%" alt="pin"/></p>
+                             <p><?php echo $data['gym']->gym_location;?>  <img src= " <?php echo URLROOT;?>/images/gym/mappin.png" width="20%" alt="pin"/></p>
                             </a>
                         </div>
                         <p id="activities"><b>Crosfii | Boxing | KingBoxing | Climbing</b></p>
@@ -38,11 +38,13 @@
 <!-----------------------------------------------------------------------------------------------------------------
 -------------------------------------------WHO WE ARE--------------------------------------------------------------->
 
-    <div class="container maintext">
+    <div class="container">
         <div class="row">
-            <div class="col-md-12">
+        <div class="aboutscroll hide">
+            <div class="col-md-12 my-5" id="bigabouttext">
                 <p class="basictitle" id="gymstitle">ΠΟΙΟΙ ΕΙΜΑΣΤΕ</p>
-                <p>Το Workout Hall δημιουργήθηκε το 2008, στη Γλυφάδα, σε έναν χώρο 90 τ.μ., αποκλειστικά για personal training. Σταδιακά αναπτύχθηκε και αποτελεί σήμερα ένα υπερσύγχρονο αθλητ
+             
+                <p> Το Workout Hall δημιουργήθηκε το 2008, στη Γλυφάδα, σε έναν χώρο 90 τ.μ., αποκλειστικά για personal training. Σταδιακά αναπτύχθηκε και αποτελεί σήμερα ένα υπερσύγχρονο αθλητ
                     ικό κέντρο, 7.000 τ.μ., με indoor & outdoor training space.Η προσωπική εμπειρία, η αδιάλειπτη ενασχόληση με τον αθλητισμό και η αγάπη γι’ αυτόνοδήγησε στην δημιουργία του ση
                     μερινού Workout Hall.</p>
 
@@ -51,7 +53,9 @@
                 <p>Το Workout Hall δημιουργήθηκε το 2008, στη Γλυφάδα, σε έναν χώρο 90 τ.μ., αποκλειστικά για personal training. Σταδιακά αναπτύχθηκε και αποτελεί σήμερα ένα υπερσύγχρονο αθλητ
                     ικό κέντρο, 7.000 τ.μ., με indoor & outdoor training space.Η προσωπική εμπειρία, η αδιάλειπτη ενασχόληση με τον αθλητισμό και η αγάπη γι’ αυτόνοδήγησε στην δημιουργία του ση
                     μερινού Workout Hall.</p>
+
             </div>
+</div>
         </div>
     </div>
 <!-----------------------------------------------------------------------------------------------------------------
@@ -62,16 +66,21 @@
      
 
  <div class="container">
-            <p class="basictitle" id="gymstitle">ΦΩΤΟΓΡΑΦΙΕΣ</p>
+     <div class="row">
+         <div class="col-md-5 mt-5 mb-3">
+         <p class="basictitle" id="gymstitle">ΦΩΤΟΓΡΑΦΙΕΣ</p>
+</div>
+     </div>
+        
             <div class="row justify-content-center">
-                <div class="col-md-12"  id="imagerow1">
+                <div class="col-md-12 mb-1"  id="imagerow1">
                 <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
                 <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
                 <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12" id="imagerow2">
+                <div class="col-md-12 mb-5" id="imagerow2">
                     <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
                     <img src= " <?php echo URLROOT; ?>/images/gym/image3.jpg" width="32%"  alt="gymimg">
                 </div>
@@ -81,64 +90,80 @@
 <!-----------------------------------------------------------------------------------------------------------------
 -------------------------------------------***TRAINERS**--------------------------------------------------------------->
 
-    <div class="trainersrow">
+    
         <div class="container">
+        <div class="row">
+            <div class="col-md-5 mt-5 mb-3">
             <p class="basictitle" id="gymstitle">ΠΡΟΣΩΠΙΚΟ</p>
-     
-          <!--  <div class="row">
-                <div class="col-md-12">
-                    <div class="flex-container-sundromes">
-                        <div  id="arrow">
-                        <img  src= " <?php echo URLROOT; ?> /images/back.png" width="40" alt="arrow">
-                        </div>
-                        <div id="trainerphoto">
-                            <img src= " <?php echo URLROOT; ?> /images/gym/trainer1.jpg" width="365" alt="gymimg">
-                            <div class="trainerdescr"><p>Γιάννης Κ. - Crossfit trainer</p></div> 
-                        </div>
-                        <div  id="trainerphoto">
-                            <img  src= " <?php echo URLROOT; ?> /images/gym/trainer2.jpg" width="365" height="244" alt="gymimg">
-                            <div class="trainerdescr"><p>Μαρία Κ. - Crossfit trainer</p></div> 
-                        </div>
-                        <div  id="trainerphoto">
-                            <img src= " <?php echo URLROOT; ?> /images/gym/trainer3.jpg" width="365" alt="gymimg">
-                            <div class="trainerdescr"><p>Κώστας Κ. - Crossfit trainer</p></div> 
-                        </div>
-                        <div  id="arrow">
-                        <img src= " <?php echo URLROOT; ?> /images/front.png" width="40" alt="arrow">
-                        </div>
-                    </div>
                 </div>
-             </div> -->
-         
+</div> 
         <div class="row d-flex justify-content-center">
+            <!--START DYNAMIC EXAMPLE SLIDER -->
+            <div id="carouselDynamicIndicators" class="banner carousel slide">
+            <ol class="carousel-indicators">
+                <?php foreach ($data['trainers'] as $key=>$trainer) : ?>
+                    <li data-target="#carouselDynamicIndicators" data-slide-to="<?php echo $key; ?>"></li>
+                <?php endforeach; ?>
+            </ol>
+            <div class="carousel-inner">
+                <?php foreach ($data['trainers'] as $key=>$trainer) : ?>
+                    <div class="carousel-item img<?php echo $key; ?>">
+                        <img class="d-block w-100" src="<?php echo '../../public/images/trainers/'.$data['gym']->gym_name.'/'.$trainer->trainer_image; ?>" alt="First slide">
+                        <div class="trainerdescr"><p><?php echo $trainer->trainer_name.'-'.$trainer->trainer_title;?></p></div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <a class="carousel-control-prev" href="#carouselDynamicIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselDynamicIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!--END DYNAMIC EXAMPLE SLIDER -->
+        
+
+
+
+
+
+
+
+
          
-             <div class="col-md-4 col-sm-6 col-8 bd-highlight"  id="trainerphoto">
+             <!-- <div class="col-md-4 col-sm-6 col-10 bd-highlight "  id="trainerphoto">
                     <img src= " <?php echo URLROOT; ?>/images/gym/trainer1.jpg" width="100%" alt="gymimg">
                     <div class="trainerdescr"><p>Γιάννης Κ. - Crossfit trainer</p></div>  
              </div>
-            <div class="col-md-4 col-sm-6 col-8  bd-highlight" id="trainerphoto">
+            <div class="col-md-4 col-sm-6 col-10 bd-highlight" id="trainerphoto">
                 <img  src= " <?php echo URLROOT; ?>/images/gym/trainer2.jpg" width="100%" alt="gymimg">
                 <div class="trainerdescr"><p>Μαρία Κ. - Crossfit trainer</p></div> 
             </div>
-            <div class="col-md-4 col-sm-6 col-8  bd-highlight" id="trainerphoto">
+            <div class="col-md-4 col-sm-6 col-10 bd-highlight mb-5" id="trainerphoto">
                  <img src= " <?php echo URLROOT; ?>/images/gym/trainer3.jpg" width="100%" alt="gymimg">
                  <div class="trainerdescr"><p>Κώστας Κ. - Crossfit trainer</p></div> 
-            </div>
+            </div> -->
             
         </div>
 
 
 
         </div>   
-    </div>
+  
 
  <!-----------------------------------------------------------------------------------------------------------------
 -------------------------------------------***SYNDROMES**--------------------------------------------------------------->   
     <div class="sundromesrow">
         <div class="container">
+        <div class="row">
+            <div class="col-md-5 mt-5 mb-3">
             <p class="basictitle" id="gymstitle">ΠΑΚΕΤΑ ΣΥΝΔΡΟΜΩΝ</p>
+                </div>
+</div> 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-5">
                         <div class="flex-container-sundromes">
                         <div class="flip-card">
                             <div class="flip-card-inner">
@@ -151,9 +176,8 @@
                                 </div>
                             </div>
                             <div class="flip-card-back">
-                                <h1>John Doe</h1> 
-                                <p>Architect & Engineer</p> 
-                                <p>We love that guy</p>
+                                <h5>Mηνιαία Συνδρομή</h5>
+                                <a href="#">Aγορά</a>
                             </div>
                         </div>
                      </div>
@@ -189,6 +213,17 @@
         </div>
     </div>
 
-
+    <script type="text/javascript">
+    (function(){
+       var  aboutEl= $('div.aboutscroll'),
+            aboutoffset= 200,
+            documentEl=$(document);
+        
+        documentEl.on("scroll", function(){
+            if (documentEl.scrollTop() > aboutoffset && aboutEl.hasClass('hide')) aboutEl.removeClass('hide');
+            
+        });
+        })();
+    </script>
 <?php require  APPROOT . '/views/inc/footer.php'?>
 

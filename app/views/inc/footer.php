@@ -4,7 +4,7 @@
      <div class="footerrow"></div>   
         <div class="row">
             <div class="col-lg-2 offset-lg-1 col-md-3 offset-md-1 col-sm-5 offset-sm-3 mb-4">
-                <div class="pl-4">
+                <div class="pl-lg-4 pl-0">
                     <a href="<?php echo URLROOT; ?>"><img class="footer_logo" src="<?php echo URLROOT; ?>/images/logo.png" alt="logo_footer"></a>
                     <p id="gymaround">Gymaround</p>
                 </div>
