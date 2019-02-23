@@ -9,6 +9,8 @@ $( document ).ready(function() {
     //show again dropdown values on reset
     $("#dropdownReset").on("click", function() {
         $("#dropdownMenuButton:first-child").text('Περιοχή');
+        localStorage.removeItem('DropdownValueSelectedType');
+        localStorage.removeItem('DropdownValueSelected');
         location.reload();
     });
 
@@ -20,7 +22,9 @@ $( document ).ready(function() {
 
     //show again dropdown values on reset
     $("#dropdownResetTypes").on("click", function() {
-        $("#dropdownMenuButtonArr:first-child").text('Είδος');
+        $("#dropdownMenuButtonArr:first-child").text('Τύπος Γυμναστικής');
+        localStorage.removeItem('DropdownValueSelectedType');
+        localStorage.removeItem('DropdownValueSelected');
         location.reload();
     });
 

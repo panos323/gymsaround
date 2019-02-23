@@ -800,7 +800,7 @@ map.on('load', function(e) {
     var list = document.getElementById("listings");
     var myList = list.getElementsByClassName("item");
     var resultsLength = document.querySelector("#totalGymResulstsSpan");
-    var resetLocation = document.getElementById("dropdownMenuButtonArr").innerHTML = "Είδος";
+    var resetLocation = document.getElementById("dropdownMenuButtonArr").innerHTML = "Τύπος Γυμναστικής";
     Array.prototype.map.call(myList, function(node) {
       return {
         node: node,
