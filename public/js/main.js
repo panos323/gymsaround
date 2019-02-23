@@ -835,7 +835,8 @@ $( document ).ready(function() {
       //END IF LOCATIONS OPTIONS ARE SET FROM INDEX PAGE THEN PASS THE VALUE TO GYM PAGE
  
     
-
+    //change active class in dynamic bootstrap carousel
+    $('.carousel-item').first().addClass('active')
 
  }); // ON PAGE LOADED
  
