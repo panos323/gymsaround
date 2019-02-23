@@ -19,7 +19,7 @@ body{
 
     #navbarstyle{
         background-color: #2c2b2b;
-        height: 8vh;
+        
     }
 
     #navbarstyle a{color:#}
@@ -1888,7 +1888,6 @@ background-color: #1d1d1d;}
       }
 
     
-    #navbarstyle{height: 10vh;}
 
     .nav-item > a{
         border-bottom:1px solid #303741;

@@ -88,7 +88,7 @@
                 <img class="img-fluid"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
             </div>
             <div class="columnLightBox">
-                <img class="img-fluid"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
+                <img class="img-fluid mb-5"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
             </div>
         </div>
 
