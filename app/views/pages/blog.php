@@ -12,10 +12,10 @@
 <div class="container">
     <?php foreach ($data as $article) : ?>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 anime">
                <a href="<?php echo URLROOT.'/pages/article/'.$article->post_id;?>"><img src= " <?php echo URLROOT;?>/images/blog/imgblog1.jpg" style="margin-bottom:15px;" width="100%" alt="stars"/></a>
             </div>
-            <div class="col-md-6 blogbox">
+            <div class="col-md-6 blogbox anime-left">
             <a href="<?php echo URLROOT.'/pages/article/'.$article->post_id;?>"> <h4><?php echo $article->post_title; ?></h4></a>
                 <br>
                 <p class="maxLength"><?php echo $article->post_description; ?></p>

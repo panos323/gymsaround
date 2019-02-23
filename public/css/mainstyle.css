@@ -172,12 +172,12 @@ margin-left:36%;
     border-radius: 22px; 
     height: 45px; }
 
- #forgotpassmodal{opacity: 1 ;}   
+ #termofusemodal, #forgotpassmodal{opacity: 1 ;}   
 
  #modalcontentfgpass{margin-top: 150px;}
 
  #forgotpasstitle{margin-left: 15%;}
-
+ #termofusetitle{margin-left: 30%;}
 #forgotpass{
     background-color: white;
     color: #169b99;
