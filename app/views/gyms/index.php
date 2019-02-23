@@ -96,7 +96,7 @@
                 <?php foreach ($data['trainers'] as $key=>$trainer) : ?>
                     <div class="carousel-item img<?php echo $key; ?>">
                         <img class="d-block w-100" src="<?php echo '../../public/images/trainers/'.$data['gym']->gym_name.'/'.$trainer->trainer_image; ?>" alt="First slide">
-                        <div class="trainerdescr"><p>Γιάννης Κ. - Crossfit trainer</p></div>
+                        <div class="trainerdescr"><p><?php echo $trainer->trainer_name.'-'.$trainer->trainer_title;?></p></div>
                     </div>
                 <?php endforeach; ?>
             </div>

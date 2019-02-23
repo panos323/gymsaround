@@ -367,7 +367,7 @@
                     <h4>Οι γυμναστές μου</h4>
                     <?php flash('trainer_update'); ?>
                     <?php foreach ($data['trainers'] as $key=>$trainer) { ?>
-                        <form class="mt-4" id="updateTrainerForm<?php echo $key; ?>" action="<?php echo URLROOT; ?>/owners/update_trainer" method="post" enctype="multipart/form-data">
+                        <form class="mt-4 p-2" id="updateTrainerForm<?php echo $key; ?>" action="<?php echo URLROOT; ?>/owners/update_trainer" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input type="hidden" name="gym_name" value="<?php echo $data['my_gym_details']['gym_name']; ?>">
                                 <label for="name<?php echo $key; ?>">Όνομα</label>
@@ -399,7 +399,7 @@
                             <input type="hidden" name="id" value="<?php echo $trainer->trainer_id; ?>">
                             <button class="btn btn-success mb-2" type="submit">Αλλαγή Στοιχείων</button>
                         </form>
-                        <form id="deleteTrainerForm<?php echo $key; ?>" action="<?php echo URLROOT; ?>/owners/delete_trainer" method="post">
+                        <form class="pl-2" id="deleteTrainerForm<?php echo $key; ?>" action="<?php echo URLROOT; ?>/owners/delete_trainer" method="post">
                             <input type="hidden" name="id" value="<?php echo $trainer->trainer_id; ?>">
                             <button type="submit" class="btn btn-danger">Διαγραφή Γυμναστή</button>
                         </form>
