@@ -95,9 +95,7 @@ debounce = function(func, wait, immediate) {
 			var itemTop = $(this).offset().top;
 			if (documentTop > itemTop - offset) {
 				$(this).addClass(animationClass);
-			} else {
-				$(this).removeClass(animationClass);
-			}
+			} 
 		});
 	}
 
@@ -122,8 +120,6 @@ debounce = function(func, wait, immediate) {
 			var itemTop = $(this).offset().top;
 			if (documentTop > itemTop - offset) {
 				$(this).addClass(animationClass);
-			} else {
-				$(this).removeClass(animationClass);
 			}
 		});
 	}

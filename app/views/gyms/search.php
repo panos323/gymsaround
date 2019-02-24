@@ -196,7 +196,7 @@
 
     <!--start search buttons -->
     <div class="row col-lg-12 mt-5">
-        <div class="col-md-7 mt-5 mb-3">
+        <div class="col-md-5 col-sm-12 mt-2 mb-3">
         
           <button type="button" class=" sortByNameBtn btn btn-outline-info mr-4 mb-2   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
           <div class="dropdown d-inline-block">
@@ -233,8 +233,10 @@
           </div> 
 
           <button type="button" id="sortByPriceBtn" class="btn btn-outline-info mb-2  btn-md customBtnG">Tιμή +<i id="AscDescArrowsPrice" class="fa" aria-hidden="true"></i></button>
+
         </div>
-        <div class="col-md-3 offset-1  mt-3 mb-3">
+
+        <div style="text-align: center" class="col-md-7 mt-2">
             <p id="totalGymResulstsSpan" class="lead"></p>
         </div>
     </div> <!--row-->
@@ -264,53 +266,31 @@
         
   <script>
 
-  //start rating stars
-  function ratingStars(ratingStars,firstStar,secondStar,thirdStar,fourthStar,FifthStar) {
-    
-    var totalRatings = document.querySelector("."+ratingStars);
-    var star10 = document.querySelector ("."+firstStar);
-    var star20 = document.querySelector ("."+secondStar);
-    var star30 = document.querySelector ("."+thirdStar);
-    var star40 = document.querySelector ("."+fourthStar);
-    var star50 = document.querySelector ("."+FifthStar);
+  //show ratings
+  function ratingStars(ratingStars) {
 
-    var votedOne =  star10.addEventListener("click", function() {
-      document.querySelector ("."+firstStar).style.color="gold";
-      totalRatings.style.pointerEvents = "none";
-    });
-
-    var votedTwo =  star20.addEventListener("click", function() {
-      document.querySelector ("."+firstStar).style.color="gold";
-      document.querySelector ("."+secondStar).style.color="gold";
-      totalRatings.style.pointerEvents = "none";
-    });
-
-    var votedThree =  star30.addEventListener("click", function() {
-      document.querySelector ("."+firstStar).style.color="gold";
-      document.querySelector ("."+secondStar).style.color="gold";
-      document.querySelector ("."+thirdStar).style.color="gold";
-      totalRatings.style.pointerEvents = "none";
-    });
-
-    var votedFour =  star40.addEventListener("click", function() {
-      document.querySelector ("."+firstStar).style.color="gold";
-      document.querySelector ("."+secondStar).style.color="gold";
-      document.querySelector ("."+thirdStar).style.color="gold";
-      document.querySelector ("."+fourthStar).style.color="gold";
-      totalRatings.style.pointerEvents = "none";
-    });
-
-    var votedFour = star50.addEventListener("click", function() {
-      document.querySelector ("."+firstStar).style.color="gold";
-      document.querySelector ("."+secondStar).style.color="gold";
-      document.querySelector ("."+thirdStar).style.color="gold";
-      document.querySelector ("."+fourthStar).style.color="gold";
-      document.querySelector ("."+FifthStar).style.color="gold";
-      totalRatings.style.pointerEvents = "none";
-    });
-
+      if (ratingStars > 0 && ratingStars <=1) {
+          document.querySelector (".star1").style.color="gold";
+      } else if (ratingStars > 1 && ratingStars <= 2) {
+          document.querySelector (".star1").style.color="gold";
+          document.querySelector (".star2").style.color="gold";
+      }  else if (ratingStars > 2 && ratingStars <= 3) {
+          document.querySelector (".star1").style.color="gold";
+          document.querySelector (".star2").style.color="gold";
+          document.querySelector (".star3").style.color="gold";
+      } else if (ratingStars > 3 && ratingStars <= 4) {
+          document.querySelector (".star1").style.color="gold";
+          document.querySelector (".star2").style.color="gold";
+          document.querySelector (".star3").style.color="gold";
+          document.querySelector (".star4").style.color="gold";
+      } else if (ratingStars > 4 && ratingStars <= 5) {
+          document.querySelector (".star1").style.color="gold";
+          document.querySelector (".star2").style.color="gold";
+          document.querySelector (".star3").style.color="gold";
+          document.querySelector (".star4").style.color="gold";
+          document.querySelector (".star5").style.color="gold";
+      }
   }// end function
-//end rating stars
 
 
   //start function that display total results the founded
@@ -355,7 +335,7 @@
     zoom: 10
   });
 
-  var stores = {
+  var stores1 = {
     type: 'FeatureCollection',
     features: [
       {
@@ -389,171 +369,6 @@
           `,
           program: 'Crosfit - Boxing  - KingBoxing -  Salsa',
           gymCost : 'Από 70€'
-        }
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [
-            23.7986,
-            38.0213
-          ]
-        },
-        properties: {
-          name : 'Iron Gym',
-          linkPage : 'http://localhost/gymaround/gyms/index',
-          phoneFormatted: '(202) 507-8357',
-          phone: '2025078357',
-          address: 'Παπανδρέου Ανδρέα 25, Χαλάνδρι',
-          city: 'Αθήνα',
-          postalCode: '20037',
-          gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
-          rating : `
-              <span class="ratingStars clearfix" onClick="ratingStars('ratingStar2','start11','start12','start13','start14','start15')"> 
-                  <span class="ratingStar2">
-                    <i class="fa fa-star start11" aria-hidden="true"></i>
-                    <i class="fa fa-star start12" aria-hidden="true"></i>
-                    <i class="fa fa-star start13" aria-hidden="true"></i>
-                    <i class="fa fa-star start14" aria-hidden="true"></i>
-                    <i class="fa fa-star start15" aria-hidden="true"></i>
-                  </span>
-              </span>
-          `,
-          program: 'Crossfit - Muay Thai  - KingBoxing ',
-          gymCost : 'Από 50€'
-        }
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [
-            23.9333,
-            37.8834
-          ]
-        },
-        properties: {
-          name : 'Gym Planet',
-          linkPage : 'http://localhost/gymaround/gyms/index',
-          phoneFormatted: '(210) 8552198',
-          phone: '2025078357',
-          address: 'Ζηνωδίας 25, Μαρκόπουλο',
-          city: 'Αθήνα',
-          postalCode: '20037',
-          gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
-          rating : `
-              <span class="ratingStars clearfix" onClick="ratingStars('ratingStar3','start21','start22','start23','start24','start25')"> 
-                <span class="ratingStar3">
-                  <i class="fa fa-star start21" aria-hidden="true"></i>
-                  <i class="fa fa-star start22" aria-hidden="true"></i>
-                  <i class="fa fa-star start23" aria-hidden="true"></i>
-                  <i class="fa fa-star start24" aria-hidden="true"></i>
-                  <i class="fa fa-star start25" aria-hidden="true"></i>
-                </span>
-              </span>
-          `,
-          program: 'Zoomba - Boxing  - KingBoxing -  Salsa',
-          gymCost : 'Από 79€'
-        }
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [
-            23.9438,
-            37.7338
-          ]
-        },
-        properties: {
-          name : 'Anavisos Gym',
-          linkPage : 'http://localhost/gymaround/gyms/index',
-          phoneFormatted: '(210) 8552198',
-          phone: '2025078357',
-          address: 'Αναβύσσου 85, Ανάβυσσος',
-          city: 'Αθήνα',
-          postalCode: '20037',
-          gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
-          rating : `
-              <span class="ratingStars clearfix" onClick="ratingStars('ratingStar4','start31','start32','start33','start34','start35')"> 
-                <span class="ratingStar4">
-                  <i class="fa fa-star start31" aria-hidden="true"></i>
-                  <i class="fa fa-star start32" aria-hidden="true"></i>
-                  <i class="fa fa-star start33" aria-hidden="true"></i>
-                  <i class="fa fa-star start34" aria-hidden="true"></i>
-                  <i class="fa fa-star start35" aria-hidden="true"></i>
-                </span>
-              </span>
-          `,
-          program: 'KingBoxing - Pilates',
-          gymCost : 'Από 110€'
-        }
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [
-            22.9444,
-            40.6401
-          ] 
-        },
-        properties: {
-          name : 'PowerLift',
-          linkPage : 'http://localhost/gymaround/gyms/index',
-          phoneFormatted: '(210) 8552198',
-          phone: '2025078357',
-          address: 'Τσιμισκή 185',
-          city: 'Θεσσαλονίκη',
-          postalCode: '20037',
-          gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
-          rating : `
-              <span class="ratingStars clearfix" onClick="ratingStars('ratingStar6','start51','start52','start53','start54','start55')"> 
-                <span class="ratingStar4">
-                  <i class="fa fa-star start51" aria-hidden="true"></i>
-                  <i class="fa fa-star start52" aria-hidden="true"></i>
-                  <i class="fa fa-star start53" aria-hidden="true"></i>
-                  <i class="fa fa-star start54" aria-hidden="true"></i>
-                  <i class="fa fa-star start55" aria-hidden="true"></i>
-                </span>
-              </span>
-          `,
-          program: 'Zoomba - Pilates  - Cumbia -  Step',
-          gymCost : 'Από 140€'
-        }
-      },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [
-            23.8147,
-            38.0768
-          ]
-        },
-        properties: {
-          name : 'Hercules',
-          linkPage : 'http://localhost/gymaround/gyms/index',
-          phoneFormatted: '(202) 387-9338',
-          phone: '2023879338',
-          address: 'Αγίου Δημητρίου 25, Κηφισιά',
-          city: 'Αθήνα',
-          postalCode: '20036',
-          gymPhoto : '\'../public/images/search/gym_small_image.jpg\'',
-          rating : `
-              <span class="ratingStars clearfix" onClick="ratingStars('ratingStar5','start41','start42','start43','start44','start45')"> 
-                <span class="ratingStar5">
-                  <i class="fa fa-star start41" aria-hidden="true"></i>
-                  <i class="fa fa-star start42" aria-hidden="true"></i>
-                  <i class="fa fa-star start43" aria-hidden="true"></i>
-                  <i class="fa fa-star start44" aria-hidden="true"></i>
-                  <i class="fa fa-star start45" aria-hidden="true"></i>
-                </span>
-              </span>
-          `,
-          program: 'Crossfit - Pilates  - Krav Maga ',
-          gymCost : 'Από 88€'
         }
       },
       {
@@ -595,12 +410,13 @@
   var filterEl = document.getElementById('feature-filter');
   var listingEl = document.getElementById('listings');
   var numberOfGyms = document.getElementById('gyms_number').innerHTML;
-  console.log(numberOfGyms);
-  var allGyms = [];
+  var stores = {
+      type: 'FeatureCollection',
+      features: []
+  };
   for (var i=0; i<numberOfGyms; i++) {
-      allGyms.push(JSON.parse(document.getElementById('gyms_results_' + i).innerHTML));
+      stores.features.push(JSON.parse(document.getElementById('gyms_results_' + i).innerHTML));
   }
-  console.log(allGyms);
   var orderAscDescName = false; //toggle for asc desc order
 
 
@@ -764,7 +580,7 @@ map.on('load', function(e) {
     Array.prototype.map.call(myList, function(node) {
       return {
         node: node,
-        relevantText: node.querySelector('button').textContent.match(/\d/g).join("")
+        relevantText: node.querySelector('#btnGymPrice').textContent.match(/\d/g).join("")
       };
     }).sort(function(a, b) {
       if (orderAscDescName) {
@@ -1138,9 +954,14 @@ function buildLocationList(data) {
     if (prop.phone) {
       details.innerHTML += '<p id="gumsPhoneNum" class="lead">' + prop.phoneFormatted + '</p>';
     }
-    details.innerHTML +=  prop.rating ;
+    details.innerHTML +=  '<span class="ratingStars clearfix"><i class="fa fa-star star1" aria-hidden="true"></i><i class="fa fa-star star2" aria-hidden="true"></i><i class="fa fa-star star3" aria-hidden="true"></i><i class="fa fa-star star4" aria-hidden="true"></i><i class="fa fa-star star5" aria-hidden="true"></i> (' + prop.rating + ') </span>';
+    // details.innerHTML +=  '<span>' + prop.rating  + '</span>';
     details.innerHTML += '<p id="typeFitness" class="lead float-left mt-3"><b>' + prop.program + '</b></p>';
-    details.innerHTML += '<button class="btn btn-warning float-right ml-1 mt-3 mb-3" id="btnGymPrice">' + prop.gymCost + '</button>'
+    details.innerHTML += '<a href="'+prop.linkPage+'" target="_blank" class="btn btn-warning float-right ml-1 mt-3 mb-3" id="btnGymPrice">' + prop.gymCost + '</a>'
+
+    //show gym rating
+    ratingStars(prop.rating);
+  
 
     details.innerHTML += '<span class="clearfix"></span>';
 

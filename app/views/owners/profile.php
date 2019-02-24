@@ -176,6 +176,15 @@
                                 >
                             </div>
                             <div class="form-group">
+                                <label for="postal_code">Τ.Κ.</label>
+                                <input
+                                        name="postal_code"
+                                        type="number"
+                                        id="postal_code"
+                                        class="form-control"
+                                >
+                            </div>
+                            <div class="form-group">
                                 <label for="type">Τύπος Γυμναστηρίου</label>
                                 <input
                                         name="type"
@@ -228,7 +237,7 @@
                                         id="name"
                                         class="form-control"
                                         value="<?php echo $data['my_gym_details']['gym_name']; ?>"
-                                        placeholder="name@example.com">
+                                >
                             </div>
                             <div class="form-group">
                                 <label for="location">Τοποθεσία</label>
@@ -238,7 +247,17 @@
                                         id="location"
                                         class="form-control"
                                         value="<?php echo $data['my_gym_details']['gym_location']; ?>"
-                                        placeholder="name@example.com">
+                                >
+                            </div>
+                            <div class="form-group">
+                                <label for="postal_code">Τ.Κ.</label>
+                                <input
+                                        name="postal_code"
+                                        type="number"
+                                        id="postal_code"
+                                        value="<?php echo $data['my_gym_details']['gym_postal_code']; ?>"
+                                        class="form-control"
+                                >
                             </div>
                             <div class="form-group">
                                 <label for="type">Τύπος Γυμναστηρίου</label>
@@ -248,7 +267,7 @@
                                         id="type"
                                         class="form-control"
                                         value="<?php echo $data['my_gym_details']['gym_type']; ?>"
-                                        placeholder="name@example.com">
+                                >
                             </div>
                             <div class="form-group">
                                 <label for="year_price">Ετήσια Συνδρομή</label>

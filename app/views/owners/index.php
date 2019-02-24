@@ -120,6 +120,14 @@
                             <span class="invalid-feedback"><?php echo $data['confirm_pass_error']; ?></span>
                         </div>
                     </div>
+                    <div class="form-check col-8 offset-4">
+                            <input type="checkbox" class="form-check-input" id="OwnerRegisterTerms">
+                            <label class="form-check-label" for="acceptTermsSub" data-toggle="modal" data-target="#termofusemodal" style="cursor:pointer;">Αποδέχομαι τους όρους χρήσης
+                            </label>
+                            <br>
+                            <span class="text-center text-danger font-italic acceptForOwnersErr"></span>
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary" id="btnformpartner">Εγγραφή</button>
                 </form>
             </div>

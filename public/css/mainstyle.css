@@ -15,10 +15,12 @@ body{
 /**
  Navigation Bar Css
  */
+ 
     .navbar-collapse{width: auto;}
 
     #navbarstyle{
         background-color: #2c2b2b;
+        min-height: 8vh;
         
     }
 
@@ -703,15 +705,22 @@ select{
 
 
   .basictitle{
+          padding-top: 20px;
         padding-bottom: 20px;
         font-size: 40px;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         color:#169b99;
     }
+    #bigabouttext{
+        padding-bottom:20px;
+    }
+    
     #images{
         background-color: #e3e3e3;
        
     }
+
+
 
     #imagerow2{
         margin-top: 5px;
@@ -760,13 +769,14 @@ select{
         background-color: #1d1d1d;}
 
      .orangebox{
-        width: 265px;
+        padding-bottom:20px;
+        width: 100%;
         height: 420px;
         background-color: none;
         border: 5px solid #ffc731;
     }
 
-    .orangebox p{
+    .flip-card-back p, .orangebox p{
         text-align: center;
         font-size: 30px;
         color: white;
@@ -778,6 +788,13 @@ select{
 
     }
 
+    #priceback{
+        text-shadow: 1px 1px 1px #b5b5b6;
+        font-size: 50px;
+        margin-top: 30%;
+        margin-bottom: 10%;
+        color:white;
+    }
     #price{
         text-shadow: 1px 1px 1px #b5b5b6;
         font-size: 62px;
@@ -788,16 +805,18 @@ select{
     .flex-container-sundromes {
         display: flex;
         flex-wrap: nowrap;
+        padding-bottom: 20px;
         
         }
         
     .flex-container-sundromes > div {
         
         text-align: center;
-        margin-top: 30px;
         margin-left: 10px;
         
         }
+
+
 
 
     /* start custom carousel */
@@ -949,11 +968,33 @@ select{
   /****************************************************************************************************
   ******************************************************************************************************
   *****************************----SEARCH PAGE----*********************************************************/
+  #totalGymResulstsSpan{
+    color:#169b99 !important;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size:25px;
+  
+  }
 
     .customBtnG{
         border-radius:22px !important;
     }
+    .dropDownMenuCol button:hover{
+        color: #169b99 !important;
+    }
 
+.btn-outline-info:not(:disabled):not(.disabled).active, .btn-outline-info:not(:disabled):not(.disabled):active, .show>.btn-outline-info.dropdown-toggle{
+        color: white !important;
+    }
+
+ .btn-outline-info{
+     color: #169b99 !important;
+     border: 3px solid #169b99;
+
+ }
+ .btn-outline-info:hover{
+     color:white !important;
+     background-color: #169b99 !important;
+ }
 
     .btnsearchpage{ 
             background-color: white; 
@@ -1066,7 +1107,7 @@ select{
     /****************************************************************************************************
     ******************************************************************************************************
     *****************************----ABOUT----*********************************************************/
-
+  
     #imgabout{
 
         background-repeat: no-repeat;
@@ -1087,14 +1128,14 @@ select{
         background-color:#e3e3e3;
     }
 
-    #teamimg img{
+    .teamimg img{
         border-radius: 50%;
         margin-bottom: 20px;
     }
 
-    #teamimg p{
+    .teamimg p{
         text-align: center;
-        font-size: 18px;
+        font-size: 20px;
     }
 
 /****************************************************************************************************
@@ -1360,10 +1401,40 @@ textarea {
   }
   
   .flip-card-back {
-    background-color: #ffc731;
+    background-color: #1d1d1d;
+    border: 5px solid #ffc731;
     color: white;
     transform: rotateY(180deg);
     z-index: 1;
+  }
+  .flip-card-back a{
+      text-decoration: none;
+      display: inline-block; 
+      font-size: 25px;
+      color: #fbba0b;
+  }
+  .flip-card-back a:hover{
+    text-decoration: none;
+    display: inline-block; 
+    color: #1d1d1d;;
+  }
+
+  .buylink{
+    width: 80%;
+    border: 2px solid #fbba0b;
+    border-radius: 22px;
+    margin-top: 10%;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 45px;
+    padding-right: 45px;
+    font-size: 18px;
+    outline: none;
+  }
+
+  .buylink:hover{
+  background-color: #ffc731;
+
   }
 
     /*****ANIMATION ONSCROLLL*****/  
@@ -1412,6 +1483,11 @@ textarea {
     }
 
 
+
+
+
+
+
 /*********************************************************************************************
 **********************************!!!!!---RESPONCIVE---!!!!***********************************
 ********************************************************************************************/
@@ -1425,16 +1501,16 @@ textarea {
     #blogtitle{
         margin-left: 20px;
         padding-top:50px;
-       
     }  
     #btnblog{width:100%;}
-    #title{
-        margin-top: 300px;
-    }
+
+    #title{margin-top: 300px;}
+
     #article{
         padding-top:30px;
         padding-bottom:40px;
     }
+    
     #btnmember{width:80%;}
 
     #bigtitle{margin-top: 370px;}
@@ -1550,34 +1626,41 @@ textarea {
           text-align:center !important;
       }
 
-    } /*@media (max-width: 600px)*/
+    } 
 
 
     
 
 /****************************NAVBAR RESPONSIVE  LG BREAKPOINT*********************************************/
-@media (max-width: 991px) { 
+@media  (max-width: 1036px) { 
     #btnliButtonFirst{
         margin-left:0px;
-        margin-right:0px;
+         margin-right:0px;
         margin-top:14px;
         margin-bottom:8px;
     }
+    
+ }
+
+/****************************NAVBAR RESPONSIVE  IPAD PRO*********************************************/
+
+ @media (min-width: 1024px) and (max-width: 1025px) { 
+  
+    .fimage, #boxgrey{height: 50vh !important; }
+
+    .blogarticle, .box2{height:30vh !important;}
  }
 
 
 /****************************RESPONSIVE 992 - 1200*********************************************/
 
   @media (min-width: 992px) and (max-width: 1199.98px){ 
+      /*******INDEX***********/ 
 
     .fimage, #boxgrey{height: 90vh; }
 
-    #bestgymimg img{
-        margin-top: 40px;
-       
-    }
+    #bestgymimg img{margin-top: 40px;}
     
-  
     #blogtitle{padding-top:5px;} 
 
     .btnblue{width:140%;}
@@ -1590,9 +1673,6 @@ textarea {
   
     #title{margin-top: 150px;}
 
-
-
-
     .box2, .blogarticle{
         height: 53.4vh;
         margin-bottom: 40px;
@@ -1600,6 +1680,7 @@ textarea {
    
 
 /***********GYM INDEX*********/
+
     .gymelement{height: 450px;}
 
     #biggymimg img{height: 450px;}
@@ -1620,30 +1701,29 @@ textarea {
   ********************RESPONSIVE 992 - 768*********************************/
 
   @media (min-width: 768px) and (max-width: 991.98px) { 
+
+     /*******INDEX***********/ 
       
-    #teamimg img{width:150px; }
-    .nav-item > a{
-        border-bottom:1px solid #303741;
-    }
+    .teamimg img{width:150px; }
+
+    .nav-item > a{border-bottom:1px solid #303741;}
     
     .fimage{height: 500px;}
  
-    #boxgrey{
-        width:110%;
-        height: 500px;
-    }
-    .rowtitle{
-       padding-top: 30px;
-    }
-    #bestgymimg img{
-        margin-top: 40px;
-    }
+    #boxgrey{height: 500px;}
+
+    .rowtitle{padding-top: 30px;}
+
+    #bestgymimg img{margin-top: 40px;}
     
-  
     #slc1{margin-top: 30px;}
+
     .rowtitle{font-size: 35px;}
-    #gymname{font-size: 30px;
-    margin-bottom: 5px;}
+
+    #gymname{
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
 
     #bigtitle{
         font-size: 45px;
@@ -1663,13 +1743,14 @@ textarea {
         margin-top: 80px;
     }
     
-    
     #scl1{margin-top: 30px;}
+
+   /*******FOOTER***********/ 
    
     #btnfooter{
-           width:100%;
-           margin-top: 40px;
-       }
+        width:100%;
+        margin-top: 40px;
+    }
 
     .socialm{margin-top: 40px;}   
 
@@ -1694,29 +1775,30 @@ textarea {
 /*************OWNER INDEX**************/
         
      #partnerform{margin-top: 30%;}   
+
 /*************GYM INDEX**************/
 
         #biggymimg img{display: none;}
 
-        .gymelement{height: 450px;
-        }
-
+        .gymelement{height: 450px;}
        
         .trainerdescr{height: 50px;}
-        .trainerdescr p{font-size: 16px;
-        }
+
+        .trainerdescr p{font-size: 16px;}
+
         .flip-card, .orangebox{
             height: 360px;
             width: 320px;
             float:left;
         }
-        .flex-container-sundromes{
-            display: inline;
+        .flex-container-sundromes{display: inline;}
+
+        #price{margin-top: 10px;}
+
+        #priceback{
+            margin-top: 50px;
+            margin-bottom: 20px;
         }
-        #price{
-            margin-top: 10px;
-        }
-      
      
 
    }
@@ -1725,9 +1807,10 @@ textarea {
   ***************************RESPONSIVE 768 - 576*************************/
 
   @media (min-width: 575.98px) and (max-width: 767.98px) {
-    .nav-item > a{
-        border-bottom:1px solid #303741;
-    }
+    
+/*******INDEX***********/ 
+
+    .nav-item > a{border-bottom:1px solid #303741;}
 
     .flex-container {
         display: flex;
@@ -1756,9 +1839,11 @@ textarea {
         padding: 5px;
     }
 
-    .fimage{height: 500px;
-    background-image: none;
-background-color: #1d1d1d;}
+    .fimage{
+        height: 500px;
+        background-image: none;
+        background-color: #1d1d1d;
+    }
         
     #boxgrey{
         width:120%;
@@ -1766,21 +1851,51 @@ background-color: #1d1d1d;}
         background-color: #1d1d1d;
     }
 
-  
-  #mobiletitle{
-      display: inline;
-      margin-top: 60px;
-      display: block; 
-      color: #1ecfcc;
-      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-      font-size: 30px;
-      text-align: center;}
-
     #btnsearch{width: 60%;}
 
     #btnmember, #bigtitle,  .blogrow,  #footermenu, #footerextra,  #footertitle, #title, #arrow{display:none;}
 
+ 
+    .rowbestgym{display: none;}
+
+    #gymtitle{margin-top: 50px;}
         
+    #gymname{
+        margin: 0;
+        font-size: 21px;
+    }
+        
+    #bgborder{
+        height:100%;
+        padding-top:5%;
+        padding-bottom: 5%;
+        border: 1px #e3e3e3  solid;
+        margin-bottom: 2%;
+    }
+    .sponsorsFirst, .sponsorsSecond{
+        width:20%
+    }
+/************MOBILE INDEX****************/
+     #mobiletitle{
+        display: inline;
+        margin-top: 60px;
+        display: block; 
+        color: #1ecfcc;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 30px;
+        text-align: center;}
+
+    .rowbestgymmobile {
+        display: block;   
+    }
+
+    #bgelementmobile {
+        font-size: 13px;
+        margin-top:3px;
+        margin-bottom: 0;
+    }
+/*******FOOTER***********/  
+
     #btnfooter{
         width:100%;
     }
@@ -1798,81 +1913,47 @@ background-color: #1d1d1d;}
         opacity: 0.8;
     }
 
-
-    .rowbestgymmobile {
-        display: block;   
-    }
-
-    .rowbestgym{display: none;}
-
-    #gymtitle{margin-top: 50px;}
+/************ABOUTUS****************/
+    .teamimg p{margin-top: 15px;}
         
-    #gymname{
-        margin: 0;
-        font-size: 21px;
+    .teamimg img{
+        width:100px;
+        float: left;
     }
-        
-    #bgelementmobile {
-        font-size: 13px;
-        margin-top:3px;
-        margin-bottom: 0;
-    }
-        
-    #bgborder{
-        height:100%;
-        padding-top:5%;
-        padding-bottom: 5%;
-        border: 1px #e3e3e3  solid;
-        margin-bottom: 2%;
-    }
-    .sponsorsFirst, .sponsorsSecond{
-        width:20%
-    }
-    /************ABOUTUS****************/
-        #teamimg p{margin-top: 15px;}
-        
-        #teamimg img{
-            width:100px;
-            float: left;
-        }
             
-    /***********OWNER REGISTER****************/
+/***********OWNER REGISTER****************/
 
-        #ourservices{padding-bottom: 650px;}
+    #ourservices{padding-bottom: 650px;}
 
-        .titlepartnerform{margin-top: 530px;}
+    .titlepartnerform{margin-top: 530px;}
 
       
 
-    /***********GYM INDEX***************/
-         #biggymimg img{display: none;}
+/***********GYM INDEX***************/
+    #biggymimg img{display: none;}
 
-        .gymelement{height: 450px;}
+    .gymelement{height: 450px;}
 
-        #gymlogo{width: 100%;}
+    #gymlogo{width: 100%;}
 
-        #gymaddress p, #activities{font-size: 18px;}
+    #gymaddress p, #activities{font-size: 18px;}
 
-   
+    #trainerphoto{ display: block;}
 
-        #trainerphoto{ display: block;}
+ /****Flip Card*****/
+    .flip-card, .orangebox{
+        height: 360px;
+        width: 240px;
+        float:left;
+    }
 
+    .flex-container-sundromes{display: inline;}
+
+    #price{ margin-top: 10px;}
         
+    .trainerdescr{height: 50px;}
 
-        .flip-card, .orangebox{
-            height: 360px;
-            width: 240px;
-            float:left;
-        }
-        .flex-container-sundromes{display: inline;}
-
-        #price{ margin-top: 10px;}
-        
-      
-
-       .trainerdescr{height: 50px;}
-
-       .trainerdescr p{font-size: 16px;}
+    .trainerdescr p{font-size: 16px;}
      
   }
 
@@ -1886,8 +1967,6 @@ background-color: #1d1d1d;}
         float: left;
         width: 49%;   
       }
-
-    
 
     .nav-item > a{
         border-bottom:1px solid #303741;
@@ -1934,8 +2013,6 @@ background-color: #1d1d1d;}
             font-size: 30px;
         }
                 
-       
-
         #gymname{
             margin: 0;
             font-size: 21px;
@@ -2003,9 +2080,9 @@ background-color: #1d1d1d;}
             color: #b5b5b6;
         }
 
-        #teamimg p{margin-top: 15px;}
+        .teamimg p{margin-top: 15px;}
 
-        #teamimg img{
+        .teamimg img{
             width:100px;
             float: left;
         }
@@ -2060,20 +2137,25 @@ background-color: #1d1d1d;}
 
         }
        
-        .flip-card, .orangebox {
+        .flip-card-back, .flip-card, .orangebox {
             height: 300px;
-            width: 95%;
+            width: 100%;
         }
-        #price{
+       #price{
             margin-top: 10px;
             font-size: 50px;
         }
-
+        #priceback{
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
         #month{
             margin-top: 20px;
             margin-bottom: 20px;
 
         }
+        .buylink{margin-top: 20px;
+        width: 60%;}
 
 
 /***************BLOG*******************/

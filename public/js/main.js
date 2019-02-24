@@ -199,11 +199,9 @@ $( document ).ready(function() {
 
         var nameEmail = $("#exampleInputEmailLog").val().trim();
         var myPassword = $("#passwordLoginPopUp").val().trim();
-        var isCheckForm = $("#checkOutLoginC").is(":checked");
 
         validateNameEmail(nameEmail,e);
         validateLoginPassword(myPassword,e);
-        validateLoginCheckbox(isCheckForm,e);
     }) // on submit 
     //END ON LOGIN POP UP FORM SUMBIT
 
@@ -218,7 +216,7 @@ $( document ).ready(function() {
         var mobilecheck = $(".ownerPhoneInput").val().trim();
         var myPassword = $(".ownerPasswordInput").val().trim();
         var passwordConfirm = $(".ownerPasswordMatchInput").val().trim();
-        //var isCheckForm = $("#acceptTerms").is(":checked");
+        var isCheckForm = $("#OwnerRegisterTerms").is(":checked");
 
         validateOwnerName(firstname,e);
         validateOwnerSurName(surname,e);
@@ -227,7 +225,7 @@ $( document ).ready(function() {
         validateOwnerPassword(myPassword,e);
         validateOwnerPhone(mobilecheck,e);
         validateOwnerMatchingPassword(myPassword,passwordConfirm,e);
-        //validateOwnerCheckboxField(isCheckForm,e);
+        validateOwnerCheckboxField(isCheckForm,e);
     }) // on submit 
     //END ON REGISTER OWNERS FORM SUMBIT
 
@@ -513,6 +511,15 @@ $( document ).ready(function() {
             $(".PassWordOwnerUpdateMatchesConfirmErr").text("");
         }
     } //end function
+
+    function validateOwnerCheckboxField(isCheckForm,e) {
+        if (!isCheckForm) {
+            $(".acceptForOwnersErr").text(" (Παρακαλώ αποδεχθείτε τους όρους)");
+            e.preventDefault();
+        } else {
+            $(".acceptForOwnersErr").text("");
+        }
+    }
     //END FUNCTIONS FOR UPDATE OWNER  VALIDATION
 
 
@@ -715,14 +722,6 @@ $( document ).ready(function() {
         }
     } //end function
 
-    function validateLoginCheckbox(isCheckForm,e) {
-        if (!isCheckForm) {
-            $(".checkIfCheckedLogin").text(" (Παρακαλώ αποδεχθείτε τους όρους)");
-            e.preventDefault();
-        } else {
-            $(".checkIfCheckedLogin").text("");
-        }
-    }
     //END FUNCTIONS FOR LOGIN POP UP VALIDATION
 
 
@@ -896,7 +895,13 @@ $( document ).ready(function() {
  
     
     //change active class in dynamic bootstrap carousel
-    $('.carousel-item').first().addClass('active')
+    $('.carousel-item').first().addClass('active');
+
+    //model for messages page to be always open
+    $('#messagesModal').modal('show');
+    //and have full overlay opacity
+    //when modal closes
+    $('.modalMessages').css({ opacity: 1 });
 
  }); // ON PAGE LOADED
  

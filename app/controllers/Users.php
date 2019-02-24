@@ -99,38 +99,17 @@ class Users extends Controller {
                         'receiver_email' => $data['email'],
                     ];
                     mailer($attrs);
-                    flash('register_success', 'You are now registered and you can log in');
-                    redirect('pages/index');
+                    flash('general_messages', 'Σας ευχαριστούμε για την εγγραφή.');
+                    redirect('pages/messages');
                 } else{
-                    $data['register_error'] = 'Something went wrong. Please try again.';
-                    $this->view('pages/index', $data);
+                    flash('general_messages', 'Κάτι πήγε στραβά. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+                    redirect('pages/messages');
                 }
             } else {
                 // Load view with errors
-                $this->view('pages/index', $data);
+                flash('general_messages', 'Κάτι πήγε στραβά. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+                redirect('pages/messages');
             }
-        }else {
-            // Init data
-            $data = [
-                'first_name' => '',
-                'last_name' => '',
-                'username' => '',
-                'email' => '',
-                'password' => '',
-                'confirm_password' => '',
-                'address' => '',
-                'fname_error' => '',
-                'lname_error' => '',
-                'username_error' => '',
-                'email_error' => '',
-                'pass_error' => '',
-                'confirm_pass_error' => '',
-                'register_error' => '',
-                'address_error' => '',
-            ];
-
-            // Load view
-            $this->view('users/register', $data);
         }
     }
 
@@ -176,8 +155,8 @@ class Users extends Controller {
                 if (!$isUserLoggedIn){
                     $isOwnerLoggedIn = $this->ownerModel->login($data['login_credential'], $data['password']);
                     if(!$isOwnerLoggedIn){
-                        $data['pass_error'] = 'Password is wrong. Please try again.';
-                        $this->view('users/login', $data);
+                        flash('general_messages', 'Κάτι πήγε στραβά. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+                        redirect('pages/messages');
                     }else {
                         $this->createOwnerSession($isOwnerLoggedIn);
                     }
@@ -186,20 +165,9 @@ class Users extends Controller {
                 }
             } else {
                 // Load view with errors
-                $this->view('users/login', $data);
+                flash('general_messages', 'Κάτι πήγε στραβά. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+                redirect('pages/messages');
             }
-
-        } else {
-            // Init data
-            $data = [
-                'login_credential' => '',
-                'password' => '',
-                'login_credential_error' => '',
-                'pass_error' => ''
-            ];
-
-            // Load view
-            $this->view('users/login', $data);
         }
     }
 
@@ -284,7 +252,7 @@ class Users extends Controller {
         unset($_SESSION['gym_id']);
         unset($_SESSION['isAdmin']);
         session_destroy();
-        redirect('users/login');
+        redirect('pages/index');
     }
 
     // Method to check if user is logged in.
