@@ -357,7 +357,7 @@
     zoom: 10
   });
 
-  var stores = {
+  var stores1 = {
     type: 'FeatureCollection',
     features: [
       {
@@ -598,11 +598,11 @@
   var listingEl = document.getElementById('listings');
   var numberOfGyms = document.getElementById('gyms_number').innerHTML;
   console.log(numberOfGyms);
-  var allGyms = [];
+  var stores = [];
   for (var i=0; i<numberOfGyms; i++) {
-      allGyms.push(JSON.parse(document.getElementById('gyms_results_' + i).innerHTML));
+      stores.push(JSON.parse(document.getElementById('gyms_results_' + i).innerHTML));
   }
-  console.log(allGyms);
+  console.log(stores);
   var orderAscDescName = false; //toggle for asc desc order
 
 
