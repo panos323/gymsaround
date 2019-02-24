@@ -22,7 +22,7 @@
                             </a>
                         </div>
                         <p id="activities"><b>Crosfii | Boxing | KingBoxing | Climbing</b></p>
-                       <a class="btnorange" id="btnsundromes" href="sundromesrow">Πακέτα Συνδρομών</a>
+                       <a class="btnorange" id="btnsundromes" href="#sundromestitle">Πακέτα Συνδρομών</a>
                     </div>
             </div>
         </div>
@@ -236,7 +236,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 mt-5">
-                     <p class="basictitle" id="gymstitle">ΠΑΚΕΤΑ ΣΥΝΔΡΟΜΩΝ</p>
+                     <p class="basictitle" id="sundromestitle">ΠΑΚΕΤΑ ΣΥΝΔΡΟΜΩΝ</p>
                 </div>
             </div> 
             <div class="row">
