@@ -79,4 +79,9 @@ class Gyms extends Controller
             redirect('users/profile/my_gyms');
         }
     }
+
+    public function payment() {
+        $data = [];
+        $this->view('gyms/payment', $data);
+    }
 }
