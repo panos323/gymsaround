@@ -896,7 +896,13 @@ $( document ).ready(function() {
  
     
     //change active class in dynamic bootstrap carousel
-    $('.carousel-item').first().addClass('active')
+    $('.carousel-item').first().addClass('active');
+
+    //model for messages page to be always open
+    $('#messagesModal').modal('show');
+    //and have full overlay opacity
+    //when modal closes
+    $('.modalMessages').css({ opacity: 1 });
 
  }); // ON PAGE LOADED
  
