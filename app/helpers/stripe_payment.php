@@ -11,9 +11,13 @@ function stripe_payment($data){
     ));
 
     $charge = \Stripe\Charge::create(array(
-        "amount" => 5000,
+        "amount" => $data['amount'] * 100,
         "currency" => "eur",
-        "description" => "Descr",
+        "description" => $data['description'],
         "customer" => $customer->id
     ));
+    if($charge->status === 'succeeded'){
+        return true;
+    }
+    return false;
 }

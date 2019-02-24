@@ -99,38 +99,17 @@ class Users extends Controller {
                         'receiver_email' => $data['email'],
                     ];
                     mailer($attrs);
-                    flash('register_success', 'You are now registered and you can log in');
-                    redirect('pages/index');
+                    flash('general_messages', 'Σας ευχαριστούμε για την εγγραφή.');
+                    redirect('pages/message');
                 } else{
-                    $data['register_error'] = 'Something went wrong. Please try again.';
-                    $this->view('pages/index', $data);
+                    flash('general_messages', 'Κάτι πήγε στραβά. Παρακαλώ προσπαθείστε ξανά.');
+                    redirect('pages/message');
                 }
             } else {
                 // Load view with errors
-                $this->view('pages/index', $data);
+                flash('general_messages', 'Κάτι πήγε στραβά. Παρακαλώ προσπαθείστε ξανά.');
+                redirect('pages/message');
             }
-        }else {
-            // Init data
-            $data = [
-                'first_name' => '',
-                'last_name' => '',
-                'username' => '',
-                'email' => '',
-                'password' => '',
-                'confirm_password' => '',
-                'address' => '',
-                'fname_error' => '',
-                'lname_error' => '',
-                'username_error' => '',
-                'email_error' => '',
-                'pass_error' => '',
-                'confirm_pass_error' => '',
-                'register_error' => '',
-                'address_error' => '',
-            ];
-
-            // Load view
-            $this->view('users/register', $data);
         }
     }
 

@@ -254,7 +254,7 @@
                                 </div>
                                 <div class="flip-card-back">
                                     <p id="priceback"><b>70€ <h4 >1 Mήνα</h4></b></p>
-                                    <a href="#" class="buylink">Aγορά</a>
+                                    <a href="<?php echo URLROOT; ?>/gyms/payment?name=<?php echo $data['gym']->gym_name; ?>&amount=70&month=1" class="buylink">Aγορά</a>
                                 </div>
                             </div>
                         </div>

@@ -117,18 +117,22 @@ class Gyms extends Controller
                 'first_name' => trim($_POST['first_name']),
                 'last_name' => trim($_POST['last_name']),
                 'email' => trim($_POST['email']),
+                'description' => trim($_POST['description']),
+                'amount' => trim($_POST['amount']),
                 'token' => trim($_POST['stripeToken']),
             ];
 
-            stripe_payment($data);
-            if($this->gymModel->deleteTrainersByGymId($data['id']) && $this->gymModel->deleteGym($data['id'])){
-                flash('gym_success', 'Η ενέργειά σας πραγματοποιήθηκε με επιτυχία.');
+            if(stripe_payment($data)){
+                flash('general_messages', 'Η ενέργειά σας πραγματοποιήθηκε με επιτυχία. Ευχαριστούμε που μας επιλέξατε!');
             }else {
-                flash('gym_success', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');
+                flash('general_messages', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');
             }
-            redirect('users/profile/my_gyms');
+            redirect('pages/messages');
         } else {
             $data = [];
+            $data['name'] = $_GET['name'];
+            $data['amount'] = $_GET['amount'];
+            $data['month'] = $_GET['month'];
             $this->view('gyms/payment', $data);
         }
     }
