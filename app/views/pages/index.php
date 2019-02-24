@@ -252,19 +252,19 @@
                     <div class="form-row">
                             <div class="form-group col-lg-6 col-md-12 col-sm-6 px-3">
                                 <label for="name">Όνομα</label>
-                                <span class="text-center text-danger font-italic nameErr"></span>
+                                <span class="text-center text-danger font-italic nameLetterErr"></span>
                                 <input type="text"
-                                    class="form-control"
+                                    class="namenewsLetter form-control"
                                     id="name"
                                     name="first_name"
                                 >
                             </div>
                             <div class="form-group col-lg-6 col-md-12  col-sm-6  px-3">
                                 <label for="last_name">Επώνυμο</label>
-                                <span class="text-center text-danger font-italic SurnameErr"></span>
+                                <span class="text-center text-danger font-italic SurnameLetterErr"></span>
                                 <input type="text"
                                     name="last_name"
-                                    class="form-control"
+                                    class="lastNamenewsLetter form-control"
                                     id="last_name"
                                 >
                             </div>
@@ -272,10 +272,10 @@
                         <div class="form-row">
                             <div class="form-group col-lg-6 offset-lg-3 col-md-12 offset-md-0  col-sm-6 offset-sm-3  px-3">
                                 <label for="email">Email</label>
-                                <span class="text-center text-danger font-italic SurnameErr"></span>
+                                <span class="text-center text-danger font-italic EmailLetterErr"></span>
                                 <input type="email"
                                     name="email"
-                                    class="form-control"
+                                    class="EmailnewsLetter form-control"
                                     id="email"
                                 >
                             </div>
