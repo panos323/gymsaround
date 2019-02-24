@@ -22,7 +22,7 @@
                             </a>
                         </div>
                         <p id="activities"><b>Crosfii | Boxing | KingBoxing | Climbing</b></p>
-                       <a class="btnorange" id="btnsundromes" href="#">Πακέτα Συνδρομών</a>
+                       <a class="btnorange" id="btnsundromes" href="sundromesrow">Πακέτα Συνδρομών</a>
                     </div>
             </div>
         </div>
@@ -87,7 +87,7 @@
             <div class="columnLightBox">
                 <img class="img-fluid"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
             </div>
-            <div class="columnLightBox">
+            <div class="columnLightBox" style="padding-bottom:20px;">
                 <img class="img-fluid mb-5"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
             </div>
         </div>
@@ -129,7 +129,7 @@
             </div>
 
             <!-- Next/previous controls -->
-            <a class="prevLightBox" onclick="plusSlides(-1);"><i class="text-success fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+            <a class="prevLightBox" onclick="plusSlides(-1);"><i class="text-success fa fa-2x fa-arrow-left" aria-hidden="true" style="color:red;"></i>
             </a>
             <a class="nextLightBox" onclick="plusSlides(1);"><i class="text-success fa fa-2x fa-arrow-right" aria-hidden="true"></i></a>
 
@@ -201,7 +201,7 @@
             <div class="row d-flex justify-content-center">
             <!--START DYNAMIC EXAMPLE SLIDER -->
                 <div class="col-md-6 mb-5">
-                    <div id="carouselDynamicIndicators" class="banner carousel slide">
+                    <div id="carouselDynamicIndicators" class="banner carousel slide" style="padding-bottom:20px;">
                         <ol class="carousel-indicators">
                             <?php foreach ($data['trainers'] as $key=>$trainer) : ?>
                                 <li data-target="#carouselDynamicIndicators" data-slide-to="<?php echo $key; ?>"></li>
@@ -232,58 +232,91 @@
 
  <!-----------------------------------------------------------------------------------------------------------------
 -------------------------------------------***SYNDROMES**--------------------------------------------------------------->   
-    <div class="sundromesrow">
+     <div class="sundromesrow">
         <div class="container">
-        <div class="row">
-            <div class="col-md-5 mt-5 mb-3">
-            <p class="basictitle" id="gymstitle">ΠΑΚΕΤΑ ΣΥΝΔΡΟΜΩΝ</p>
+            <div class="row">
+                <div class="col-md-5 mt-5">
+                     <p class="basictitle" id="gymstitle">ΠΑΚΕΤΑ ΣΥΝΔΡΟΜΩΝ</p>
                 </div>
-</div> 
-                <div class="row">
-                    <div class="col-md-12 mb-5">
-                        <div class="flex-container-sundromes">
-                        <div class="flip-card">
+            </div> 
+            <div class="row">
+                <div class="col-md-12 mb-5">
+                    <div class="flex-container-sundromes">
+                        <div class="flip-card mb-3">
                             <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <div class="orangebox">
-                                    <p id="month"><b>1 ΜΗΝΑΣ</b></p>
-                                    <p><b>CrossFit</b></p>
-                                    <p><b>Climbing</b></p>
-                                    <p id="price"><b>70€</b></p>
+                                <div class="flip-card-front">
+                                    <div class="orangebox">
+                                        <p id="month"><b>1 ΜΗΝΑΣ</b></p>
+                                        <p><b>CrossFit</b></p>
+                                        <p><b>Climbing</b></p>
+                                        <p id="price"><b>70€</b></p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <p id="priceback"><b>70€ <h4 >1 Mήνα</h4></b></p>
+                                    <a href="#" class="buylink">Aγορά</a>
                                 </div>
                             </div>
-                            <div class="flip-card-back">
-                                <h5>Mηνιαία Συνδρομή</h5>
-                                <a href="#">Aγορά</a>
-                            </div>
                         </div>
-                     </div>
                    
+                        <div class="flip-card mb-3">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class="orangebox">
+                                        <p id="month"><b>2 ΜΗΝΕΣ</b></p>
+                                        <p><b>CrossFit</b></p>
+                                        <p><b>Climbing</b></p>
+                                        <p id="price"><b>130€</b></p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                
+                                    <p id="priceback"><b>130€ <h4 >2 Mήνες</h4></b></p>
+                                    <a href="#" class="buylink">Aγορά</a>
+                                </div>
+                        </div>
+                    </div>
 
-
-                        <div class="orangebox">
-                            <p id="month"><b>3 ΜΗΝΑΣ</b></p>
-                            <p><b>CrossFit</b></p>
-                            <p><b>Climbing</b></p>
-                            <p id="price"><b>180€</b></p>
-                        </div>
-                        <div class="orangebox">
-                            <p id="month"><b>6 ΜΗΝΑΣ</b></p>
-                            <p><b>CrossFit</b></p>
-                            <p><b>Climbing</b></p>
-                            <p id="price"><b>360€</b></p>
-                        </div>
-                        <div class="orangebox">
-                            <p id="month"><b>1 ΕΤΟΣ</b></p>
-                            <p><b>CrossFit</b></p>
-                            <p><b>Climbing</b></p>
-                            <p id="price"><b>450€</b></p>
-                        </div>
+                    <div class="flip-card mb-3">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class="orangebox">
+                                        <p id="month"><b>1 ΜΗΝΑΣ</b></p>
+                                        <p><b>CrossFit</b></p>
+                                        <p><b>Climbing</b></p>
+                                        <p id="price"><b>70€</b></p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                     <p id="priceback"><b>70€ <h4 >1 Mήνα</h4></b></p>
+                                    <a href="#" class="buylink">Aγορά</a>
+                                </div>
+                            </div>
+                    </div>
+                
+                    <div class="flip-card mb-3">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class="orangebox">
+                                        <p id="month"><b>1 ΜΗΝΑΣ</b></p>
+                                        <p><b>CrossFit</b></p>
+                                        <p><b>Climbing</b></p>
+                                        <p id="price"><b>70€</b></p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                     <p id="priceback"><b>70€ <h4 >1 Mήνα</h4></b></p>
+                                    <a href="#" class="buylink">Aγορά</a>
+                                </div>
+                            </div>
+                    </div>
                    </div>    
                   </div>
             </div>    
         </div>
     </div>
+
+
     <div class="row">
         <div class="col-md-12">
             <iframe src="http://maps.google.com/maps?q=37.9838,23.72758&z=15&output=embed" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>

@@ -132,8 +132,6 @@
 
                                  <!--------BEST GYM MOBILE--------->
                                  <div class="rowbestgymmobile">
-                                  
-                                    
                                      <div class="row" id="bgborder">
                                          <div class="col-md-5 col-sm-5 offset-sm-0 col-10 offset-1 mb-4">
                                          <img src= " <?php echo URLROOT; ?>/images/bestgym1.jpg" width="100%" height="auto">

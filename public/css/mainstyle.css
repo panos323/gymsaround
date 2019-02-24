@@ -704,15 +704,22 @@ select{
 
 
   .basictitle{
+          padding-top: 20px;
         padding-bottom: 20px;
         font-size: 40px;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         color:#169b99;
     }
+    #bigabouttext{
+        padding-bottom:20px;
+    }
+    
     #images{
         background-color: #e3e3e3;
        
     }
+
+
 
     #imagerow2{
         margin-top: 5px;
@@ -761,13 +768,14 @@ select{
         background-color: #1d1d1d;}
 
      .orangebox{
-        width: 265px;
+        padding-bottom:20px;
+        width: 100%;
         height: 420px;
         background-color: none;
         border: 5px solid #ffc731;
     }
 
-    .orangebox p{
+    .flip-card-back p, .orangebox p{
         text-align: center;
         font-size: 30px;
         color: white;
@@ -779,6 +787,13 @@ select{
 
     }
 
+    #priceback{
+        text-shadow: 1px 1px 1px #b5b5b6;
+        font-size: 50px;
+        margin-top: 30%;
+        margin-bottom: 10%;
+        color:white;
+    }
     #price{
         text-shadow: 1px 1px 1px #b5b5b6;
         font-size: 62px;
@@ -789,16 +804,18 @@ select{
     .flex-container-sundromes {
         display: flex;
         flex-wrap: nowrap;
+        padding-bottom: 20px;
         
         }
         
     .flex-container-sundromes > div {
         
         text-align: center;
-        margin-top: 30px;
         margin-left: 10px;
         
         }
+
+
 
 
     /* start custom carousel */
@@ -960,7 +977,23 @@ select{
     .customBtnG{
         border-radius:22px !important;
     }
+    .dropDownMenuCol button:hover{
+        color: #169b99 !important;
+    }
 
+    .btn-outline-info:not(:disabled):not(.disabled).active, .btn-outline-info:not(:disabled):not(.disabled):active, .show>.btn-outline-info.dropdown-toggle{
+        color: white !important;
+    }
+
+ .btn-outline-info{
+     color: #169b99 !important;
+     border: 3px solid #169b99;
+
+ }
+ .btn-outline-info:hover{
+     color:white !important;
+     background-color: #169b99 !important;
+ }
 
     .btnsearchpage{ 
             background-color: white; 
@@ -1073,7 +1106,7 @@ select{
     /****************************************************************************************************
     ******************************************************************************************************
     *****************************----ABOUT----*********************************************************/
-
+  
     #imgabout{
 
         background-repeat: no-repeat;
@@ -1367,10 +1400,40 @@ textarea {
   }
   
   .flip-card-back {
-    background-color: #ffc731;
+    background-color: #1d1d1d;
+    border: 5px solid #ffc731;
     color: white;
     transform: rotateY(180deg);
     z-index: 1;
+  }
+  .flip-card-back a{
+      text-decoration: none;
+      display: inline-block; 
+      font-size: 25px;
+      color: #fbba0b;
+  }
+  .flip-card-back a:hover{
+    text-decoration: none;
+    display: inline-block; 
+    color: #1d1d1d;;
+  }
+
+  .buylink{
+    width: 80%;
+    border: 2px solid #fbba0b;
+    border-radius: 22px;
+    margin-top: 10%;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 45px;
+    padding-right: 45px;
+    font-size: 18px;
+    outline: none;
+  }
+
+  .buylink:hover{
+  background-color: #ffc731;
+
   }
 
     /*****ANIMATION ONSCROLLL*****/  
@@ -1626,6 +1689,9 @@ textarea {
 
     #gymlogo{width: 130%;}
 
+
+
+
   }
 
   /************************************************************************
@@ -1728,7 +1794,10 @@ textarea {
         #price{
             margin-top: 10px;
         }
-      
+        #priceback{
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
      
 
    }
@@ -2072,20 +2141,25 @@ background-color: #1d1d1d;}
 
         }
        
-        .flip-card, .orangebox {
+        .flip-card-back, .flip-card, .orangebox {
             height: 300px;
-            width: 95%;
+            width: 100%;
         }
-        #price{
+       #price{
             margin-top: 10px;
             font-size: 50px;
         }
-
+        #priceback{
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
         #month{
             margin-top: 20px;
             margin-bottom: 20px;
 
         }
+        .buylink{margin-top: 20px;
+        width: 60%;}
 
 
 /***************BLOG*******************/
