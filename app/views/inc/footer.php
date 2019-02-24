@@ -36,13 +36,13 @@
                 <div class="socialm">
                     <div class="row">
                         <div class="col-md-2 offset-md-0 col-sm-1 offset-sm-3 col-2 offset-3" id="sicon">
-                            <a href="<?php echo URLROOT; ?>"><img class="fblogo" width="18" height="35" src="<?php echo URLROOT ?>/images/fbicon.png" alt="logo_footer"></a>
+                            <a href="https://www.facebook.com/" target="_blank"><img class="fblogo" width="18" height="35" src="<?php echo URLROOT ?>/images/fbicon.png" alt="logo_footer"></a>
                         </div>
                         <div class="col-md-3 col-sm-1 offset-sm-1 col-2"  id="sicon">
-                            <a href="<?php echo URLROOT; ?>"><img class="fblogo"  src="<?php echo URLROOT ?>/images/instaicon.png" alt="logo_footer"></a>
+                            <a href="https://www.instagram.com/"  target="_blank"><img class="fblogo"  src="<?php echo URLROOT ?>/images/instaicon.png" alt="logo_footer"></a>
                         </div>  
                         <div class="col-md-1 col-sm-1 offset-sm-1 col-2 " id="sicon">
-                            <a href="<?php echo URLROOT; ?>"><img class="fblogo" src="<?php echo URLROOT ?>/images/twiticon.png" alt="logo_footer"></a>
+                            <a href="https://twitter.com/?lang=els"  target="_blank"><img class="fblogo" src="<?php echo URLROOT ?>/images/twiticon.png" alt="logo_footer"></a>
                         </div>
                     </div> 
                 </div>

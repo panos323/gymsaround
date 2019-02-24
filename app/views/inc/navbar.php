@@ -120,8 +120,8 @@
                     <label class="form-check-label" for="exampleCheck1">Εγγραφή στο Newslettert</label><br>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" data-toggle="modal" data-target="#termofusemodal" id="acceptTerms">
-                    <label class="form-check-label" for="acceptTerms" >Αποδέχομαι τους όρους χρήσης
+                    <input type="checkbox" class="form-check-input" id="acceptTerms">
+                    <label class="form-check-label" for="acceptTerms" data-toggle="modal" data-target="#termofusemodal" style="cursor:pointer;">Αποδέχομαι τους όρους χρήσης
                     </label>
                     <span class="text-center text-danger font-italic checkIfChecked"></span>
                     <br>

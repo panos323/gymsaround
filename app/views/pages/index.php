@@ -116,7 +116,7 @@
 
                                     <div class="row">
                                         <!--start arrow controls -->
-                                        <div id="leftArrowChangeGym" class="col-md-1 offset-md-7 col-sm-1 offset-sm-6">
+                                        <div id="leftArrowChangeGym" class="col-md-1 offset-md-7 col-sm-1 offset-sm-6 mb-5">
                                             <i class="text-info fa fa-arrow-left fa-2x" aria-hidden="true"></i>
                                         </div>
                                         <div class="col-lg-2 col-sm-2">

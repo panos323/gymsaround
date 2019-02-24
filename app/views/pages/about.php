@@ -16,7 +16,7 @@
     </div>
    <div class="row">
        
-      <!-- <div class="aboutscroll hide">-->
+   
         <div class="col-md-12 mb-5" id="bigabouttext">
             <p> 
                 Είμαστε ο Γιώργος, η Θεοδώρα, ο Πάνος και πολλοί ακόμα. Έχουμε πολύ διαφορετικές ιστορίες αλλά κοινή αποστολή. Αυτή έχει σημασία. Τα υπόλοιπα είναι ιστορία.
@@ -34,7 +34,7 @@
                 κάπου να βρεις τις καλύτερες δραστηριότητες τόσο για τα απογεύματά σου όσο και για τα ΣουΚου.
             </p>
         </div>
-        <!--</div>-->
+     
     </div>
 </div>  
 
@@ -46,37 +46,25 @@
             </div>
         </div>  
         <div class="row">
-            <div class="col-md-3 offset-md-1 col-10 offset-1 mb-5" id="teamimg">
+            <div class="col-md-3 offset-md-1 col-10 offset-1 mb-lg-5 mb-md-5 mb-0 teamimg">
                 <img src= " <?php echo URLROOT; ?>/images/aboutus/tg.jpg" width="250" alt="teamimg">
-                <p><b>Theodora G.</b></p>
+                <p><b>Θεοδώρα</b></p>
                 <p>Web Designer</p>
             </div>    
-            <div class="col-md-3 offset-md-1 col-10 offset-1" id="teamimg">
+            <div class="col-md-3 offset-md-1 col-10 offset-1 teamimg">
                 <img src= " <?php echo URLROOT; ?>/images/aboutus/gg.jpg" width="250" alt="teamimg">
-                <p><b>Georgos G.</p></b>
+                <p><b>Γιώργος</p></b>
                 <p>Web Developer</p>
             </div>    
-            <div class="col-md-3 offset-md-1 col-10 offset-1" id="teamimg">
+            <div class="col-md-3 offset-md-1 col-10 offset-1 mb-5 teamimg">
                 <img src= " <?php echo URLROOT; ?>/images/aboutus/pp.jpg" width="250" alt="teamimg">
-                <h4 style><b>Panagiotis P.</h4></b>
+                <p><b>Παναγιώτης</p></b>
                 <p>Web Developer</p>
             </div>
         </div>
     </div>
 </div>
-<!--
-<script type="text/javascript">
-    (function(){
-       var  aboutEl= $('div.aboutscroll'),
-            aboutoffset= 200,
-            documentEl=$(document);
-        
-        documentEl.on("scroll", function(){
-            if (documentEl.scrollTop() > aboutoffset && aboutEl.hasClass('hide')) aboutEl.removeClass('hide');
-            
-        });
-        })();
-    </script>-->
+
 
 <?php require  APPROOT . '/views/inc/footer.php'?>
 

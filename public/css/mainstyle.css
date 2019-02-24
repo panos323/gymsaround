@@ -19,6 +19,7 @@ body{
 
     #navbarstyle{
         background-color: #2c2b2b;
+        min-height: 8vh;
         
     }
 
@@ -949,6 +950,12 @@ select{
   /****************************************************************************************************
   ******************************************************************************************************
   *****************************----SEARCH PAGE----*********************************************************/
+  #totalGymResulstsSpan{
+    color:#169b99 !important;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size:25px;
+  
+  }
 
     .customBtnG{
         border-radius:22px !important;
@@ -1087,14 +1094,14 @@ select{
         background-color:#e3e3e3;
     }
 
-    #teamimg img{
+    .teamimg img{
         border-radius: 50%;
         margin-bottom: 20px;
     }
 
-    #teamimg p{
+    .teamimg p{
         text-align: center;
-        font-size: 18px;
+        font-size: 20px;
     }
 
 /****************************************************************************************************
@@ -1412,6 +1419,11 @@ textarea {
     }
 
 
+
+
+
+
+
 /*********************************************************************************************
 **********************************!!!!!---RESPONCIVE---!!!!***********************************
 ********************************************************************************************/
@@ -1621,7 +1633,7 @@ textarea {
 
   @media (min-width: 768px) and (max-width: 991.98px) { 
       
-    #teamimg img{width:150px; }
+    .teamimg img{width:150px; }
     .nav-item > a{
         border-bottom:1px solid #303741;
     }
@@ -1829,9 +1841,9 @@ background-color: #1d1d1d;}
         width:20%
     }
     /************ABOUTUS****************/
-        #teamimg p{margin-top: 15px;}
+        .teamimg p{margin-top: 15px;}
         
-        #teamimg img{
+        .teamimg img{
             width:100px;
             float: left;
         }
@@ -2003,9 +2015,9 @@ background-color: #1d1d1d;}
             color: #b5b5b6;
         }
 
-        #teamimg p{margin-top: 15px;}
+        .teamimg p{margin-top: 15px;}
 
-        #teamimg img{
+        .teamimg img{
             width:100px;
             float: left;
         }

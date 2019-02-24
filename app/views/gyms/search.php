@@ -195,7 +195,7 @@
 
 
     <!--start search buttons -->
-    <div class="row col-lg-12 mt-5">
+    <div class="row col-lg-8 mt-5">
         <div class="col-md-7 mt-5 mb-3">
         
           <button type="button" class=" sortByNameBtn btn btn-outline-info mr-4 mb-2   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
@@ -231,8 +231,10 @@
           </div> 
 
           <button type="button" id="sortByPriceBtn" class="btn btn-outline-info mb-2  btn-md customBtnG">Tιμή +<i id="AscDescArrowsPrice" class="fa" aria-hidden="true"></i></button>
+
         </div>
-        <div class="col-md-3 offset-1  mt-3 mb-3">
+
+        <div class="col-md-4 mt-5">
             <p id="totalGymResulstsSpan" class="lead"></p>
         </div>
     </div> <!--row-->
