@@ -15,6 +15,7 @@ body{
 /**
  Navigation Bar Css
  */
+ 
     .navbar-collapse{width: auto;}
 
     #navbarstyle{
@@ -981,7 +982,7 @@ select{
         color: #169b99 !important;
     }
 
-    .btn-outline-info:not(:disabled):not(.disabled).active, .btn-outline-info:not(:disabled):not(.disabled):active, .show>.btn-outline-info.dropdown-toggle{
+.btn-outline-info:not(:disabled):not(.disabled).active, .btn-outline-info:not(:disabled):not(.disabled):active, .show>.btn-outline-info.dropdown-toggle{
         color: white !important;
     }
 
@@ -1631,14 +1632,26 @@ textarea {
     
 
 /****************************NAVBAR RESPONSIVE  LG BREAKPOINT*********************************************/
-@media (max-width: 991px) { 
+@media  (max-width: 1036px) { 
     #btnliButtonFirst{
         margin-left:0px;
-        margin-right:0px;
+         margin-right:0px;
         margin-top:14px;
         margin-bottom:8px;
     }
+    
  }
+
+/****************************NAVBAR RESPONSIVE  IPAD PROT*********************************************/
+
+ @media (min-width: 1024px) and (max-width: 1025px) { 
+  
+    .fimage, #boxgrey{height: 50vh !important; }
+
+    .blogarticle, .box2{height:30vh !important;}
+ }
+
+
 
 
 /****************************RESPONSIVE 992 - 1200*********************************************/
@@ -1707,7 +1720,7 @@ textarea {
     .fimage{height: 500px;}
  
     #boxgrey{
-        width:110%;
+
         height: 500px;
     }
     .rowtitle{
