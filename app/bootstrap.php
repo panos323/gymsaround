@@ -8,6 +8,7 @@
     require_once 'helpers/generateToken.php';
     require_once 'helpers/mailchimp.php';
     require_once 'helpers/addImages.php';
+    require_once 'helpers/stripe_payment.php';
 
     // Autoload Core Libraries
     spl_autoload_register(function ($classname){
@@ -17,6 +18,8 @@
             require_once '../vendor/phpmailer/phpmailer/src/SMTP.php';
         } elseif (substr($classname, 0, 5) === 'DrewM') {
             require_once '../vendor/drewm/mailchimp-api/src/MailChimp.php';
+        } elseif (substr($classname, 0, 6) === 'Stripe') {
+            require_once '../vendor/stripe/stripe-php/init.php';
         } else{
             require_once 'libraries/' . $classname . '.php';
         }

@@ -81,7 +81,31 @@ class Gyms extends Controller
     }
 
     public function payment() {
-        $data = [];
-        $this->view('gyms/payment', $data);
+        //Check for POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Process form
+
+            //Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'first_name' => trim($_POST['first_name']),
+                'last_name' => trim($_POST['last_name']),
+                'email' => trim($_POST['email']),
+                'token' => trim($_POST['stripeToken']),
+            ];
+
+            stripe_payment($data);
+            if($this->gymModel->deleteTrainersByGymId($data['id']) && $this->gymModel->deleteGym($data['id'])){
+                flash('gym_success', 'Η ενέργειά σας πραγματοποιήθηκε με επιτυχία.');
+            }else {
+                flash('gym_success', 'Η ενέργειά σας απέτυχε.', 'alert alert-danger');
+            }
+            redirect('users/profile/my_gyms');
+        } else {
+            $data = [];
+            $this->view('gyms/payment', $data);
+        }
     }
 }
