@@ -357,7 +357,7 @@
     zoom: 10
   });
 
-  var stores = {
+  var stores1 = {
     type: 'FeatureCollection',
     features: [
       {
@@ -597,12 +597,13 @@
   var filterEl = document.getElementById('feature-filter');
   var listingEl = document.getElementById('listings');
   var numberOfGyms = document.getElementById('gyms_number').innerHTML;
-  console.log(numberOfGyms);
-  var allGyms = [];
+  var stores = {
+      type: 'FeatureCollection',
+      features: []
+  };
   for (var i=0; i<numberOfGyms; i++) {
-      allGyms.push(JSON.parse(document.getElementById('gyms_results_' + i).innerHTML));
+      stores.features.push(JSON.parse(document.getElementById('gyms_results_' + i).innerHTML));
   }
-  console.log(allGyms);
   var orderAscDescName = false; //toggle for asc desc order
 
 

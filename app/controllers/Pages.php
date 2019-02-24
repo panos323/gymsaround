@@ -103,6 +103,13 @@ class Pages extends Controller {
 
         $this->view('pages/cookiespolicy', $data);
     }
+    public function messages(){
+        $data = [
+            'title' => 'messages'
+        ];
+
+        $this->view('pages/messages', $data);
+    }
 
     public function contact() {
         $data = [];

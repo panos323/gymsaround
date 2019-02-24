@@ -24,10 +24,36 @@ class Gyms extends Controller
     }
 
     public function search(){
-        $data = [];
-
-        $data = $this->gymModel->getAllGyms();
-            $this->view('gyms/search', $data);
+        $type = 'Feature';
+        $geometry = [
+            'type' => 'Point',
+            'coordinates' =>  [23.9438 , 37.7338]
+        ];
+        $properties = [
+            'name' => 'Anavisos Gym',
+            'linkPage' => 'http://localhost/gymaround/gyms/index/2',
+            'address' => 'Αναβύσσου 85, Ανάβυσσος',
+            'city' => 'Αθήνα',
+            'postalCode' => '20037',
+            'gymPhoto' => '\'../public/images/search/gym_small_image.jpg\'',
+            'rating' => 3,
+            'program' => 'KingBoxing - Pilates',
+            'gymCost' => 'Από 30€'
+        ];
+//        $address = 'Nikaias 7'; // Google HQ
+//        $prepAddr = str_replace(' ','+',$address);
+//        $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
+//        $output= json_decode($geocode);
+//        $latitude = $output->results[0]->geometry->location->lat;
+//        $longitude = $output->results[0]->geometry->location->lng;
+//        $data = $this->gymModel->getAllGyms();
+        $gym = [
+            'type' => $type,
+            'geometry' => $geometry,
+            'properties' => $properties
+        ];
+        $data[] = $gym;
+        $this->view('gyms/search', $data);
         
     }
 
