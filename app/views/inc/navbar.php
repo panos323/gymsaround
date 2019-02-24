@@ -167,12 +167,6 @@
                            name="password"
                          >
                 </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="checkOutLoginC">
-                    <label class="form-check-label" for="checkOutLoginC">Check me out</label>
-                    <span class="text-center text-danger font-italic checkIfCheckedLogin"></span>
-                    </br>
-                </div>
                 <button type="submit" class="btnmodalform">Είσοδος</button></br>
                 <button type="button"  data-toggle="modal" data-target="#forgotpassmodal" id="forgotpass" >Ξέχασα τον κωδικό!</button>
                 
