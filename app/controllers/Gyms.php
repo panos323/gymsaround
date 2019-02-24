@@ -13,9 +13,12 @@ class Gyms extends Controller
         $gym = $this->gymModel->findGymById($id);
         $trainers = $this->ownerModel->getTrainersByGymId($id);
         if($gym) {
+
             $data = [
                 'gym' => $gym,
-                'trainers' => $trainers
+                'trainers' => $trainers,
+                'all_images' => explode(',', $gym->gym_images),
+                'total_images' => count(explode(',', $gym->gym_images))
             ];
             $this->view('gyms/index', $data);
         }

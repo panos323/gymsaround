@@ -100,15 +100,15 @@ class Users extends Controller {
                     ];
                     mailer($attrs);
                     flash('general_messages', 'Σας ευχαριστούμε για την εγγραφή.');
-                    redirect('pages/message');
+                    redirect('pages/messages');
                 } else{
-                    flash('general_messages', 'Κάτι πήγε στραβά. Παρακαλώ προσπαθείστε ξανά.');
-                    redirect('pages/message');
+                    flash('general_messages', 'Κάτι πήγε στραβά. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+                    redirect('pages/messages');
                 }
             } else {
                 // Load view with errors
-                flash('general_messages', 'Κάτι πήγε στραβά. Παρακαλώ προσπαθείστε ξανά.');
-                redirect('pages/message');
+                flash('general_messages', 'Κάτι πήγε στραβά. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+                redirect('pages/messages');
             }
         }
     }
@@ -155,8 +155,8 @@ class Users extends Controller {
                 if (!$isUserLoggedIn){
                     $isOwnerLoggedIn = $this->ownerModel->login($data['login_credential'], $data['password']);
                     if(!$isOwnerLoggedIn){
-                        $data['pass_error'] = 'Password is wrong. Please try again.';
-                        $this->view('users/login', $data);
+                        flash('general_messages', 'Κάτι πήγε στραβά. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+                        redirect('pages/messages');
                     }else {
                         $this->createOwnerSession($isOwnerLoggedIn);
                     }
@@ -165,20 +165,9 @@ class Users extends Controller {
                 }
             } else {
                 // Load view with errors
-                $this->view('users/login', $data);
+                flash('general_messages', 'Κάτι πήγε στραβά. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+                redirect('pages/messages');
             }
-
-        } else {
-            // Init data
-            $data = [
-                'login_credential' => '',
-                'password' => '',
-                'login_credential_error' => '',
-                'pass_error' => ''
-            ];
-
-            // Load view
-            $this->view('users/login', $data);
         }
     }
 
@@ -263,7 +252,7 @@ class Users extends Controller {
         unset($_SESSION['gym_id']);
         unset($_SESSION['isAdmin']);
         session_destroy();
-        redirect('users/login');
+        redirect('pages/index');
     }
 
     // Method to check if user is logged in.

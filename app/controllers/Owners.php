@@ -493,7 +493,7 @@ class Owners extends Controller {
         unset($_SESSION['type']);
         unset($_SESSION['phone']);
         session_destroy();
-        redirect('users/login');
+        redirect('pages/index');
     }
 
     public function isLoggedIn(){

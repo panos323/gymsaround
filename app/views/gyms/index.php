@@ -21,13 +21,13 @@
                              <p><?php echo $data['gym']->gym_location;?>  <img src= " <?php echo URLROOT;?>/images/gym/mappin.png" width="20%" alt="pin"/></p>
                             </a>
                         </div>
-                        <p id="activities"><b>Crosfii | Boxing | KingBoxing | Climbing</b></p>
-                       <a class="btnorange" id="btnsundromes" href="#sundromestitle">Πακέτα Συνδρομών</a>
+                        <p id="activities"><b><?php echo $data['gym']->gym_type; ?></b></p>
+                        <a class="btnorange" id="btnsundromes" href="#sundromestitle">Πακέτα Συνδρομών</a>
                     </div>
             </div>
         </div>
         <div class="col-lg-6 " id="biggymimg">
-            <img src= " <?php echo URLROOT;?>/images/gym/bigimggym.jpg" width="100%"   height="600"; alt="biggym">
+            <img src= " <?php echo URLROOT;?>/images/general_gyms_images/<?php echo $data['gym']->gym_name.'/'.$data['gym']->gym_main_image; ?>" width="100%" height="600" alt="biggym">
         </div>
     </div>
 
@@ -41,15 +41,7 @@
             <div class="col-md-12 my-5" id="bigabouttext">
                 <p class="basictitle" id="gymstitle">ΠΟΙΟΙ ΕΙΜΑΣΤΕ</p>
              
-                <p> Το Workout Hall δημιουργήθηκε το 2008, στη Γλυφάδα, σε έναν χώρο 90 τ.μ., αποκλειστικά για personal training. Σταδιακά αναπτύχθηκε και αποτελεί σήμερα ένα υπερσύγχρονο αθλητ
-                    ικό κέντρο, 7.000 τ.μ., με indoor & outdoor training space.Η προσωπική εμπειρία, η αδιάλειπτη ενασχόληση με τον αθλητισμό και η αγάπη γι’ αυτόνοδήγησε στην δημιουργία του ση
-                    μερινού Workout Hall.</p>
-
-                <p>Όλα αυτά τα χρόνια η φιλοσοφία παραμένει η ίδια αλλά ανανεώνονται συνεχώς οι ιδέες και οιστόχοι των ιθυνόντων, πράγμα που σημαίνει ότι
-                    δεν επαναπαύονται ποτέ.</p>
-                <p>Το Workout Hall δημιουργήθηκε το 2008, στη Γλυφάδα, σε έναν χώρο 90 τ.μ., αποκλειστικά για personal training. Σταδιακά αναπτύχθηκε και αποτελεί σήμερα ένα υπερσύγχρονο αθλητ
-                    ικό κέντρο, 7.000 τ.μ., με indoor & outdoor training space.Η προσωπική εμπειρία, η αδιάλειπτη ενασχόληση με τον αθλητισμό και η αγάπη γι’ αυτόνοδήγησε στην δημιουργία του ση
-                    μερινού Workout Hall.</p>
+                <p><?php echo $data['gym']->gym_description; ?></p>
 
             </div>
 </div>
@@ -72,24 +64,11 @@
 
          <!-- Images used to open the lightbox -->
          <div class="rowLightBox">
-            <div class="columnLightBox">
-                <img class="img-fluid"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
-            </div>
-            <div class="columnLightBox">
-                <img class="img-fluid"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(2)" class="hover-shadow">
-            </div>
-            <div class="columnLightBox">
-                <img class="img-fluid"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
-            </div>
-            <div class="columnLightBox">
-                <img class="img-fluid"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
-            </div>
-            <div class="columnLightBox">
-                <img class="img-fluid"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
-            </div>
-            <div class="columnLightBox" style="padding-bottom:20px;">
-                <img class="img-fluid mb-5"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
-            </div>
+             <?php foreach ($data['all_images'] as $key=>$image) : ?>
+                <div class="columnLightBox">
+                    <img class="img-fluid"  src= " <?php echo URLROOT; ?>/images/general_gyms_images/<?php echo $data['gym']->gym_name.'/'.$image; ?>" onclick="openModal();currentSlide(<?php echo $key+1; ?>)" class="hover-shadow">
+                </div>
+            <?php endforeach; ?>
         </div>
 
         <!-- The Modal/Lightbox -->
@@ -97,36 +76,13 @@
         <span class="closeLightBox cursor" onclick="closeModal()"><i class="text-white fa fa-1x fa-window-close" aria-hidden="true"></i>
         </span>
         <div class="modal-contentLightBox">
+            <?php foreach ($data['all_images'] as $key=>$image) : ?>
+                <div class="mySlides">
+                    <div class="numbertext lead"><?php echo ($key+1).'/'.$data['total_images']; ?></div>
+                    <img  src= "<?php echo URLROOT; ?>/images/general_gyms_images/<?php echo $data['gym']->gym_name.'/'.$image; ?>" style="width:100%">
+                </div>
+            <?php endforeach; ?>
 
-            <div class="mySlides">
-            <div class="numbertext lead">1 / 6</div>
-            <img  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" style="width:100%">
-            </div>
-
-            <div class="mySlides">
-            <div class="numbertext lead">2 / 6</div>
-            <img  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" style="width:100%">
-            </div>
-
-            <div class="mySlides">
-            <div class="numbertext lead">3 / 6</div>
-            <img  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" style="width:100%">
-            </div>
-
-            <div class="mySlides">
-            <div class="numbertext lead">4 / 6</div>
-            <img  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" style="width:100%">
-            </div>
-
-            <div class="mySlides">
-            <div class="numbertext lead">5 / 6</div>
-            <img  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" style="width:100%">
-            </div>
-
-            <div class="mySlides">
-            <div class="numbertext lead">6 / 6</div>
-            <img  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" style="width:100%">
-            </div>
 
             <!-- Next/previous controls -->
             <a class="prevLightBox" onclick="plusSlides(-1);"><i class="text-secondary fa fa-2x fa-arrow-left" aria-hidden="true" style="color:red;"></i>
@@ -138,56 +94,12 @@
             <p id="caption"></p>
             </div>
 
-            <!-- Thumbnail image controls -->
-            <div class="columnLightBox">
-            <img class="demoLightBox"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="currentSlide(1);" alt="Gym Photos">
-            </div>
-
-            <div class="columnLightBox">
-            <img class="demoLightBox"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="currentSlide(2);" alt="Gym Photos">
-            </div>
-
-            <div class="columnLightBox">
-            <img class="demoLightBox"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="currentSlide(3);" alt="Gym Photos">
-            </div>
-
-            <div class="columnLightBox">
-            <img class="demoLightBox"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="currentSlide(4);" alt="Gym Photos">
-            </div>
-
-            <div class="columnLightBox">
-            <img class="demoLightBox"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="currentSlide(5);" alt="Gym Photos">
-            </div>
-
-            <div class="columnLightBox">
-            <img class="demoLightBox"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="currentSlide(6);" alt="Gym Photos">
-            </div>
-
         </div>
         </div>
 
         </div> <!--container-->
     </div> <!--images-->
 
-
-
-
-<!--         
-            <div class="row justify-content-center">
-                <div class="col-md-12 mb-1"  id="imagerow1">
-                <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
-                <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
-                <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 mb-5" id="imagerow2">
-                    <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
-                    <img src= " <?php echo URLROOT; ?>/images/gym/image3.jpg" width="32%"  alt="gymimg">
-                </div>
-            </div>
-        </div>
-    </div> -->
 <!-----------------------------------------------------------------------------------------------------------------
 -------------------------------------------***TRAINERS**--------------------------------------------------------------->
 
@@ -242,37 +154,34 @@
             <div class="row">
                 <div class="col-md-12 mb-5">
                     <div class="flex-container-sundromes">
-                        <div class="flip-card mb-3">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <div class="orangebox">
-                                        <p id="month"><b>1 ΜΗΝΑΣ</b></p>
-                                        <p><b>CrossFit</b></p>
-                                        <p><b>Climbing</b></p>
-                                        <p id="price"><b>70€</b></p>
+                            <div class="flip-card mb-3">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <div class="orangebox">
+                                            <p id="month"><b>1 ΜΗΝΑΣ</b></p>
+                                            <p><b><?php echo $data['gym']->gym_type; ?></b></p>
+                                            <p id="price"><b><?php echo $data['gym']->gym_monthly_price; ?>&euro;</b></p>
+                                        </div>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <p id="priceback"><b><?php echo $data['gym']->gym_monthly_price; ?>&euro; <h4 >1 Mήνα</h4></b></p>
+                                        <a href="<?php echo URLROOT; ?>/gyms/payment?name=<?php echo $data['gym']->gym_name; ?>&amount=<?php echo $data['gym']->gym_monthly_price; ?>&month=1" class="buylink">Aγορά</a>
                                     </div>
                                 </div>
-                                <div class="flip-card-back">
-                                    <p id="priceback"><b>70€ <h4 >1 Mήνα</h4></b></p>
-                                    <a href="<?php echo URLROOT; ?>/gyms/payment?name=<?php echo $data['gym']->gym_name; ?>&amount=70&month=1" class="buylink">Aγορά</a>
-                                </div>
                             </div>
-                        </div>
-                   
                         <div class="flip-card mb-3">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
                                     <div class="orangebox">
-                                        <p id="month"><b>2 ΜΗΝΕΣ</b></p>
-                                        <p><b>CrossFit</b></p>
-                                        <p><b>Climbing</b></p>
-                                        <p id="price"><b>130€</b></p>
+                                        <p id="month"><b>3 ΜΗΝΕΣ</b></p>
+                                        <p><b><?php echo $data['gym']->gym_type; ?></b></p>
+                                        <p id="price"><b><?php echo $data['gym']->gym_monthly_price*3-20; ?>&euro;</b></p>
                                     </div>
                                 </div>
                                 <div class="flip-card-back">
                                 
-                                    <p id="priceback"><b>130€ <h4 >2 Mήνες</h4></b></p>
-                                    <a href="#" class="buylink">Aγορά</a>
+                                    <p id="priceback"><b><?php echo $data['gym']->gym_monthly_price*3-10; ?>&euro; <h4 >3 Mήνες</h4></b></p>
+                                    <a href="<?php echo URLROOT; ?>/gyms/payment?name=<?php echo $data['gym']->gym_name; ?>&amount=<?php echo $data['gym']->gym_monthly_price*3-20; ?>&month=2" class="buylink">Aγορά</a>
                                 </div>
                         </div>
                     </div>
@@ -281,15 +190,14 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
                                     <div class="orangebox">
-                                        <p id="month"><b>1 ΜΗΝΑΣ</b></p>
-                                        <p><b>CrossFit</b></p>
-                                        <p><b>Climbing</b></p>
-                                        <p id="price"><b>70€</b></p>
+                                        <p id="month"><b>6 ΜΗΝΕΣ</b></p>
+                                        <p><b><?php echo $data['gym']->gym_type; ?></b></p>
+                                        <p id="price"><b><?php echo $data['gym']->gym_monthly_price*6-50; ?>&euro;</b></p>
                                     </div>
                                 </div>
                                 <div class="flip-card-back">
-                                     <p id="priceback"><b>70€ <h4 >1 Mήνα</h4></b></p>
-                                    <a href="#" class="buylink">Aγορά</a>
+                                     <p id="priceback"><b><?php echo $data['gym']->gym_monthly_price*6-50; ?>&euro; <h4 >6 Mήνες</h4></b></p>
+                                    <a href="<?php echo URLROOT; ?>/gyms/payment?name=<?php echo $data['gym']->gym_name; ?>&amount=<?php echo $data['gym']->gym_monthly_price*6-50; ?>&month=6" class="buylink">Aγορά</a>
                                 </div>
                             </div>
                     </div>
@@ -298,15 +206,14 @@
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
                                     <div class="orangebox">
-                                        <p id="month"><b>1 ΜΗΝΑΣ</b></p>
-                                        <p><b>CrossFit</b></p>
-                                        <p><b>Climbing</b></p>
-                                        <p id="price"><b>70€</b></p>
+                                        <p id="month"><b>12 ΜΗΝΕΣ</b></p>
+                                        <p><b><?php echo $data['gym']->gym_type; ?></b></p>
+                                        <p id="price"><b><?php echo $data['gym']->gym_yearly_price; ?>&euro;</b></p>
                                     </div>
                                 </div>
                                 <div class="flip-card-back">
-                                     <p id="priceback"><b>70€ <h4 >1 Mήνα</h4></b></p>
-                                    <a href="#" class="buylink">Aγορά</a>
+                                     <p id="priceback"><b><?php echo $data['gym']->gym_yearly_price; ?>&euro; <h4 >12 Mήνες</h4></b></p>
+                                    <a href="<?php echo URLROOT; ?>/gyms/payment?name=<?php echo $data['gym']->gym_name; ?>&amount=<?php echo $data['gym']->gym_yearly_price; ?>&month=12" class="buylink">Aγορά</a>
                                 </div>
                             </div>
                     </div>
@@ -319,7 +226,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <iframe src="http://maps.google.com/maps?q=37.9838,23.72758&z=15&output=embed" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <iframe src="http://maps.google.com/maps?q=<?php echo $data['gym']->gym_lat.','.$data['gym']->gym_long; ?>&z=15&output=embed" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
     </div>
 
