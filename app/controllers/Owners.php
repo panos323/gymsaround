@@ -155,9 +155,11 @@ class Owners extends Controller {
             $gym = $this->ownerModel->getGymByUserId($_SESSION['id']);
             $_SESSION['gym_id'] = isset($gym->gym_id) ? $gym->gym_id : '';
             $trainers = $this->ownerModel->getTrainersByGymId();
+            $imagesToArray = explode(',', $gym->gym_images);
             $data = [
                 'no_gym' => empty($gym) ? 'Δεν έχετε δημιουργήσει το γυμναστήριο σας.' : '',
                 'my_gym_details' => empty($gym) ? '' : (array) $gym,
+                'arrayOfImages' => $imagesToArray ?? [],
                 'trainers' => empty($trainers) ? '' : (array) $trainers,
                 'tab' => $tab,
                 'owner' => $owner
@@ -767,9 +769,9 @@ class Owners extends Controller {
             $data['image_file'] = addImage('gyms_images', $data['name']);
 
             if($this->ownerModel->updateLogo($data['image_file'], $data['id'])) {
-                flash('gym_update','Το logo σας άλλαξε με επιτυχία!');
+                flash('gym_logo_update','Το logo σας άλλαξε με επιτυχία!');
             }else{
-                flash('gym_update', 'Η ενέργεια απέτυχε. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+                flash('gym_logo_update', 'Η ενέργεια απέτυχε. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
             }
             redirect('owners/profile/my_gym');
         }
@@ -786,15 +788,77 @@ class Owners extends Controller {
             // Init data
             $data = [
                 'name' => trim($_POST['name']),
-                'id' => trim($_POST['id'])
+                'id' => trim($_POST['id']),
+                'all_images' => trim($_POST['all_images'])
+            ];
+            $check = explode(',', $data['all_images']);
+            if(count($check) < 6) {
+                $data['image_file'] = addImage('general_gyms_images', $data['name']);
+                $data['all_images'] .= empty($data['all_images']) ? $data['image_file'] : "," . $data['image_file'];
+                if ($this->ownerModel->updatePhotos($data)) {
+                    flash('gym_images_update', 'Η φωτογραφία σας προστέθηκε με επιτυχία!');
+                } else {
+                    flash('gym_images_update', 'Η ενέργεια απέτυχε. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+                }
+            } else {
+                flash('gym_images_update', 'Μπορείτε να προσθέσετε μέχρι 6 φωτογραφίες.', 'alert alert-danger');
+
+            }
+            redirect('owners/profile/my_gym');
+        }
+    }
+
+    public function deleteGymPhoto() {
+        // Check for POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'name' => trim($_POST['name']),
+                'image_name' => trim($_POST['image_name']),
+                'id' => trim($_POST['id']),
+                'all_images' => trim($_POST['all_images'])
+            ];
+            $check = explode(',', $data['all_images']);
+            if(count($check) !== 0 && ($key = array_search($data['image_name'], $check, true)) !== false) {
+                unset($check[$key]);
+                unlink('../public/images/general_gyms_images/'.$data['name'].'/'.$data['image_name']);
+                $data['all_images'] = implode(',', $check);
+                if ($this->ownerModel->updatePhotos($data)) {
+                    flash('gym_delete_images_update', 'Η φωτογραφία σας προστέθηκε με επιτυχία!');
+                } else {
+                    flash('gym_delete_images_update', 'Η ενέργεια απέτυχε. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+                }
+            } else {
+                flash('gym_delete_images_update', 'Μπορείτε να προσθέσετε μέχρι 6 φωτογραφίες.', 'alert alert-danger');
+
+            }
+            redirect('owners/profile/my_gym');
+        }
+    }
+
+    public function mainGymPhoto() {
+        // Check for POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'image_name' => trim($_POST['image_name']),
+                'id' => trim($_POST['id']),
             ];
 
-            $data['image_file'] = addImage('gyms_images', $data['name']);
-
-            if($this->ownerModel->updateLogo($data['image_file'], $data['id'])) {
-                flash('gym_update','Το logo σας άλλαξε με επιτυχία!');
-            }else{
-                flash('gym_update', 'Η ενέργεια απέτυχε. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
+            if ($this->ownerModel->updateMainPhoto($data)) {
+                flash('gym_delete_images_update', 'Η βασική φωτογραφία σας ανανεώθηκε με επιτυχία!');
+            } else {
+                flash('gym_delete_images_update', 'Η ενέργεια απέτυχε. Παρακαλώ προσπαθείστε ξανά.', 'alert alert-danger');
             }
             redirect('owners/profile/my_gym');
         }

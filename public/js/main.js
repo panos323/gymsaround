@@ -9,6 +9,8 @@ $( document ).ready(function() {
     //show again dropdown values on reset
     $("#dropdownReset").on("click", function() {
         $("#dropdownMenuButton:first-child").text('Περιοχή');
+        localStorage.removeItem('DropdownValueSelectedType');
+        localStorage.removeItem('DropdownValueSelected');
         location.reload();
     });
 
@@ -20,14 +22,16 @@ $( document ).ready(function() {
 
     //show again dropdown values on reset
     $("#dropdownResetTypes").on("click", function() {
-        $("#dropdownMenuButtonArr:first-child").text('Είδος');
+        $("#dropdownMenuButtonArr:first-child").text('Τύπος Γυμναστικής');
+        localStorage.removeItem('DropdownValueSelectedType');
+        localStorage.removeItem('DropdownValueSelected');
         location.reload();
     });
 
     //show current item of slider
     $('#number').html('1/3');
 
-    //start Change gyms on index based on arrow clicked
+    //start Change gyms on index page based on arrow clicked
     var firstGym = $(".displayFirstGym");
         firstGym.css("display","block");
 
@@ -132,6 +136,21 @@ $( document ).ready(function() {
     var updateEmailFormOwners = $("#updateEmailFormOwners");
     var updateOwnersPasswordForm = $("#updateOwnersPasswordForm");
     var contactForm = $("#contactForm");
+    var subscribeForm = $("#subscribeForm");
+
+
+    //START ON NEWSLETTER FORM SUBMIT
+    subscribeForm.on("submit", function(e) {
+        
+        var firstname = $(".namenewsLetter").val().trim();
+        var surname = $(".lastNamenewsLetter").val().trim();
+        var emailcheck = $(".EmailnewsLetter").val().trim();
+      
+        validateNewsLetterName(firstname,e);
+        validateNewsLetterSurName(surname,e);
+        validateNewsLetterEmail(emailcheck,e);
+    }) // on submit 
+    //END ON NEWSLETTER FORM SUBMIT
 
 
 
@@ -297,7 +316,48 @@ $( document ).ready(function() {
 
     }) // on submit 
     //END ON UPDATE USER DETAILS
-    
+
+
+
+
+    //START FUNCTIONS FOR CONTACT US FORM  VALIDATION
+    function validateNewsLetterName(firstname,e) {
+        if (!isValidName(firstname)) {
+            $(".nameLetterErr").text(' (Το όνομα πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
+            e.preventDefault();
+        } else if (!isOnlyLetters(firstname)) {
+            $(".nameLetterErr").text(' (Το όνομα πρέπει να περιέχει μόνο γράμματα)');
+            e.preventDefault();
+        } else {
+            $(".nameLetterErr").text("");
+        }
+    } //end function 
+
+    function validateNewsLetterSurName(surname,e) {
+        if (!isValidSurName(surname)) {
+            $(".SurnameLetterErr").text(' (Το επώνυμο πρέπει να περιέχει τουλάχιστον δύο χαρακτήρες)');
+            e.preventDefault();
+        } else if (!isOnlyLetters(surname)) {
+            $(".SurnameLetterErr").text(' (Το επώνυμο πρέπει να περιέχει μόνο γράμματα)');
+            e.preventDefault();
+        } else {
+            $(".SurnameLetterErr").html("");
+        }
+    } // end function
+
+    function validateNewsLetterEmail(emailcheck,e) {
+        if (!isValidEmail(emailcheck)) {
+            $(".EmailLetterErr").html(' (Παρακαλώ γράψτε το email σας)')
+            e.preventDefault();
+        } else if (isEmailOk(emailcheck)) {
+            $(".EmailLetterErr").html(' (Παρακαλώ εισάγετε μια έγκυρη ηλεκτρονική διεύθυνση)')
+            e.preventDefault();
+        } else {
+            $(".EmailLetterErr").html("");
+        }
+    } //end function
+    //END FUNCTIONS FOR CONTACT US FORM  VALIDATION
+
 
 
     //START FUNCTIONS FOR CONTACT US FORM  VALIDATION

@@ -2,7 +2,6 @@
 
     <div class="row">
         <div class="col-lg-6 col-md-12 gymelement">
-          
                 <div class="row">
                  <!-- <div class="col-md-6 offset-md-2">
                         <p id="gymsnames">Workout Hall Crossfit</p>
@@ -11,10 +10,10 @@
                         <p><b>Crosfii, Boxing, KingBoxing,Climbing</b></p>
                         <button class="btnorange" id="btnsearch"><a href="#">Πακέτα Συνδρομών</a></button>
                     </div>-->
-                    <div class="col-lg-3 offset-lg-2 col-md-3 offset-md-1 col-sm-3 offset-sm-1 col-6 offset-1">
+                    <div class="col-lg-3 offset-lg-2 col-md-3 offset-md-1 col-sm-3 offset-sm-1 col-6 offset-1 mt-lg-5 mt-0">
                          <img id="gymlogo" width="100%" src= " <?php echo URLROOT;?>/images/gym/gymlogo.png" alt="logo"/>
                     </div>
-                    <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-10 offset-1" >
+                    <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-1 col-sm-6 offset-sm-1 col-10 offset-1 mt-lg-5 mt-0" >
                         <p id="gymsnames"><?php echo $data['gym']->gym_name; ?></p>
                         <img src= " <?php echo URLROOT;?>/images/stars.png" alt="stars"/>
                         <div id="gymaddress">
@@ -25,8 +24,6 @@
                         <p id="activities"><b>Crosfii | Boxing | KingBoxing | Climbing</b></p>
                        <a class="btnorange" id="btnsundromes" href="#">Πακέτα Συνδρομών</a>
                     </div>
-            
-
             </div>
         </div>
         <div class="col-lg-6 " id="biggymimg">
@@ -68,10 +65,114 @@
  <div class="container">
      <div class="row">
          <div class="col-md-5 mt-5 mb-3">
-         <p class="basictitle" id="gymstitle">ΦΩΤΟΓΡΑΦΙΕΣ</p>
-</div>
+            <p class="basictitle" id="gymstitle">ΦΩΤΟΓΡΑΦΙΕΣ</p>
+         </div>
      </div>
-        
+
+
+         <!-- Images used to open the lightbox -->
+         <div class="rowLightBox">
+            <div class="columnLightBox">
+                <img class="img-fluid"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
+            </div>
+            <div class="columnLightBox">
+                <img class="img-fluid"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(2)" class="hover-shadow">
+            </div>
+            <div class="columnLightBox">
+                <img class="img-fluid"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
+            </div>
+            <div class="columnLightBox">
+                <img class="img-fluid"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
+            </div>
+            <div class="columnLightBox">
+                <img class="img-fluid"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
+            </div>
+            <div class="columnLightBox">
+                <img class="img-fluid mb-5"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
+            </div>
+        </div>
+
+        <!-- The Modal/Lightbox -->
+        <div id="myModalLightBox" class="modalLightBox">
+        <span class="closeLightBox cursor" onclick="closeModal()"><i class="text-white fa fa-1x fa-window-close" aria-hidden="true"></i>
+        </span>
+        <div class="modal-contentLightBox">
+
+            <div class="mySlides">
+            <div class="numbertext lead">1 / 6</div>
+            <img  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+            <div class="numbertext lead">2 / 6</div>
+            <img  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+            <div class="numbertext lead">3 / 6</div>
+            <img  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+            <div class="numbertext lead">4 / 6</div>
+            <img  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+            <div class="numbertext lead">5 / 6</div>
+            <img  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+            <div class="numbertext lead">6 / 6</div>
+            <img  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" style="width:100%">
+            </div>
+
+            <!-- Next/previous controls -->
+            <a class="prevLightBox" onclick="plusSlides(-1);"><i class="text-success fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+            </a>
+            <a class="nextLightBox" onclick="plusSlides(1);"><i class="text-success fa fa-2x fa-arrow-right" aria-hidden="true"></i></a>
+
+            <!-- Caption text -->
+            <div class="caption-container">
+            <p id="caption"></p>
+            </div>
+
+            <!-- Thumbnail image controls -->
+            <div class="columnLightBox">
+            <img class="demoLightBox"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="currentSlide(1);" alt="Gym Photos">
+            </div>
+
+            <div class="columnLightBox">
+            <img class="demoLightBox"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="currentSlide(2);" alt="Gym Photos">
+            </div>
+
+            <div class="columnLightBox">
+            <img class="demoLightBox"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="currentSlide(3);" alt="Gym Photos">
+            </div>
+
+            <div class="columnLightBox">
+            <img class="demoLightBox"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="currentSlide(4);" alt="Gym Photos">
+            </div>
+
+            <div class="columnLightBox">
+            <img class="demoLightBox"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="currentSlide(5);" alt="Gym Photos">
+            </div>
+
+            <div class="columnLightBox">
+            <img class="demoLightBox"  src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" onclick="currentSlide(6);" alt="Gym Photos">
+            </div>
+
+        </div>
+        </div>
+
+        </div> <!--container-->
+    </div> <!--images-->
+
+
+
+
+<!--         
             <div class="row justify-content-center">
                 <div class="col-md-12 mb-1"  id="imagerow1">
                 <img src= " <?php echo URLROOT; ?>/images/gym/image2.jpg" width="32%" alt="gymimg">
@@ -86,70 +187,46 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 <!-----------------------------------------------------------------------------------------------------------------
 -------------------------------------------***TRAINERS**--------------------------------------------------------------->
 
     
         <div class="container">
-        <div class="row">
-            <div class="col-md-5 mt-5 mb-3">
-            <p class="basictitle" id="gymstitle">ΠΡΟΣΩΠΙΚΟ</p>
+            <div class="row">
+                <div class="col-md-5 mt-5 mb-3">
+                    <p class="basictitle" id="gymstitle">ΠΡΟΣΩΠΙΚΟ</p>
                 </div>
-</div> 
-        <div class="row d-flex justify-content-center">
+            </div>
+            <div class="row d-flex justify-content-center">
             <!--START DYNAMIC EXAMPLE SLIDER -->
-            <div id="carouselDynamicIndicators" class="banner carousel slide">
-            <ol class="carousel-indicators">
-                <?php foreach ($data['trainers'] as $key=>$trainer) : ?>
-                    <li data-target="#carouselDynamicIndicators" data-slide-to="<?php echo $key; ?>"></li>
-                <?php endforeach; ?>
-            </ol>
-            <div class="carousel-inner">
-                <?php foreach ($data['trainers'] as $key=>$trainer) : ?>
-                    <div class="carousel-item img<?php echo $key; ?>">
-                        <img class="d-block w-100" src="<?php echo '../../public/images/trainers/'.$data['gym']->gym_name.'/'.$trainer->trainer_image; ?>" alt="First slide">
-                        <div class="trainerdescr"><p><?php echo $trainer->trainer_name.'-'.$trainer->trainer_title;?></p></div>
+                <div class="col-md-6 mb-5">
+                    <div id="carouselDynamicIndicators" class="banner carousel slide">
+                        <ol class="carousel-indicators">
+                            <?php foreach ($data['trainers'] as $key=>$trainer) : ?>
+                                <li data-target="#carouselDynamicIndicators" data-slide-to="<?php echo $key; ?>"></li>
+                            <?php endforeach; ?>
+                        </ol>
+                        <div class="carousel-inner">
+                            <?php foreach ($data['trainers'] as $key=>$trainer) : ?>
+                                <div class="carousel-item img<?php echo $key; ?>">
+                                    <img class="d-block w-100" src="<?php echo '../../public/images/trainers/'.$data['gym']->gym_name.'/'.$trainer->trainer_image; ?>" alt="First slide">
+                                    <div class="trainerdescr"><p><?php echo $trainer->trainer_name.'-'.$trainer->trainer_title;?></p></div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselDynamicIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselDynamicIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
-                <?php endforeach; ?>
+                </div>
+            <!--END DYNAMIC EXAMPLE SLIDER -->
             </div>
-            <a class="carousel-control-prev" href="#carouselDynamicIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselDynamicIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-        <!--END DYNAMIC EXAMPLE SLIDER -->
-        
-
-
-
-
-
-
-
-
-         
-             <!-- <div class="col-md-4 col-sm-6 col-10 bd-highlight "  id="trainerphoto">
-                    <img src= " <?php echo URLROOT; ?>/images/gym/trainer1.jpg" width="100%" alt="gymimg">
-                    <div class="trainerdescr"><p>Γιάννης Κ. - Crossfit trainer</p></div>  
-             </div>
-            <div class="col-md-4 col-sm-6 col-10 bd-highlight" id="trainerphoto">
-                <img  src= " <?php echo URLROOT; ?>/images/gym/trainer2.jpg" width="100%" alt="gymimg">
-                <div class="trainerdescr"><p>Μαρία Κ. - Crossfit trainer</p></div> 
-            </div>
-            <div class="col-md-4 col-sm-6 col-10 bd-highlight mb-5" id="trainerphoto">
-                 <img src= " <?php echo URLROOT; ?>/images/gym/trainer3.jpg" width="100%" alt="gymimg">
-                 <div class="trainerdescr"><p>Κώστας Κ. - Crossfit trainer</p></div> 
-            </div> -->
-            
-        </div>
-
-
-
         </div>   
   
 
@@ -209,7 +286,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-             <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d12592.370471965784!2d23.74543255!3d37.9048978!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sel!2sgr!4v1548759265208" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <iframe src="http://maps.google.com/maps?q=37.9838,23.72758&z=15&output=embed" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
     </div>
 

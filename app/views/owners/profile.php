@@ -284,7 +284,7 @@
                     </div>
                     <div class="col-md-6 mb-4 profile_boxes mt-4">
                         <h4>Το logo σας</h4>
-                        <?php flash('gym_update'); ?>
+                        <?php flash('gym_logo_update'); ?>
                         <form id="addImagesToGymForm" class="p-2" action="<?php echo URLROOT; ?>/owners/updateLogo" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input type="hidden" name="name" value="<?php echo $data['my_gym_details']['gym_name']; ?>">
@@ -295,27 +295,50 @@
                             <button type="submit" class="btn btn-success">Αλλαγή Logo</button>
                         </form>
                     </div>
-                    <div class="col-md-5 mb-4  offset-1 profile_boxes mt-4">
+                    <div class="col-md-5 mb-4 offset-md-1 profile_boxes mt-4">
                         <h4>Προσθήκη φωτογραφιών</h4>
-                        <?php flash('gym_update'); ?>
-                        <form id="addImagesToGymForm" class="p-2" action="<?php echo URLROOT; ?>/owners/addGymPhotos" method="post" enctype="multipart/form-data">
+                        <?php flash('gym_images_update'); ?>
+                        <form id="addImagesToGymForm" class="p-2" action="<?php echo URLROOT; ?>/owners/addGymPhoto" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <p>Προσθέστε μέχρι 6 στο σύνολο φωτογραφίες για το γυμναστήριό σας.</p>
-                                <input name="logo" type="file" class="form-control-file" id="logo">
+                                <input name="image" type="file" class="form-control-file" id="logo">
+                                <input type="hidden" name="name" value="<?php echo $data['my_gym_details']['gym_name']; ?>">
+                                <input type="hidden" name="id" value="<?php echo $data['my_gym_details']['gym_id']; ?>">
+                                <input type="hidden" name="all_images" value="<?php echo $data['my_gym_details']['gym_images']; ?>">
                             </div>
                             <button type="submit" class="btn btn-success">Προσθήκη</button>
                         </form>
                     </div>
                     <div class="col-md-12 profile_boxes mt-4">
                         <h4>Προβολή  φωτογραφιών</h4>
-                        <?php flash('gym_update'); ?>
-                        <form id="addImagesToGymForm" class="p-2" action="<?php echo URLROOT; ?>/owners/removePhoto" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="logo">Το logo σας</label>
-                                <input name="logo" type="file" class="form-control-file" id="logo">
+                        <?php flash('gym_delete_images_update'); ?>
+                        <?php if(!empty($data['arrayOfImages'])) : ?>
+                            <div class="row">
+                                <?php foreach ($data['arrayOfImages'] as $image) : ?>
+                                    <div class="col-md-4 col-sm-12">
+                                        <img class="p-3" style="width: 100%; height: auto" src="../../public/images/<?php echo 'general_gyms_images/'.$data['my_gym_details']['gym_name'].'/'.$image?>" alt="my_gym_images">
+                                        <form style="display: inline" class="p-2" action="<?php echo URLROOT; ?>/owners/deleteGymPhoto" method="post">
+                                            <input type="hidden" name="image_name" value="<?php echo $image; ?>">
+                                            <input type="hidden" name="id" value="<?php echo $data['my_gym_details']['gym_id']; ?>">
+                                            <input type="hidden" name="all_images" value="<?php echo $data['my_gym_details']['gym_images']; ?>">
+                                            <input type="hidden" name="name" value="<?php echo $data['my_gym_details']['gym_name']; ?>">
+                                            <button type="submit" class="btn btn-danger ml-2 mt-1 mb-2">Διαγραφή Εικόνας</button>
+                                        </form>
+                                        <form style="display: inline" class="p-2" action="<?php echo URLROOT; ?>/owners/mainGymPhoto" method="post">
+                                            <input type="hidden" name="image_name" value="<?php echo $image; ?>">
+                                            <input type="hidden" name="id" value="<?php echo $data['my_gym_details']['gym_id']; ?>">
+                                            <?php if($data['my_gym_details']['gym_main_image'] === $image) : ?>
+                                                <button class="btn btn-success ml-2 mt-1 mb-2" disabled>Βασική Εικόνα</button>
+                                            <?php else: ?>
+                                                <button type="submit" class="btn btn-primary ml-2 mt-1 mb-2">Eπιλογή Βασικής Εικόνας</button>
+                                            <?php endif; ?>
+                                        </form>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
-                            <button type="submit" class="btn btn-success">Προσθήκη</button>
-                        </form>
+                        <?php else: ?>
+                                <p>Δεν έχετε ορίσει ακόμα φωτογραφίες.</p>
+                        <?php endif; ?>
                     </div>
                 <?php endif; ?>
             <!-- This is the display for trainers details upload   -->

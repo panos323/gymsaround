@@ -210,7 +210,9 @@
                 <div class="dropdown-divider"></div>
                 <button class="dropdown-item" id="dropdownThessaloniki" href="#">Θεσσαλονίκη</button>
                 <div class="dropdown-divider"></div>
-                <button class="dropdown-item" id="dropdownTrikala" href="#">Τρίκαλα</button> 
+                <button class="dropdown-item" id="dropdownTrikala" href="#">Τρίκαλα</button>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-item" id="dropdownKalamata" href="#">Καλαμάτα</button> 
               </div>
           </div> 
           <div class="dropdown d-inline-block">
@@ -800,7 +802,7 @@ map.on('load', function(e) {
     var list = document.getElementById("listings");
     var myList = list.getElementsByClassName("item");
     var resultsLength = document.querySelector("#totalGymResulstsSpan");
-    var resetLocation = document.getElementById("dropdownMenuButtonArr").innerHTML = "Είδος";
+    var resetLocation = document.getElementById("dropdownMenuButtonArr").innerHTML = "Τύπος Γυμναστικής";
     Array.prototype.map.call(myList, function(node) {
       return {
         node: node,
@@ -829,20 +831,30 @@ map.on('load', function(e) {
   document.getElementById("dropdownTrikala").addEventListener("click", function() {
     SortByLocation('Τρίκαλα');
   });
+  document.getElementById("dropdownKalamata").addEventListener("click", function() {
+    SortByLocation('Καλαμάτα');  
+  });
   //End sort Elements By Location
 
 
    //start If values of location dropdown are set from index page then display them first
-   if (window.localStorage.getItem('DropdownValueSelected') ==  document.getElementById("dropdownAthens").innerHTML){
-        SortByLocation('Αθήνα');
-        document.getElementById("dropdownMenuButton").innerHTML = 'Αθήνα';
-    } else if (window.localStorage.getItem('DropdownValueSelected') ==  document.getElementById("dropdownThessaloniki").innerHTML){
-        SortByLocation('Θεσσαλονίκη');
-        document.getElementById("dropdownMenuButton").innerHTML = 'Θεσσαλονίκη';
-    } else if (window.localStorage.getItem('DropdownValueSelected') ==  document.getElementById("dropdownTrikala").innerHTML){
-        SortByLocation('Τρίκαλα');
-        document.getElementById("dropdownMenuButton").innerHTML = 'Τρίκαλα';
-    }
+   (function(){
+     var result = document.getElementById("dropdownMenuButton");
+
+      if (window.localStorage.getItem('DropdownValueSelected') ==  document.getElementById("dropdownAthens").innerHTML){
+          result.innerHTML = 'Αθήνα';
+          SortByLocation('Αθήνα');
+      } else if (window.localStorage.getItem('DropdownValueSelected') ==    document.getElementById("dropdownThessaloniki").innerHTML){
+          result.innerHTML = 'Θεσσαλονίκη';
+          SortByLocation('Θεσσαλονίκη');
+      } else if (window.localStorage.getItem('DropdownValueSelected') ==        document.getElementById("dropdownTrikala").innerHTML){
+          result.innerHTML = 'Τρίκαλα';
+          SortByLocation('Τρίκαλα');
+      } else if (window.localStorage.getItem('DropdownValueSelected') ==        document.getElementById("dropdownKalamata").innerHTML){
+          result.innerHTML = 'Καλαμάτα';
+          SortByLocation('Καλαμάτα');
+      }
+  })();
   //end If values of location dropdown are set from index page then display them first
 
 
@@ -904,19 +916,23 @@ map.on('load', function(e) {
 
 
    //start If values of location dropdown are set from index page then display them first
-   if (window.localStorage.getItem('DropdownValueSelectedType') ==  document.getElementById("dropdownMartial").innerHTML){
-        SortByType('Πολεμικές Τέχνες');
-        document.getElementById("dropdownMenuButtonArr").innerHTML = 'Πολεμικές Τέχνες';
-    } else if (window.localStorage.getItem('DropdownValueSelectedType') ==  document.getElementById("dropdownCrossfit").innerHTML){
-        SortByType('Crossfit');
-        document.getElementById("dropdownMenuButtonArr").innerHTML = 'Crossfit';
-    } else if (window.localStorage.getItem('DropdownValueSelectedType') ==        document.getElementById("dropdownΑerobic").innerHTML){
-      SortByType('Aerobic');
-        document.getElementById("dropdownMenuButtonArr").innerHTML = 'Aerobic';
-    } else if (window.localStorage.getItem('DropdownValueSelectedType') ==   document.getElementById("dropdownDances").innerHTML){
-      SortByType('Χοροί');
-        document.getElementById("dropdownMenuButtonArr").innerHTML = 'Χοροί';
-    }
+   (function(){
+      var result =  document.getElementById("dropdownMenuButtonArr");
+
+        if (window.localStorage.getItem('DropdownValueSelectedType') ==  document.getElementById("dropdownMartial").innerHTML){
+            result.innerHTML = 'Πολεμικές Τέχνες';
+            SortByType('Πολεμικές Τέχνες');
+        } else if (window.localStorage.getItem('DropdownValueSelectedType') ==  document.getElementById("dropdownCrossfit").innerHTML){
+              result.innerHTML = 'Crossfit';
+              SortByType('Crossfit');
+        } else if (window.localStorage.getItem('DropdownValueSelectedType') ==        document.getElementById("dropdownΑerobic").innerHTML){
+            result.innerHTML = 'Aerobic';
+            SortByType('Aerobic');
+        } else if (window.localStorage.getItem('DropdownValueSelectedType') ==   document.getElementById("dropdownDances").innerHTML){
+            result.innerHTML = 'Χοροί';
+            SortByType('Χοροί');
+        }
+  })();
   //end If values of location dropdown are set from index page then display them first
 
 

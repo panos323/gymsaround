@@ -120,14 +120,13 @@
                     <label class="form-check-label" for="exampleCheck1">Εγγραφή στο Newslettert</label><br>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="acceptTerms">
-                    <label class="form-check-label" for="acceptTerms">Αποδέχομαι τους όρους 
+                    <input type="checkbox" class="form-check-input" data-toggle="modal" data-target="#termofusemodal" id="acceptTerms">
+                    <label class="form-check-label" for="acceptTerms" >Αποδέχομαι τους όρους χρήσης
                     </label>
                     <span class="text-center text-danger font-italic checkIfChecked"></span>
                     <br>
                 </div>
                 <button type="submit" class="btnmodalform" id="btnmodalregister">Εγγραφή</button>
-                <a href="#" id="logintext">Είσοδος></a>
             </form>
         </div>
         <div class="modal-footer">
@@ -209,6 +208,37 @@
                 </div>
                 <button type="submit" class="btnmodalform">Αποστολή</button></br>
             </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-------*******************MODAL TERM OF USE-------->
+
+<div id="termofusemodal" class="modal fade" role="dialog" style="z-index: 1500;">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content" id="modaltermofuse">
+      
+    <div class="modal-header">
+          <h4 class="modal-title" id="termofusetitle">Όροι Χρήσης</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+           <p> Γενικά Ο παρών διαδικτυακός ιστότοπος www.gymaround.gr (εφεξής «η ιστοσελίδα») αποτελεί ιδιοκτησία της εταιρείας «GYMAROYND PRIVATE COMPANY», που εδρεύει στην Αγία Παρασκευή Αττικής,
+        οδός Αιτωλίας, αρ 27Α, και είναι εγγεγραμμένη στα μητρώα του Υπουργείου Οικονομίας, Ανάπτυξης και Τουρισμού με Αρ. Γ.Ε.ΜΗ. 142947501000, (εφεξής «η Εταιρεία»).
+        Η Εταιρεία έχει δικαίωμα να τροποποιεί οποτεδήποτε τους παρόντες όρους, ανακοινώνοντας τις εκάστοτε τροποποιήσεις μέσω του ιστότοπου. Μετά από την ανακοίνωση της
+        τροποποίησης, η χρήση του ιστότοπου λογίζεται ως αποδοχή της εν λόγω τροποποίησης.</p>
+        <br>
+        <br>
+        Η Εταιρεία δημιούργησε και λειτουργεί νομίμως στο διαδίκτυο την ιστοσελίδα, με σκοπό την χρήση της από Xρήστες-Πελάτες (εφεξής «Χρήστες» ή μεμονωμένα «Χρήστης») και 
+        την πραγματοποίηση αγορών συνεδριών εκγύμνασης, διατροφής και συναφών υπηρεσιών από συνεργαζόμενες επιχειρήσεις, καταστήματα και εταιρείες (γυμναστήρια, κέντρα διατροφής, μασάζ κλπ)
+        ξής "Συνεργάτες" ή μεμονωμένα "Συνεργάτης"). O δικτυακός τόπος της Εταιρείας, ο οποίος βρίσκεται στην ηλεκτρονική διεύθυνση αυτής, www.gymaround.gr, 
+        οι υπηρεσίες που παρέχει η Εταιρεία μέσω του δικτυακού τόπου αυτού, καθώς και το χρησιμοποιούμενο λογισμικό ανήκουν στην Εταιρεία.
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

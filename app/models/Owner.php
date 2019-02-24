@@ -284,6 +284,42 @@ class Owner{
         }
         return false;
     }
+    /**
+     * Update Main Image for Gym
+     * @param array $data
+     * @return bool
+     */
+    public function updateMainPhoto(array $data){
+        $this->db->query('UPDATE gyms 
+                              SET gym_main_image = :image
+                              WHERE gym_id = :id');
+        $this->db->bind(':image', $data['image_name']);
+        $this->db->bind(':id', $data['id']);
+        $this->db->execute();
+        if($this->db->rowCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * Update General Images for Gym
+     * @param array $data
+     * @return bool
+     */
+    public function updatePhotos(array $data){
+        $this->db->query('UPDATE gyms 
+                              SET gym_images = :images
+                              WHERE gym_id = :id');
+        $this->db->bind(':images', $data['all_images']);
+        $this->db->bind(':id', $data['id']);
+        $this->db->execute();
+        if($this->db->rowCount() > 0) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Update Gym Details
