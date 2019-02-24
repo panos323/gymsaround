@@ -21,9 +21,9 @@ class Gyms extends Controller
                 'total_images' => count(explode(',', $gym->gym_images))
             ];
             $this->view('gyms/index', $data);
+        }else {
+            redirect('pages/search');
         }
-
-        redirect('pages/search');
     }
 
     public function search(){
