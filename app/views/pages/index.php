@@ -117,13 +117,13 @@
                                     <div class="row">
                                         <!--start arrow controls -->
                                         <div id="leftArrowChangeGym" class="col-md-1 offset-md-7 col-sm-1 offset-sm-6 mb-5">
-                                            <i class="text-info fa fa-arrow-left fa-2x" aria-hidden="true"></i>
+                                            <i class="text-secondary fa fa-arrow-left fa-2x" aria-hidden="true"></i>
                                         </div>
                                         <div class="col-lg-2 col-sm-2">
                                             <p id="number" style="text-align:center;"><span id="numbercolor"></p>
                                         </div>
                                         <div id="rightArrowChangeGym" class="col-1 ">
-                                            <i class="text-info fa fa-arrow-right fa-2x" aria-hidden="true"></i>
+                                            <i class="text-secondary fa fa-arrow-right fa-2x" aria-hidden="true"></i>
                                         </div>
                                         <!--end arrow controls -->
                                     </div><!--end row-->
