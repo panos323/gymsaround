@@ -195,8 +195,8 @@
 
 
     <!--start search buttons -->
-    <div class="row col-lg-8 mt-5">
-        <div class="col-md-7 mt-5 mb-3">
+    <div class="row col-lg-12 mt-5">
+        <div class="col-md-5 col-sm-12 mt-2 mb-3">
         
           <button type="button" class=" sortByNameBtn btn btn-outline-info mr-4 mb-2   btn-md customBtnG" id="sortByNameBtn">Tαξινόμηση +<i id="AscDescArrows" class="fa" aria-hidden="true"></i></button>
           <div class="dropdown d-inline-block">
@@ -236,7 +236,7 @@
 
         </div>
 
-        <div class="col-md-4 mt-5">
+        <div style="text-align: center" class="col-md-7 mt-2">
             <p id="totalGymResulstsSpan" class="lead"></p>
         </div>
     </div> <!--row-->
