@@ -1143,7 +1143,7 @@ function buildLocationList(data) {
     }
     details.innerHTML +=  prop.rating ;
     details.innerHTML += '<p id="typeFitness" class="lead float-left mt-3"><b>' + prop.program + '</b></p>';
-    details.innerHTML += '<button class="btn btn-warning float-right ml-1 mt-3 mb-3" id="btnGymPrice">' + prop.gymCost + '</button>'
+    details.innerHTML += '<a href="'+prop.linkPage+'" target="_blank" class="btn btn-warning float-right ml-1 mt-3 mb-3" id="btnGymPrice">' + prop.gymCost + '</a>'
 
     details.innerHTML += '<span class="clearfix"></span>';
 

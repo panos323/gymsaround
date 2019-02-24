@@ -218,7 +218,7 @@ $( document ).ready(function() {
         var mobilecheck = $(".ownerPhoneInput").val().trim();
         var myPassword = $(".ownerPasswordInput").val().trim();
         var passwordConfirm = $(".ownerPasswordMatchInput").val().trim();
-        //var isCheckForm = $("#acceptTerms").is(":checked");
+        var isCheckForm = $("#OwnerRegisterTerms").is(":checked");
 
         validateOwnerName(firstname,e);
         validateOwnerSurName(surname,e);
@@ -227,7 +227,7 @@ $( document ).ready(function() {
         validateOwnerPassword(myPassword,e);
         validateOwnerPhone(mobilecheck,e);
         validateOwnerMatchingPassword(myPassword,passwordConfirm,e);
-        //validateOwnerCheckboxField(isCheckForm,e);
+        validateOwnerCheckboxField(isCheckForm,e);
     }) // on submit 
     //END ON REGISTER OWNERS FORM SUMBIT
 
@@ -513,6 +513,15 @@ $( document ).ready(function() {
             $(".PassWordOwnerUpdateMatchesConfirmErr").text("");
         }
     } //end function
+
+    function validateOwnerCheckboxField(isCheckForm,e) {
+        if (!isCheckForm) {
+            $(".acceptForOwnersErr").text(" (Παρακαλώ αποδεχθείτε τους όρους)");
+            e.preventDefault();
+        } else {
+            $(".acceptForOwnersErr").text("");
+        }
+    }
     //END FUNCTIONS FOR UPDATE OWNER  VALIDATION
 
 
