@@ -129,9 +129,9 @@
             </div>
 
             <!-- Next/previous controls -->
-            <a class="prevLightBox" onclick="plusSlides(-1);"><i class="text-success fa fa-2x fa-arrow-left" aria-hidden="true" style="color:red;"></i>
+            <a class="prevLightBox" onclick="plusSlides(-1);"><i class="text-secondary fa fa-2x fa-arrow-left" aria-hidden="true" style="color:red;"></i>
             </a>
-            <a class="nextLightBox" onclick="plusSlides(1);"><i class="text-success fa fa-2x fa-arrow-right" aria-hidden="true"></i></a>
+            <a class="nextLightBox" onclick="plusSlides(1);"><i class="text-secondary fa fa-2x fa-arrow-right" aria-hidden="true"></i></a>
 
             <!-- Caption text -->
             <div class="caption-container">
