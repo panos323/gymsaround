@@ -199,11 +199,9 @@ $( document ).ready(function() {
 
         var nameEmail = $("#exampleInputEmailLog").val().trim();
         var myPassword = $("#passwordLoginPopUp").val().trim();
-        var isCheckForm = $("#checkOutLoginC").is(":checked");
 
         validateNameEmail(nameEmail,e);
         validateLoginPassword(myPassword,e);
-        validateLoginCheckbox(isCheckForm,e);
     }) // on submit 
     //END ON LOGIN POP UP FORM SUMBIT
 
@@ -724,14 +722,6 @@ $( document ).ready(function() {
         }
     } //end function
 
-    function validateLoginCheckbox(isCheckForm,e) {
-        if (!isCheckForm) {
-            $(".checkIfCheckedLogin").text(" (Παρακαλώ αποδεχθείτε τους όρους)");
-            e.preventDefault();
-        } else {
-            $(".checkIfCheckedLogin").text("");
-        }
-    }
     //END FUNCTIONS FOR LOGIN POP UP VALIDATION
 
 
