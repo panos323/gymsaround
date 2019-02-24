@@ -244,8 +244,8 @@ class Owner{
      */
     public function register_gym(array $data){
         //Query
-        $this->db->query('INSERT INTO gyms (gym_name, gym_description, gym_location, gym_type, gym_monthly_price, gym_yearly_price, gym_logo, owners_owner_id)
-                              VALUES (:name, :description, :location, :type, :month_price, :year_price, :logo, :owners)');
+        $this->db->query('INSERT INTO gyms (gym_name, gym_description, gym_location, gym_type, gym_monthly_price, gym_yearly_price, gym_logo, owners_owner_id, gym_lat, gym_long, gym_postal_code, gym_city)
+                              VALUES (:name, :description, :location, :type, :month_price, :year_price, :logo, :owners, :lat, :lng, :postal, :city)');
 
         // Bind values
         $this->db->bind(':name', $data['name']);
@@ -256,6 +256,10 @@ class Owner{
         $this->db->bind(':year_price', $data['year_price']);
         $this->db->bind(':owners', $_SESSION['id']);
         $this->db->bind(':logo', $data['image_file']);
+        $this->db->bind(':lat', $data['lat']);
+        $this->db->bind(':lng', $data['lng']);
+        $this->db->bind(':postal', $data['postal_code']);
+        $this->db->bind(':city', $data['city']);
 
         // Execute
         try {
@@ -333,7 +337,11 @@ class Owner{
                                   gym_type = :type,
                                   gym_yearly_price = :year,
                                   gym_monthly_price = :month,
-                                  gym_description = :description
+                                  gym_description = :description,
+                                  gym_lat = :lat,
+                                  gym_long = :lng,
+                                  gym_postal_code = :postal,
+                                  gym_city = :city
                               WHERE owners_owner_id = :id');
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':location', $data['location']);
@@ -341,6 +349,10 @@ class Owner{
         $this->db->bind(':year', $data['year_price']);
         $this->db->bind(':month', $data['month_price']);
         $this->db->bind(':description', $data['description']);
+        $this->db->bind(':lat', $data['lat']);
+        $this->db->bind(':lng', $data['lng']);
+        $this->db->bind(':postal', $data['postal_code']);
+        $this->db->bind(':city', $data['city']);
         $this->db->bind(':id', $_SESSION['id']);
         try{
             $this->db->execute();

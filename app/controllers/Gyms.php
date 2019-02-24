@@ -30,14 +30,14 @@ class Gyms extends Controller
             $type = 'Feature';
             $geometry = [
                 'type' => 'Point',
-                'coordinates' =>  [23.9438 , 37.7338]
+                'coordinates' =>  [$gym->gym_long, $gym->gym_lat]
             ];
             $properties = [
                 'name' => $gym->gym_name,
                 'linkPage' => URLROOT.'/gyms/index/'.$gym->gym_id,
                 'address' => $gym->gym_location,
-                'city' => 'Αθήνα',
-                'postalCode' => '20037',
+                'city' => $gym->gym_city,
+                'postalCode' => $gym->gym_postal_code,
                 'gymPhoto' => '../public/images/gyms_images/'.$gym->gym_name.'/'.$gym->gym_logo,
                 'rating' => $gym->gym_rating ?? 4,
                 'program' => $gym->gym_type,

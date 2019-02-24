@@ -155,7 +155,7 @@ class Owners extends Controller {
             $gym = $this->ownerModel->getGymByUserId($_SESSION['id']);
             $_SESSION['gym_id'] = isset($gym->gym_id) ? $gym->gym_id : '';
             $trainers = $this->ownerModel->getTrainersByGymId();
-            $imagesToArray = explode(',', $gym->gym_images);
+            $imagesToArray = explode(',', $gym->gym_images ?? '');
             $data = [
                 'no_gym' => empty($gym) ? 'Δεν έχετε δημιουργήσει το γυμναστήριο σας.' : '',
                 'my_gym_details' => empty($gym) ? '' : (array) $gym,
@@ -186,10 +186,12 @@ class Owners extends Controller {
                 'type' => trim($_POST['type']),
                 'year_price' => trim($_POST['year_price']),
                 'month_price' => trim($_POST['month_price']),
+                'postal_code' => trim($_POST['postal_code']),
                 'name_error' => '',
                 'description_error' => '',
                 'location_error' => '',
                 'type_error' => '',
+                'postal_error' => '',
             ];
 
             $data['image_file'] = addImage('gyms_images', $data['name']);
@@ -199,9 +201,27 @@ class Owners extends Controller {
                 $data['name_error'] = 'Please enter a name for the gym';
             }
 
-            // Validate gym name
-            if(empty($data['location'])){
+            if(empty($data['postal_code'])) {
+                $data['postal_error'] = 'Παρακαλώ δώστε Ταχυδρομικό Κώδικα.';
+            } elseif(empty($data['location'])){
                 $data['location_error'] = 'Please enter location for the gym';
+            } else {
+                $prepAddr = str_replace(' ','+',$data['location']);
+                $geocode = json_decode(file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address='.$prepAddr.'&components=country:gr|postal_code:'.$data['postal_code'].'&sensor=false&key=AIzaSyBxc7Z_kdLfpdqB-cM3TY2j9S7GL33wyfY'));
+            }
+
+            if(isset($geocode) && $geocode->status === 'OK'){
+                $results = $geocode->results[0];
+                $geometry = $results->geometry;
+                $location = $geometry->location;
+                $data['lat'] = $location->lat;
+                $data['lng'] = $location->lng;
+                $addressDetails = explode(',',$results->formatted_address);
+                $data['location'] = $addressDetails[0];
+                $city = explode(' ', $addressDetails[1]);
+                $data['city'] = (count($city) > 4) ? $city[1].' '.$city[2] : $city[1];
+            } else {
+                $data['location_error'] = 'Λάθος τοποθεσία.';
             }
 
             // Validate gym name
@@ -212,7 +232,8 @@ class Owners extends Controller {
             $data['tab'] = 'my_gym';
             if( empty($data['type_error']) &&
                 empty($data['location_error']) &&
-                empty($data['name_error'])){
+                empty($data['name_error']) &&
+                empty($data['postal_error'])){
                 if($this->ownerModel->register_gym($data)){
                     flash('gym_update', 'You have updated your Gym');
                     redirect('owners/profile/my_gym');
@@ -250,16 +271,36 @@ class Owners extends Controller {
                 'description_error' => '',
                 'location_error' => '',
                 'type_error' => '',
+                'postal_code' => trim($_POST['postal_code']),
+                'postal_error' => '',
             ];
+
+            if(empty($data['postal_code'])) {
+                $data['postal_error'] = 'Παρακαλώ δώστε Ταχυδρομικό Κώδικα.';
+            } elseif(empty($data['location'])){
+                $data['location_error'] = 'Please enter location for the gym';
+            } else {
+                $prepAddr = str_replace(' ','+',$data['location']);
+                $geocode = json_decode(file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address='.$prepAddr.'&components=country:gr|postal_code:'.$data['postal_code'].'&sensor=false&key=AIzaSyBxc7Z_kdLfpdqB-cM3TY2j9S7GL33wyfY'));
+            }
+
+            if(isset($geocode) && $geocode->status === 'OK'){
+                $results = $geocode->results[0];
+                $geometry = $results->geometry;
+                $location = $geometry->location;
+                $data['lat'] = $location->lat;
+                $data['lng'] = $location->lng;
+                $addressDetails = explode(',',$results->formatted_address);
+                $data['location'] = $addressDetails[0];
+                $city = explode(' ', $addressDetails[1]);
+                $data['city'] = (count($city) > 4) ? $city[1].' '.$city[2] : $city[1];
+            } else {
+                $data['location_error'] = 'Λάθος τοποθεσία.';
+            }
 
             // Validate gym name
             if(empty($data['name'])){
                 $data['name_error'] = 'Please enter a name for the gym';
-            }
-
-            // Validate gym name
-            if(empty($data['location'])){
-                $data['location_error'] = 'Please enter location for the gym';
             }
 
             // Validate gym name
