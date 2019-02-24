@@ -580,7 +580,7 @@ map.on('load', function(e) {
     Array.prototype.map.call(myList, function(node) {
       return {
         node: node,
-        relevantText: node.querySelector('button').textContent.match(/\d/g).join("")
+        relevantText: node.querySelector('#btnGymPrice').textContent.match(/\d/g).join("")
       };
     }).sort(function(a, b) {
       if (orderAscDescName) {
