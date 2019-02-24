@@ -1,19 +1,24 @@
 <?php require  APPROOT . '/views/inc/header.php'?>
-    <form action="<?php echo URLROOT; ?>/gyms/payment" method="post" id="payment-form">
-        <div class="form-row">
-            <label for="card-element">
-                Credit or debit card
-            </label>
-            <div id="card-element">
-                <!-- A Stripe Element will be inserted here. -->
+<div class="payment-css">
+    <div class="container">
+        <h2 class="my-4 text-center">Pay you bitch</h2>
+        <form action="<?php echo URLROOT; ?>/gyms/payment" method="post" id="payment-form">
+            <div class="form-row">
+                <input type="text" name="first_name" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="First Name">
+                <input type="text" name="last_name" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Last Name">
+                <input type="email" name="email" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Email Address">
+                <div id="card-element" class="form-control">
+                    <!-- A Stripe Element will be inserted here. -->
+                </div>
+
+                <!-- Used to display form errors. -->
+                <div id="card-errors" role="alert"></div>
             </div>
 
-            <!-- Used to display form errors. -->
-            <div id="card-errors" role="alert"></div>
-        </div>
-
-        <button>Submit Payment</button>
-    </form>
+            <button>Submit Payment</button>
+        </form>
+    </div>
+</div>
     <script src="https://js.stripe.com/v3/"></script>
     <script src="<?php echo URLROOT; ?>/js/charge.js"/></script>
 <?php require  APPROOT . '/views/inc/footer.php'?>
