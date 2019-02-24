@@ -31,7 +31,7 @@ $( document ).ready(function() {
     //show current item of slider
     $('#number').html('1/3');
 
-    //start Change gyms on index based on arrow clicked
+    //start Change gyms on index page based on arrow clicked
     var firstGym = $(".displayFirstGym");
         firstGym.css("display","block");
 
